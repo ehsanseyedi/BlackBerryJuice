@@ -50,7 +50,6 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
             Bundle extras = intent.getExtras();
             if (extras != null) {
                 mImages = extras.getStringArrayList("images");
-                mPaletteColorType = (PaletteColorType) extras.get("palette_color_type");
             }
         }
 
@@ -77,15 +76,13 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
     // region ImageGalleryAdapter.OnImageClickListener Methods
     @Override
     public void onImageClick(int position) {
-        Intent intent = new Intent(ImageGalleryActivity.this, FullScreenImageGalleryActivity.class);
 
+        Intent intent = new Intent(ImageGalleryActivity.this, FullScreenImageGalleryActivity.class);
         intent.putStringArrayListExtra("images", mImages);
         intent.putExtra("position", position);
         if (mPaletteColorType != null) {
             intent.putExtra("palette_color_type", mPaletteColorType);
         }
-        //Toast.makeText(this,mImages.toString() + " " + position,Toast.LENGTH_SHORT).show();
-
         startActivity(intent);
     }
     // endregion

@@ -56,6 +56,9 @@ public class ActivityMainMenu extends Activity {
 	ProgressBar p3;
 	String GalleryAPI;
 	int IOConnect = 0;
+	ImageView g1;
+	ImageView g2;
+	ImageView g3;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -86,7 +89,9 @@ public class ActivityMainMenu extends Activity {
 		// Menu detail API url
 		MenuDetailAPI = Constant.MenuDetailAPI+"?accesskey="+Constant.AccessKey+"&menu_id="+Menu_ID;
 
-
+		g1 = (ImageView) findViewById(R.id.g1);
+		g2 = (ImageView) findViewById(R.id.g2);
+		g3 = (ImageView) findViewById(R.id.g3);
 
 		DisplayMetrics dm = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -256,21 +261,37 @@ public class ActivityMainMenu extends Activity {
 
 
 
-			new DownloadImageTask((ImageView) findViewById(R.id.g1),p1)
-					.execute(images.get(0));
-			new DownloadImageTask((ImageView) findViewById(R.id.g2),p2)
-					.execute(images.get(1));
-			new DownloadImageTask((ImageView) findViewById(R.id.g3),p3)
-					.execute(images.get(2));
-			//prgLoading.setVisibility(8);
+			if((images.size() >= 3) && (IOConnect == 0)){
+				new DownloadImageTask(g1,p1)
+						.execute(images.get(0));
+				new DownloadImageTask(g2,p2)
+						.execute(images.get(1));
+				new DownloadImageTask(g3,p3)
+						.execute(images.get(2));
+			}else if((images.size() == 2) && (IOConnect == 0)){
+				new DownloadImageTask(g1,p1)
+						.execute(images.get(0));
+				new DownloadImageTask(g2,p2)
+						.execute(images.get(1));
+				g3.setVisibility(View.INVISIBLE);
+				p3.setVisibility(View.INVISIBLE);
 
-			// if internet connection and data available show data on list
-			// otherwise, show alert text
-			if((images.size() > 0) && (IOConnect == 0)){
-//				listCategory.setVisibility(0);
-//				listCategory.setAdapter(cla);
-			}else{
-				//txtAlert.setVisibility(0);
+			}else if((images.size() == 1) && (IOConnect == 0)){
+				new DownloadImageTask(g1,p1)
+						.execute(images.get(0));
+
+				g2.setVisibility(View.INVISIBLE);
+				g3.setVisibility(View.INVISIBLE);
+				p2.setVisibility(View.INVISIBLE);
+				p3.setVisibility(View.INVISIBLE);
+			}
+			else{
+				g1.setVisibility(View.INVISIBLE);
+				g2.setVisibility(View.INVISIBLE);
+				g3.setVisibility(View.INVISIBLE);
+				p1.setVisibility(View.INVISIBLE);
+				p2.setVisibility(View.INVISIBLE);
+				p3.setVisibility(View.INVISIBLE);
 			}
 		}
 	}
