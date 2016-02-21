@@ -94,7 +94,6 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
             return super.onOptionsItemSelected(item);
         }
     }
-
     // region Helper Methods
     private void bindViews() {
         mViewPager = (ViewPager) findViewById(R.id.vp);

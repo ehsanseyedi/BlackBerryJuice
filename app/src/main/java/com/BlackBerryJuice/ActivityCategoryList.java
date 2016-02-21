@@ -49,7 +49,7 @@ public class ActivityCategoryList extends Activity {
 	
 	// create arraylist variables to store data from server
 	static ArrayList<Long> Category_ID = new ArrayList<Long>();
-	static ArrayList<String> Category_name = new ArrayList<String>();
+	static ArrayList<String> Category_name = new ArrayList<String>(); ////////////////file
 	static ArrayList<String> Category_image = new ArrayList<String>();
 	
 	String CategoryAPI;
@@ -206,12 +206,12 @@ public class ActivityCategoryList extends Activity {
 			Log.e("saeeeeeeed", str);
 	        // parse json data and store into arraylist variables
 			JSONObject json = new JSONObject(str);
-			JSONArray data = json.getJSONArray("data");
+			JSONArray data = json.getJSONArray("data"); ////////////////picture
 
 			for (int i = 0; i < data.length(); i++) {
 			    JSONObject object = data.getJSONObject(i);
 			    
-			    JSONObject category = object.getJSONObject("Category");
+			    JSONObject category = object.getJSONObject("Category"); //////////////// Gallery
 			    
 			    Category_ID.add(Long.parseLong(category.getString("Category_ID")));
 			    Category_name.add(category.getString("Category_name"));
