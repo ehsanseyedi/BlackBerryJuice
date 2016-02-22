@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.BlackBerryJuice"
-        minSdkVersion 10
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
@@ -31,4 +31,8 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:22.1.1'
     compile 'com.android.support:palette-v7:22.1.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.daimajia.androidanimations:library:1.0.3@aar'
+    compile project(':library')
+    compile 'com.mohamadamin:persianmaterialdatetimepicker:1.2.1'
 }
