@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--saeed's-->
+    <color name="tameshk">#ed1c24</color>
+    <color name="tameshk_dark">#c51a21</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#e9e9e9</color>
+    <color name="gray_darker">#c7c7c7</color>
+    <color name="footer">#2b292b</color>
+    <color name="price">#459300</color>
+    <!--saeed's-->
+</resources>

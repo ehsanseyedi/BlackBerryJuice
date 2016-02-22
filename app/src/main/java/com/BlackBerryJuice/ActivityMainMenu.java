@@ -14,13 +14,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.BlackBerryJuice.activities.ImageGalleryActivity;
@@ -44,7 +49,16 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import com.BlackBerryJuice.Constant;
 
-public class ActivityMainMenu extends Activity {
+import com.daimajia.slider.library.Animations.DescriptionAnimation;
+import com.daimajia.slider.library.Indicators.PagerIndicator;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.daimajia.slider.library.Tricks.ViewPagerEx;
+
+import java.util.HashMap;
+
+public class ActivityMainMenu extends Activity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 	static DBHelper dbhelper;
 	AdapterMainMenu mma;
 	Intent iGet = getIntent();
@@ -59,6 +73,7 @@ public class ActivityMainMenu extends Activity {
 	ImageView g1;
 	ImageView g2;
 	ImageView g3;
+	SliderLayout mDemoSlider;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -72,6 +87,38 @@ public class ActivityMainMenu extends Activity {
 			window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
 		}
 		setContentView(R.layout.main_layout);
+
+
+		mDemoSlider = (SliderLayout) findViewById(R.id.slider);
+
+		HashMap<String, String> url_maps = new HashMap<String, String>();
+		url_maps.put("جشن تولدتی شاد و جذاب داشته باشید", "http://blackberryjuice.ir/uploads/1000/59/uploads_album/396.jpg");
+		url_maps.put("تمشک سیاه", "http://blackberryjuice.ir/uploads/1000/59/uploads_album/398.jpg");
+		url_maps.put("تخفیف به مناسبت سال نو", "http://blackberryjuice.ir/uploads/1000/59/uploads_album/520.jpg");
+		url_maps.put("آبمیوه تمشک سیاه", "http://blackberryjuice.ir/uploads/1000/59/uploads_album/394.jpg");
+
+		for (String name : url_maps.keySet()) {
+			TextSliderView textSliderView = new TextSliderView(this);
+			// initialize a SliderLayout
+			textSliderView
+					.description(name)
+					.image(url_maps.get(name))
+					.setScaleType(BaseSliderView.ScaleType.Fit)
+					.setOnSliderClickListener(this);
+
+			//add your extra information
+			textSliderView.bundle(new Bundle());
+			textSliderView.getBundle()
+					.putString("extra", name);
+
+			mDemoSlider.addSlider(textSliderView);
+		}
+		mDemoSlider.setPresetTransformer(SliderLayout.Transformer.DepthPage);
+		mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Top);
+		mDemoSlider.setCustomAnimation(new DescriptionAnimation());
+		mDemoSlider.setDuration(4000);
+		mDemoSlider.addOnPageChangeListener(this);
+
 
 		RelativeLayout order = (RelativeLayout) findViewById(R.id.Order_Cat_Button);
 		order.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +185,6 @@ public class ActivityMainMenu extends Activity {
 		p2 = (ProgressBar)findViewById(R.id.pr2);
 		p3 = (ProgressBar)findViewById(R.id.pr3);
 
-
 		p1.setVisibility(View.VISIBLE);
 		p2.setVisibility(View.VISIBLE);
 		p3.setVisibility(View.VISIBLE);
@@ -190,6 +236,31 @@ public class ActivityMainMenu extends Activity {
 	}
 
 	@Override
+	protected void onStop() {
+		// To prevent a memory leak on rotation, make sure to call stopAutoCycle() on the slider before activity or fragment is destroyed
+		mDemoSlider.stopAutoCycle();
+		super.onStop();
+	}
+
+	@Override
+	public void onSliderClick(BaseSliderView slider) {
+		//Toast.makeText(this,slider.getBundle().get("extra") + "",Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+	@Override
+	public void onPageSelected(int position) {
+		Log.d("Slider Demo", "Page Changed: " + position);
+	}
+
+	@Override
+	public void onPageScrollStateChanged(int state) {}
+
+
+
+	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
 		dbhelper.deleteAllData();
@@ -239,12 +310,8 @@ public class ActivityMainMenu extends Activity {
 	// asynctask class to handle parsing json in background
 	public class getDataTask extends AsyncTask<Void, Void, Void> {
 
-		// show progressbar first
 		getDataTask(){
-//			if(!prgLoading.isShown()){
-//				prgLoading.setVisibility(0);
-//				txtAlert.setVisibility(8);
-//			}
+
 		}
 
 		@Override
@@ -258,8 +325,6 @@ public class ActivityMainMenu extends Activity {
 		@Override
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
-
-
 
 			if((images.size() >= 3) && (IOConnect == 0)){
 				new DownloadImageTask(g1,p1)
@@ -284,8 +349,7 @@ public class ActivityMainMenu extends Activity {
 				g3.setVisibility(View.INVISIBLE);
 				p2.setVisibility(View.INVISIBLE);
 				p3.setVisibility(View.INVISIBLE);
-			}
-			else{
+			} else{
 				g1.setVisibility(View.INVISIBLE);
 				g2.setVisibility(View.INVISIBLE);
 				g3.setVisibility(View.INVISIBLE);
@@ -367,5 +431,7 @@ public class ActivityMainMenu extends Activity {
 			PPBB.setVisibility(View.GONE);
 		}
 	}
+
+
 
 }

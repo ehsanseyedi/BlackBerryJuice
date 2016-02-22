@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:foo="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/Theme.AppCompat.NoActionBar"
     android:background="@color/white">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,20 +16,42 @@
         android:layout_above="@+id/Social"
         android:layout_alignParentTop="true">
 
-
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_height="0dp"
             android:id="@+id/Slider"
             android:layout_weight="600">
 
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:src="@drawable/slider_temp_1"
-                android:adjustViewBounds="true"
-                android:scaleType="center" />
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                custom:pager_animation="ZoomIn"
+                custom:auto_cycle="true"
+                custom:indicator_visibility="visible"
+                custom:pager_animation_span="1100"
+                android:layout_height="match_parent"/>
+
+            <com.daimajia.slider.library.Indicators.PagerIndicator
+                android:id="@+id/custom_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                custom:selected_color="#0095BF"
+                custom:unselected_color="#55333333"
+                custom:selected_drawable="@drawable/bird"
+                custom:shape="oval"
+                custom:selected_padding_left="5dp"
+                custom:selected_padding_right="5dp"
+                custom:unselected_padding_left="5dp"
+                custom:unselected_padding_right="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                custom:selected_width="6dp"
+                custom:selected_height="6dp"
+                custom:unselected_width="6dp"
+                custom:unselected_height="6dp"
+                android:layout_marginTop="15dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -184,7 +206,6 @@
                         <ImageView
                             android:layout_width="fill_parent"
                             android:layout_height="75dp"
-                            android:src="@drawable/loading"
                             android:scaleType="centerCrop"
                             android:layout_weight="15"
                             android:adjustViewBounds="true"
@@ -213,7 +234,6 @@
                         <ImageView
                             android:layout_width="fill_parent"
                             android:layout_height="75dp"
-                            android:src="@drawable/loading"
                             android:scaleType="centerCrop"
                             android:layout_weight="15"
                             android:adjustViewBounds="true"
@@ -240,7 +260,6 @@
                         <ImageView
                             android:layout_width="fill_parent"
                             android:layout_height="75dp"
-                            android:src="@drawable/loading"
                             android:scaleType="centerCrop"
                             android:layout_weight="15"
                             android:adjustViewBounds="true"
