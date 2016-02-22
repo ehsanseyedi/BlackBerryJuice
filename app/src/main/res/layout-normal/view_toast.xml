@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/min_lay_height"
+    android:minWidth="@dimen/min_lay_width"
+    xmlns:foo="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/backg_2">
+
+    <com.BlackBerryJuice.utils.TextViewPlus
+        android:id="@+id/txtMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="لطفاً در بازه زمانی فعالیت فروشگاه زمان انتخاب کنید (9 صبح تا 2 بامداد)"
+        android:layout_gravity="center"
+        foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+        android:paddingLeft="@dimen/spacing_big"
+        android:paddingRight="16dp"
+        android:drawablePadding="@dimen/spacing_big"
+        android:gravity="center_vertical"
+        android:layout_centerVertical="true"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_small"/>
+</RelativeLayout>

@@ -4,199 +4,260 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:foo="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    tools:context=".ActivityReservation">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="vertical"
-        android:padding="5dp"
-        tools:ignore="UselessParent" >
-
-        <com.BlackBerryJuice.utils.TextViewPlus
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="رزرو میز"
-            android:layout_gravity="center"
-            android:textColor="#2A2A2A"
-            android:layout_marginBottom="10dp"
-            foo:customFont="fonts/IRANSansMobile_Medium.ttf"/>
-
-        <com.BlackBerryJuice.utils.TextViewPlus
-            android:id="@+id/Date_Text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="تاریخ"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_gravity="center"
-            android:textColor="#000000"
-            foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/backg_2"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:paddingRight="25dp"
-            android:paddingLeft="25dp" />
-
-        <com.BlackBerryJuice.utils.TextViewPlus
-            android:id="@+id/Time_Text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="زمان"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_gravity="center"
-            android:textColor="#000000"
-            foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/backg_2"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:paddingRight="25dp"
-            android:paddingLeft="25dp" />
-
+        android:layout_height="match_parent">
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp">
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="5dp"
+            tools:ignore="UselessParent" >
 
-            <LinearLayout
-                android:orientation="horizontal"
+            <com.BlackBerryJuice.utils.TextViewPlus
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right">
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="رزرو میز"
+                android:layout_gravity="center"
+                android:textColor="#2A2A2A"
+                android:layout_marginBottom="10dp"
+                foo:customFont="fonts/IRANSansMobile_Medium.ttf"/>
 
-                <com.BlackBerryJuice.utils.TextViewPlus
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="@dimen/smallfont"
-                    android:text="میز 5 نفره"
-                    android:layout_gravity="center"
-                    android:textColor="#2A2A2A"
-                    foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
-                    android:layout_marginTop="3dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:weightSum="1"
+                android:gravity="center"
+                android:id="@+id/Date_Pick">
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="50dp"
+                    android:background="@drawable/backg_2"
+                    android:layout_weight="0.8"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/cal_1"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentTop="true"
+                        android:adjustViewBounds="true"
+                        android:padding="12dp"
+                        android:id="@+id/cal_1" />
+                    <com.BlackBerryJuice.utils.TextViewPlus
+                        android:id="@+id/Date_Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="تاریخ مورد نظر را انتخاب کنید"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_gravity="center"
+                        android:textColor="#000000"
+                        foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:paddingRight="25dp"
+                        android:paddingLeft="25dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:gravity="center"
+                        android:layout_alignParentRight="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:weightSum="1"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:id="@+id/Time_Pick">
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="50dp"
+                    android:background="@drawable/backg_2"
+                    android:layout_weight="0.8"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/time_1"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentTop="true"
+                        android:adjustViewBounds="true"
+                        android:padding="12dp"
+                        android:id="@+id/time_1" />
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:id="@+id/table5" />
+                    <com.BlackBerryJuice.utils.TextViewPlus
+                        android:id="@+id/Time_Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="زمان مورد نظر را انتخاب کنید"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_gravity="center"
+                        android:textColor="#000000"
+                        foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:paddingRight="25dp"
+                        android:paddingLeft="25dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:gravity="center"
+                        android:layout_alignParentRight="true" />
+                </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:gravity="center"
+                android:layout_marginTop="15dp">
+
+                <FrameLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35"
+                    android:id="@+id/table_5"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/table_5"
+                        android:adjustViewBounds="true" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/table_check"
+                        android:adjustViewBounds="true"
+                        android:id="@+id/table_5_check"
+                        android:visibility="invisible" />
+                </FrameLayout>
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"/>
+                <FrameLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35"
+                    android:id="@+id/table_2"
+                    android:padding="10dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/table_2"
+                        android:adjustViewBounds="true" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/table_check"
+                        android:adjustViewBounds="true"
+                        android:id="@+id/table_2_check" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/backg_2"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+                <EditText
+                    android:id="@+id/desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:hint="توضیحات"
+                    android:background="#00000000"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:textSize="@dimen/smallfont"
+                    android:textColor="@color/transparent_black_seventy"
+                    android:textColorHint="@color/EditText_Color_Hint"
+                    android:gravity="top|right"
+                    android:padding="10dp"
+                    android:scrollbarStyle="outsideInset"
+                    android:fadeScrollbars="false"
+                    android:scrollbars="vertical"
+                    android:scrollbarSize="2dp">
+                </EditText>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/backg_2"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="شماره موبایل"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/EditText_Color_Text"
+                    android:textColorHint="@color/EditText_Color_Hint"
+                    android:inputType="phone"
+                    android:phoneNumber="true"/>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/phone_1"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:adjustViewBounds="true"
+                    android:padding="12dp" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/RequestBtn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/themainbutton"
+                android:text="درخواست"
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="#FFFFFF" />
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:id="@+id/reg_now_link"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right">
+                android:text="انصراف"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_gravity="center"
+                android:textColor="#000000"
+                foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/backg_2"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp" />
 
-                <com.BlackBerryJuice.utils.TextViewPlus
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="@dimen/smallfont"
-                    android:text="میز 3 نفره"
-                    android:layout_gravity="center"
-                    android:textColor="#2A2A2A"
-                    foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
-                    android:layout_marginTop="3dp" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:id="@+id/table3" />
-            </LinearLayout>
 
         </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/backg_2"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
-            <EditText
-                android:id="@+id/desc"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="توضیحات"
-                android:background="#00000000"
-                android:gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/EditText_Color_Text"
-                android:textColorHint="@color/EditText_Color_Hint">
-            </EditText>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/backg_2"
-            android:layout_marginTop="7dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:visibility="gone">
-
-            <EditText
-                android:id="@+id/phone"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="شماره موبایل"
-                android:background="#00000000"
-                android:gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/EditText_Color_Text"
-                android:textColorHint="@color/EditText_Color_Hint"
-                android:inputType="phone"
-                android:phoneNumber="true"/>
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/phone_1"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:adjustViewBounds="true"
-                android:padding="12dp" />
-        </RelativeLayout>
-
-        <Button
-            android:id="@+id/RequestBtn"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/themainbutton"
-            android:text="درخواست"
-            android:layout_marginTop="14dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:textColor="#FFFFFF" />
-
-        <com.BlackBerryJuice.utils.TextViewPlus
-            android:id="@+id/reg_now_link"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="انصراف"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_gravity="center"
-            android:textColor="#000000"
-            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/backg_2"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp" />
-
-
-    </LinearLayout>
-
+    </ScrollView>
 </LinearLayout>

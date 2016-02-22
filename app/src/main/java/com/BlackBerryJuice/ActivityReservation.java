@@ -11,13 +11,21 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.BlackBerryJuice.util.ErrorToast;
+import com.BlackBerryJuice.util.ShamsiCalleder;
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
 import com.mohamadamin.persianmaterialdatetimepicker.time.RadialPickerLayout;
 import com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog;
 import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
+
+import java.util.Calendar;
 
 public class ActivityReservation extends Activity implements
 		TimePickerDialog.OnTimeSetListener,
@@ -30,8 +38,11 @@ public class ActivityReservation extends Activity implements
 	private CheckBox mode24Hours, modeDarkTime, modeDarkDate;
 	private TextView timeTextView, dateTextView;
 	private Button Req_Btn; //timeButton, dateButton;
-	RadioButton table3 , table5;
 	EditText desc;
+	FrameLayout table_2 , table_5;
+	ImageView table_2_check,table_5_check;
+	LinearLayout Time_Pick , Date_Pick;
+	TimePickerDialog tpd;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +51,17 @@ public class ActivityReservation extends Activity implements
 		setContentView(R.layout.activity_reservation);
 		initializeViews();
 		handleClicks();
+		Calendar c = Calendar.getInstance();
+		int day = c.get(Calendar.DATE);
+		int mounth = c.get(Calendar.MONTH)+1;
+		int year = c.get(Calendar.YEAR);
+		ShamsiCalleder.getCurrentShamsidate();
+		Log.d("EHSAN", day + "  " + mounth + "  " + year);
+		Log.d("EHSAN", ShamsiCalleder.getDay() + "  " + ShamsiCalleder.getMonth() + "  " + ShamsiCalleder.getYear());
+		Log.d("EHSAN", ShamsiCalleder.getCurrentShamsidate());
+
+
+
 	}
 
 	private void initializeViews() {
@@ -47,32 +69,30 @@ public class ActivityReservation extends Activity implements
 		dateTextView = (TextView)findViewById(R.id.Date_Text);
 		Req_Btn = (Button)findViewById(R.id.RequestBtn);
 		Req_Btn.setTypeface(ActivitySplash.F2);
-		table3 = (RadioButton)findViewById(R.id.table3);
-		table5 = (RadioButton)findViewById(R.id.table5);
+		table_2 = (FrameLayout)findViewById(R.id.table_2);
+		table_5 = (FrameLayout)findViewById(R.id.table_5);
+		table_2_check = (ImageView)findViewById(R.id.table_2_check);
+		table_5_check = (ImageView)findViewById(R.id.table_5_check);
+		table_2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				table_2_check.setVisibility(View.VISIBLE);
+				table_5_check.setVisibility(View.INVISIBLE);
+			}
+		});
+		table_5.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				table_2_check.setVisibility(View.INVISIBLE);
+				table_5_check.setVisibility(View.VISIBLE);
+			}
+		});
 
-		table3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if (table3.isChecked())
-				{
-					table5.setChecked(false);
-//					SaveQ1(1);
-				}
-			}
-		});
-		table5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if (table5.isChecked())
-				{
-					table3.setChecked(false);
-//					SaveQ1(1);
-				}
-			}
-		});
+		Time_Pick = (LinearLayout)findViewById(R.id.Time_Pick);
+		Date_Pick = (LinearLayout)findViewById(R.id.Date_Pick);
 
 		desc = (EditText)findViewById(R.id.desc);
-		desc.setTypeface(ActivitySplash.F2);
+		desc.setTypeface(ActivitySplash.F6);
 
 
 
@@ -84,33 +104,33 @@ public class ActivityReservation extends Activity implements
 	}
 
 	private void handleClicks() {
-		timeTextView.setOnClickListener(this);
-		dateTextView.setOnClickListener(this);
+		Time_Pick.setOnClickListener(this);
+		Date_Pick.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
-			case R.id.Time_Text : {
-				PersianCalendar now = new PersianCalendar();
-				TimePickerDialog tpd = TimePickerDialog.newInstance(
-						ActivityReservation.this,
-						now.get(PersianCalendar.HOUR_OF_DAY),
-						now.get(PersianCalendar.MINUTE),
-						true
-				);
-//				tpd.setThemeDark(true);
-
-				tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
-					@Override
-					public void onCancel(DialogInterface dialogInterface) {
-						Log.d(TIMEPICKER, "Dialog was cancelled");
-					}
-				});
-				tpd.show(getFragmentManager(), TIMEPICKER);
+			case R.id.Time_Pick : {
+				get_madafaka_time();
+//				PersianCalendar now = new PersianCalendar();
+//				tpd = TimePickerDialog.newInstance(
+//						ActivityReservation.this,
+//						now.get(PersianCalendar.HOUR_OF_DAY),
+//						now.get(PersianCalendar.MINUTE),
+//						true
+//				);
+//				tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+//					@Override
+//					public void onCancel(DialogInterface dialogInterface) {
+//						Log.d(TIMEPICKER, "Dialog was cancelled");
+//					}
+//				});
+//				tpd.setTitle("زمان مورد نظر را انتخاب کنید");
+//				tpd.show(getFragmentManager(), TIMEPICKER);
 				break;
 			}
-			case R.id.Date_Text : {
+			case R.id.Date_Pick : {
 				PersianCalendar now = new PersianCalendar();
 				DatePickerDialog dpd = DatePickerDialog.newInstance(
 						ActivityReservation.this,
@@ -118,7 +138,8 @@ public class ActivityReservation extends Activity implements
 						now.getPersianMonth(),
 						now.getPersianDay()
 				);
-//				dpd.setThemeDark(true);
+				dpd.setYearRange(Integer.parseInt(ShamsiCalleder.getYear()), Integer.parseInt(ShamsiCalleder.getYear()) + 1);
+				dpd.setMinDate(now);
 				dpd.show(getFragmentManager(), DATEPICKER);
 				break;
 			}
@@ -131,7 +152,19 @@ public class ActivityReservation extends Activity implements
 		String hourString = hourOfDay < 10 ? "0"+hourOfDay : ""+hourOfDay;
 		String minuteString = minute < 10 ? "0"+minute : ""+minute;
 		String time = hourString+":"+minuteString;
-		timeTextView.setText(time);
+		if(hourOfDay <2 || hourOfDay >= 9 )
+			timeTextView.setText(time);
+		else
+		{
+			//ErrorToast.makeToast(ActivityReservation.this, "لطفاً در بازه زمانی فعالیت فروشگاه زمان انتخاب کنید (9 صبح تا 2 بامداد)", Toast.LENGTH_LONG).show();
+			ErrorToast toast = new ErrorToast(ActivityReservation.this);
+			toast .setText("لطفاً در بازه زمانی فعالیت فروشگاه زمان انتخاب کنید (9 صبح تا 2 بامداد)");
+			//toast .setGravity(Toast.LENGTH_SHORT);
+			toast .show();
+			//Toast.makeText(ActivityReservation.this, "لطفاً در بازه زمانی فعالیت فروشگاه زمان انتخاب کنید (9 صبح تا 2 بامداد)", Toast.LENGTH_LONG).show();
+
+			get_madafaka_time();
+		}
 	}
 
 	@Override
@@ -139,6 +172,24 @@ public class ActivityReservation extends Activity implements
 		// Note: monthOfYear is 0-indexed
 		String date = year+"/"+(monthOfYear+1)+"/"+dayOfMonth;
 		dateTextView.setText(date);
+	}
+	public void get_madafaka_time()
+	{
+		PersianCalendar now = new PersianCalendar();
+		tpd = TimePickerDialog.newInstance(
+				ActivityReservation.this,
+				now.get(PersianCalendar.HOUR_OF_DAY),
+				now.get(PersianCalendar.MINUTE),
+				true
+		);
+		tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+			@Override
+			public void onCancel(DialogInterface dialogInterface) {
+				Log.d(TIMEPICKER, "Dialog was cancelled");
+			}
+		});
+		tpd.setTitle("زمان مورد نظر را انتخاب کنید");
+		tpd.show(getFragmentManager(), TIMEPICKER);
 	}
 
 }
