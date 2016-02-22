@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:foo="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="5dp"
+        tools:ignore="UselessParent" >
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="رزرو میز"
+            android:layout_gravity="center"
+            android:textColor="#2A2A2A"
+            android:layout_marginBottom="10dp"
+            foo:customFont="fonts/IRANSansMobile_Medium.ttf"/>
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:id="@+id/Date_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تاریخ"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/backg_2"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:paddingRight="25dp"
+            android:paddingLeft="25dp" />
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:id="@+id/Time_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="زمان"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/backg_2"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:paddingRight="25dp"
+            android:paddingLeft="25dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right">
+
+                <com.BlackBerryJuice.utils.TextViewPlus
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/smallfont"
+                    android:text="میز 5 نفره"
+                    android:layout_gravity="center"
+                    android:textColor="#2A2A2A"
+                    foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                    android:layout_marginTop="3dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/table5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right">
+
+                <com.BlackBerryJuice.utils.TextViewPlus
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/smallfont"
+                    android:text="میز 3 نفره"
+                    android:layout_gravity="center"
+                    android:textColor="#2A2A2A"
+                    foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                    android:layout_marginTop="3dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/table3" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/backg_2"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+            <EditText
+                android:id="@+id/desc"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="توضیحات"
+                android:background="#00000000"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/EditText_Color_Text"
+                android:textColorHint="@color/EditText_Color_Hint">
+            </EditText>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/backg_2"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="شماره موبایل"
+                android:background="#00000000"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/EditText_Color_Text"
+                android:textColorHint="@color/EditText_Color_Hint"
+                android:inputType="phone"
+                android:phoneNumber="true"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/phone_1"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:adjustViewBounds="true"
+                android:padding="12dp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/RequestBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/themainbutton"
+            android:text="درخواست"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textColor="#FFFFFF" />
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:id="@+id/reg_now_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="انصراف"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/backg_2"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

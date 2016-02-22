@@ -126,6 +126,16 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			public void onClick(View view) {
 
 				startActivity(new Intent(ActivityMainMenu.this, ActivityCategoryList.class));
+				overridePendingTransition(R.anim.open_next, R.anim.close_next);
+			}
+		});
+
+		RelativeLayout reserv = (RelativeLayout) findViewById(R.id.Reservation_Button);
+		reserv.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+				startActivity(new Intent(ActivityMainMenu.this, ActivityReservation.class));
 				overridePendingTransition (R.anim.open_next, R.anim.close_next);
 			}
 		});
