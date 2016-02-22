@@ -75,6 +75,11 @@
             android:name="com.BlackBerryJuice.activities.ImageGalleryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ImageGalleryTheme"/>
+        <activity
+            android:name="com.BlackBerryJuice.ActivityReservation"
+            android:screenOrientation="portrait" />
     </application>
+
+
 
 </manifest>

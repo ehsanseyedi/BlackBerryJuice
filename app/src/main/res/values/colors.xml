@@ -71,4 +71,7 @@
 
     <color name="transparent_grey_900_eighty">#CC212121</color>
 
+    <color name="mdtp_accent_color">#ed1c24</color>
+    <color name="mdtp_accent_color_dark">#c51a21</color>
+
 </resources>
