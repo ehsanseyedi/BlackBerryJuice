@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 // adapter class for custom order list
 class AdapterCart extends BaseAdapter {
 		private LayoutInflater inflater;
@@ -49,7 +52,8 @@ class AdapterCart extends BaseAdapter {
 			
 			holder.txtMenuName.setText(ActivityCart.Menu_name.get(position));
 			holder.txtQuantity.setText(String.valueOf(ActivityCart.Quantity.get(position)));
-			holder.txtPrice.setText(ActivityCart.Sub_total_price.get(position)+" "+ActivityCart.Currency);
+			double t = ActivityCart.Sub_total_price.get(position);
+			holder.txtPrice.setText(NumberFormat.getNumberInstance(Locale.US).format((int) t)+" "+ActivityCart.Currency);
 			
 			return convertView;
 		}

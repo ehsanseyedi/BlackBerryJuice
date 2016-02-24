@@ -41,7 +41,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class ActivityCart extends Activity {
 	
@@ -335,8 +337,9 @@ public class ActivityCart extends Activity {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			// show data
-			txtTotal.setText( Total_price+" "+Currency);
-			txtTotalLabel.setText(getString(R.string.total_order)+" (Tax "+Tax+"%)");
+			txtTotal.setText(NumberFormat.getNumberInstance(Locale.US).format((int)Total_price)+" "+Currency);
+			txtTotalLabel.setText(getString(R.string.total_order));
+			//txtTotalLabel.setText(getString(R.string.total_order)+" (Tax "+Tax+"%)");
 			prgLoading.setVisibility(8);
 			// if data available show data on list
 			// otherwise, show alert text

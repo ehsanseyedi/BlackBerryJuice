@@ -1,14 +1,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#e7e7e7" >
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:foo="http://schemas.android.com/apk/res-auto"
+	android:background="#e7e7e7">
     
     	<RelativeLayout
     	    android:id="@+id/lytOrder"
     	    android:layout_width="fill_parent"
     	    android:layout_height="wrap_content"
-    	    android:visibility="gone" >
+			android:visibility="gone">
 
 		    <RelativeLayout
 		        android:id="@+id/lytTotal"
@@ -16,38 +17,93 @@
 		        android:layout_height="wrap_content"
 		        android:padding="5dp"
 		        android:background="@color/header">
-	
-		        <TextView 
-		            android:id="@+id/txtTotalLabel"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:textColor="@color/text"
-		            android:textStyle="bold"
-		            android:textSize="18sp"
-		            android:layout_alignParentLeft="true"
-		            android:layout_centerVertical="true"/>
-		        
-		        <TextView 
+
+				<com.BlackBerryJuice.utils.TextViewPlus
 		            android:id="@+id/txtTotal"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:textColor="@color/text"
 		            android:textStyle="bold"
 		            android:textSize="18sp"
-		            android:layout_alignParentRight="true"
-		            android:layout_centerVertical="true"/>
-		    </RelativeLayout>
-		    <TextView 
-		        android:id="@+id/txtDetail"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:background="#000"
-		        android:text="@string/detail"
-		        android:textColor="@color/text"
-		        android:textSize="14sp"
-		        android:textStyle="bold"
-		        android:padding="5dp"
-				android:layout_below="@+id/lytTotal"/>
+					foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+					android:layout_alignParentLeft="true"
+		            android:layout_centerVertical="true"
+					android:layout_margin="5dp" />
+
+				<com.BlackBerryJuice.utils.TextViewPlus
+                    android:id="@+id/txtTotalLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+					foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+					android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+					android:layout_margin="5dp" />
+
+			</RelativeLayout>
+		    <RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="#000"
+				android:id="@+id/txtDetail"
+				android:layout_below="@+id/lytTotal"
+				android:padding="5dp">
+				<com.BlackBerryJuice.utils.TextViewPlus
+					android:id="@+id/txtMenuName"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:maxWidth="150dp"
+					foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+					android:layout_centerVertical="true"
+					android:layout_alignParentRight="true"
+					android:textStyle="bold"
+					android:text="نام کالا"
+					android:textSize="16sp"
+					android:layout_toRightOf="@+id/txtQuantity"
+					android:layout_toEndOf="@+id/txtQuantity"
+					android:layout_marginLeft="15dp"
+					android:textColor="#FFF" />
+
+				<com.BlackBerryJuice.utils.TextViewPlus
+					android:id="@+id/txtQuantity"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+					android:layout_marginLeft="15dp"
+					android:layout_toRightOf="@+id/txtPrice"
+					android:textSize="16sp"
+					android:textColor="#FFF"
+					android:text="تعداد"
+					android:gravity="left" />
+
+				<com.BlackBerryJuice.utils.TextViewPlus
+					android:id="@+id/txtPrice"
+					android:layout_width="100dp"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+					android:layout_alignParentLeft="true"
+					android:textSize="16sp"
+					android:textColor="#FFF"
+					android:text="قیمت"
+					android:gravity="center" />
+
+			</RelativeLayout>
+			<!--<TextView -->
+		        <!--android:id="@+id/txtDetail"-->
+		        <!--android:layout_width="fill_parent"-->
+		        <!--android:layout_height="wrap_content"-->
+		        <!-- -->
+		        <!--android:text="@string/detail"-->
+				<!--android:gravity="right"-->
+		        <!--android:textColor="@color/text"-->
+		        <!--android:textSize="14sp"-->
+		        <!--android:textStyle="bold"-->
+		        <!--android:padding="5dp"-->
+				<!--android:layout_below="@+id/lytTotal"/>-->
 	        <ListView 
 	            android:id="@+id/listOrder"
 	            android:layout_width="fill_parent"

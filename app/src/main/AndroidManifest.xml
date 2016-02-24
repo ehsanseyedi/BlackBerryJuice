@@ -77,7 +77,8 @@
             android:theme="@style/ImageGalleryTheme"/>
         <activity
             android:name="com.BlackBerryJuice.ActivityReservation"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 

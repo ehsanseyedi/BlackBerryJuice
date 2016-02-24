@@ -33,6 +33,8 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.BlackBerryJuice.utils.TextViewPlus;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -56,7 +58,7 @@ public class ActivityMenuDetail extends Activity {
 	
 	ImageView imgPreview;
 	TextView txtText, txtSubText , txtSubText2;
-	WebView txtDescription;
+	TextViewPlus txtDescription;
 	Button btnAdd;
 	ScrollView sclDetail;
 	ProgressBar prgLoading;
@@ -101,7 +103,7 @@ public class ActivityMenuDetail extends Activity {
         txtText = (TextView) findViewById(R.id.txtText);
         txtSubText = (TextView) findViewById(R.id.txtSubText);
         txtSubText2 = (TextView) findViewById(R.id.txtSubText2);
-        txtDescription = (WebView) findViewById(R.id.txtDescription);
+        txtDescription = (TextViewPlus) findViewById(R.id.txtDescription);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         //btnShare = (Button) findViewById(R.id.btnShare);
         sclDetail = (ScrollView) findViewById(R.id.sclDetail);
@@ -205,7 +207,7 @@ public class ActivityMenuDetail extends Activity {
     	edtQuantity.setInputType(InputType.TYPE_CLASS_NUMBER);
     	alert.setView(edtQuantity);
     	
-    	alert.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+    	alert.setPositiveButton("اضافه کردن", new DialogInterface.OnClickListener() {
     	public void onClick(DialogInterface dialog, int whichButton) {
     		String temp = edtQuantity.getText().toString();
     		int quantity = 0;
@@ -224,7 +226,7 @@ public class ActivityMenuDetail extends Activity {
     	  }
     	});
 
-    	alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+    	alert.setNegativeButton("لغو", new DialogInterface.OnClickListener() {
     	  public void onClick(DialogInterface dialog, int whichButton) {
 
       			// when cancel button clicked close dialog
@@ -272,25 +274,8 @@ public class ActivityMenuDetail extends Activity {
 				String sp = NumberFormat.getNumberInstance(Locale.US).format(price);
 				txtSubText.setText("قیمت : " + sp + " " + ActivityMenuList.Currency);
 				txtSubText2.setText("وضعیت : " + Menu_serve);
-				//txtDescription.loadDataWithBaseURL("", Menu_description, "text/html", "UTF-8", "");
 
-				txtDescription.loadDataWithBaseURL("", "<html dir=\"rtl\" lang=\"\"><body style=\"text-align:justify\">" + Menu_description + "</body></html>", "text/html", "UTF-8", null);
-				txtDescription.getSettings().setJavaScriptEnabled(true);
-				txtDescription.getSettings().setBuiltInZoomControls(false);
-				txtDescription.setWebViewClient(new WebViewClient());
-				txtDescription.setOnLongClickListener(new View.OnLongClickListener() {
-					@Override
-					public boolean onLongClick(View v) {
-						return true;
-					}
-				});
-				txtDescription.setClickable(false);
-
-				Typeface font = Typeface.createFromAsset(getAssets(), "fonts/IRANSansMobile_Light.ttf");
-				WebSettings webSettings = txtDescription.getSettings();
-//				webSettings.setFixedFontFamily("");
-				webSettings.setFixedFontFamily("file:///android_asset/fonts/IRANSansMobile_Light.ttf");
-
+				txtDescription.setText(Menu_description);
 
 			}else{
 				txtAlert.setVisibility(0);
