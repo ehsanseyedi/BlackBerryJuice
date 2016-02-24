@@ -26,7 +26,7 @@
             <com.daimajia.slider.library.SliderLayout
                 android:id="@+id/slider"
                 android:layout_width="match_parent"
-                custom:pager_animation="ZoomIn"
+                custom:pager_animation="Default"
                 custom:auto_cycle="true"
                 custom:indicator_visibility="visible"
                 custom:pager_animation_span="1100"

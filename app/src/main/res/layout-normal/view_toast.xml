@@ -6,7 +6,7 @@
     android:minHeight="@dimen/min_lay_height"
     android:minWidth="@dimen/min_lay_width"
     xmlns:foo="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/backg_2">
+    android:background="@drawable/backg_3">
 
     <com.BlackBerryJuice.utils.TextViewPlus
         android:id="@+id/txtMessage"

@@ -103,7 +103,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			textSliderView
 					.description(name)
 					.image(url_maps.get(name))
-					.setScaleType(BaseSliderView.ScaleType.Fit)
+					.setScaleType(BaseSliderView.ScaleType.CenterCrop)
 					.setOnSliderClickListener(this);
 
 			//add your extra information
@@ -113,9 +113,9 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 
 			mDemoSlider.addSlider(textSliderView);
 		}
-		mDemoSlider.setPresetTransformer(SliderLayout.Transformer.DepthPage);
+		//mDemoSlider.setPresetTransformer(SliderLayout.Transformer.);
 		mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Top);
-		mDemoSlider.setCustomAnimation(new DescriptionAnimation());
+		//mDemoSlider.setCustomAnimation(new DescriptionAnimation());
 		mDemoSlider.setDuration(4000);
 		mDemoSlider.addOnPageChangeListener(this);
 
