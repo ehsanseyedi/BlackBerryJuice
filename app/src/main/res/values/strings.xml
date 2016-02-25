@@ -51,7 +51,7 @@
 	</string-array>
 
 	<!-- Main Layout Strings-->
-	<string name="Main_Layout_Shop_Text">دسته بندی و سفارش</string>
+	<string name="Main_Layout_Shop_Text">منو و سفارش</string>
 	<string name="Main_Layout_Reservation_Text">رزرو میز</string>
 	<string name="Main_Layout_Gallery_Text">تصاویر گالری</string>
 	<!-- Main Layout Strings-->

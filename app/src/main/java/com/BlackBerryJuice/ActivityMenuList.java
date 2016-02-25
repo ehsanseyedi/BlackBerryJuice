@@ -53,12 +53,10 @@ public class ActivityMenuList extends Activity {
 	ImageButton btnSearch;
 	TextView txtAlert;
 	
-	// declare static variable to store tax and currency symbol
 	static double Tax;
 	static String Currency;
 	static String Menu_serve;
 
-	// declare adapter object to create custom menu list
 	AdapterMenuList mla;
 	
 	// create arraylist variables to store data from server
@@ -75,7 +73,6 @@ public class ActivityMenuList extends Activity {
 	String Category_name;
 	String Keyword;
 	
-	// create price format
 	DecimalFormat formatData = new DecimalFormat("#.##");
 	
 	

@@ -9,7 +9,7 @@
     	    android:id="@+id/lytOrder"
     	    android:layout_width="fill_parent"
     	    android:layout_height="wrap_content"
-			android:visibility="gone">
+			android:visibility="visible">
 
 		    <RelativeLayout
 		        android:id="@+id/lytTotal"
@@ -46,7 +46,7 @@
 		    <RelativeLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:background="#000"
+				android:background="@color/tameshk_gray"
 				android:id="@+id/txtDetail"
 				android:layout_below="@+id/lytTotal"
 				android:padding="5dp">
@@ -128,8 +128,8 @@
 			    android:layout_height="65dp"
 			    android:layout_alignParentBottom="true"
 			    android:layout_alignParentRight="true"
-			    android:layout_margin="10dp"
-			    android:background="@drawable/btn_checkout" />
+				android:background="@drawable/btn_checkout"
+				android:layout_margin="10dp" />
 
 		</RelativeLayout>
 		

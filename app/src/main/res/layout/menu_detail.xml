@@ -3,6 +3,7 @@
     xmlns:foo="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:animateLayoutChanges="true"
     android:background="@color/gray" >
 
     <ScrollView
@@ -99,6 +100,112 @@
                         android:id="@+id/textView"
                         android:textColor="@color/white"
                         android:textSize="@dimen/medfont" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/adder"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_marginBottom="15dp">
+
+                        <Button
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:id="@+id/minez"
+                            android:background="@drawable/minez"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="2dp" />
+
+                        <com.BlackBerryJuice.utils.TextViewPlus
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                            android:id="@+id/counter"
+                            android:textColor="@color/grey_black_1000"
+                            android:textSize="@dimen/verylargefont"
+                            android:textIsSelectable="true"
+                            android:textStyle="bold"
+                            android:gravity="center" />
+
+                        <Button
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:id="@+id/plus"
+                            android:background="@drawable/plus"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginBottom="2dp" />
+
+                        <com.BlackBerryJuice.utils.TextViewPlus
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="تعداد"
+                            foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                            android:id="@+id/counttext"
+                            android:textColor="@color/grey_black_1000"
+                            android:textSize="@dimen/medfont"
+                            android:layout_marginLeft="5dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="70dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center"
+                            android:background="@drawable/backg_2"
+                            android:id="@+id/countcancel"
+                            android:layout_marginRight="10dp">
+
+                            <com.BlackBerryJuice.utils.TextViewPlus
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="انصراف"
+                                foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                                android:id="@+id/tv2"
+                                android:textColor="#000"
+                                android:textSize="@dimen/smallfont" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="110dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center"
+                            android:background="@drawable/themainbutton"
+                            android:id="@+id/countdone">
+
+                            <com.BlackBerryJuice.utils.TextViewPlus
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ثبت"
+                                foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                                android:id="@+id/tv"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/smallfont" />
+                        </LinearLayout>
+                    </LinearLayout>
+
                 </LinearLayout>
             </LinearLayout>
 
