@@ -3,6 +3,7 @@ package com.BlackBerryJuice;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -13,6 +14,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.util.DisplayMetrics;
@@ -22,6 +24,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -32,6 +35,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.BlackBerryJuice.utils.TextViewPlus;
 
@@ -63,10 +67,10 @@ public class ActivityMenuDetail extends Activity {
 	ScrollView sclDetail;
 	ProgressBar prgLoading;
 	TextView txtAlert;
-	
+	LinearLayout adder;
 	// declare dbhelper object
 	static DBHelper dbhelper;
-	
+	TextView counter;
 	// declare ImageLoader object
 	ImageLoader imageLoader;
 	
@@ -98,7 +102,9 @@ public class ActivityMenuDetail extends Activity {
 //        bar.setTitle("Detail Menu");
 //        bar.setDisplayHomeAsUpEnabled(true);
 //        bar.setHomeButtonEnabled(true);
-        
+
+		counter = (TextView) findViewById(R.id.counter);
+		adder = (LinearLayout) findViewById(R.id.adder);
         imgPreview = (ImageView) findViewById(R.id.imgPreview);
         txtText = (TextView) findViewById(R.id.txtText);
         txtSubText = (TextView) findViewById(R.id.txtSubText);
@@ -148,7 +154,15 @@ public class ActivityMenuDetail extends Activity {
 		add.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				inputDialog();
+				if (adder.isShown()){
+					try {
+						adder.startAnimation(AnimationUtils.loadAnimation(ActivityMenuDetail.this, android.R.anim.fade_out));
+					} catch (Exception e) {}
+					adder.setVisibility(View.GONE);
+				}else{
+					inputDialog();
+				}
+
 			}
 		});
         
@@ -195,46 +209,114 @@ public class ActivityMenuDetail extends Activity {
 		}catch(SQLException sqle){
 			throw sqle;
 		}
-    	
-    	AlertDialog.Builder alert = new AlertDialog.Builder(this);
-    	
-    	alert.setTitle(R.string.order);
-    	alert.setMessage(R.string.number_order);
-    	alert.setCancelable(false);
-    	final EditText edtQuantity = new EditText(this);
-    	int maxLength = 3;    
-    	edtQuantity.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});
-    	edtQuantity.setInputType(InputType.TYPE_CLASS_NUMBER);
-    	alert.setView(edtQuantity);
-    	
-    	alert.setPositiveButton("اضافه کردن", new DialogInterface.OnClickListener() {
-    	public void onClick(DialogInterface dialog, int whichButton) {
-    		String temp = edtQuantity.getText().toString();
-    		int quantity = 0;
-    		
-    		// when add button clicked add menu to order table in database
-    		if(!temp.equalsIgnoreCase("")){
-    			quantity = Integer.parseInt(temp);
-    			if(dbhelper.isDataExist(Menu_ID)){
-    	        		dbhelper.updateData(Menu_ID, quantity, (Menu_price*quantity));
-    	    		}else{
-    	    			dbhelper.addData(Menu_ID, Menu_name, quantity, (Menu_price*quantity));
-    	    		}
-    		}else{
-    			dialog.cancel();
-    		}       	  		
-    	  }
-    	});
 
-    	alert.setNegativeButton("لغو", new DialogInterface.OnClickListener() {
-    	  public void onClick(DialogInterface dialog, int whichButton) {
+		adder.setVisibility(View.VISIBLE);
+		try {
+			adder.startAnimation(AnimationUtils.loadAnimation(ActivityMenuDetail.this, android.R.anim.fade_in));
+		} catch (Exception e) {}
+    	//AlertDialog.Builder alert = new AlertDialog.Builder(this);
+    	Button plus = (Button) findViewById(R.id.plus);
+    	Button minez = (Button) findViewById(R.id.minez);
+		LinearLayout done = (LinearLayout) findViewById(R.id.countdone);
+		LinearLayout undone = (LinearLayout) findViewById(R.id.countcancel);
 
-      			// when cancel button clicked close dialog
-    		  	dialog.cancel();
-    	  }
-    	});
+		//counter.setText("1");
 
-    	alert.show();
+
+		final Vibrator vib = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+
+
+		plus.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int i = Integer.parseInt(counter.getText().toString());
+				if (i <= 99) {
+					i++;
+				}
+				counter.setText(i + "");
+			}
+		});
+
+		minez.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int i = Integer.parseInt(counter.getText().toString());
+				if(i > 1){
+					i--;
+				}else{
+					vib.vibrate(300);
+				}
+				counter.setText(i+"");
+			}
+		});
+
+
+		done.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				int quantity = 0;
+				quantity = Integer.parseInt(counter.getText().toString());
+				if(dbhelper.isDataExist(Menu_ID)){
+					dbhelper.updateData(Menu_ID, quantity, (Menu_price*quantity));
+				}else{
+					dbhelper.addData(Menu_ID, Menu_name, quantity, (Menu_price*quantity));
+				}
+				adder.setVisibility(View.GONE);
+				try {
+					adder.startAnimation(AnimationUtils.loadAnimation(ActivityMenuDetail.this, android.R.anim.fade_out));
+				} catch (Exception e) {}
+				Toast.makeText(ActivityMenuDetail.this,"سفارش با موفقیت به سبد خرید افزوده شد",Toast.LENGTH_SHORT).show();
+			}
+		});
+
+		undone.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				try {
+					adder.startAnimation(AnimationUtils.loadAnimation(ActivityMenuDetail.this, android.R.anim.fade_out));
+				} catch (Exception e) {}
+				adder.setVisibility(View.GONE);
+			}
+		});
+
+//    	alert.setTitle(R.string.order);
+//    	alert.setMessage(R.string.number_order);
+//    	alert.setCancelable(false);
+//    	final EditText edtQuantity = new EditText(this);
+//    	int maxLength = 3;
+//    	edtQuantity.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});
+//    	edtQuantity.setInputType(InputType.TYPE_CLASS_NUMBER);
+//    	alert.setView(edtQuantity);
+//
+//    	alert.setPositiveButton("اضافه کردن", new DialogInterface.OnClickListener() {
+//    	public void onClick(DialogInterface dialog, int whichButton) {
+//    		String temp = edtQuantity.getText().toString();
+//    		int quantity = 0;
+//
+//    		// when add button clicked add menu to order table in database
+//    		if(!temp.equalsIgnoreCase("")){
+//    			quantity = Integer.parseInt(temp);
+//    			if(dbhelper.isDataExist(Menu_ID)){
+//    	        		dbhelper.updateData(Menu_ID, quantity, (Menu_price*quantity));
+//    	    		}else{
+//    	    			dbhelper.addData(Menu_ID, Menu_name, quantity, (Menu_price*quantity));
+//    	    		}
+//    		}else{
+//    			dialog.cancel();
+//    		}
+//    	  }
+//    	});
+//
+//    	alert.setNegativeButton("لغو", new DialogInterface.OnClickListener() {
+//    	  public void onClick(DialogInterface dialog, int whichButton) {
+//
+//      			// when cancel button clicked close dialog
+//    		  	dialog.cancel();
+//    	  }
+//    	});
+//
+//    	alert.show();
     }
     
     // asynctask class to handle parsing json in background

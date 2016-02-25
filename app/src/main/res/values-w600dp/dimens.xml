@@ -7,5 +7,5 @@
     <dimen name="smallfont">16dp</dimen>
     <dimen name="medfont">18dp</dimen>
     <dimen name="largefont">20dp</dimen>
-
+    <dimen name="verylargefont">23dp</dimen>
 </resources>

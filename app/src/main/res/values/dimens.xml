@@ -5,6 +5,7 @@
     <dimen name="smallfont">14dp</dimen>
     <dimen name="medfont">16dp</dimen>
     <dimen name="largefont">18dp</dimen>
+    <dimen name="verylargefont">21dp</dimen>
 
 
 
