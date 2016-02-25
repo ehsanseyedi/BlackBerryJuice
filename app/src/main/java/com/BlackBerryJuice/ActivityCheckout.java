@@ -510,7 +510,7 @@ public class ActivityCheckout extends FragmentActivity {
     		Order_price += Sub_total_price;
     		
     		// calculate order price
-    		OrderList += (Quantity+" "+Menu_name+" "+Sub_total_price+" "+Currency+",\n");
+    		OrderList += (Quantity+" عدد "+Menu_name+" "+(int)Sub_total_price+" "+Currency+",\n");
     	}
     	
     	if(OrderList.equalsIgnoreCase("")){
@@ -519,9 +519,9 @@ public class ActivityCheckout extends FragmentActivity {
     	
     	tax = Double.parseDouble(formatData.format(Order_price * (Tax / 100)));
     	Total_price = Double.parseDouble(formatData.format(Order_price - tax));
-    	OrderList += "\nOrder: "+Order_price+" "+Currency+
-    			"\nTax: "+Tax+"%: "+tax+" "+Currency+
-    			"\nTotal: "+Total_price+" "+Currency;
+    	OrderList += "\nمبلغ پرداختی: "+(int)Order_price+" "+Currency;
+//    			+"\nTax: "+Tax+"%: "+tax+" "+Currency+
+//    			"\nTotal: "+Total_price+" "+Currency;`
     	edtOrderList.setText(OrderList);
     }
     
