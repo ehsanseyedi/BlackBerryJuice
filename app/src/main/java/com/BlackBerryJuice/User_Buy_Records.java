@@ -9,9 +9,16 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.util.ArrayList;
+import java.util.Set;
+
 public class User_Buy_Records extends Activity {
     // declate dbhelper and adapter objects
     DBHelper dbhelper;
+    static ArrayList<String> nameslist = new ArrayList<String>();
+    static ArrayList<String> priceslist = new ArrayList<String>();
+    static ArrayList<String> rahgirilist = new ArrayList<String>();
+    ArrayList<ArrayList<Object>> data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +31,6 @@ public class User_Buy_Records extends Activity {
         setContentView(R.layout.activity_user_buy_records);
 
         dbhelper = new DBHelper(this);
-
         // open database
         try{
             dbhelper.openDataBase();
@@ -32,21 +38,42 @@ public class User_Buy_Records extends Activity {
             throw sqle;
         }
 
+        clearData();
+
+        data = dbhelper.getAllData();
+        String allnames = "";
+        // store data to arraylist variables
+        for(int i=0;i<data.size();i++) {
+            ArrayList<Object> row = data.get(i);
+            allnames += row.get(1).toString() + " , ";
+        }
+        nameslist.add(allnames);
     }
 
 
-    public static void save_purchease(int rahgiri ,Context c) {
-        SharedPreferences sp = c.getSharedPreferences("BUY", Activity.MODE_PRIVATE);
+    public static void save_purchease(Set<String> names,Set<String> totalprice,Set<String> rahgiri,Context c) {
+        SharedPreferences sp = c.getSharedPreferences("records", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putInt("BUY", rahgiri);
+        editor.putStringSet("name", names);
+        editor.putStringSet("price", totalprice);
+        editor.putStringSet("rahgiri", rahgiri);
         editor.commit();
     }
 
-    public static int load_purchease(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("BUY", Activity.MODE_PRIVATE);
-        return sp.getInt("BUY", 0);
+    public static Set<String> load_names_purchease(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("records", Activity.MODE_PRIVATE);
+        return sp.getStringSet("name",null);
     }
 
+    public static Set<String> load_prices_purchease(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("records", Activity.MODE_PRIVATE);
+        return sp.getStringSet("price",null);
+    }
+
+    public static Set<String> load_rahgiris_purchease(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("records", Activity.MODE_PRIVATE);
+        return sp.getStringSet("rahgiri",null);
+    }
 
     @Override
     public void onBackPressed() {
@@ -54,5 +81,11 @@ public class User_Buy_Records extends Activity {
         dbhelper.close();
         finish();
         overridePendingTransition(R.anim.open_main, R.anim.close_next);
+    }
+
+    void clearData(){
+        nameslist.clear();
+        priceslist.clear();
+        rahgirilist.clear();
     }
 }

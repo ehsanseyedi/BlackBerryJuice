@@ -280,43 +280,6 @@ public class ActivityMenuDetail extends Activity {
 			}
 		});
 
-//    	alert.setTitle(R.string.order);
-//    	alert.setMessage(R.string.number_order);
-//    	alert.setCancelable(false);
-//    	final EditText edtQuantity = new EditText(this);
-//    	int maxLength = 3;
-//    	edtQuantity.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});
-//    	edtQuantity.setInputType(InputType.TYPE_CLASS_NUMBER);
-//    	alert.setView(edtQuantity);
-//
-//    	alert.setPositiveButton("اضافه کردن", new DialogInterface.OnClickListener() {
-//    	public void onClick(DialogInterface dialog, int whichButton) {
-//    		String temp = edtQuantity.getText().toString();
-//    		int quantity = 0;
-//
-//    		// when add button clicked add menu to order table in database
-//    		if(!temp.equalsIgnoreCase("")){
-//    			quantity = Integer.parseInt(temp);
-//    			if(dbhelper.isDataExist(Menu_ID)){
-//    	        		dbhelper.updateData(Menu_ID, quantity, (Menu_price*quantity));
-//    	    		}else{
-//    	    			dbhelper.addData(Menu_ID, Menu_name, quantity, (Menu_price*quantity));
-//    	    		}
-//    		}else{
-//    			dialog.cancel();
-//    		}
-//    	  }
-//    	});
-//
-//    	alert.setNegativeButton("لغو", new DialogInterface.OnClickListener() {
-//    	  public void onClick(DialogInterface dialog, int whichButton) {
-//
-//      			// when cancel button clicked close dialog
-//    		  	dialog.cancel();
-//    	  }
-//    	});
-//
-//    	alert.show();
     }
     
     // asynctask class to handle parsing json in background

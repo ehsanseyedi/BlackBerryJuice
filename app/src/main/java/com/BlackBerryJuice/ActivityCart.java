@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -187,7 +188,7 @@ public class ActivityCart extends Activity {
 			break;
 		}
 		builder.setCancelable(false);
-		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+		builder.setPositiveButton("بله", new DialogInterface.OnClickListener() {
 			
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
@@ -211,7 +212,7 @@ public class ActivityCart extends Activity {
 			}
 		});
 		
-		builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+		builder.setNegativeButton("خیر", new DialogInterface.OnClickListener() {
 			
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
@@ -368,8 +369,11 @@ public class ActivityCart extends Activity {
     		ArrayList<Object> row = data.get(i);
     		
     		Menu_ID.add(Integer.parseInt(row.get(0).toString()));
-    		Menu_name.add(row.get(1).toString());
+			Log.d("saeed_test_menuID", row.get(0).toString());
+			Menu_name.add(row.get(1).toString());
+			Log.d("saeed_test_menu_name", row.get(1).toString());
     		Quantity.add(Integer.parseInt(row.get(2).toString()));
+			Log.d("saeed_test_quantity", row.get(2).toString());
     		Sub_total_price.add(Double.parseDouble(formatData.format(Double.parseDouble(row.get(3).toString()))));
     		Total_price += Sub_total_price.get(i);
     	}

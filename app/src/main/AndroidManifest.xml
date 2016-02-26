@@ -79,8 +79,10 @@
             android:name=".ActivityReservation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".Pay" />
-        <activity android:name=".User_Buy_Records"></activity>
+        <activity android:name=".Pay"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".User_Buy_Records"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
