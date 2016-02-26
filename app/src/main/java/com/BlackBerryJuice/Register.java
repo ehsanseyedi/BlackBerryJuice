@@ -67,8 +67,8 @@ public class Register extends Activity {
 
             public void onClick(View arg0) {
 
-                register1(name1.getText().toString(),mobile1.getText().toString(),bithday1.getText().toString(),
-                        address1.getText().toString(),phone1.getText().toString(),instagram1.getText().toString());
+                register1(name1.getText().toString(), mobile1.getText().toString(), bithday1.getText().toString(),
+                        address1.getText().toString(), phone1.getText().toString(), instagram1.getText().toString());
 
             }
 
@@ -86,7 +86,7 @@ public class Register extends Activity {
     }
 
     @SuppressWarnings("unchecked")
-    private void register1(String name,String family,String pass,String email){
+    private void register1(String name,String mobile,String bithday,String address,String phone,String instagram){
 
 
 
