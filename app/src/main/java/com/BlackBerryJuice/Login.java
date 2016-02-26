@@ -77,7 +77,7 @@ public class Login extends Activity {
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this, register.class));
+                startActivity(new Intent(Login.this, Register.class));
 
             }
         });
