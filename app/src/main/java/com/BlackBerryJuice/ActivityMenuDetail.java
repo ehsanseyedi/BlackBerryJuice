@@ -143,7 +143,6 @@ public class ActivityMenuDetail extends Activity {
 			
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				// show input dialog
 				Intent iMyOrder = new Intent(ActivityMenuDetail.this, ActivityCart.class);
 				startActivity(iMyOrder);
 				overridePendingTransition(R.anim.open_next, R.anim.close_next);
@@ -162,7 +161,6 @@ public class ActivityMenuDetail extends Activity {
 				}else{
 					inputDialog();
 				}
-
 			}
 		});
         
@@ -197,7 +195,6 @@ public class ActivityMenuDetail extends Activity {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
-		
 	}
     
     // method to show number of order form
@@ -219,7 +216,6 @@ public class ActivityMenuDetail extends Activity {
     	Button minez = (Button) findViewById(R.id.minez);
 		LinearLayout done = (LinearLayout) findViewById(R.id.countdone);
 		LinearLayout undone = (LinearLayout) findViewById(R.id.countcancel);
-
 		//counter.setText("1");
 
 
@@ -250,7 +246,6 @@ public class ActivityMenuDetail extends Activity {
 			}
 		});
 
-
 		done.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -280,43 +275,6 @@ public class ActivityMenuDetail extends Activity {
 			}
 		});
 
-//    	alert.setTitle(R.string.order);
-//    	alert.setMessage(R.string.number_order);
-//    	alert.setCancelable(false);
-//    	final EditText edtQuantity = new EditText(this);
-//    	int maxLength = 3;
-//    	edtQuantity.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});
-//    	edtQuantity.setInputType(InputType.TYPE_CLASS_NUMBER);
-//    	alert.setView(edtQuantity);
-//
-//    	alert.setPositiveButton("اضافه کردن", new DialogInterface.OnClickListener() {
-//    	public void onClick(DialogInterface dialog, int whichButton) {
-//    		String temp = edtQuantity.getText().toString();
-//    		int quantity = 0;
-//
-//    		// when add button clicked add menu to order table in database
-//    		if(!temp.equalsIgnoreCase("")){
-//    			quantity = Integer.parseInt(temp);
-//    			if(dbhelper.isDataExist(Menu_ID)){
-//    	        		dbhelper.updateData(Menu_ID, quantity, (Menu_price*quantity));
-//    	    		}else{
-//    	    			dbhelper.addData(Menu_ID, Menu_name, quantity, (Menu_price*quantity));
-//    	    		}
-//    		}else{
-//    			dialog.cancel();
-//    		}
-//    	  }
-//    	});
-//
-//    	alert.setNegativeButton("لغو", new DialogInterface.OnClickListener() {
-//    	  public void onClick(DialogInterface dialog, int whichButton) {
-//
-//      			// when cancel button clicked close dialog
-//    		  	dialog.cancel();
-//    	  }
-//    	});
-//
-//    	alert.show();
     }
     
     // asynctask class to handle parsing json in background
@@ -325,8 +283,8 @@ public class ActivityMenuDetail extends Activity {
     	// show progressbar first
     	getDataTask(){
     		if(!prgLoading.isShown()){
-    			prgLoading.setVisibility(0);
-				txtAlert.setVisibility(8);
+    			prgLoading.setVisibility(View.VISIBLE);
+				txtAlert.setVisibility(View.GONE);
     		}
     	}
     	
@@ -342,11 +300,11 @@ public class ActivityMenuDetail extends Activity {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			// when finish parsing, hide progressbar
-			prgLoading.setVisibility(8);
+			prgLoading.setVisibility(View.GONE);
 			// if internet connection and data available show data
 			// otherwise, show alert text
 			if((Menu_name != null) && IOConnect == 0){
-				sclDetail.setVisibility(0);
+				sclDetail.setVisibility(View.VISIBLE);
 			
 				imageLoader.DisplayImage(Constant.AdminPageURL + Menu_image, imgPreview);
 				
@@ -360,7 +318,7 @@ public class ActivityMenuDetail extends Activity {
 				txtDescription.setText(Menu_description);
 
 			}else{
-				txtAlert.setVisibility(0);
+				txtAlert.setVisibility(View.VISIBLE);
 			}
 		}
     }

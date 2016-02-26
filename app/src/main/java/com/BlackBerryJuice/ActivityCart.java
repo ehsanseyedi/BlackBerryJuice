@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -76,7 +77,8 @@ public class ActivityCart extends Activity {
 	int ID;
 	String TaxCurrencyAPI;
 	int IOConnect = 0;
-	
+
+
 	// create price format
 	DecimalFormat formatData = new DecimalFormat("#.##");
 
@@ -154,7 +156,8 @@ public class ActivityCart extends Activity {
 //				overridePendingTransition(R.anim.open_main, R.anim.close_next);
 //			}
 //		});
-        
+
+		Checkout.setEnabled(false);
         Checkout.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View arg0) {
@@ -162,6 +165,7 @@ public class ActivityCart extends Activity {
 				// close database and back to previous page
 				dbhelper.close();
 				Intent iReservation = new Intent(ActivityCart.this, ActivityCheckout.class);
+				iReservation.putExtra("price",Total_price);
 				startActivity(iReservation);
 				overridePendingTransition(R.anim.open_next, R.anim.close_next);
 			}
@@ -184,7 +188,7 @@ public class ActivityCart extends Activity {
 			break;
 		}
 		builder.setCancelable(false);
-		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+		builder.setPositiveButton("بله", new DialogInterface.OnClickListener() {
 			
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
@@ -208,7 +212,7 @@ public class ActivityCart extends Activity {
 			}
 		});
 		
-		builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+		builder.setNegativeButton("خیر", new DialogInterface.OnClickListener() {
 			
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
@@ -227,8 +231,8 @@ public class ActivityCart extends Activity {
     	// show progressbar first
 		getTaxCurrency(){
 	 		if(!prgLoading.isShown()){
-	 			prgLoading.setVisibility(0);
-				txtAlert.setVisibility(8);
+	 			prgLoading.setVisibility(View.VISIBLE);
+				txtAlert.setVisibility(View.GONE);
 	 		}
 	 	}
 		
@@ -244,15 +248,16 @@ public class ActivityCart extends Activity {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			// when finish parsing, hide progressbar
-			prgLoading.setVisibility(8);
+			prgLoading.setVisibility(View.GONE);
 			// if internet connection available request data form server
 			// otherwise, show alert text
 			if(IOConnect == 0){
 				new getDataTask().execute();
 			}else{
-				txtAlert.setVisibility(0);
+				txtAlert.setVisibility(View.VISIBLE);
 				txtAlert.setText(R.string.alert);
 			}
+			Checkout.setEnabled(true);
 			
 		}
     }
@@ -319,9 +324,9 @@ public class ActivityCart extends Activity {
     	// show progressbar first
     	getDataTask(){
     		if(!prgLoading.isShown()){
-    			prgLoading.setVisibility(0);
-    			lytOrder.setVisibility(8);
-    			txtAlert.setVisibility(8);
+    			prgLoading.setVisibility(View.VISIBLE);
+    			lytOrder.setVisibility(View.GONE);
+    			txtAlert.setVisibility(View.GONE);
     		}
     	}
     	
@@ -340,16 +345,15 @@ public class ActivityCart extends Activity {
 			txtTotal.setText(NumberFormat.getNumberInstance(Locale.US).format((int)Total_price)+" "+Currency);
 			txtTotalLabel.setText(getString(R.string.total_order));
 			//txtTotalLabel.setText(getString(R.string.total_order)+" (Tax "+Tax+"%)");
-			prgLoading.setVisibility(8);
+			prgLoading.setVisibility(View.GONE);
 			// if data available show data on list
 			// otherwise, show alert text
 			if(Menu_ID.size() > 0){
-				lytOrder.setVisibility(0);
+				lytOrder.setVisibility(View.VISIBLE);
 				listOrder.setAdapter(mola);
 			}else{
-				txtAlert.setVisibility(0);
+				txtAlert.setVisibility(View.VISIBLE);
 			}
-			
 		}
     }
     
@@ -365,8 +369,11 @@ public class ActivityCart extends Activity {
     		ArrayList<Object> row = data.get(i);
     		
     		Menu_ID.add(Integer.parseInt(row.get(0).toString()));
-    		Menu_name.add(row.get(1).toString());
+			Log.d("saeed_test_menuID", row.get(0).toString());
+			Menu_name.add(row.get(1).toString());
+			Log.d("saeed_test_menu_name", row.get(1).toString());
     		Quantity.add(Integer.parseInt(row.get(2).toString()));
+			Log.d("saeed_test_quantity", row.get(2).toString());
     		Sub_total_price.add(Double.parseDouble(formatData.format(Double.parseDouble(row.get(3).toString()))));
     		Total_price += Sub_total_price.get(i);
     	}

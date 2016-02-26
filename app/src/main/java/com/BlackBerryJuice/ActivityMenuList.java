@@ -195,8 +195,8 @@ public class ActivityMenuList extends Activity {
     	// show progressbar first
     	getTaxCurrency(){
     		if(!prgLoading.isShown()){
-    			prgLoading.setVisibility(0);
-				txtAlert.setVisibility(8);
+    			prgLoading.setVisibility(View.VISIBLE);
+				txtAlert.setVisibility(View.GONE);
     		}
     	}
     	
@@ -212,13 +212,13 @@ public class ActivityMenuList extends Activity {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			// when finish parsing, hide progressbar
-			prgLoading.setVisibility(8);
+			prgLoading.setVisibility(View.GONE);
 			// if internet connection and data available request menu data from server
 			// otherwise, show alert text
 			if((Currency != null) && IOConnect == 0){
 				new getDataTask().execute();
 			}else{
-				txtAlert.setVisibility(0);
+				txtAlert.setVisibility(View.VISIBLE);
 			}
 		}
     }
@@ -288,8 +288,8 @@ public class ActivityMenuList extends Activity {
     	// show progressbar first
     	getDataTask(){
     		if(!prgLoading.isShown()){
-    			prgLoading.setVisibility(0);
-				txtAlert.setVisibility(8);
+    			prgLoading.setVisibility(View.VISIBLE);
+				txtAlert.setVisibility(View.GONE);
     		}
     	}
     	
@@ -305,15 +305,15 @@ public class ActivityMenuList extends Activity {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			// when finish parsing, hide progressbar
-			prgLoading.setVisibility(8);
+			prgLoading.setVisibility(View.GONE);
 			
 			// if data available show data on list
 			// otherwise, show alert text
 			if(Menu_ID.size() > 0){
-				listMenu.setVisibility(0);
+				listMenu.setVisibility(View.VISIBLE);
 				listMenu.setAdapter(mla);
 			}else{
-				txtAlert.setVisibility(0);
+				txtAlert.setVisibility(View.VISIBLE);
 			}
 			
 		}
