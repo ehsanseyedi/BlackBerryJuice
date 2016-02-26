@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 public class Register extends Activity {
 
-    private EditText name1,family1,pass1;
+    private EditText name1,mobile1,bithday1,address1,phone1,instagram1;
     private Button register;
     private TextView exit;
     private int count=0;
@@ -43,22 +43,25 @@ public class Register extends Activity {
             window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
         }
         setContentView(R.layout.activity_register);
-
+        Typeface font = Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light_Persian_Digits.ttf");
 
         register=(Button)findViewById(R.id.registerBtn);
         exit=(TextView)findViewById(R.id.reg_cancel_link);
 
 
-        name1=(EditText) findViewById(R.id.re_name);
-        family1=(EditText) findViewById(R.id.re_family);
-        pass1=(EditText) findViewById(R.id.re_pass);
-        email1=(EditText) findViewById(R.id.re_email);
+        name1=(EditText) findViewById(R.id.name);
+        mobile1 =(EditText) findViewById(R.id.mobile);
+        bithday1=(EditText) findViewById(R.id.bithday);
+        address1=(EditText) findViewById(R.id.address);
+        phone1=(EditText) findViewById(R.id.phone);
+        instagram1=(EditText) findViewById(R.id.instagram);
 
-        name1.setTypeface(flow);
-        family1.setTypeface(flow);
-        email1.setTypeface(flow);
-        pass1.setTypeface(flow);
-
+        name1.setTypeface(font);
+        mobile1.setTypeface(font);
+        bithday1.setTypeface(font);
+        address1.setTypeface(font);
+        phone1.setTypeface(font);
+        instagram1.setTypeface(font);
 
         register.setOnClickListener(new OnClickListener(){
 
