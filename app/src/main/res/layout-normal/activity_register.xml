@@ -72,7 +72,7 @@
             android:layout_marginRight="15dp">
 
             <EditText
-                android:id="@+id/phone"
+                android:id="@+id/mobile"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="شماره موبایل"
@@ -106,10 +106,10 @@
             android:layout_marginRight="15dp">
 
             <EditText
-                android:id="@+id/address"
+                android:id="@+id/bithday"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="آدرس"
+                android:hint="تاریخ تولد"
                 android:inputType="text"
                 android:background="#00000000"
                 android:gravity="center"
@@ -121,6 +121,114 @@
                 android:imeOptions="flagNoFullscreen"
                 android:nestedScrollingEnabled="false">
             </EditText>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/address_1"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="false"
+                android:adjustViewBounds="true"
+                android:padding="12dp"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentLeft="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/backg_2"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp" >
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="text"
+                android:background="#00000000"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/EditText_Color_Text"
+                android:textColorHint="@color/EditText_Color_Hint"
+                android:imeOptions="flagNoFullscreen"
+                android:nestedScrollingEnabled="false"
+                android:hint="ادرس" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/address_1"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="false"
+                android:adjustViewBounds="true"
+                android:padding="12dp"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentLeft="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/backg_2"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp" >
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="تلفن ثابت"
+                android:inputType="text"
+                android:background="#00000000"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/EditText_Color_Text"
+                android:textColorHint="@color/EditText_Color_Hint"
+                android:imeOptions="flagNoFullscreen"
+                android:nestedScrollingEnabled="false" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/address_1"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="false"
+                android:adjustViewBounds="true"
+                android:padding="12dp"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentLeft="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/backg_2"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp" >
+
+            <EditText
+                android:id="@+id/instagram"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="اینستاگرام"
+                android:inputType="text"
+                android:background="#00000000"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/EditText_Color_Text"
+                android:textColorHint="@color/EditText_Color_Hint"
+                android:imeOptions="flagNoFullscreen"
+                android:nestedScrollingEnabled="false" />
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
