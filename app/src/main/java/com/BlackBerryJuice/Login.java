@@ -28,7 +28,7 @@ public class Login extends Activity {
 
     private EditText usertext,passtext;
     private Button login;
-    private Button register;
+    private TextView register;
 
     public static String res="";
     private int count=0;
@@ -56,7 +56,7 @@ public class Login extends Activity {
 
 
         login =(Button) findViewById(R.id.loginBtn);
-         =(Button) findViewById(R.id.loginBtn);
+        register =(TextView) findViewById(R.id.reg_now_link);
 
 
         login.setOnClickListener(new OnClickListener(){
@@ -66,7 +66,7 @@ public class Login extends Activity {
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
 
-                    login1(usertext.getText().toString(),passtext.getText().toString());
+                    login1(usertext.getText().toString(), passtext.getText().toString());
 
             }
 
@@ -77,7 +77,7 @@ public class Login extends Activity {
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this,register.class));
+                startActivity(new Intent(Login.this, register.class));
 
             }
         });
@@ -147,7 +147,7 @@ public class Login extends Activity {
                                 edit.commit();
                                 final String s= sp.getString("email", "");
 
-                                Intent ed=new Intent(Login.this,HomeActivity.class);
+                                Intent ed=new Intent(Login.this,Review.class);
                                 ed.putExtra("email", s);
                                 res="";
                                 tm.cancel();

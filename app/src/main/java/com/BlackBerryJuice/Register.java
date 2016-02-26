@@ -20,6 +20,5 @@ public class Register extends Activity {
         }
         setContentView(R.layout.activity_register);
 
-
     }
 }
