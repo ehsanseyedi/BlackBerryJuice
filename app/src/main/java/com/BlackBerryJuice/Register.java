@@ -141,9 +141,9 @@ public class Register extends Activity {
         else{
 
 
-            new registerserver("http://unixantivirus.wc.lt/register.php",name,family,pass,email).execute();
+            new registerserver(Constant.Register,name, mobile, bithday, address, phone, instagram).execute();
 
-            final ProgressDialog pd=new ProgressDialog(register.this);
+            final ProgressDialog pd=new ProgressDialog(Register.this);
             pd.setMessage("در حال ارسال اطلاعات به سرور");
             pd.show();
 

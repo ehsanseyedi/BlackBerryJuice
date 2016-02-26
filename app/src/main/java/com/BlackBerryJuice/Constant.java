@@ -20,6 +20,7 @@ public class Constant {
 	static String MenuDetailAPI = AdminPageURL + "api/get-menu-detail.php";
 	static String SendDataAPI = AdminPageURL + "api/add-reservation.php";
 	static String Login = "http://unix-team.ir/FlatlabRTL/api/login.php";
+	static String Register = "http://unix-team.ir/FlatlabRTL/api/register.php";
 
 	// change this access similar with accesskey in admin panel for security reason
 	static String AccessKey = "12345";
