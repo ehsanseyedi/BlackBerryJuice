@@ -90,8 +90,9 @@ public class Register extends Activity {
 
 
 
-        if(((name1.getText().toString().trim().length()==0)) || ((family1.getText().toString().trim().length()==0)) ||
-                ((pass1.getText().toString().trim().length()==0)) || ((email1.getText().toString().trim().length()==0))){
+        if(((name1.getText().toString().trim().length()==0)) || ((mobile1.getText().toString().trim().length()==0)) ||
+                ((bithday1.getText().toString().trim().length()==0)) || ((address1.getText().toString().trim().length()==0))
+                || ((phone1.getText().toString().trim().length()==0))){
 
             int ecolor = Color.RED;
             ForegroundColorSpan fgcspan = new ForegroundColorSpan(ecolor);
@@ -104,29 +105,37 @@ public class Register extends Activity {
                 ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
                 name1.setError(ssbuilder);}
 
-            if(family1.getText().toString().trim().length()==0){
-                family1.setFocusableInTouchMode(true);
-                family1.requestFocus();
+            if(mobile1.getText().toString().trim().length()==0){
+                mobile1.setFocusableInTouchMode(true);
+                mobile1.requestFocus();
                 String estring = "این قسمت را باید تکمیل کنید";
                 SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
                 ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
-                family1.setError(ssbuilder);}
+                mobile1.setError(ssbuilder);}
 
-            if(pass1.getText().toString().trim().length()==0){
-                pass1.setFocusableInTouchMode(true);
-                pass1.requestFocus();
+            if(bithday1.getText().toString().trim().length()==0){
+                bithday1.setFocusableInTouchMode(true);
+                bithday1.requestFocus();
                 String estring = "این قسمت را باید تکمیل کنید";
                 SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
                 ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
-                pass1.setError(ssbuilder);}
+                bithday1.setError(ssbuilder);}
 
-            if(email1.getText().toString().trim().length()==0){
-                email1.setFocusableInTouchMode(true);
-                email1.requestFocus();
+            if(address1.getText().toString().trim().length()==0){
+                address1.setFocusableInTouchMode(true);
+                address1.requestFocus();
                 String estring = "این قسمت را باید تکمیل کنید";
                 SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
                 ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
-                email1.setError(ssbuilder);}
+                address1.setError(ssbuilder);}
+
+            if(phone1.getText().toString().trim().length()==0){
+                phone1.setFocusableInTouchMode(true);
+                phone1.requestFocus();
+                String estring = "این قسمت را باید تکمیل کنید";
+                SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
+                ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
+                phone1.setError(ssbuilder);}
 
         }
         else{

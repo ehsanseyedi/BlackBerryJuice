@@ -1,8 +1,5 @@
 package com.BlackBerryJuice;
 
-/**
- * Created by Saeed on 2/26/2016.
- */
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -12,9 +9,6 @@ import java.net.URLEncoder;
 
 import android.os.AsyncTask;
 
-
-
-@SuppressWarnings("rawtypes")
 public class registerserver extends AsyncTask{
 
     private String Link="";
@@ -25,7 +19,6 @@ public class registerserver extends AsyncTask{
     private String instagram="";
     private String mobile="";
     private String phone="";
-    //private String code="";
 
 
     public registerserver(String link,String namez,String addressz,String bithdayz,String instagramz,String mobilez,String phonez){
@@ -37,7 +30,6 @@ public class registerserver extends AsyncTask{
         instagram = instagramz;
         mobile=mobilez;
         phone=phonez;
-        //code=codez;
     }
 
 
@@ -54,7 +46,6 @@ public class registerserver extends AsyncTask{
             data+="&"+URLEncoder.encode("instagramz","UTF8")+"="+URLEncoder.encode(instagram,"UTF8");
             data+="&"+URLEncoder.encode("mobilez","UTF8")+"="+URLEncoder.encode(mobile,"UTF8");
             data+="&"+URLEncoder.encode("phonez","UTF8")+"="+URLEncoder.encode(phone,"UTF8");
-            //data+="&"+URLEncoder.encode("codez","UTF8")+"="+URLEncoder.encode(code,"UTF8");
 
             URL mylink=new URL(Link);
             URLConnection connect=mylink.openConnection();
