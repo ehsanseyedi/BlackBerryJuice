@@ -39,6 +39,9 @@ public class ActivityReservation extends Activity implements
 	private CheckBox mode24Hours, modeDarkTime, modeDarkDate;
 	private TextView timeTextView, dateTextView;
 	private Button Req_Btn; //timeButton, dateButton;
+	PersianCalendar now2;
+	DatePickerDialog dpd;
+	public static int YEAR_1,MONTH_1,DAY_1;
 	EditText desc;
 	FrameLayout table_2 , table_5;
 	ImageView table_2_check,table_5_check;
@@ -114,34 +117,10 @@ public class ActivityReservation extends Activity implements
 		switch (view.getId()) {
 			case R.id.Time_Pick : {
 				get_madafaka_time();
-//				PersianCalendar now = new PersianCalendar();
-//				tpd = TimePickerDialog.newInstance(
-//						ActivityReservation.this,
-//						now.get(PersianCalendar.HOUR_OF_DAY),
-//						now.get(PersianCalendar.MINUTE),
-//						true
-//				);
-//				tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
-//					@Override
-//					public void onCancel(DialogInterface dialogInterface) {
-//						Log.d(TIMEPICKER, "Dialog was cancelled");
-//					}
-//				});
-//				tpd.setTitle("زمان مورد نظر را انتخاب کنید");
-//				tpd.show(getFragmentManager(), TIMEPICKER);
 				break;
 			}
 			case R.id.Date_Pick : {
-				PersianCalendar now = new PersianCalendar();
-				DatePickerDialog dpd = DatePickerDialog.newInstance(
-						ActivityReservation.this,
-						now.getPersianYear(),
-						now.getPersianMonth(),
-						now.getPersianDay()
-				);
-				dpd.setYearRange(Integer.parseInt(ShamsiCalleder.getYear()), Integer.parseInt(ShamsiCalleder.getYear()) + 1);
-				dpd.setMinDate(now);
-				dpd.show(getFragmentManager(), DATEPICKER);
+				get_madafaka_date();
 				break;
 			}
 			default: break;
@@ -160,7 +139,7 @@ public class ActivityReservation extends Activity implements
 			//ErrorToast.makeToast(ActivityReservation.this, "لطفاً در بازه زمانی فعالیت فروشگاه زمان انتخاب کنید (9 صبح تا 2 بامداد)", Toast.LENGTH_LONG).show();
 			ErrorToast toast = new ErrorToast(ActivityReservation.this);
 			toast .setText("لطفاً در بازه زمانی فعالیت فروشگاه زمان انتخاب کنید (9 صبح تا 2 بامداد)");
-			//toast .setGravity(Toast.LENGTH_SHORT);
+			toast.setDuration(Toast.LENGTH_LONG);
 			toast .show();
 			//Toast.makeText(ActivityReservation.this, "لطفاً در بازه زمانی فعالیت فروشگاه زمان انتخاب کنید (9 صبح تا 2 بامداد)", Toast.LENGTH_LONG).show();
 
@@ -170,10 +149,29 @@ public class ActivityReservation extends Activity implements
 
 	@Override
 	public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-		// Note: monthOfYear is 0-indexed
-		String date = year+"/"+(monthOfYear+1)+"/"+dayOfMonth;
-		dateTextView.setText(date);
+		if(year==YEAR_1 && monthOfYear+1==MONTH_1 && dayOfMonth <= DAY_1)
+		{
+			String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
+			dateTextView.setText(date);
+		}
+		else if(year==YEAR_1 && monthOfYear+1<MONTH_1 && dayOfMonth > DAY_1)
+		{
+			String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
+			//String date = year + "/" + (monthOfYear + 1) + "/" + dayOfMonth;
+			dateTextView.setText(date);
+		}
+		else
+		{
+			ErrorToast toast = new ErrorToast(ActivityReservation.this);
+			String dayy = now2.getPersianDay()+" "+ MonthName(now2.getPersianMonth()) + " " + now2.getPersianYear();
+			String temp = "حداکثر زمان ممکن برای رزرو یک ماه آینده می\u200Cباشد.\n("+dayy+")";
+			toast .setText(temp);
+			toast.setDuration(Toast.LENGTH_LONG);
+			toast .show();
+			get_madafaka_date();
+		}
 	}
+
 	public void get_madafaka_time()
 	{
 		PersianCalendar now = new PersianCalendar();
@@ -191,6 +189,112 @@ public class ActivityReservation extends Activity implements
 		});
 		tpd.setTitle("زمان مورد نظر را انتخاب کنید");
 		tpd.show(getFragmentManager(), TIMEPICKER);
+	}
+
+	public void get_madafaka_date()
+	{
+		PersianCalendar now = new PersianCalendar();
+		dpd = DatePickerDialog.newInstance(
+				ActivityReservation.this,
+				now.getPersianYear(),
+				now.getPersianMonth(),
+				now.getPersianDay()
+		);
+		now2 = new PersianCalendar();
+		now2.addPersianDate(Calendar.MONTH, 1);
+//		PersianCalendar[] now_Araay = new PersianCalendar[];
+//		PersianCalendar temp = new PersianCalendar();
+//		now_Araay[0]=temp;
+//		for(int j=1 ; j<30 ; j++)
+//		{
+//			if(temp.getPersianMonth()<6)
+//			{
+//				if(temp.getPersianDay() < 31)
+//					temp.setPersianDate(temp.getPersianYear(),temp.getPersianMonth(),temp.getPersianDay()+1);
+//				else if(temp.getPersianDay() == 31)
+//				{
+//					if (temp.getPersianMonth()!=11){
+//						temp.setPersianDate(temp.getPersianYear(), temp.getPersianMonth() + 1, 1);
+//					}
+//					else if (temp.getPersianMonth()==11){
+//						temp.setPersianDate(temp.getPersianYear()+1, 1, 1);
+//					}
+//				}
+//			}
+//			else if(temp.getPersianMonth()>=6 && temp.getPersianMonth() <11 )
+//			{
+//				if(temp.getPersianDay() < 30)
+//					temp.setPersianDate(temp.getPersianYear(),temp.getPersianMonth(),temp.getPersianDay()+1);
+//				else if(temp.getPersianDay() == 30)
+//				{
+//					if (temp.getPersianMonth()!=11){
+//						temp.setPersianDate(temp.getPersianYear(), temp.getPersianMonth() + 1, 1);
+//					}
+//					else if (temp.getPersianMonth()==11){
+//						temp.setPersianDate(temp.getPersianYear()+1, 1, 1);
+//					}
+//				}
+//			}
+//			else if(temp.getPersianMonth()==11)
+//			{
+//
+//			}
+//
+//			//now_Araay[j] =
+//		}
+		DAY_1 = now2.getPersianDay();
+		MONTH_1 = now2.getPersianMonth();
+		YEAR_1 = now2.getPersianYear();
+		Log.e("DATE", YEAR_1 + " " + MONTH_1 + " " + DAY_1);
+		dpd.setMinDate(now);
+//		dpd.setSelectableDays();
+		dpd.setYearRange(Integer.parseInt(ShamsiCalleder.getYear()), Integer.parseInt(ShamsiCalleder.getYear()) + 1);
+		dpd.show(getFragmentManager(), DATEPICKER);
+	}
+	
+	public String MonthName(int i)
+	{
+		switch (i) {
+			case 1:
+				return "فروردین";
+				//break;
+			case 2:
+				return "اردیبهشت";
+			//break;
+			case 3:
+				return "خرداد";
+			//break;
+			case 4:
+				return "تیر";
+			//break;
+			case 5:
+				return "مرداد";
+			//break;
+			case 6:
+				return "شهریور";
+			//break;
+			case 7:
+				return "مهر";
+			//break;
+			case 8:
+				return "آبان";
+			//break;
+			case 9:
+				return "آذر";
+			//break;
+			case 10:
+				return "دی";
+			//break;
+			case 11:
+				return "بهمن";
+			//break;
+			case 12:
+				return "اسفند";
+			//break;
+			
+			default: break;
+		}
+		return i+"";
 	}
 
 }

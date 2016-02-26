@@ -9,11 +9,14 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbarStyle="outsideInset"
+        android:fadeScrollbars="false"
+        android:scrollbars="vertical"
+        android:scrollbarSize="2dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:orientation="vertical"
             android:padding="5dp"
             tools:ignore="UselessParent" >
@@ -235,7 +238,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/themainbutton"
-                android:text="درخواست"
+                android:text="ثبت رزرو"
                 android:layout_marginTop="14dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
