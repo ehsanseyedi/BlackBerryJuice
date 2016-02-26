@@ -15,8 +15,6 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -213,9 +211,7 @@ public class ActivityCheckout extends FragmentActivity {
 			
 			public void onClick(View arg0) {
 
-
-
-				Intent i = new Intent(ActivityCheckout.this , Pay.class);
+				Intent i = new Intent(ActivityCheckout.this , Paaay.class);
 				i.putExtra("price",totalprice);
 				startActivity(i);
 				overridePendingTransition(R.anim.open_next, R.anim.close_next);
