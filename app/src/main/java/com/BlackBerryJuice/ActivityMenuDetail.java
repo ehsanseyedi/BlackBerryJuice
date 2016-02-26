@@ -143,7 +143,6 @@ public class ActivityMenuDetail extends Activity {
 			
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				// show input dialog
 				Intent iMyOrder = new Intent(ActivityMenuDetail.this, ActivityCart.class);
 				startActivity(iMyOrder);
 				overridePendingTransition(R.anim.open_next, R.anim.close_next);
@@ -162,7 +161,6 @@ public class ActivityMenuDetail extends Activity {
 				}else{
 					inputDialog();
 				}
-
 			}
 		});
         
@@ -197,7 +195,6 @@ public class ActivityMenuDetail extends Activity {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
-		
 	}
     
     // method to show number of order form
@@ -219,7 +216,6 @@ public class ActivityMenuDetail extends Activity {
     	Button minez = (Button) findViewById(R.id.minez);
 		LinearLayout done = (LinearLayout) findViewById(R.id.countdone);
 		LinearLayout undone = (LinearLayout) findViewById(R.id.countcancel);
-
 		//counter.setText("1");
 
 
@@ -249,7 +245,6 @@ public class ActivityMenuDetail extends Activity {
 				counter.setText(i+"");
 			}
 		});
-
 
 		done.setOnClickListener(new OnClickListener() {
 			@Override

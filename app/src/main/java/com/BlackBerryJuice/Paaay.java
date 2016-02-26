@@ -61,12 +61,8 @@ public class Paaay extends Activity {
 
             }
         });
-
         w.loadUrl("http://unix-team.ir/FlatlabRTL/pay/pay.php?price=" +inttotalprice +"0");
-
-
     }
-
 
 
     class js{
