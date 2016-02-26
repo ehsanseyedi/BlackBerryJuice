@@ -1,12 +1,10 @@
 <resources>
 
 
-
     <dimen name="smallfont">14dp</dimen>
     <dimen name="medfont">16dp</dimen>
     <dimen name="largefont">18dp</dimen>
     <dimen name="verylargefont">21dp</dimen>
-
 
 
     <dimen name="padding_small">8dp</dimen>
@@ -22,10 +20,6 @@
     <dimen name="navigation_drawer_width">240dp</dimen>
 
     <dimen name="action_bar_height">56dp</dimen>
-
-
-
-
 
 
     <dimen name="rect_radius">2dp</dimen>

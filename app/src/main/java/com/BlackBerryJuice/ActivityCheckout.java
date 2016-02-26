@@ -98,7 +98,7 @@ public class ActivityCheckout extends FragmentActivity {
 	String Result;
 	String TaxCurrencyAPI;
 	int IOConnect = 0;
-	
+	private Double totalprice;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -137,35 +137,36 @@ public class ActivityCheckout extends FragmentActivity {
 	     spinner.setAdapter(adapter);
 	     
 	     spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-	    	 
-				@Override
-				public void onItemSelected(AdapterView<?> arg0, View arg1,
-						int arg2, long arg3) {
-					// TODO Auto-generated method stub
-					
-					switch(arg2) {
-					
-						case 0 :
-							edtName2.setText("POS"); //POS
-							break;
-						case 1 :
-							edtName2.setText("JNE"); //JNE
-							break;
-						case 2 :
-							edtName2.setText("TIKI"); //TIKI
-							break;
-						default :
-							edtName2.setText("COD"); //COD
-							break;
-					}				
-				}
-				
-				@Override
-				public void onNothingSelected(AdapterView<?> arg0) {
-					// TODO Auto-generated method stub
-					
-				}
-			});
+
+			 @Override
+			 public void onItemSelected(AdapterView<?> arg0, View arg1,
+										int arg2, long arg3) {
+				 // TODO Auto-generated method stub
+
+				 switch (arg2) {
+
+					 case 0:
+						 edtName2.setText("POS"); //POS
+						 break;
+					 case 1:
+						 edtName2.setText("JNE"); //JNE
+						 break;
+					 case 2:
+						 edtName2.setText("TIKI"); //TIKI
+						 break;
+					 default:
+						 edtName2.setText("COD"); //COD
+						 break;
+				 }
+			 }
+
+			 @Override
+			 public void onNothingSelected(AdapterView<?> arg0) {
+				 // TODO Auto-generated method stub
+
+			 }
+		 });
+
 
         // tax and currency API url
 		TaxCurrencyAPI = Constant.TaxCurrencyAPI+"?accesskey="+Constant.AccessKey;
@@ -203,34 +204,45 @@ public class ActivityCheckout extends FragmentActivity {
 			}
 		});
 
+
+		Bundle b = getIntent().getExtras();
+		totalprice = b.getDouble("price");
+
         // event listener to handle send button when pressed
         btnSend.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
+
+
+
+				Intent i = new Intent(ActivityCheckout.this , Pay.class);
+				i.putExtra("price",totalprice);
+				startActivity(i);
+				overridePendingTransition(R.anim.open_next, R.anim.close_next);
+				finish();
 				
 				// get data from all forms and send to server
-				Name = edtName.getText().toString();
-				Alamat = edtAlamat.getText().toString();
-				Kota = edtKota.getText().toString();
-				Provinsi = edtProvinsi.getText().toString();
-				Email = edtEmail.getText().toString();
-				Name2 = edtName2.getText().toString();
-				Date = btnDate.getText().toString();
-				Time = btnTime.getText().toString();
-				Phone = edtPhone.getText().toString();
-				Comment = edtComment.getText().toString();
-				Date_n_Time = Date+" "+Time;
-				if(Name.equalsIgnoreCase("") || Name2.equalsIgnoreCase("") || Email.equalsIgnoreCase("") || Alamat.equalsIgnoreCase("") || Kota.equalsIgnoreCase("") || Provinsi.equalsIgnoreCase("") ||
-						Date.equalsIgnoreCase(getString(R.string.date)) || 
-						Time.equalsIgnoreCase(getString(R.string.time)) ||
-						Phone.equalsIgnoreCase("")){
-					Toast.makeText(ActivityCheckout.this, R.string.form_alert, Toast.LENGTH_SHORT).show();
-				}else if((data.size() == 0)){
-					Toast.makeText(ActivityCheckout.this, R.string.order_alert, Toast.LENGTH_SHORT).show();
-				}else{
-					new sendData().execute();
-				}
+//				Name = edtName.getText().toString();
+//				Alamat = edtAlamat.getText().toString();
+//				Kota = edtKota.getText().toString();
+//				Provinsi = edtProvinsi.getText().toString();
+//				Email = edtEmail.getText().toString();
+//				Name2 = edtName2.getText().toString();
+//				Date = btnDate.getText().toString();
+//				Time = btnTime.getText().toString();
+//				Phone = edtPhone.getText().toString();
+//				Comment = edtComment.getText().toString();
+//				Date_n_Time = Date+" "+Time;
+//				if(Name.equalsIgnoreCase("") || Name2.equalsIgnoreCase("") || Email.equalsIgnoreCase("") || Alamat.equalsIgnoreCase("") || Kota.equalsIgnoreCase("") || Provinsi.equalsIgnoreCase("") ||
+//						Date.equalsIgnoreCase(getString(R.string.date)) ||
+//						Time.equalsIgnoreCase(getString(R.string.time)) ||
+//						Phone.equalsIgnoreCase("")){
+//					Toast.makeText(ActivityCheckout.this, R.string.form_alert, Toast.LENGTH_SHORT).show();
+//				}else if((data.size() == 0)){
+//					Toast.makeText(ActivityCheckout.this, R.string.order_alert, Toast.LENGTH_SHORT).show();
+//				}else{
+//					new sendData().execute();
+//				}
 			}
 		});
     }

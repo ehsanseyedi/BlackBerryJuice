@@ -76,7 +76,8 @@ public class ActivityCart extends Activity {
 	int ID;
 	String TaxCurrencyAPI;
 	int IOConnect = 0;
-	
+
+
 	// create price format
 	DecimalFormat formatData = new DecimalFormat("#.##");
 
@@ -154,7 +155,8 @@ public class ActivityCart extends Activity {
 //				overridePendingTransition(R.anim.open_main, R.anim.close_next);
 //			}
 //		});
-        
+
+		Checkout.setEnabled(false);
         Checkout.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View arg0) {
@@ -162,6 +164,7 @@ public class ActivityCart extends Activity {
 				// close database and back to previous page
 				dbhelper.close();
 				Intent iReservation = new Intent(ActivityCart.this, ActivityCheckout.class);
+				iReservation.putExtra("price",Total_price);
 				startActivity(iReservation);
 				overridePendingTransition(R.anim.open_next, R.anim.close_next);
 			}
@@ -253,6 +256,7 @@ public class ActivityCart extends Activity {
 				txtAlert.setVisibility(0);
 				txtAlert.setText(R.string.alert);
 			}
+			Checkout.setEnabled(true);
 			
 		}
     }
@@ -349,7 +353,6 @@ public class ActivityCart extends Activity {
 			}else{
 				txtAlert.setVisibility(0);
 			}
-			
 		}
     }
     

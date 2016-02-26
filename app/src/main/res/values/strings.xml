@@ -1,59 +1,59 @@
 <resources>
-	<!-- App text configuration -->
-	<string name="app_name">تمشک سیاه</string>
+    <!-- App text configuration -->
+    <string name="app_name">تمشک سیاه</string>
 
-	<string name="yes">بله</string>
-	<string name="no">خیر</string>
-	<string name="no_phone">دستگاه شما قابلیت تماس ندارد</string>
-	<string name="no_internet">لطفا پیش از استفاده اینترنت خود را روشن کنید</string>
-	<string name="detail">جزئیات</string>
-	<string name="add">افزودن به سفارش</string>
-	<string name="alert">خطا در اتصال به اینترنت</string>
-	<string name="not_found">چیزی پیدا نشد</string>
-	<string name="number_order">تعداد سفارش :</string>
-	<string name="order">سفارش</string>
-	<string name="my_order">جزئیات سفارش :</string>
-	<string name="total_order">سفارش نهایی :</string>
-	<string name="clear_order">پاک کردن تمامی سفارشها :</string>
-	<string name="clear_all_order">آیا مایل به پاک کردن تمام سفارشها هستید؟</string>
-	<string name="clear_one_order">آیا مایل به پاک کردن این سفارش هستید؟</string>
-	<string name="db_exist_alert">آیا مایل به پاک کردن سفارش پیشین خود هستید؟</string>
-	<string name="confirm">تایید</string>
-	<string name="reservation">رزرواسیون</string>
-	<string name="your_name">نام</string>
-	<string name="address">آدرس</string>
-	<string name="city">شهر</string>
-	<string name="province">استان</string>
-	<string name="email">ایمیل</string>
-	<string name="number_of_people">تعداد افراد</string>
-	<string name="date">تاریخ</string>
-	<string name="time">زمان</string>
-	<string name="phone_number">شماره تماس</string>
-	<string name="order_list">لسیت سفارشات</string>
-	<string name="send_reservation">ارسال</string>
-	<string name="form_alert">لطفا ابتدا فرم را تکمیل کنید!</string>
-	<string name="sending_alert">در حال ارسال اطلاعات.لطفا شکیبا باشید...</string>
-	<string name="ok_alert">سفارش شما با موفقیت ثبت شد!</string>
-	<string name="failed_alert">سفارش شما ارسال نشد!</string>
-	<string name="no_order">سبد خرید شما خالی است.لطفا ابتدا سفارش دهید!</string>
-	<string name="check_order_later">در صورتی که میخواهید بعدا سفارش دهید این گزینه را فعال کنید</string>
-	<string name="order_later">بعدا سفارش میدهم</string>
-	<string name="desc_list_item_icon">آیکون آیتم</string>
-	<string name="no_order_menu">سفارشی ثبت نشده است!</string>
-	<string name="order_alert">هنوز هیچ سفارشی ندارید!</string>
-	<string name="add_comment">نوشتن نظر (اختیاری)</string>
-	<string name="main_menu">منو اصلی</string>
-	<string name="title_activity_home">خانه</string>
-	<string-array name="main_menu_list">
-		<item >لیست</item>
-		<item >سفارش شما</item>
-		<item >تاییدیه</item>
-	</string-array>
+    <string name="yes">بله</string>
+    <string name="no">خیر</string>
+    <string name="no_phone">دستگاه شما قابلیت تماس ندارد</string>
+    <string name="no_internet">لطفا پیش از استفاده اینترنت خود را روشن کنید</string>
+    <string name="detail">جزئیات</string>
+    <string name="add">افزودن به سفارش</string>
+    <string name="alert">خطا در اتصال به اینترنت</string>
+    <string name="not_found">چیزی پیدا نشد</string>
+    <string name="number_order">تعداد سفارش :</string>
+    <string name="order">سفارش</string>
+    <string name="my_order">جزئیات سفارش :</string>
+    <string name="total_order">سفارش نهایی :</string>
+    <string name="clear_order">پاک کردن تمامی سفارشها :</string>
+    <string name="clear_all_order">آیا مایل به پاک کردن تمام سفارشها هستید؟</string>
+    <string name="clear_one_order">آیا مایل به پاک کردن این سفارش هستید؟</string>
+    <string name="db_exist_alert">آیا مایل به پاک کردن سفارش پیشین خود هستید؟</string>
+    <string name="confirm">تایید</string>
+    <string name="reservation">رزرواسیون</string>
+    <string name="your_name">نام</string>
+    <string name="address">آدرس</string>
+    <string name="city">شهر</string>
+    <string name="province">استان</string>
+    <string name="email">ایمیل</string>
+    <string name="number_of_people">تعداد افراد</string>
+    <string name="date">تاریخ</string>
+    <string name="time">زمان</string>
+    <string name="phone_number">شماره تماس</string>
+    <string name="order_list">لسیت سفارشات</string>
+    <string name="send_reservation">ارسال</string>
+    <string name="form_alert">لطفا ابتدا فرم را تکمیل کنید!</string>
+    <string name="sending_alert">در حال ارسال اطلاعات.لطفا شکیبا باشید...</string>
+    <string name="ok_alert">سفارش شما با موفقیت ثبت شد!</string>
+    <string name="failed_alert">سفارش شما ارسال نشد!</string>
+    <string name="no_order">سبد خرید شما خالی است.لطفا ابتدا سفارش دهید!</string>
+    <string name="check_order_later">در صورتی که میخواهید بعدا سفارش دهید این گزینه را فعال کنید</string>
+    <string name="order_later">بعدا سفارش میدهم</string>
+    <string name="desc_list_item_icon">آیکون آیتم</string>
+    <string name="no_order_menu">سفارشی ثبت نشده است!</string>
+    <string name="order_alert">هنوز هیچ سفارشی ندارید!</string>
+    <string name="add_comment">نوشتن نظر (اختیاری)</string>
+    <string name="main_menu">منو اصلی</string>
+    <string name="title_activity_home">خانه</string>
+    <string-array name="main_menu_list">
+        <item>لیست</item>
+        <item>سفارش شما</item>
+        <item>تاییدیه</item>
+    </string-array>
 
-	<!-- Main Layout Strings-->
-	<string name="Main_Layout_Shop_Text">منو و سفارش</string>
-	<string name="Main_Layout_Reservation_Text">رزرو میز</string>
-	<string name="Main_Layout_Gallery_Text">تصاویر گالری</string>
-	<!-- Main Layout Strings-->
+    <!-- Main Layout Strings-->
+    <string name="Main_Layout_Shop_Text">منو و سفارش</string>
+    <string name="Main_Layout_Reservation_Text">رزرو میز</string>
+    <string name="Main_Layout_Gallery_Text">تصاویر گالری</string>
+    <!-- Main Layout Strings-->
 
 </resources>
