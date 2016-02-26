@@ -230,8 +230,8 @@ public class ActivityCart extends Activity {
     	// show progressbar first
 		getTaxCurrency(){
 	 		if(!prgLoading.isShown()){
-	 			prgLoading.setVisibility(0);
-				txtAlert.setVisibility(8);
+	 			prgLoading.setVisibility(View.VISIBLE);
+				txtAlert.setVisibility(View.GONE);
 	 		}
 	 	}
 		
@@ -247,13 +247,13 @@ public class ActivityCart extends Activity {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			// when finish parsing, hide progressbar
-			prgLoading.setVisibility(8);
+			prgLoading.setVisibility(View.GONE);
 			// if internet connection available request data form server
 			// otherwise, show alert text
 			if(IOConnect == 0){
 				new getDataTask().execute();
 			}else{
-				txtAlert.setVisibility(0);
+				txtAlert.setVisibility(View.VISIBLE);
 				txtAlert.setText(R.string.alert);
 			}
 			Checkout.setEnabled(true);
@@ -323,9 +323,9 @@ public class ActivityCart extends Activity {
     	// show progressbar first
     	getDataTask(){
     		if(!prgLoading.isShown()){
-    			prgLoading.setVisibility(0);
-    			lytOrder.setVisibility(8);
-    			txtAlert.setVisibility(8);
+    			prgLoading.setVisibility(View.VISIBLE);
+    			lytOrder.setVisibility(View.GONE);
+    			txtAlert.setVisibility(View.GONE);
     		}
     	}
     	
@@ -344,14 +344,14 @@ public class ActivityCart extends Activity {
 			txtTotal.setText(NumberFormat.getNumberInstance(Locale.US).format((int)Total_price)+" "+Currency);
 			txtTotalLabel.setText(getString(R.string.total_order));
 			//txtTotalLabel.setText(getString(R.string.total_order)+" (Tax "+Tax+"%)");
-			prgLoading.setVisibility(8);
+			prgLoading.setVisibility(View.GONE);
 			// if data available show data on list
 			// otherwise, show alert text
 			if(Menu_ID.size() > 0){
-				lytOrder.setVisibility(0);
+				lytOrder.setVisibility(View.VISIBLE);
 				listOrder.setAdapter(mola);
 			}else{
-				txtAlert.setVisibility(0);
+				txtAlert.setVisibility(View.VISIBLE);
 			}
 		}
     }

@@ -153,8 +153,8 @@ public class ActivityCategoryList extends Activity {
     	// show progressbar first
     	getDataTask(){
     		if(!prgLoading.isShown()){
-    			prgLoading.setVisibility(0);
-				txtAlert.setVisibility(8);
+    			prgLoading.setVisibility(View.VISIBLE);
+				txtAlert.setVisibility(View.GONE);
     		}
     	}
     	
@@ -170,15 +170,15 @@ public class ActivityCategoryList extends Activity {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			// when finish parsing, hide progressbar
-			prgLoading.setVisibility(8);
+			prgLoading.setVisibility(View.GONE);
 			
 			// if internet connection and data available show data on list
 			// otherwise, show alert text
 			if((Category_ID.size() > 0) && (IOConnect == 0)){
-				listCategory.setVisibility(0);
+				listCategory.setVisibility(View.VISIBLE);
 				listCategory.setAdapter(cla);
 			}else{
-				txtAlert.setVisibility(0);
+				txtAlert.setVisibility(View.VISIBLE);
 			}
 		}
     }

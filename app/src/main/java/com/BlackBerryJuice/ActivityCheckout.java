@@ -312,8 +312,8 @@ public class ActivityCheckout extends FragmentActivity {
     	// show progressbar first
     	getTaxCurrency(){
 	 		if(!prgLoading.isShown()){
-	 			prgLoading.setVisibility(0);
-				txtAlert.setVisibility(8);
+	 			prgLoading.setVisibility(View.VISIBLE);
+				txtAlert.setVisibility(View.GONE);
 	 		}
 	 	}
     	
@@ -329,13 +329,13 @@ public class ActivityCheckout extends FragmentActivity {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			// when finish parsing, hide progressbar
- 			prgLoading.setVisibility(8);
+ 			prgLoading.setVisibility(View.GONE);
  			// if internet connection and data available request menu data from server
  			// otherwise, show alert text
 			if(IOConnect == 0){
 				new getDataTask().execute();
 			}else{
-				txtAlert.setVisibility(0);
+				txtAlert.setVisibility(View.VISIBLE);
 			}
 		}
     }
@@ -404,8 +404,8 @@ public class ActivityCheckout extends FragmentActivity {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			// hide progressbar and show reservation form
-			prgLoading.setVisibility(8);
-			sclDetail.setVisibility(0);
+			prgLoading.setVisibility(View.GONE);
+			sclDetail.setVisibility(View.VISIBLE);
 			
 		}
     }
