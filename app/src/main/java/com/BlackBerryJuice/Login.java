@@ -28,6 +28,7 @@ public class Login extends Activity {
 
     private EditText usertext,passtext;
     private Button login;
+    private Button register;
 
     public static String res="";
     private int count=0;
@@ -55,6 +56,7 @@ public class Login extends Activity {
 
 
         login =(Button) findViewById(R.id.loginBtn);
+         =(Button) findViewById(R.id.loginBtn);
 
 
         login.setOnClickListener(new OnClickListener(){
