@@ -332,7 +332,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:id="@+id/imageView3"
+            android:id="@+id/about_button"
             android:src="@drawable/logo_white"
             android:layout_marginLeft="5dp" />
     </LinearLayout>

@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,11 +44,11 @@ public class ActivityReservation extends Activity implements
 	PersianCalendar now2 , now;
     PersianCalendar[] now_Araay;
 	DatePickerDialog dpd;
-    public static boolean is_today_selected = false;
+    public static boolean is_today_selected = false , is_date_picked = false;
 	EditText desc;
 	FrameLayout table_2 , table_5;
 	ImageView table_2_check,table_5_check;
-	LinearLayout Time_Pick , Date_Pick;
+	RelativeLayout Time_Pick , Date_Pick;
 	TimePickerDialog tpd;
 
 	@Override
@@ -94,8 +95,8 @@ public class ActivityReservation extends Activity implements
 			}
 		});
 
-		Time_Pick = (LinearLayout)findViewById(R.id.Time_Pick);
-		Date_Pick = (LinearLayout)findViewById(R.id.Date_Pick);
+		Time_Pick = (RelativeLayout)findViewById(R.id.Time_Pick);
+		Date_Pick = (RelativeLayout)findViewById(R.id.Date_Pick);
 
 		desc = (EditText)findViewById(R.id.desc);
 		desc.setTypeface(ActivitySplash.F6);
@@ -118,7 +119,15 @@ public class ActivityReservation extends Activity implements
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.Time_Pick : {
-				get_madafaka_time();
+                if(is_date_picked)
+    				get_madafaka_time();
+                else
+                {
+                    ErrorToast toast = new ErrorToast(ActivityReservation.this);
+                    toast .setText("لطفاً ابتدا تاریخ را انتخاب کنید");
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast .show();
+                }
 				break;
 			}
 			case R.id.Date_Pick : {
@@ -136,7 +145,7 @@ public class ActivityReservation extends Activity implements
         String time = hourString + ":" + minuteString;
         Log.e("HOUR_OF_DAY", now.get(PersianCalendar.HOUR_OF_DAY) + "  " + hourOfDay);
         if (hourOfDay < 2 || hourOfDay >= 9) {
-            if(now.get(PersianCalendar.HOUR_OF_DAY)+5 < hourOfDay && is_today_selected)
+            if(now.get(PersianCalendar.HOUR_OF_DAY)+4 < hourOfDay && is_today_selected)
                 timeTextView.setText(time);
             else if(!is_today_selected)
                 timeTextView.setText(time);
@@ -167,12 +176,14 @@ public class ActivityReservation extends Activity implements
 		{
 			String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
 			dateTextView.setText(date);
+            is_date_picked=true;
 		}
         else if(year==now.getPersianYear() && monthOfYear==now.getPersianMonth() && dayOfMonth == now.getPersianDay() )
         {
             String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
             dateTextView.setText(date);
             is_today_selected=true;
+            is_date_picked=true;
             Log.e("TODAY_SELECTED" , is_today_selected+"");
         }
 		else if(year == now2.getPersianYear() && monthOfYear==now2.getPersianMonth()-1  && dayOfMonth <= now.getPersianDay())
@@ -180,6 +191,7 @@ public class ActivityReservation extends Activity implements
 			String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
 			//String date = year + "/" + (monthOfYear + 1) + "/" + dayOfMonth;
 			dateTextView.setText(date);
+            is_date_picked=true;
 		}
 		else
 		{
