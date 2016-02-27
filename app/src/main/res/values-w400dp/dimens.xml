@@ -8,9 +8,4 @@
     <dimen name="medfont">17dp</dimen>
     <dimen name="largefont">19dp</dimen>
     <dimen name="verylargefont">22dp</dimen>
-
-
-    <dimen name="gal">110dp</dimen>
-    <dimen name="galpic">95dp</dimen>
-
 </resources>

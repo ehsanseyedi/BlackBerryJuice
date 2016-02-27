@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.BlackBerryJuice.activities.ImageGalleryActivity;
@@ -69,6 +71,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	ImageView g2;
 	ImageView g3;
 	SliderLayout mDemoSlider;
+	TextView scrollingtext;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -81,12 +84,14 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 			window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
 		}
-		setContentView(R.layout.main_layout);
+		setContentView(R.layout.the_new_main_activity);
 
 
 		mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
 
+		scrollingtext = (TextView) findViewById(R.id.scrollingtext);
+		//scrollingtext.setMovementMethod(new ScrollingMovementMethod());
 
 
 		RelativeLayout order = (RelativeLayout) findViewById(R.id.Order_Cat_Button);

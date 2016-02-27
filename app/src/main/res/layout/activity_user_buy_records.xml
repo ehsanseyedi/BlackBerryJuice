@@ -3,16 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.BlackBerryJuice.User_Buy_Records">
+    xmlns:foo="http://schemas.android.com/apk/res-auto"
+    tools:context="com.BlackBerryJuice.User_Buy_Records"
+    android:background="@color/gray">
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_alignParentTop="true"
+        android:id="@android:id/list"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/tameshk"
+        android:gravity="center|right"
+        android:paddingRight="10dp"
+        android:id="@+id/linearLayout3">
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="سابقه خرید"
+            android:id="@+id/textView2"
+            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+            android:layout_gravity="right"
+            android:textColor="#fff"
+            android:textSize="@dimen/medfont" />
+    </LinearLayout>
 </RelativeLayout>

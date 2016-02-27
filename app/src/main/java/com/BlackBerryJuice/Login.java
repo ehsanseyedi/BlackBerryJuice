@@ -110,7 +110,6 @@ public class Login extends Activity {
                 SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
                 ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
                 passtext.setError(ssbuilder);}
-
         }
         else{
 
@@ -119,7 +118,6 @@ public class Login extends Activity {
             final ProgressDialog pd=new ProgressDialog(Login.this);
             pd.setMessage("لطفا کمی صبر کنید...");
             pd.show();
-
 
             final Timer tm=new Timer();
             tm.scheduleAtFixedRate(new TimerTask(){
@@ -156,7 +154,7 @@ public class Login extends Activity {
                             else if(res.equals("wrong password")){
 
                                 pd.cancel();
-                                Toast.makeText(getApplicationContext(), "نام کاربری و یا رمزعبور صحیح نیست", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "کد اشتراک یا شماره موبایل صحیح نیست", Toast.LENGTH_LONG).show();
                                 res="";
                                 tm.cancel();}
                             else if(res.equals("no user")){
