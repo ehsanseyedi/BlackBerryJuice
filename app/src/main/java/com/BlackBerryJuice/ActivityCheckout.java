@@ -54,7 +54,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-//import android.widget.CheckBox;
 
 public class ActivityCheckout extends FragmentActivity {
 	

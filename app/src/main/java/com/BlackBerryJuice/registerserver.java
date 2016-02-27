@@ -21,7 +21,7 @@ public class registerserver extends AsyncTask{
     private String phone="";
 
 
-    public registerserver(String link,String namez,String addressz,String bithdayz,String instagramz,String mobilez,String phonez){
+    public registerserver(String link,String namez,String mobilez,String bithdayz,String addressz,String phonez,String instagramz){
 
         Link=link;
         name=namez;
