@@ -45,11 +45,15 @@ public class User_Buy_Records extends Activity {
         // store data to arraylist variables
         for(int i=0;i<data.size();i++) {
             ArrayList<Object> row = data.get(i);
-            allnames += row.get(1).toString() + " , ";
+            allnames += row.get(1).toString() + " " + Integer.parseInt(row.get(2).toString()) +" عدد ";
+            if(i==data.size()-1){
+
+            }else{
+                allnames += " | ";
+            }
         }
         nameslist.add(allnames);
     }
-
 
     public static void save_purchease(Set<String> names,Set<String> totalprice,Set<String> rahgiri,Context c) {
         SharedPreferences sp = c.getSharedPreferences("records", Activity.MODE_PRIVATE);
