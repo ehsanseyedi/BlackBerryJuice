@@ -43,6 +43,7 @@ public class ActivityReservation extends Activity implements
 	PersianCalendar now2 , now;
     PersianCalendar[] now_Araay;
 	DatePickerDialog dpd;
+    public static boolean is_today_selected = false;
 	EditText desc;
 	FrameLayout table_2 , table_5;
 	ImageView table_2_check,table_5_check;
@@ -130,11 +131,24 @@ public class ActivityReservation extends Activity implements
 
 	@Override
 	public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
-		String hourString = hourOfDay < 10 ? "0"+hourOfDay : ""+hourOfDay;
-		String minuteString = minute < 10 ? "0"+minute : ""+minute;
-		String time = hourString+":"+minuteString;
-		if(hourOfDay <2 || hourOfDay >= 9 )
-			timeTextView.setText(time);
+        String hourString = hourOfDay < 10 ? "0" + hourOfDay : "" + hourOfDay;
+        String minuteString = minute < 10 ? "0" + minute : "" + minute;
+        String time = hourString + ":" + minuteString;
+        Log.e("HOUR_OF_DAY", now.get(PersianCalendar.HOUR_OF_DAY) + "  " + hourOfDay);
+        if (hourOfDay < 2 || hourOfDay >= 9) {
+            if(now.get(PersianCalendar.HOUR_OF_DAY)+5 < hourOfDay && is_today_selected)
+                timeTextView.setText(time);
+            else if(!is_today_selected)
+                timeTextView.setText(time);
+            else
+            {
+                ErrorToast toast = new ErrorToast(ActivityReservation.this);
+                toast .setText("لطفاً برای امروز، برای ساعات بعد رزرو بفرمایید.");
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast .show();
+                get_madafaka_time();
+            }
+        }
 		else
 		{
 			//ErrorToast.makeToast(ActivityReservation.this, "لطفاً در بازه زمانی فعالیت فروشگاه زمان انتخاب کنید (9 صبح تا 2 بامداد)", Toast.LENGTH_LONG).show();
@@ -142,8 +156,6 @@ public class ActivityReservation extends Activity implements
 			toast .setText("لطفاً در بازه زمانی فعالیت فروشگاه زمان انتخاب کنید (9 صبح تا 2 بامداد)");
 			toast.setDuration(Toast.LENGTH_LONG);
 			toast .show();
-			//Toast.makeText(ActivityReservation.this, "لطفاً در بازه زمانی فعالیت فروشگاه زمان انتخاب کنید (9 صبح تا 2 بامداد)", Toast.LENGTH_LONG).show();
-
 			get_madafaka_time();
 		}
 	}
@@ -151,11 +163,18 @@ public class ActivityReservation extends Activity implements
 	@Override
 	public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         Log.e("MONTH", monthOfYear+"  "+now2.getPersianMonth() + "  "+ now.getPersianMonth());
-		if(year==now.getPersianYear() && monthOfYear==now.getPersianMonth() && dayOfMonth >= now.getPersianDay() )
+		if(year==now.getPersianYear() && monthOfYear==now.getPersianMonth() && dayOfMonth > now.getPersianDay() )
 		{
 			String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
 			dateTextView.setText(date);
 		}
+        else if(year==now.getPersianYear() && monthOfYear==now.getPersianMonth() && dayOfMonth == now.getPersianDay() )
+        {
+            String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
+            dateTextView.setText(date);
+            is_today_selected=true;
+            Log.e("TODAY_SELECTED" , is_today_selected+"");
+        }
 		else if(year == now2.getPersianYear() && monthOfYear==now2.getPersianMonth()-1  && dayOfMonth <= now.getPersianDay())
 		{
 			String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
