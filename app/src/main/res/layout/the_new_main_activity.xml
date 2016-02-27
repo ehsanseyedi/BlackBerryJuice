@@ -75,24 +75,6 @@
                 android:background="@color/tameshk_lightgray"
                 android:layout_marginTop="10dp">
 
-                <com.BlackBerryJuice.utils.TextViewPlus
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/test"
-                    foo:customFont="fonts/IRANSansMobile_Medium.ttf"
-                    android:id="@+id/scrollingtext"
-                    android:singleLine="true"
-                    android:ellipsize="marquee"
-                    android:marqueeRepeatLimit ="marquee_forever"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:scrollHorizontally="true"
-                    android:layout_toLeftOf="@+id/imageView2"
-                    android:layout_toStartOf="@+id/imageView2"
-                    android:layout_alignBottom="@+id/imageView2"
-                    android:layout_alignTop="@+id/imageView2"
-                    android:gravity="center" />
-
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
@@ -104,6 +86,44 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="5dp"
                     android:adjustViewBounds="true" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/imageView2"
+                    android:layout_toStartOf="@+id/imageView2"
+                    android:gravity="center">
+
+                    <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/horizontalScrollView"
+                        android:scrollbars="none"
+                        android:layout_toLeftOf="@+id/imageView2"
+                        android:layout_alignParentTop="false"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="false"
+                        android:visibility="visible">
+
+                        <com.BlackBerryJuice.utils.TextViewPlus
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/test"
+                            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                            android:id="@+id/scrollingtext"
+                            android:singleLine="true"
+                            android:marqueeRepeatLimit ="marquee_forever"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:scrollHorizontally="true"
+                            android:gravity="center"
+                            android:layout_toLeftOf="@+id/imageView2"
+                            android:layout_toStartOf="@+id/imageView2" />
+                    </HorizontalScrollView>
+
+                </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
 
