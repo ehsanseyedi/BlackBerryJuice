@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.SQLException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,10 +67,14 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	long Menu_ID;
 	String MenuDetailAPI;
 	ArrayList<String> images = new ArrayList<>();
+	ArrayList<String> sliderimages = new ArrayList<>();
+	ArrayList<String> slidertitles = new ArrayList<>();
+	ArrayList<String> sliderlinks = new ArrayList<>();
 	ProgressBar p1;
 	ProgressBar p2;
 	ProgressBar p3;
 	String GalleryAPI;
+	String SliderAPI;
 	int IOConnect = 0;
 	ImageView g1;
 	ImageView g2;
@@ -91,33 +97,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 
 		mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
-		HashMap<String, String> url_maps = new HashMap<String, String>();
-		url_maps.put("جشن تولدتی شاد و جذاب داشته باشید", "http://blackberryjuice.ir/uploads/1000/59/uploads_album/396.jpg");
-		url_maps.put("تمشک سیاه", "http://blackberryjuice.ir/uploads/1000/59/uploads_album/398.jpg");
-		url_maps.put("تخفیف به مناسبت سال نو", "http://blackberryjuice.ir/uploads/1000/59/uploads_album/520.jpg");
-		url_maps.put("آبمیوه تمشک سیاه", "http://blackberryjuice.ir/uploads/1000/59/uploads_album/394.jpg");
 
-		for (String name : url_maps.keySet()) {
-			TextSliderView textSliderView = new TextSliderView(this);
-			// initialize a SliderLayout
-			textSliderView
-					.description(name)
-					.image(url_maps.get(name))
-					.setScaleType(BaseSliderView.ScaleType.CenterCrop)
-					.setOnSliderClickListener(this);
-
-			//add your extra information
-			textSliderView.bundle(new Bundle());
-			textSliderView.getBundle()
-					.putString("extra", name);
-
-			mDemoSlider.addSlider(textSliderView);
-		}
-		//mDemoSlider.setPresetTransformer(SliderLayout.Transformer.);
-		mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Top);
-		//mDemoSlider.setCustomAnimation(new DescriptionAnimation());
-		mDemoSlider.setDuration(4000);
-		mDemoSlider.addOnPageChangeListener(this);
 
 
 		RelativeLayout order = (RelativeLayout) findViewById(R.id.Order_Cat_Button);
@@ -185,9 +165,9 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			displayView(0);
 		}
 
-
 		//saeed
 		GalleryAPI = Constant.GalleryAPI+"?accesskey="+Constant.AccessKey;
+		SliderAPI = Constant.SliderAPI+"?accesskey="+Constant.AccessKey;
 
 		new getDataTask().execute();
 
@@ -210,9 +190,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 				startActivity(intent);
 			}
 		});
-
 	}
-
 
 	// show confirm dialog to ask user to delete previous order or not
 	void showAlertDialog() {
@@ -255,6 +233,43 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	@Override
 	public void onSliderClick(BaseSliderView slider) {
 		//Toast.makeText(this,slider.getBundle().get("extra") + "",Toast.LENGTH_SHORT).show();
+		String curennt_text= slider.getBundle().get("extra")+"";
+
+		String text1 = "";
+		String text2 = "";
+		String text3 = "";
+		String text4 = "";
+
+		try {
+			text1 = slidertitles.get(0);
+			text2 = slidertitles.get(1);
+			text3 = slidertitles.get(2);
+			text4 = slidertitles.get(3);
+		}catch (Exception e){
+
+		}
+
+		if(curennt_text.equals(text1)){
+			String url = sliderlinks.get(0);
+			Intent i = new Intent(Intent.ACTION_VIEW);
+			i.setData(Uri.parse(url));
+			startActivity(i);
+		}else if(curennt_text.equals(text2)){
+			String url = sliderlinks.get(1);
+			Intent i = new Intent(Intent.ACTION_VIEW);
+			i.setData(Uri.parse(url));
+			startActivity(i);
+		}else if(curennt_text.equals(text3)) {
+			String url = sliderlinks.get(2);
+			Intent i = new Intent(Intent.ACTION_VIEW);
+			i.setData(Uri.parse(url));
+			startActivity(i);
+		}else if (curennt_text.equals(text4)){
+			String url = sliderlinks.get(3);
+			Intent i = new Intent(Intent.ACTION_VIEW);
+			i.setData(Uri.parse(url));
+			startActivity(i);
+		}
 	}
 
 	@Override
@@ -262,7 +277,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 
 	@Override
 	public void onPageSelected(int position) {
-		Log.d("Slider Demo", "Page Changed: " + position);
+		Log.d("Slider", "Page Changed: " + position);
 	}
 
 	@Override
@@ -367,6 +382,44 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 				p2.setVisibility(View.INVISIBLE);
 				p3.setVisibility(View.INVISIBLE);
 			}
+
+
+
+			//slider
+
+			HashMap<String, String> url_maps = new HashMap<String, String>();
+			try {
+				url_maps.put(slidertitles.get(0), sliderimages.get(0));
+				url_maps.put(slidertitles.get(1), sliderimages.get(1));
+				url_maps.put(slidertitles.get(2), sliderimages.get(2));
+				url_maps.put(slidertitles.get(3), sliderimages.get(3));
+			}catch (Exception e){
+
+			}
+
+			/////////////
+			for (String name : url_maps.keySet()) {
+				TextSliderView textSliderView = new TextSliderView(ActivityMainMenu.this);
+				// initialize a SliderLayout
+				textSliderView
+						.description(name)
+						.image(url_maps.get(name))
+						.setScaleType(BaseSliderView.ScaleType.CenterCrop)
+						.setOnSliderClickListener(ActivityMainMenu.this);
+
+				//add your extra information
+				textSliderView.bundle(new Bundle());
+				textSliderView.getBundle()
+						.putString("extra", name);
+
+				mDemoSlider.addSlider(textSliderView);
+			}
+			//mDemoSlider.setPresetTransformer(SliderLayout.Transformer.);
+			mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Top);
+			//mDemoSlider.setCustomAnimation(new DescriptionAnimation());
+			mDemoSlider.setDuration(4000);
+			mDemoSlider.addOnPageChangeListener(ActivityMainMenu.this);
+
 		}
 	}
 
@@ -390,16 +443,42 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			while ((line = in.readLine()) != null){
 				str += line;
 			}
+
+			HttpUriRequest request2 = new HttpGet(SliderAPI);
+			HttpResponse response2 = client.execute(request2);
+			InputStream atomInputStream2 = response2.getEntity().getContent();
+			BufferedReader in2 = new BufferedReader(new InputStreamReader(atomInputStream2));
+
+			String line2;
+			String str2 = "";
+			while ((line2 = in2.readLine()) != null){
+				str2 += line2;
+			}
+
 			Log.e("saeeeeeeed", str);
 			// parse json data and store into arraylist variables
 			JSONObject json = new JSONObject(str);
 			JSONArray pic = json.getJSONArray("picture");
+
+			JSONObject json2 = new JSONObject(str2);
+			JSONArray pic2 = json2.getJSONArray("sliderdata");
+
 			Log.e("saeeeeeeed", pic.length()+"");
 			for (int i = 0; i < pic.length(); i++) {
 				JSONObject object = pic.getJSONObject(i);
 				JSONObject gallery = object.getJSONObject("Gallery");
 				images.add(Constant.GalleryImageURL + gallery.getString("file"));
 				Log.d("imagess", images.get(i));
+			}
+
+			Log.e("saeeeeeeed_slider", pic2.length()+"");
+			for (int i = 0; i < pic2.length(); i++) {
+				JSONObject object2 = pic2.getJSONObject(i);
+				JSONObject slider = object2.getJSONObject("Slider");
+				sliderimages.add(Constant.SliderImageURL + slider.getString("file"));
+				slidertitles.add(slider.getString("text"));
+				sliderlinks.add(slider.getString("link"));
+				Log.d("slider", sliderimages.get(i));
 			}
 
 		} catch (MalformedURLException e) {
@@ -441,6 +520,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			PPBB.setVisibility(View.GONE);
 		}
 	}
+
 
 
 

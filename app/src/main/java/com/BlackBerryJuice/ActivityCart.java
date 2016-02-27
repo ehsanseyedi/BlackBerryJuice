@@ -164,7 +164,7 @@ public class ActivityCart extends Activity {
 				// TODO Auto-generated method stub
 				// close database and back to previous page
 				dbhelper.close();
-				Intent iReservation = new Intent(ActivityCart.this, ActivityCheckout.class);
+				Intent iReservation = new Intent(ActivityCart.this, Login.class); //////
 				iReservation.putExtra("price",Total_price);
 				startActivity(iReservation);
 				overridePendingTransition(R.anim.open_next, R.anim.close_next);
