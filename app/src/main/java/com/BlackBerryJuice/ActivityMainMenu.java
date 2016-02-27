@@ -350,10 +350,14 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			//slider
 
 			HashMap<String, String> url_maps = new HashMap<String, String>();
-			url_maps.put(slidertitles.get(0), sliderimages.get(0));
-			url_maps.put(slidertitles.get(1), sliderimages.get(1));
-			url_maps.put(slidertitles.get(2), sliderimages.get(2));
-			url_maps.put(slidertitles.get(3), sliderimages.get(3));
+			try {
+				url_maps.put(slidertitles.get(0), sliderimages.get(0));
+				url_maps.put(slidertitles.get(1), sliderimages.get(1));
+				url_maps.put(slidertitles.get(2), sliderimages.get(2));
+				url_maps.put(slidertitles.get(3), sliderimages.get(3));
+			}catch (Exception e){
+
+			}
 
 			/////////////
 			for (String name : url_maps.keySet()) {
@@ -401,7 +405,6 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			while ((line = in.readLine()) != null){
 				str += line;
 			}
-
 
 			HttpUriRequest request2 = new HttpGet(SliderAPI);
 			HttpResponse response2 = client.execute(request2);
