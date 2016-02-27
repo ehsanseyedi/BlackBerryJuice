@@ -349,12 +349,11 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 
 			//slider
 
-
 			HashMap<String, String> url_maps = new HashMap<String, String>();
-			url_maps.put(slidertitles.get(0), sliderlinks.get(0));
-			url_maps.put(slidertitles.get(1), sliderlinks.get(1));
-			url_maps.put(slidertitles.get(2), sliderlinks.get(2));
-			url_maps.put(slidertitles.get(3), sliderlinks.get(3));
+			url_maps.put(slidertitles.get(0), sliderimages.get(0));
+			url_maps.put(slidertitles.get(1), sliderimages.get(1));
+			url_maps.put(slidertitles.get(2), sliderimages.get(2));
+			url_maps.put(slidertitles.get(3), sliderimages.get(3));
 
 			/////////////
 			for (String name : url_maps.keySet()) {
