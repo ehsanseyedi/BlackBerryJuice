@@ -12,21 +12,15 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
+import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,10 +43,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-import com.BlackBerryJuice.Constant;
 
-import com.daimajia.slider.library.Animations.DescriptionAnimation;
-import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
@@ -80,6 +71,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	ImageView g2;
 	ImageView g3;
 	SliderLayout mDemoSlider;
+	TextView scrollingtext;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -92,12 +84,14 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 			window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
 		}
-		setContentView(R.layout.main_layout);
+		setContentView(R.layout.the_new_main_activity);
 
 
 		mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
 
+		scrollingtext = (TextView) findViewById(R.id.scrollingtext);
+		//scrollingtext.setMovementMethod(new ScrollingMovementMethod());
 
 
 		RelativeLayout order = (RelativeLayout) findViewById(R.id.Order_Cat_Button);
@@ -117,6 +111,16 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 
 				startActivity(new Intent(ActivityMainMenu.this, ActivityReservation.class));
 				overridePendingTransition (R.anim.open_next, R.anim.close_next);
+			}
+		});
+
+		ImageView aboutt = (ImageView) findViewById(R.id.about_button);
+		aboutt.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+				startActivity(new Intent(ActivityMainMenu.this, ActivityAbout.class));
+				overridePendingTransition (R.anim.slide_up, R.anim.slide_up_2);
 			}
 		});
 

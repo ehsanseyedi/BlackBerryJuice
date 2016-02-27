@@ -56,4 +56,9 @@
     <string name="Main_Layout_Gallery_Text">تصاویر گالری</string>
     <!-- Main Layout Strings-->
 
+
+    <!--saeed-->
+    <string name="test">سلام این یک متن طولانی است که بصورت خودکار اسکرول میشود کاربر عزیز خوش امدید حال شما</string>
+
+
 </resources>

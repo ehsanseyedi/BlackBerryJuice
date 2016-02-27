@@ -68,6 +68,7 @@ public class ActivityMenuDetail extends Activity {
 	ProgressBar prgLoading;
 	TextView txtAlert;
 	LinearLayout adder;
+	LinearLayout buylayout;
 	// declare dbhelper object
 	static DBHelper dbhelper;
 	TextView counter;
@@ -105,6 +106,7 @@ public class ActivityMenuDetail extends Activity {
 
 		counter = (TextView) findViewById(R.id.counter);
 		adder = (LinearLayout) findViewById(R.id.adder);
+		buylayout = (LinearLayout) findViewById(R.id.buylayout);
         imgPreview = (ImageView) findViewById(R.id.imgPreview);
         txtText = (TextView) findViewById(R.id.txtText);
         txtSubText = (TextView) findViewById(R.id.txtSubText);
@@ -316,6 +318,12 @@ public class ActivityMenuDetail extends Activity {
 				txtSubText2.setText("وضعیت : " + Menu_serve);
 
 				txtDescription.setText(Menu_description);
+
+				if (Menu_serve.equals("ناموجود")){
+					buylayout.setVisibility(View.GONE);
+				}else{
+					buylayout.setVisibility(View.VISIBLE);
+				}
 
 			}else{
 				txtAlert.setVisibility(View.VISIBLE);

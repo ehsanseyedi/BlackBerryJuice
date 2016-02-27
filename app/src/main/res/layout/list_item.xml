@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:foo="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/gray">
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center|right"
+        android:background="#fff"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center|right">
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="سان شان 2 عدد  \nهویج بستنی 4 عدد "
+                android:id="@+id/names"
+                android:textSize="@dimen/medfont"
+                foo:customFont="fonts/IRANSansMobile_Medium_Persian_Digits.ttf"
+                android:singleLine="false"
+                android:textColor="#181818"
+                android:layout_marginTop="3dp" />
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center|right"
+            android:layout_marginTop="2dp">
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="تومان"
+                android:textSize="@dimen/medfont"
+                foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                android:singleLine="false"
+                android:textColor="#181818"
+                android:layout_marginRight="7dp" />
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="25,000"
+                android:id="@+id/price"
+                android:textSize="@dimen/medfont"
+                foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                android:singleLine="false"
+                android:textColor="@color/price"
+                android:layout_marginRight="5dp" />
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="هزینه:"
+                android:textSize="@dimen/medfont"
+                foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                android:singleLine="false"
+                android:textColor="#181818" />
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center|right"
+            android:layout_marginTop="2dp">
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="1234567890"
+                android:id="@+id/rahgir"
+                android:textSize="@dimen/medfont"
+                foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                android:singleLine="false"
+                android:textColor="#181818"
+                android:layout_marginRight="5dp" />
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="کد رهگیری:"
+                android:textSize="@dimen/medfont"
+                foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                android:singleLine="false"
+                android:textColor="#181818" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
