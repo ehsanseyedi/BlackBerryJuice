@@ -1,7 +1,9 @@
 package com.BlackBerryJuice.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.BlackBerryJuice.R;
@@ -20,7 +24,7 @@ import com.BlackBerryJuice.view.GridSpacesItemDecoration;
 
 import java.util.ArrayList;
 
-public class ImageGalleryActivity extends AppCompatActivity implements ImageGalleryAdapter.OnImageClickListener {
+public class ImageGalleryActivity extends Activity implements ImageGalleryAdapter.OnImageClickListener {
 
     // region Member Variables
     private ArrayList<String> mImages;
@@ -34,15 +38,17 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+        if(Build.VERSION.SDK_INT >= 21) {
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
+        }
         setContentView(R.layout.activity_image_gallery);
 
         bindViews();
-
-        setSupportActionBar(mToolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null)
-            actionBar.setDisplayHomeAsUpEnabled(true);
 
 
         Intent intent = getIntent();
