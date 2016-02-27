@@ -8,21 +8,23 @@
     style="@style/Theme.AppCompat.NoActionBar"
     android:background="@color/white">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_above="@+id/Social"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:weightSum="100">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="0dp"
             android:id="@+id/Slider"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_weight="30">
 
             <com.daimajia.slider.library.SliderLayout
                 android:id="@+id/slider"
@@ -58,13 +60,63 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="10">
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/UserText"
+                android:layout_below="@+id/Slider"
+                android:gravity="center|right"
+                android:background="@color/tameshk_lightgray"
+                android:layout_marginTop="10dp">
+
+                <com.BlackBerryJuice.utils.TextViewPlus
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/test"
+                    foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                    android:id="@+id/scrollingtext"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit ="marquee_forever"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:scrollHorizontally="true"
+                    android:layout_toLeftOf="@+id/imageView2"
+                    android:layout_toStartOf="@+id/imageView2"
+                    android:layout_alignBottom="@+id/imageView2"
+                    android:layout_alignTop="@+id/imageView2"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView2"
+                    android:src="@drawable/userr"
+                    android:padding="10dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="5dp"
+                    android:adjustViewBounds="true" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:id="@+id/Functions"
             android:visibility="visible"
             android:weightSum="100"
             android:gravity="center"
             android:layout_above="@+id/Gallery"
-            android:layout_below="@+id/UserText">
+            android:layout_below="@+id/UserText"
+            android:layout_weight="38">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -160,13 +212,14 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/gal"
+            android:layout_height="0dp"
             android:id="@+id/Gallery"
             android:visibility="visible"
             android:gravity="bottom"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_weight="22">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -181,7 +234,10 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true">
+                    android:layout_alignParentEnd="true"
+                    android:weightSum="100"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -194,8 +250,9 @@
                         android:layout_marginRight="10dp" />
 
                     <FrameLayout
-                        android:layout_width="@dimen/galpic"
-                        android:layout_height="@dimen/galpic">
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="30">
 
                         <ImageView
                             android:layout_width="fill_parent"
@@ -219,10 +276,11 @@
                     </FrameLayout>
 
                     <FrameLayout
-                        android:layout_width="@dimen/galpic"
-                        android:layout_height="@dimen/galpic"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp">
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="30">
 
                         <ImageView
                             android:layout_width="fill_parent"
@@ -246,8 +304,9 @@
                     </FrameLayout>
 
                     <FrameLayout
-                        android:layout_width="@dimen/galpic"
-                        android:layout_height="@dimen/galpic">
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="30">
 
                         <ImageView
                             android:layout_width="fill_parent"
@@ -277,48 +336,7 @@
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/UserText"
-            android:layout_below="@+id/Slider"
-            android:gravity="center|right"
-            android:background="@color/tameshk_lightgray"
-            android:layout_marginTop="10dp">
-
-            <com.BlackBerryJuice.utils.TextViewPlus
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/test"
-                foo:customFont="fonts/IRANSansMobile_Medium.ttf"
-                android:id="@+id/scrollingtext"
-                android:singleLine="true"
-                android:ellipsize="marquee"
-                android:marqueeRepeatLimit ="marquee_forever"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:scrollHorizontally="true"
-                android:layout_toLeftOf="@+id/imageView2"
-                android:layout_toStartOf="@+id/imageView2"
-                android:layout_alignBottom="@+id/imageView2"
-                android:layout_alignTop="@+id/imageView2"
-                android:gravity="center" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:id="@+id/imageView2"
-                android:src="@drawable/userr"
-                android:padding="5dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="5dp" />
-        </RelativeLayout>
-
-    </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"

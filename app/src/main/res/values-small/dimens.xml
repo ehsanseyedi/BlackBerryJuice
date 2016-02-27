@@ -10,7 +10,7 @@
     <dimen name="verylargefont">22dp</dimen>
 
 
-    <dimen name="gal">95dp</dimen>
-    <dimen name="galpic">85dp</dimen>
+    <dimen name="gal">50dp</dimen>
+    <dimen name="galpic">40dp</dimen>
 
 </resources>
