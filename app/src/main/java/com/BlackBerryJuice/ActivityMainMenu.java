@@ -358,7 +358,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			url_maps.put(slidertitles.get(2), sliderlinks.get(2));
 			url_maps.put(slidertitles.get(3), sliderlinks.get(3));
 
-			//
+			/////////////
 			for (String name : url_maps.keySet()) {
 				TextSliderView textSliderView = new TextSliderView(ActivityMainMenu.this);
 				// initialize a SliderLayout
