@@ -124,7 +124,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/address_1"
+                android:src="@drawable/birthday_1"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="false"
                 android:adjustViewBounds="true"
@@ -196,7 +196,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/address_1"
+                android:src="@drawable/phone_2"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="false"
                 android:adjustViewBounds="true"
@@ -232,7 +232,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/address_1"
+                android:src="@drawable/instagram_1"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="false"
                 android:adjustViewBounds="true"
