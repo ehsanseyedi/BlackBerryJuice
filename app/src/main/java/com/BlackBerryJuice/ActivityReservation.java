@@ -39,9 +39,10 @@ public class ActivityReservation extends Activity implements
 	private CheckBox mode24Hours, modeDarkTime, modeDarkDate;
 	private TextView timeTextView, dateTextView;
 	private Button Req_Btn; //timeButton, dateButton;
-	PersianCalendar now2;
+	int end_of_month;
+	PersianCalendar now2 , now;
+    PersianCalendar[] now_Araay;
 	DatePickerDialog dpd;
-	public static int YEAR_1,MONTH_1,DAY_1;
 	EditText desc;
 	FrameLayout table_2 , table_5;
 	ImageView table_2_check,table_5_check;
@@ -149,12 +150,13 @@ public class ActivityReservation extends Activity implements
 
 	@Override
 	public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-		if(year==YEAR_1 && monthOfYear+1==MONTH_1 && dayOfMonth <= DAY_1)
+        Log.e("MONTH", monthOfYear+"  "+now2.getPersianMonth() + "  "+ now.getPersianMonth());
+		if(year==now.getPersianYear() && monthOfYear==now.getPersianMonth() && dayOfMonth >= now.getPersianDay() )
 		{
 			String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
 			dateTextView.setText(date);
 		}
-		else if(year==YEAR_1 && monthOfYear+1<MONTH_1 && dayOfMonth > DAY_1)
+		else if(year == now2.getPersianYear() && monthOfYear==now2.getPersianMonth()-1  && dayOfMonth <= now.getPersianDay())
 		{
 			String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
 			//String date = year + "/" + (monthOfYear + 1) + "/" + dayOfMonth;
@@ -163,7 +165,7 @@ public class ActivityReservation extends Activity implements
 		else
 		{
 			ErrorToast toast = new ErrorToast(ActivityReservation.this);
-			String dayy = now2.getPersianDay()+" "+ MonthName(now2.getPersianMonth()) + " " + now2.getPersianYear();
+			String dayy = now.getPersianDay()+" "+ MonthName(now2.getPersianMonth()) + " " + now2.getPersianYear();
 			String temp = "حداکثر زمان ممکن برای رزرو یک ماه آینده می\u200Cباشد.\n("+dayy+")";
 			toast .setText(temp);
 			toast.setDuration(Toast.LENGTH_LONG);
@@ -193,7 +195,7 @@ public class ActivityReservation extends Activity implements
 
 	public void get_madafaka_date()
 	{
-		PersianCalendar now = new PersianCalendar();
+		now = new PersianCalendar();
 		dpd = DatePickerDialog.newInstance(
 				ActivityReservation.this,
 				now.getPersianYear(),
@@ -202,62 +204,17 @@ public class ActivityReservation extends Activity implements
 		);
 		now2 = new PersianCalendar();
 		now2.addPersianDate(Calendar.MONTH, 1);
-//		PersianCalendar[] now_Araay = new PersianCalendar[];
-//		PersianCalendar temp = new PersianCalendar();
-//		now_Araay[0]=temp;
-//		for(int j=1 ; j<30 ; j++)
-//		{
-//			if(temp.getPersianMonth()<6)
-//			{
-//				if(temp.getPersianDay() < 31)
-//					temp.setPersianDate(temp.getPersianYear(),temp.getPersianMonth(),temp.getPersianDay()+1);
-//				else if(temp.getPersianDay() == 31)
-//				{
-//					if (temp.getPersianMonth()!=11){
-//						temp.setPersianDate(temp.getPersianYear(), temp.getPersianMonth() + 1, 1);
-//					}
-//					else if (temp.getPersianMonth()==11){
-//						temp.setPersianDate(temp.getPersianYear()+1, 1, 1);
-//					}
-//				}
-//			}
-//			else if(temp.getPersianMonth()>=6 && temp.getPersianMonth() <11 )
-//			{
-//				if(temp.getPersianDay() < 30)
-//					temp.setPersianDate(temp.getPersianYear(),temp.getPersianMonth(),temp.getPersianDay()+1);
-//				else if(temp.getPersianDay() == 30)
-//				{
-//					if (temp.getPersianMonth()!=11){
-//						temp.setPersianDate(temp.getPersianYear(), temp.getPersianMonth() + 1, 1);
-//					}
-//					else if (temp.getPersianMonth()==11){
-//						temp.setPersianDate(temp.getPersianYear()+1, 1, 1);
-//					}
-//				}
-//			}
-//			else if(temp.getPersianMonth()==11)
-//			{
-//
-//			}
-//
-//			//now_Araay[j] =
-//		}
-		DAY_1 = now2.getPersianDay();
-		MONTH_1 = now2.getPersianMonth();
-		YEAR_1 = now2.getPersianYear();
-		Log.e("DATE", YEAR_1 + " " + MONTH_1 + " " + DAY_1);
 		dpd.setMinDate(now);
-//		dpd.setSelectableDays();
 		dpd.setYearRange(Integer.parseInt(ShamsiCalleder.getYear()), Integer.parseInt(ShamsiCalleder.getYear()) + 1);
 		dpd.show(getFragmentManager(), DATEPICKER);
 	}
-	
+
 	public String MonthName(int i)
 	{
 		switch (i) {
 			case 1:
 				return "فروردین";
-				//break;
+			//break;
 			case 2:
 				return "اردیبهشت";
 			//break;
@@ -291,7 +248,7 @@ public class ActivityReservation extends Activity implements
 			case 12:
 				return "اسفند";
 			//break;
-			
+
 			default: break;
 		}
 		return i+"";
