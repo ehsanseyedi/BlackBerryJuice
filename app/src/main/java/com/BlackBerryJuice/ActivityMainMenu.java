@@ -189,9 +189,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 				startActivity(intent);
 			}
 		});
-
 	}
-
 
 	// show confirm dialog to ask user to delete previous order or not
 	void showAlertDialog() {
