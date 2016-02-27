@@ -406,7 +406,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			}
 
 
-			HttpUriRequest request2 = new HttpGet(GalleryAPI);
+			HttpUriRequest request2 = new HttpGet(SliderAPI);
 			HttpResponse response2 = client.execute(request2);
 			InputStream atomInputStream2 = response2.getEntity().getContent();
 			BufferedReader in2 = new BufferedReader(new InputStreamReader(atomInputStream2));
