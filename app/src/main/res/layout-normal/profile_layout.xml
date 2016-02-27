@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:foo="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backg_2"
+        android:layout_margin="15dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile_2"
+            android:padding="10dp"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentRight="true"
+            android:id="@+id/imageView"
+            android:layout_margin="5dp" />
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="احسان سیدی دات آی آر"
+            android:layout_gravity="center"
+            android:textColor="#2A2A2A"
+            android:layout_marginBottom="5dp"
+            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/imageView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/prof_name"
+            android:gravity="clip_horizontal|right" />
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="1234"
+            android:layout_gravity="center"
+            android:textColor="#2A2A2A"
+            foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+            android:gravity="center"
+            android:layout_alignTop="@+id/view2"
+            android:layout_toLeftOf="@+id/view2"
+            android:layout_toStartOf="@+id/view2"
+            android:id="@+id/prof_num" />
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="کد اشتراک:   "
+            android:layout_gravity="center"
+            android:textColor="#2A2A2A"
+            foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+            android:gravity="center"
+            android:layout_below="@+id/prof_name"
+            android:layout_toLeftOf="@+id/imageView"
+            android:layout_toStartOf="@+id/imageView"
+            android:id="@+id/view2" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_layout_reservation"
+        android:id="@+id/history_Button"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingRight="7dp"
+        android:paddingLeft="7dp"
+        android:layout_marginTop="7dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/history_1"
+            android:padding="7dp" />
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="سوابق خرید"
+            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+            android:textSize="@dimen/medfont"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="5dp" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_margin="0dp"
+            android:src="@drawable/main_layout_left"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="0dp"
+            android:padding="7dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_layout_reservation"
+        android:id="@+id/Cart_Button"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingRight="7dp"
+        android:paddingLeft="7dp"
+        android:layout_marginTop="7dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/main_layout_shop_1"
+            android:padding="7dp"
+            android:layout_marginRight="2dp" />
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="سبد خرید"
+            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+            android:textSize="@dimen/medfont"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="5dp" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_margin="0dp"
+            android:src="@drawable/main_layout_left"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="0dp"
+            android:padding="7dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="7dp"
+        android:weightSum="100"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/main_layout_reservation"
+            android:id="@+id/Exit_Button"
+            android:paddingRight="7dp"
+            android:paddingLeft="7dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="48"
+            android:layout_toLeftOf="@+id/linearLayout3"
+            android:layout_toStartOf="@+id/linearLayout3">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/main_layout_shop_1"
+                android:padding="7dp"
+                android:visibility="invisible" />
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" خروج"
+                foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                android:textSize="@dimen/medfont"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="5dp"
+                android:gravity="center" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="7dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/linearLayout3" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/main_layout_reservation"
+            android:id="@+id/Edit_Button"
+            android:paddingRight="7dp"
+            android:paddingLeft="7dp"
+            android:layout_weight="48"
+            android:layout_toRightOf="@+id/linearLayout3"
+            android:layout_toEndOf="@+id/linearLayout3">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/main_layout_shop_1"
+                android:padding="7dp"
+                android:visibility="invisible" />
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ویرایش"
+                foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                android:textSize="@dimen/medfont"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="5dp"
+                android:gravity="center" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>
