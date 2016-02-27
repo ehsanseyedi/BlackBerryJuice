@@ -13,8 +13,8 @@ public class Constant {
 	// API URL configuration
 	static String AdminPageURL = "http://unix-team.ir/Ecommerce/";
 	static String AdminPageURL2 = "http://unix-team.ir/FlatlabRTL/";
-	static String SliderImageURL = "http://unix-team.ir/FlatlabRTL/upload/slider/";
-	static String GalleryImageURL = "http://unix-team.ir/Ecommerce/upload/gallery/";
+	static String SliderImageURL = AdminPageURL2 + "upload/slider/";
+	static String GalleryImageURL = AdminPageURL + "upload/gallery/";
 	static String CategoryAPI = AdminPageURL + "api/get-all-category-data.php";
 	static String GalleryAPI = AdminPageURL + "api/get-all-image-gallery.php";
 	static String SliderAPI = AdminPageURL2 + "api/get-all-image-slider.php";
@@ -22,8 +22,8 @@ public class Constant {
 	static String TaxCurrencyAPI = AdminPageURL + "api/get-tax-and-currency.php";
 	static String MenuDetailAPI = AdminPageURL + "api/get-menu-detail.php";
 	static String SendDataAPI = AdminPageURL + "api/add-reservation.php";
-	static String Login = "http://unix-team.ir/FlatlabRTL/api/login.php";
-	static String Register = "http://unix-team.ir/FlatlabRTL/api/register.php";
+	static String Login = AdminPageURL2 + "api/login.php";
+	static String Register = AdminPageURL2 + "api/register.php";
 
 	// change this access similar with accesskey in admin panel for security reason
 	static String AccessKey = "12345";
