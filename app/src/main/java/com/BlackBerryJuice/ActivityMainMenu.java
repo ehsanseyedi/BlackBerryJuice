@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.database.SQLException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -17,6 +20,7 @@ import android.os.Message;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,6 +28,7 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -78,6 +83,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	ImageView g3;
 	SliderLayout mDemoSlider;
 	TextView scrollingtext;
+	int widthofscreen;
 //	HorizontalScrollView sv;
 //	int scroll_pos;
 	public static Handler hHandler;
@@ -94,6 +100,11 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		}
 		setContentView(R.layout.the_new_main_activity);
 
+		Display display = getWindowManager().getDefaultDisplay();
+		Point size2 = new Point();
+		display.getSize(size2);
+		widthofscreen = size2.x;
+		Toast.makeText(this,"px:" + widthofscreen,Toast.LENGTH_SHORT).show();
 
 		mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
@@ -101,14 +112,38 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		scrollingtext = (TextView) findViewById(R.id.scrollingtext);
 		//scrollingtext.setMovementMethod(new ScrollingMovementMethod());
 
-		Animation animationToRight = new TranslateAnimation(-400,400, 0, 0);
-		animationToRight.setDuration(12000);
-		animationToRight.setRepeatMode(Animation.RESTART);
-		animationToRight.setRepeatCount(Animation.INFINITE);
+//		Animation animationToRight = new TranslateAnimation(-600,600, 0, 0);
+//		animationToRight.setDuration(17000);
+//		animationToRight.setRepeatMode(Animation.RESTART);
+//		animationToRight.setRepeatCount(Animation.INFINITE);
 
-		scrollingtext.setAnimation(animationToRight);
+//		Rect bounds = new Rect();
+//		Paint textPaint = scrollingtext.getPaint();
+//		String text = scrollingtext.getText().toString();
+//		textPaint.getTextBounds(text, 0, text.length(), bounds);
+//		int width = bounds.width();
+//		LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) scrollingtext.getLayoutParams();
+//		lp.width = width + 100;
+//		int startX = 400;
+		//int widthoftext = scrollingtext.getWidth();
+
+//		final float densityMultiplier = this.getResources().getDisplayMetrics().density;
+//		final float scaledPx = 20 * densityMultiplier;
+//		Paint paint = new Paint();
+//		paint.setTextSize(scaledPx);
+//		final int widthoftext = (int) paint.measureText(scrollingtext.getText().toString());
+//		scrollingtext.getLayoutParams().width = widthoftext + 200;
+//		int offset = (widthoftext + 200) - widthofscreen;
+//		Toast.makeText(this,widthoftext+"",Toast.LENGTH_SHORT).show();
+//		TranslateAnimation ta = new TranslateAnimation(-widthofscreen, offset, 0, 0);
+//		ta.setDuration(15000);
+//		ta.setRepeatCount(-1);
+//		scrollingtext.setAnimation(ta);
 
 
+
+		//scrollingtext.setAnimation(animationToRight);
+		//TranslateAnimation n = new TranslateAnimation()
 
 		RelativeLayout order = (RelativeLayout) findViewById(R.id.Order_Cat_Button);
 		order.setOnClickListener(new View.OnClickListener() {

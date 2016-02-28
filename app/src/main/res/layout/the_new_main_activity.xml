@@ -61,8 +61,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="16"
-            android:gravity="center">
+            android:layout_weight="12"
+            android:gravity="bottom|center">
 
             <RelativeLayout
                 android:orientation="horizontal"
@@ -72,8 +72,7 @@
                 android:id="@+id/UserText"
                 android:layout_below="@+id/Slider"
                 android:gravity="center|right"
-                android:background="@color/tameshk_lightgray"
-                android:layout_marginTop="10dp">
+                android:background="@color/tameshk_lightgray">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -87,25 +86,27 @@
                     android:layout_marginRight="5dp"
                     android:adjustViewBounds="true" />
 
-                <LinearLayout
+                <RelativeLayout
                     android:orientation="vertical"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:layout_toLeftOf="@+id/imageView2"
                     android:layout_toStartOf="@+id/imageView2"
                     android:gravity="center">
 
-                    <HorizontalScrollView
-                        android:layout_width="wrap_content"
+                    <com.BlackBerryJuice.MarqueeView
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/horizontalScrollView"
                         android:scrollbars="none"
-                        android:layout_toLeftOf="@+id/imageView2"
                         android:layout_alignParentTop="false"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="false"
-                        android:visibility="visible">
+                        android:visibility="visible"
+                        android:clickable="false"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true">
 
                         <com.BlackBerryJuice.utils.TextViewPlus
                             android:layout_width="wrap_content"
@@ -114,16 +115,14 @@
                             foo:customFont="fonts/IRANSansMobile_Medium.ttf"
                             android:id="@+id/scrollingtext"
                             android:singleLine="true"
-                            android:marqueeRepeatLimit ="marquee_forever"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
-                            android:scrollHorizontally="true"
                             android:gravity="center"
-                            android:layout_toLeftOf="@+id/imageView2"
-                            android:layout_toStartOf="@+id/imageView2" />
-                    </HorizontalScrollView>
+                            android:paddingRight="25dp"
+                            android:paddingLeft="25dp" />
+                    </com.BlackBerryJuice.MarqueeView>
 
-                </LinearLayout>
+                </RelativeLayout>
             </RelativeLayout>
         </LinearLayout>
 
@@ -137,7 +136,7 @@
             android:gravity="center"
             android:layout_above="@+id/Gallery"
             android:layout_below="@+id/UserText"
-            android:layout_weight="30">
+            android:layout_weight="34">
 
             <RelativeLayout
                 android:layout_width="match_parent"
