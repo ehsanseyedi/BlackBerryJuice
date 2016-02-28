@@ -12,15 +12,21 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,7 +78,9 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	ImageView g3;
 	SliderLayout mDemoSlider;
 	TextView scrollingtext;
-
+//	HorizontalScrollView sv;
+//	int scroll_pos;
+	public static Handler hHandler;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
@@ -92,6 +100,14 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 
 		scrollingtext = (TextView) findViewById(R.id.scrollingtext);
 		//scrollingtext.setMovementMethod(new ScrollingMovementMethod());
+
+		Animation animationToRight = new TranslateAnimation(-400,400, 0, 0);
+		animationToRight.setDuration(12000);
+		animationToRight.setRepeatMode(Animation.RESTART);
+		animationToRight.setRepeatCount(Animation.INFINITE);
+
+		scrollingtext.setAnimation(animationToRight);
+
 
 
 		RelativeLayout order = (RelativeLayout) findViewById(R.id.Order_Cat_Button);
@@ -525,7 +541,6 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		}
 	}
 
-
-
-
 }
+
+
