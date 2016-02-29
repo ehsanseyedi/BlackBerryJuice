@@ -140,7 +140,6 @@ public class Register extends Activity {
         }
         else{
 
-
             new registerserver(Constant.Register,name, mobile, bithday, address, phone, instagram).execute();
 
             final ProgressDialog pd=new ProgressDialog(Register.this);

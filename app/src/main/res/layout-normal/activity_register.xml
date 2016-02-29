@@ -254,6 +254,7 @@
             android:layout_marginTop="14dp"
             android:visibility="gone" />
 
+
         <Button
             android:id="@+id/registerBtn"
             android:layout_width="match_parent"
