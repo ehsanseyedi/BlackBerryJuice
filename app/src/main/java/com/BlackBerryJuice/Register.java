@@ -168,6 +168,8 @@ public class Register extends Activity {
                                 pd.cancel();
                                 Toast.makeText(getApplicationContext(), "ثبت نام با موفقیت انجام شد", Toast.LENGTH_LONG).show();
                                 String Code = res.replace("ok","");
+                                int newcode = Integer.parseInt(Code);
+                                newcode++;
                                 Toast.makeText(Register.this,"کداشتراک: " + Code,Toast.LENGTH_SHORT).show();
                                 res="";
                                 tm.cancel();
