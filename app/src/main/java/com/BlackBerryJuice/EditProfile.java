@@ -4,8 +4,10 @@ package com.BlackBerryJuice;
         import java.util.TimerTask;
         import android.app.Activity;
         import android.app.ProgressDialog;
+        import android.content.Context;
         import android.content.DialogInterface;
         import android.content.Intent;
+        import android.content.SharedPreferences;
         import android.os.Build;
         import android.os.Bundle;
         import android.view.View;
@@ -111,7 +113,6 @@ public class EditProfile extends Activity{
 
                 //new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),mobile.getText().toString(),birthday.getText().toString(),address.getText().toString(),phone.getText().toString(),instagram.getText().toString(),"put").execute();
 
-
                 final ProgressDialog pd=new ProgressDialog(EditProfile.this);
                 pd.setMessage("لطفا صبر کنید"+"در حال ارسال اطلاعات به سرور");
                 pd.show();
@@ -125,24 +126,17 @@ public class EditProfile extends Activity{
 
                                 count++;
                                 if(count==30){
-
                                     pd.cancel();
                                     tm.cancel();
                                     count=0;
                                     Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
-
-
                                 }
 
                                 if(!res.equals("")){
-
                                     pd.cancel();
                                     Toast.makeText(getApplicationContext(), "اطلاعات با موفقیت آپدیت شد", Toast.LENGTH_LONG).show();
                                     tm.cancel();
                                 }
-
-
-
                             }
                         });
 
@@ -226,6 +220,62 @@ public class EditProfile extends Activity{
     public void onBackPressed() {
         startActivity(new Intent(EditProfile.this,Profile.class));
         finish();
+    }
+
+
+    public static void save_last_userinfo (String name,String birthday,String address , String phone , String insta,Context c) {
+        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("name", name);
+        editor.putString("birthday", birthday);
+        editor.putString("address", address);
+        editor.putString("phone", phone);
+        editor.putString("insta", insta);
+        editor.commit();
+    }
+
+    public static void save_last_userinfo_cm (String code,String mobile,Context c) {
+        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("code", code);
+        editor.putString("mobile", mobile);
+        editor.commit();
+    }
+
+    public static void delete_all_userinfo (Context c) {
+        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear();
+        editor.commit();
+    }
+
+    public static String load_code(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
+        return sp.getString("code", "");
+    }
+    public static String load_name(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
+        return sp.getString("name", "");
+    }
+    public static String load_mobile(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
+        return sp.getString("mobile", "");
+    }
+    public static String load_birthday(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
+        return sp.getString("birthday", "");
+    }
+    public static String load_address(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
+        return sp.getString("address", "");
+    }
+    public static String load_phone(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
+        return sp.getString("phone", "");
+    }
+    public static String load_insta(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
+        return sp.getString("insta", "");
     }
 
 }

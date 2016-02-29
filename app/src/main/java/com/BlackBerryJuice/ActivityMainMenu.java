@@ -255,7 +255,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		profile2.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(!Register.load_code_from_register(ActivityMainMenu.this).equals("") || !Login.load_code_from_login(ActivityMainMenu.this).equals("")) {
+				if( Register.do_user_registered(ActivityMainMenu.this) || Login.do_user_logedin(ActivityMainMenu.this)) {
 					startActivity(gotoprofile);
 				}else{
 					startActivity(gotologin);

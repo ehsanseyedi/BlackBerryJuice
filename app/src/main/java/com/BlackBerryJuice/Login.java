@@ -58,14 +58,14 @@ public class Login extends Activity {
         register =(TextView) findViewById(R.id.reg_now_link);
 
 
-        login.setOnClickListener(new OnClickListener(){
+        login.setOnClickListener(new OnClickListener() {
 
 
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
 
-                    login1(usertext.getText().toString(), passtext.getText().toString());
+                login1(usertext.getText().toString(), passtext.getText().toString());
 
             }
 
@@ -143,7 +143,8 @@ public class Login extends Activity {
                                 edit.putString("email", code);
                                 edit.commit();
                                 final String s = sp.getString("email", "");
-                                save_code_and_mobile_on_login(code,mobile,Login.this);
+                                set_user_logedin(true,Login.this);
+                                EditProfile.save_last_userinfo_cm(code, mobile, Login.this);
                                 Intent ed = new Intent(Login.this, Profile.class);
                                 ed.putExtra("email", s);
                                 res = "";
@@ -176,29 +177,16 @@ public class Login extends Activity {
 
     }
 
-    public static void save_code_and_mobile_on_login(String code,String mobile,Context c) {
-        SharedPreferences sp = c.getSharedPreferences("user_loged_in", Activity.MODE_PRIVATE);
+    public static void set_user_logedin(Boolean dolog,Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_logedin", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString("code", code);
-        editor.putString("mobile", mobile);
+        editor.putBoolean("log", dolog);
         editor.commit();
     }
 
-    public static void clear_code_and_mobile_on_login(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("user_loged_in", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.clear();
-        editor.commit();
-    }
-
-    public static String load_code_from_login(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("user_loged_in", Activity.MODE_PRIVATE);
-        return sp.getString("code", "");
-    }
-
-    public static String load_mobile_from_login(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("user_loged_in", Activity.MODE_PRIVATE);
-        return sp.getString("mobile", "");
+    public static Boolean do_user_logedin(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_logedin", Activity.MODE_PRIVATE);
+        return sp.getBoolean("log", false);
     }
 
     private void f(){
