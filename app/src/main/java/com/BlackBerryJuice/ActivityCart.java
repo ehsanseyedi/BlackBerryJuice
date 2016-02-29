@@ -53,7 +53,7 @@ public class ActivityCart extends Activity {
 	ListView listOrder;
 	ProgressBar prgLoading;
 	TextView txtTotalLabel, txtTotal, txtAlert;
-	Button btnClear, Checkout;
+	RelativeLayout btnClear, Checkout;
 	RelativeLayout lytOrder;
 	// declate dbhelper and adapter objects
 	DBHelper dbhelper;
@@ -100,13 +100,13 @@ public class ActivityCart extends Activity {
         
         // connect view objects with xml id
 //        imgNavBack = (ImageButton) findViewById(R.id.imgNavBack);
-        Checkout = (Button) findViewById(R.id.Checkout);
+        Checkout = (RelativeLayout) findViewById(R.id.Checkout);
         prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
         listOrder = (ListView) findViewById(R.id.listOrder);
         txtTotalLabel = (TextView) findViewById(R.id.txtTotalLabel);
         txtTotal = (TextView) findViewById(R.id.txtTotal);
         txtAlert = (TextView) findViewById(R.id.txtAlert);
-        btnClear = (Button) findViewById(R.id.btnClear);
+        btnClear = (RelativeLayout) findViewById(R.id.btnClear);
         lytOrder = (RelativeLayout) findViewById(R.id.lytOrder);
         
         // tax and currency API url

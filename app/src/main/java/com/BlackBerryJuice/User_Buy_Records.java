@@ -17,8 +17,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 import java.util.Set;
 
 public class User_Buy_Records extends ListActivity {
@@ -175,7 +177,8 @@ public class User_Buy_Records extends ListActivity {
                 TextView rahgir = (TextView) row.findViewById(R.id.rahgir);
 
                 names.setText(nameslist.get(position));
-                price.setText(priceslist.get(position));
+                //price.setText(priceslist.get(position));
+                price.setText(NumberFormat.getNumberInstance(Locale.US).format((Integer.valueOf(priceslist.get(position)))));
                 rahgir.setText(rahgirilist.get(position));
             }
 

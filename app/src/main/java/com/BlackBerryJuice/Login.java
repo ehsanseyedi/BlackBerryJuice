@@ -56,6 +56,7 @@ public class Login extends Activity {
 
 
         login =(Button) findViewById(R.id.loginBtn);
+        login.setTypeface(ActivitySplash.F2);
         register =(TextView) findViewById(R.id.reg_now_link);
 
 
