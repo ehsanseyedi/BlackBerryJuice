@@ -7,6 +7,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -98,24 +101,18 @@ public class Register extends Activity implements
             public void onClick(View arg0) {
                 get_madafaka_date();
             }
-
         });
-
 
         exit.setOnClickListener(new OnClickListener(){
 
             public void onClick(View arg0) {
                 finish();
             }
-
         });
-
     }
 
     @SuppressWarnings("unchecked")
     private void register1(String name,String mobile,String bithday,String address,String phone,String instagram){
-
-
 
         if(((name1.getText().toString().trim().length()==0)) || ((mobile1.getText().toString().trim().length()==0)) ||
                 ((bithday1.getText().toString().trim().length()==0)) || ((address1.getText().toString().trim().length()==0))
@@ -213,13 +210,15 @@ public class Register extends Activity implements
                                 res = "";
                                 tm.cancel();
                             } else if (res.toLowerCase().contains("ok")) {
-                                Toast.makeText(Register.this, res, Toast.LENGTH_SHORT).show();
                                 pd.cancel();
                                 Toast.makeText(getApplicationContext(), "ثبت نام با موفقیت انجام شد", Toast.LENGTH_LONG).show();
                                 String Code = res.replace("ok", "");
-                                Toast.makeText(Register.this, "کداشتراک: " + Code, Toast.LENGTH_SHORT).show();
+                                int newcode = Integer.valueOf(Code);
+                                newcode++;
+                                save_code_and_mobile_on_register(String.valueOf(newcode),mobile1.getText().toString(),Register.this);
                                 res = "";
                                 tm.cancel();
+                                startActivity(new Intent(Register.this, Profile.class));
                                 finish();
                             } else if (res.equals("no")) {
 
@@ -258,6 +257,32 @@ public class Register extends Activity implements
         DATE_GOES_TO_SERVER= year + "-" + (monthOfYear+1) + "-" + dayOfMonth;
         birthday_picked=true;
         bithday1.setText(date);
+    }
+
+
+    public static void save_code_and_mobile_on_register(String code,String mobile,Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_registered", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("code", code);
+        editor.putString("mobile", mobile);
+        editor.commit();
+    }
+
+    public static void clear_code_and_mobile_on_register(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_registered", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear();
+        editor.commit();
+    }
+
+    public static String load_code_from_register(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_registered", Activity.MODE_PRIVATE);
+        return sp.getString("code", "");
+    }
+
+    public static String load_mobile_from_register(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_registered", Activity.MODE_PRIVATE);
+        return sp.getString("mobile", "");
     }
 
 }

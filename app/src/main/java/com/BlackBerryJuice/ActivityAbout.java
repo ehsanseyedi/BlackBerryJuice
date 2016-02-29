@@ -15,7 +15,6 @@ public class ActivityAbout extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.about_layout);
-
         desc = (EditText)findViewById(R.id.desc);
         desc.setTypeface(ActivitySplash.F6);
 

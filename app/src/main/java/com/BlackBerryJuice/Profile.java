@@ -29,7 +29,18 @@ public class Profile extends Activity {
         Edit_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Profile.this,EditProfile.class));
+                //startActivity(new Intent(Profile.this, EditProfile.class));
+                //finish();
+            }
+        });
+
+        RelativeLayout Exit = (RelativeLayout) findViewById(R.id.Exit_Button);
+        Exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Login.clear_code_and_mobile_on_login(Profile.this);
+                Register.clear_code_and_mobile_on_register(Profile.this);
+                startActivity(new Intent(Profile.this, ActivityMainMenu.class));
                 finish();
             }
         });

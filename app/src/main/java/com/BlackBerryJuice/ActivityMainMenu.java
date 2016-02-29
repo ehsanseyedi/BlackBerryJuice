@@ -81,6 +81,8 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	ImageView g1;
 	ImageView g2;
 	ImageView g3;
+	Intent gotoprofile;
+	Intent gotologin;
 	Intent profile;
 	SliderLayout mDemoSlider;
 	TextView scrollingtext;
@@ -247,54 +249,50 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			}
 		});
 
-		profile = new Intent(ActivityMainMenu.this, Profile.class);
-		ImageView profile_textscroller = (ImageView) findViewById(R.id.profile);
-		ImageView profiles = (ImageView) findViewById(R.id.profile2);
-		profile_textscroller.setOnClickListener(new View.OnClickListener() {
+		gotoprofile = new Intent(ActivityMainMenu.this, Profile.class);
+		gotologin = new Intent(ActivityMainMenu.this, Login.class);
+		ImageView profile2 = (ImageView) findViewById(R.id.profile);
+		profile2.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(profile);
-				finish();
-			}
-		});
-		profiles.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				startActivity(profile);
+				if(!Register.load_code_from_register(ActivityMainMenu.this).equals("") || !Login.load_code_from_login(ActivityMainMenu.this).equals("")) {
+					startActivity(gotoprofile);
+				}else{
+					startActivity(gotologin);
+				}
 				finish();
 			}
 		});
 	}
-
 	// show confirm dialog to ask user to delete previous order or not
 	void showAlertDialog() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle(R.string.confirm);
-		builder.setMessage(getString(R.string.db_exist_alert));
-		builder.setCancelable(false);
-		builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				// delete order data when yes button clicked
-				dbhelper.deleteAllData();
-				dbhelper.close();
-
-			}
-		});
-
-		builder.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				// close dialog when no button clicked
-				dbhelper.close();
-				dialog.cancel();
-			}
-		});
-		AlertDialog alert = builder.create();
-		alert.show();
-
+//		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//		builder.setTitle(R.string.confirm);
+//		builder.setMessage(getString(R.string.db_exist_alert));
+//		builder.setCancelable(false);
+//		builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+//
+//			public void onClick(DialogInterface dialog, int which) {
+//				// TODO Auto-generated method stub
+//				// delete order data when yes button clicked
+//				dbhelper.deleteAllData();
+//				dbhelper.close();
+//
+//			}
+//		});
+//
+//		builder.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+//
+//			public void onClick(DialogInterface dialog, int which) {
+//				// TODO Auto-generated method stub
+//				// close dialog when no button clicked
+//				dbhelper.close();
+//				dialog.cancel();
+//			}
+//		});
+//		AlertDialog alert = builder.create();
+//		alert.show();
+		dbhelper.close();
 	}
 
 	@Override

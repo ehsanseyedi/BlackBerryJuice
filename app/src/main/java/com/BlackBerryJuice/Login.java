@@ -26,14 +26,13 @@ import android.widget.Toast;
 
 public class Login extends Activity {
 
-    private EditText usertext,passtext;
+    public EditText usertext,passtext;
     private Button login;
     private TextView register;
 
     public static String res="";
     private int count=0;
     private SharedPreferences sp;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +45,12 @@ public class Login extends Activity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
         }
-        setContentView(R.layout.activity_login);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);// keyboard hidden
         setContentView(R.layout.activity_login);
-
-
         usertext =(EditText) findViewById(R.id.username);
         passtext =(EditText) findViewById(R.id.phone);
+        //Bundle b = getIntent().getExtras();
+
 
 
         login =(Button) findViewById(R.id.loginBtn);
@@ -87,7 +85,7 @@ public class Login extends Activity {
 
 
     @SuppressWarnings("unchecked")
-    private void login1(final String code,String mobile){
+    private void login1(final String code, final String mobile){
 
         if(((usertext.getText().toString().trim().length()==0)) || ((passtext.getText().toString().trim().length()==0))){
 
@@ -121,49 +119,50 @@ public class Login extends Activity {
             pd.show();
 
             final Timer tm=new Timer();
-            tm.scheduleAtFixedRate(new TimerTask(){
+            tm.scheduleAtFixedRate(new TimerTask() {
                 public void run() {
-                    runOnUiThread(new Runnable(){
+                    runOnUiThread(new Runnable() {
                         public void run() {
 
                             count++;
 
-                            if(count==25){
+                            if (count == 25) {
 
                                 pd.cancel();
                                 tm.cancel();
-                                new loginserver(Constant.Login,code,"").cancel(true);
-                                Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط با سرور", Toast.LENGTH_LONG).show();}
+                                new loginserver(Constant.Login, code, "").cancel(true);
+                                Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط با سرور", Toast.LENGTH_LONG).show();
+                            }
 
-
-                            if(res.equals("ok")){
+                            if (res.equals("ok")) {
 
                                 pd.cancel();
 
-                                sp=getApplicationContext().getSharedPreferences("userP", 0);
-                                Editor edit=sp.edit();
+                                sp = getApplicationContext().getSharedPreferences("userP", 0);
+                                Editor edit = sp.edit();
                                 edit.putString("email", code);
                                 edit.commit();
-                                final String s= sp.getString("email", "");
-
-                                Intent ed=new Intent(Login.this,Review.class);
+                                final String s = sp.getString("email", "");
+                                save_code_and_mobile_on_login(code,mobile,Login.this);
+                                Intent ed = new Intent(Login.this, Profile.class);
                                 ed.putExtra("email", s);
-                                res="";
+                                res = "";
                                 tm.cancel();
                                 f();
-                                startActivity(ed);}
-                            else if(res.equals("wrong password")){
+                                startActivity(ed);
+                            } else if (res.equals("wrong password")) {
 
                                 pd.cancel();
                                 Toast.makeText(getApplicationContext(), "کد اشتراک یا شماره موبایل صحیح نیست", Toast.LENGTH_LONG).show();
-                                res="";
-                                tm.cancel();}
-                            else if(res.equals("no user")){
+                                res = "";
+                                tm.cancel();
+                            } else if (res.equals("no user")) {
 
                                 pd.cancel();
                                 Toast.makeText(getApplicationContext(), "این کاربر وجود ندارد", Toast.LENGTH_LONG).show();
-                                res="";
-                                tm.cancel();}
+                                res = "";
+                                tm.cancel();
+                            }
 
                         }
 
@@ -177,8 +176,38 @@ public class Login extends Activity {
 
     }
 
+    public static void save_code_and_mobile_on_login(String code,String mobile,Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_loged_in", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("code", code);
+        editor.putString("mobile", mobile);
+        editor.commit();
+    }
+
+    public static void clear_code_and_mobile_on_login(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_loged_in", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear();
+        editor.commit();
+    }
+
+    public static String load_code_from_login(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_loged_in", Activity.MODE_PRIVATE);
+        return sp.getString("code", "");
+    }
+
+    public static String load_mobile_from_login(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_loged_in", Activity.MODE_PRIVATE);
+        return sp.getString("mobile", "");
+    }
+
     private void f(){
         this.finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(Login.this,ActivityMainMenu.class));
+        finish();
+    }
 }
