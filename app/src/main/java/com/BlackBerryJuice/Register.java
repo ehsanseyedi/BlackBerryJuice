@@ -2,10 +2,13 @@ package com.BlackBerryJuice;
 
 
 
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -136,7 +139,6 @@ public class Register extends Activity {
                 SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
                 ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
                 phone1.setError(ssbuilder);}
-
         }
         else{
 
@@ -164,7 +166,7 @@ public class Register extends Activity {
                                 res="";
                                 tm.cancel();}
                             else if(res.toLowerCase().contains("ok")){
-                                Toast.makeText(Register.this, res ,Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(Register.this, res ,Toast.LENGTH_SHORT).show();
                                 pd.cancel();
                                 Toast.makeText(getApplicationContext(), "ثبت نام با موفقیت انجام شد", Toast.LENGTH_LONG).show();
                                 String Code = res.replace("ok","");
@@ -189,6 +191,25 @@ public class Register extends Activity {
 
         }
     }
+
+    public static void save_code_and_mobile(String code,String mobile,Context c) {
+        SharedPreferences sp = c.getSharedPreferences("logininfo", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("code", code);
+        editor.putString("mobile", mobile);
+        editor.commit();
+    }
+
+    public static String load_code(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("logininfo", Activity.MODE_PRIVATE);
+        return sp.getString("code", null);
+    }
+
+    public static String load_mobile(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("logininfo", Activity.MODE_PRIVATE);
+        return sp.getString("mobile", null);
+    }
+
 
 
 }

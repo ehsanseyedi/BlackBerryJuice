@@ -101,11 +101,11 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		}
 		setContentView(R.layout.the_new_main_activity);
 
-		Display display = getWindowManager().getDefaultDisplay();
-		Point size2 = new Point();
-		display.getSize(size2);
-		widthofscreen = size2.x;
-		Toast.makeText(this,"px:" + widthofscreen,Toast.LENGTH_SHORT).show();
+		//Display display = getWindowManager().getDefaultDisplay();
+		//Point size2 = new Point();
+		//display.getSize(size2);
+		//widthofscreen = size2.x;
+		//Toast.makeText(this,"px:" + widthofscreen,Toast.LENGTH_SHORT).show();
 
 		mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
