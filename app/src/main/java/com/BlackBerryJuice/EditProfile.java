@@ -179,7 +179,6 @@ public class EditProfile extends Activity{
     }
 
     private void po(String temp){
-
         String code;
         int f=0;
         int c=0;

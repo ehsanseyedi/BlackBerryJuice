@@ -240,7 +240,7 @@ public class ActivityReservation extends Activity implements
 		dpd.show(getFragmentManager(), DATEPICKER);
 	}
 
-	public String MonthName(int i)
+	public static String MonthName(int i)
 	{
 		switch (i) {
 			case 1:

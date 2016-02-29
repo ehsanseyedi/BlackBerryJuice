@@ -4,288 +4,300 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:foo="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:gravity="center">
+    android:orientation="vertical"
+    tools:context=".Register">
 
     <ScrollView
         android:layout_width="match_parent"
+        android:isScrollContainer="false"
         android:layout_height="wrap_content">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="vertical"
-        android:padding="5dp"
-        tools:ignore="UselessParent" >
-
-        <com.BlackBerryJuice.utils.TextViewPlus
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="ثبت نام"
-            android:layout_gravity="center"
-            android:textColor="#2A2A2A"
-            android:layout_marginBottom="10dp"
-            foo:customFont="fonts/IRANSansMobile_Medium.ttf"/>
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/backg_2"
-            android:layout_marginTop="7dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="5dp"
+            tools:ignore="UselessParent" >
 
-            <EditText
-                android:id="@+id/name"
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="ثبت نام"
+                android:layout_gravity="center"
+                android:textColor="#2A2A2A"
+                android:layout_marginBottom="10dp"
+                foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                android:layout_marginTop="10dp" />
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="نام و نام خانوادگی"
-                android:background="#00000000"
-                android:inputType="text"
-                android:gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/EditText_Color_Text"
-                android:textColorHint="@color/EditText_Color_Hint"
-                android:text="xxxx">
-            </EditText>
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/name_1"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="false"
-                android:adjustViewBounds="true"
-                android:padding="12dp"
-                android:layout_alignParentLeft="true" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/backg_2"
-            android:layout_marginTop="7dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
+                android:background="@drawable/backg_2"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
 
-            <EditText
-                android:id="@+id/mobile"
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="@dimen/medfont"
+                    android:hint="نام و نام خانوادگی"
+                    android:background="#00000000"
+                    android:inputType="text"
+                    android:gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:imeOptions="flagNoFullscreen"
+                    android:nestedScrollingEnabled="false"
+                    android:textColor="@color/EditText_Color_Text"
+                    android:textColorHint="@color/EditText_Color_Hint"
+                    android:text="xxxx">
+                </EditText>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/name_1"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="false"
+                    android:adjustViewBounds="true"
+                    android:padding="12dp"
+                    android:layout_alignParentLeft="true" />
+            </RelativeLayout>
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="شماره موبایل"
-                android:background="#00000000"
-                android:gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/EditText_Color_Text"
-                android:textColorHint="@color/EditText_Color_Hint"
-                android:inputType="phone"
-                android:phoneNumber="true">
-            </EditText>
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/phone_1"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="false"
-                android:adjustViewBounds="true"
-                android:padding="12dp"
-                android:layout_alignParentLeft="true" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/backg_2"
-            android:layout_marginTop="7dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
+                android:background="@drawable/backg_2"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
 
-            <EditText
-                android:id="@+id/bithday"
+                <EditText
+                    android:id="@+id/mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="@dimen/medfont"
+                    android:hint="شماره موبایل"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/EditText_Color_Text"
+                    android:textColorHint="@color/EditText_Color_Hint"
+                    android:inputType="phone"
+                    android:phoneNumber="true">
+                </EditText>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/phone_1"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="false"
+                    android:adjustViewBounds="true"
+                    android:padding="12dp"
+                    android:layout_alignParentLeft="true" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backg_2"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <com.BlackBerryJuice.utils.TextViewPlus
+                    android:id="@+id/bithday"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#00000000"
+                    android:textSize="@dimen/medfont"
+                    foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                    android:gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/EditText_Color_Text"
+                    android:text="تاریخ تولد">
+                </com.BlackBerryJuice.utils.TextViewPlus>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/birthday_1"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="false"
+                    android:adjustViewBounds="true"
+                    android:padding="12dp"
+                    android:layout_alignParentBottom="false"
+                    android:layout_alignParentLeft="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backg_2"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp" >
+
+                <EditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="text"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/EditText_Color_Text"
+                    android:textColorHint="@color/EditText_Color_Hint"
+                    android:imeOptions="flagNoFullscreen"
+                    android:nestedScrollingEnabled="false"
+                    android:textSize="@dimen/medfont"
+                    android:hint="ادرس"
+                    android:text="xxxxx" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/address_1"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="false"
+                    android:adjustViewBounds="true"
+                    android:padding="12dp"
+                    android:layout_alignParentBottom="false"
+                    android:layout_alignParentLeft="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backg_2"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp" >
+
+                <EditText
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="@dimen/medfont"
+                    android:hint="تلفن ثابت"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/EditText_Color_Text"
+                    android:textColorHint="@color/EditText_Color_Hint"
+                    android:imeOptions="flagNoFullscreen"
+                    android:nestedScrollingEnabled="false"
+                    android:text="xxx"
+                    android:inputType="phone"
+                    android:phoneNumber="true"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/phone_2"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="false"
+                    android:adjustViewBounds="true"
+                    android:padding="12dp"
+                    android:layout_alignParentBottom="false"
+                    android:layout_alignParentLeft="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backg_2"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp" >
+
+                <EditText
+                    android:id="@+id/instagram"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="@dimen/medfont"
+                    android:hint="اینستاگرام"
+                    android:inputType="text"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/EditText_Color_Text"
+                    android:textColorHint="@color/EditText_Color_Hint"
+                    android:imeOptions="flagNoFullscreen"
+                    android:nestedScrollingEnabled="false" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/instagram_1"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="false"
+                    android:adjustViewBounds="true"
+                    android:padding="12dp"
+                    android:layout_alignParentBottom="false"
+                    android:layout_alignParentLeft="true" />
+            </RelativeLayout>
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="شرایط ثبت نام"
+                android:layout_gravity="center"
+                android:textColor="#2A2A2A"
+                foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"
+                android:layout_marginTop="14dp"
+                android:visibility="gone" />
+
+
+            <Button
+                android:id="@+id/registerBtn"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="تاریخ تولد"
-                android:inputType="text"
-                android:background="#00000000"
-                android:gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/EditText_Color_Text"
-                android:textColorHint="@color/EditText_Color_Hint"
-                android:imeOptions="flagNoFullscreen"
-                android:nestedScrollingEnabled="false"
-                android:text="xxxxx">
-            </EditText>
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/birthday_1"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="false"
-                android:adjustViewBounds="true"
-                android:padding="12dp"
-                android:layout_alignParentBottom="false"
-                android:layout_alignParentLeft="true" />
-        </RelativeLayout>
+                android:background="@drawable/themainbutton"
+                android:text="ایجاد حساب کاربری"
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="#FFFFFF" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/backg_2"
-            android:layout_marginTop="7dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp" >
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:id="@+id/reg_cancel_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="انصراف"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_gravity="center"
+                android:textColor="#000000"
+                foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/backg_2"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"/>
 
-            <EditText
-                android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="text"
-                android:background="#00000000"
-                android:gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/EditText_Color_Text"
-                android:textColorHint="@color/EditText_Color_Hint"
-                android:imeOptions="flagNoFullscreen"
-                android:nestedScrollingEnabled="false"
-                android:hint="ادرس"
-                android:text="xxxxx" />
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/address_1"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="false"
-                android:adjustViewBounds="true"
-                android:padding="12dp"
-                android:layout_alignParentBottom="false"
-                android:layout_alignParentLeft="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/backg_2"
-            android:layout_marginTop="7dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp" >
-
-            <EditText
-                android:id="@+id/phone"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="تلفن ثابت"
-                android:inputType="text"
-                android:background="#00000000"
-                android:gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/EditText_Color_Text"
-                android:textColorHint="@color/EditText_Color_Hint"
-                android:imeOptions="flagNoFullscreen"
-                android:nestedScrollingEnabled="false"
-                android:text="xxx" />
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/phone_2"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="false"
-                android:adjustViewBounds="true"
-                android:padding="12dp"
-                android:layout_alignParentBottom="false"
-                android:layout_alignParentLeft="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/backg_2"
-            android:layout_marginTop="7dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp" >
-
-            <EditText
-                android:id="@+id/instagram"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="اینستاگرام"
-                android:inputType="text"
-                android:background="#00000000"
-                android:gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/EditText_Color_Text"
-                android:textColorHint="@color/EditText_Color_Hint"
-                android:imeOptions="flagNoFullscreen"
-                android:nestedScrollingEnabled="false" />
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/instagram_1"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="false"
-                android:adjustViewBounds="true"
-                android:padding="12dp"
-                android:layout_alignParentBottom="false"
-                android:layout_alignParentLeft="true" />
-        </RelativeLayout>
-
-        <com.BlackBerryJuice.utils.TextViewPlus
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="شرایط ثبت نام"
-            android:layout_gravity="center"
-            android:textColor="#2A2A2A"
-            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"
-            android:layout_marginTop="14dp"
-            android:visibility="gone" />
-
-
-        <Button
-            android:id="@+id/registerBtn"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/themainbutton"
-            android:text="ایجاد حساب کاربری"
-            android:layout_marginTop="14dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:textColor="#FFFFFF" />
-
-        <com.BlackBerryJuice.utils.TextViewPlus
-            android:id="@+id/reg_cancel_link"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="انصراف"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_gravity="center"
-            android:textColor="#000000"
-            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/backg_2"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"/>
-
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></LinearLayout>
 </LinearLayout>
