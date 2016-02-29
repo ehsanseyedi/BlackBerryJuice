@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/paper_bloo"
+    android:id="@+id/background" >
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="42dp"
+        android:background="#008aff"
+        android:gravity="center|right"
+        android:orientation="horizontal"
+        android:paddingRight="12dp" >
+
+        <TextView
+            android:id="@+id/more_header"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingRight="12dp"
+            android:text="ویرایش اطلاعات"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/ImageView02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:padding="3dp"
+            android:src="@drawable/ic_launcher" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/liner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" >
+
+        <Button
+            android:id="@+id/edit_exit_k"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:text="انصراف" />
+
+        <Button
+            android:id="@+id/edit_update_k"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:text="بروزرسانی" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/liner"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/header" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <com.cengalabs.flatui.views.FlatEditText
+                        android:id="@+id/edit_name_e"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:textColor="#ff000000"
+                        flatui:fl_fieldStyle="fl_box"
+                        flatui:fl_theme="@array/sea" />
+
+                    <TextView
+                        android:id="@+id/edit_name_t"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:gravity="right"
+                        android:layout_height="wrap_content"
+                        android:text="نام:"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <com.cengalabs.flatui.views.FlatEditText
+                        android:id="@+id/edit_family_e"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:textColor="#ff000000"
+                        flatui:fl_fieldStyle="fl_box"
+                        flatui:fl_theme="@array/sea" />
+
+                    <TextView
+                        android:id="@+id/edit_family_t"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:gravity="right"
+                        android:layout_height="wrap_content"
+                        android:text="نام خانوادگی:"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!-- ///////////////////////////////////////////////////////// -->
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <com.cengalabs.flatui.views.FlatEditText
+                        android:id="@+id/edit_oldpass_e"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:textColor="#ff000000"
+                        flatui:fl_fieldStyle="fl_box"
+                        flatui:fl_theme="@array/sea" />
+
+                    <TextView
+                        android:id="@+id/edit_oldpass_t"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:gravity="right"
+                        android:layout_height="wrap_content"
+                        android:text="رمزعبور قدیمی: "
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <com.cengalabs.flatui.views.FlatEditText
+                        android:id="@+id/edit_newpass_e"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textColor="#ff000000"
+                        flatui:fl_fieldStyle="fl_box"
+                        flatui:fl_theme="@array/sea" />
+
+                    <TextView
+                        android:id="@+id/edit_newpass_t"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:gravity="right"
+                        android:layout_height="wrap_content"
+                        android:text="رمزعبور جدید: "
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+
+
+
+
+            <!-- ///////////////////////////////////////////////////////// -->
+            <!--
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" >
+
+                                <com.cengalabs.flatui.views.FlatEditText
+                                    android:id="@+id/edit_oldpass_e"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0.5"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:ems="10"
+                                    android:inputType="textPassword"
+                                    android:textColor="#ff000000"
+                                    flatui:fl_fieldStyle="fl_box"
+                                    flatui:fl_theme="@array/sea" />
+
+                                <TextView
+                                    android:id="@+id/edit_oldpass"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0.5"
+                                    android:gravity="right"
+                                    android:layout_height="wrap_content"
+                                    android:text="کلمه عبور:"
+                                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" >
+
+                                <com.cengalabs.flatui.views.FlatEditText
+                                    android:id="@+id/edit_newpass_e"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0.5"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:ems="10"
+                                    android:inputType="textPassword"
+                                    android:textColor="#ff000000"
+                                    flatui:fl_fieldStyle="fl_box"
+                                    flatui:fl_theme="@array/sea" />
+
+                                <TextView
+                                    android:id="@+id/edit_newpass_t"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0.5"
+                                    android:gravity="right"
+                                    android:layout_height="wrap_content"
+                                    android:text="کلمه عبور جدید:"
+                                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                            </LinearLayout>
+
+                        </RelativeLayout>
+             -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/edit_email_e"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ff000000" />
+
+                    <TextView
+                        android:id="@+id/edit_email_t"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:gravity="right"
+                        android:layout_height="wrap_content"
+                        android:text="ایمیل:"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+
+                    <TextView
+                        android:id="@+id/edit_status_e"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:textColor="#ff000000" />
+
+                    <TextView
+                        android:id="@+id/edit_status_t"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:gravity="right"
+                        android:layout_height="wrap_content"
+                        android:text="وضعیت:"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

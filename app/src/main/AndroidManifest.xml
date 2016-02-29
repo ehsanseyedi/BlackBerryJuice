@@ -89,12 +89,16 @@
         <activity
             android:name=".User_Buy_Records"
             android:screenOrientation="portrait" />
-        <activity android:name=".Login"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Register"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Review"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Register"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Review"
+            android:screenOrientation="portrait" />
+        <activity android:name=".EditProfile"></activity>
     </application>
 
 </manifest>
