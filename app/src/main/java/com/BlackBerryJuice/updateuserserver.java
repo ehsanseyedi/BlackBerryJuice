@@ -16,21 +16,26 @@ public class updateuserserver extends AsyncTask{
 
     private String Link="";
     private String Name="";
-    private String Family="";
-    private String Pass="";
-    private String Email="";
+    private String Mobile="";
+    private String Birthday="";
+    private String Address="";
+    private String Phone="";
+    private String Instagram="";
+    private String Status="";
     private String Code="";
 
-    public updateuserserver(String link,String name,String family,String pass,String email,String code){
+    public updateuserserver(String link,String name,String mobile,String birthday,String address,String phone, String instagram,String code,String status){
 
         Link=link;
         Name=name;
-        Family=family;
-        Pass=pass;
-        Email=email;
+        Mobile=mobile;
+        Birthday=birthday;
+        Address=address;
+        Phone=phone;
+        Instagram=instagram;
+        Status=status;
         Code=code;
     }
-
 
 
     @Override
@@ -39,10 +44,14 @@ public class updateuserserver extends AsyncTask{
 
         try{
             String data=URLEncoder.encode("name","UTF8")+"="+URLEncoder.encode(Name,"UTF8");
-            data+="&"+URLEncoder.encode("family","UTF8")+"="+URLEncoder.encode(Family,"UTF8");
-            data+="&"+URLEncoder.encode("password","UTF8")+"="+URLEncoder.encode(Pass,"UTF8");
-            data+="&"+URLEncoder.encode("email","UTF8")+"="+URLEncoder.encode(Email,"UTF8");
+            data+="&"+URLEncoder.encode("mobile","UTF8")+"="+URLEncoder.encode(Mobile,"UTF8");
+            data+="&"+URLEncoder.encode("birthday","UTF8")+"="+URLEncoder.encode(Birthday,"UTF8");
+            data+="&"+URLEncoder.encode("address","UTF8")+"="+URLEncoder.encode(Address,"UTF8");
+            data+="&"+URLEncoder.encode("phone","UTF8")+"="+URLEncoder.encode(Phone,"UTF8");
+            data+="&"+URLEncoder.encode("instagram","UTF8")+"="+URLEncoder.encode(Instagram,"UTF8");
+            data+="&"+URLEncoder.encode("instagram","UTF8")+"="+URLEncoder.encode(Instagram,"UTF8");
             data+="&"+URLEncoder.encode("code","UTF8")+"="+URLEncoder.encode(Code,"UTF8");
+            data+="&"+URLEncoder.encode("status","UTF8")+"="+URLEncoder.encode(Status,"UTF8");
 
 
             URL mylink=new URL(Link);
@@ -65,7 +74,7 @@ public class updateuserserver extends AsyncTask{
 
             }
 
-            editprofile.res=sb.toString();
+            EditProfile.res=sb.toString();
 
 
 

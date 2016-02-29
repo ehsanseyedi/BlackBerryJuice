@@ -5,10 +5,13 @@ package com.BlackBerryJuice;
         import android.app.Activity;
         import android.app.ProgressDialog;
         import android.content.DialogInterface;
+        import android.content.Intent;
+        import android.os.Build;
         import android.os.Bundle;
         import android.view.View;
         import android.view.View.OnClickListener;
         import android.view.Window;
+        import android.view.WindowManager;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.TextView;
@@ -17,10 +20,10 @@ package com.BlackBerryJuice;
 public class EditProfile extends Activity{
 
 
-    private EditText name,family,oldpass,newpass;
+    EditText name,mobile,birthday,address,phone,instagram;
     @SuppressWarnings("unused")
-    private TextView tname,tfamily,toldpass,tnewpass,temail,tstatus;
-    private TextView email,status;
+    //private TextView tname,tfamily,toldpass,tnewpass,temail,tstatus;
+    private TextView email;
     @SuppressWarnings("unused")
     private Button update,exit;
     public static String res="";
@@ -32,7 +35,13 @@ public class EditProfile extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.editfile);
+        if(Build.VERSION.SDK_INT >= 21) {
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
+        }
+        setContentView(R.layout.activity_edit_user_profile);
 
         tarif();
 
@@ -41,10 +50,10 @@ public class EditProfile extends Activity{
 
         email.setText(s);
 
-        new updateuserserver("http://unixantivirus.wc.lt/update.php","","","",s,"get").execute();
+        //new updateuserserver(Constant.Update_ProfileURL,"","","",s,"get").execute();
 
         final Timer tm=new Timer();
-        final ProgressDialog pd=new ProgressDialog(editprofile.this);
+        final ProgressDialog pd=new ProgressDialog(EditProfile.this);
         pd.setMessage("لطفا صبر کنید"+"\n"+"در حال دریافت اطلاعات از سرور");
         pd.show();
 
@@ -54,7 +63,7 @@ public class EditProfile extends Activity{
 
                 tm.cancel();
                 pd.cancel();
-                new updateuserserver("http://unixantivirus.wc.lt/update.php","","","",s,"get").cancel(true);
+                //new updateuserserver(Constant.Update_ProfileURL,"","","",s,"get").cancel(true);
 
             }
         });
@@ -71,7 +80,7 @@ public class EditProfile extends Activity{
                             pd.cancel();
                             tm.cancel();
                             count=0;
-                            new updateuserserver("http://unixantivirus.wc.lt/update.php","","","",s,"get").cancel(true);
+                            //new updateuserserver(Constant.Update_ProfileURL,"","","",s,"get").cancel(true);
                             Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
                             finish();
 
@@ -100,25 +109,10 @@ public class EditProfile extends Activity{
             @Override
             public void onClick(View arg0) {
 
-
-                if(!oldpass.getText().toString().equals("")){
-
-                    if(oldpass.getText().toString().equals(pass)){
-
-                        pass=newpass.getText().toString();
-                    }else{
-
-                        Toast.makeText(getApplicationContext(), "کلمه عبور صحیح نیست", Toast.LENGTH_LONG).show();
-
-                    }
-
-                }
-
-                new updateuserserver("http://unixantivirus.wc.lt/update.php",name.getText().toString(),family.getText().toString(),pass,s,"put").execute();
+                //new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),mobile.getText().toString(),birthday.getText().toString(),address.getText().toString(),phone.getText().toString(),instagram.getText().toString(),"put").execute();
 
 
-
-                final ProgressDialog pd=new ProgressDialog(editprofile.this);
+                final ProgressDialog pd=new ProgressDialog(EditProfile.this);
                 pd.setMessage("لطفا صبر کنید"+"در حال ارسال اطلاعات به سرور");
                 pd.show();
 
@@ -128,7 +122,6 @@ public class EditProfile extends Activity{
                     public void run() {
                         runOnUiThread(new Runnable(){
                             public void run() {
-
 
                                 count++;
                                 if(count==30){
@@ -163,29 +156,31 @@ public class EditProfile extends Activity{
 
     private void tarif(){
 
-        name=(EditText) findViewById(R.id.edit_name_e);
-        family=(EditText) findViewById(R.id.edit_family_e);
-        oldpass=(EditText) findViewById(R.id.edit_oldpass_e);
-        newpass=(EditText) findViewById(R.id.edit_newpass_e);
-        email=(TextView) findViewById(R.id.edit_email_e);
+        name    =(EditText) findViewById(R.id.name);
+        mobile    =(EditText) findViewById(R.id.mobile);
+        birthday    =(EditText) findViewById(R.id.birthday);
+        address    =(EditText) findViewById(R.id.address);
+        phone    =(EditText) findViewById(R.id.phone);
+        instagram    =(EditText) findViewById(R.id.instagram);
 
-        tname=(TextView) findViewById(R.id.edit_name_t);
-        tfamily=(TextView) findViewById(R.id.edit_family_t);
-        toldpass=(TextView) findViewById(R.id.edit_oldpass_t);
-        tnewpass=(TextView) findViewById(R.id.edit_newpass_t);
-        temail=(TextView) findViewById(R.id.edit_email_t);
-        tstatus=(TextView) findViewById(R.id.edit_status_t);
 
-        status=(TextView) findViewById(R.id.edit_status_e);
+//        tname=(TextView) findViewById(R.id.edit_name_t);
+//        tfamily=(TextView) findViewById(R.id.edit_family_t);
+//        toldpass=(TextView) findViewById(R.id.edit_oldpass_t);
+//        tnewpass=(TextView) findViewById(R.id.edit_newpass_t);
+//        temail=(TextView) findViewById(R.id.edit_email_t);
+//        tstatus=(TextView) findViewById(R.id.edit_status_t);
 
-        update=(Button) findViewById(R.id.edit_update_k);
-        exit=(Button) findViewById(R.id.edit_exit_k);
+        //status=(TextView) findViewById(R.id.edit_status_e);
+
+        update=(Button) findViewById(R.id.update);
+        exit=(Button) findViewById(R.id.cancel);
 
     }
 
     private void po(String temp){
 
-
+        String code;
         int f=0;
         int c=0;
         for(int i=0;i<temp.length();i++){
@@ -200,33 +195,38 @@ public class EditProfile extends Activity{
                 }
                 if(c==1){
 
-                    family.setText(t);
+                    mobile.setText(t);
                 }
                 if(c==2){
 
-                    email.setText(t);
+                    birthday.setText(t);
                 }
                 if(c==3){
 
-                    pass=t;
+                    address.setText(t);
                 }
                 if(c==4){
 
-                    if(t.equals("a")){
-                        status.setText("دیتابیس شما آپدیت است");
-                    }else if(t.equals("b")){
-                        status.setText("دیتابیس شما نیاز به بروزرسانی دارد");
-                    }
-
+                    phone.setText(t);
                 }
+                if(c==5){
 
+                    instagram.setText(t);
+                }
+                if(c==6){
+
+                    code=t;
+                }
                 c+=1;
                 f=i+1;
             }
-
         }
+    }
 
-
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(EditProfile.this,Profile.class));
+        finish();
     }
 
 }

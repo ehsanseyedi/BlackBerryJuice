@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="ثبت نام"
+            android:text="ویرایش اطلاعات کاربر"
             android:layout_gravity="center"
             android:textColor="#2A2A2A"
             android:layout_marginBottom="10dp"
@@ -50,8 +50,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/EditText_Color_Text"
-                android:textColorHint="@color/EditText_Color_Hint"
-                android:text="xxxx">
+                android:textColorHint="@color/EditText_Color_Hint">
             </EditText>
             <ImageView
                 android:layout_width="50dp"
@@ -107,7 +106,7 @@
             android:layout_marginRight="15dp">
 
             <EditText
-                android:id="@+id/bithday"
+                android:id="@+id/birthday"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="تاریخ تولد"
@@ -120,8 +119,7 @@
                 android:textColor="@color/EditText_Color_Text"
                 android:textColorHint="@color/EditText_Color_Hint"
                 android:imeOptions="flagNoFullscreen"
-                android:nestedScrollingEnabled="false"
-                android:text="xxxxx">
+                android:nestedScrollingEnabled="false">
             </EditText>
             <ImageView
                 android:layout_width="50dp"
@@ -157,8 +155,7 @@
                 android:textColorHint="@color/EditText_Color_Hint"
                 android:imeOptions="flagNoFullscreen"
                 android:nestedScrollingEnabled="false"
-                android:hint="ادرس"
-                android:text="xxxxx" />
+                android:hint="ادرس" />
 
             <ImageView
                 android:layout_width="50dp"
@@ -194,8 +191,7 @@
                 android:textColor="@color/EditText_Color_Text"
                 android:textColorHint="@color/EditText_Color_Hint"
                 android:imeOptions="flagNoFullscreen"
-                android:nestedScrollingEnabled="false"
-                android:text="xxx" />
+                android:nestedScrollingEnabled="false" />
 
             <ImageView
                 android:layout_width="50dp"
@@ -260,18 +256,18 @@
 
 
         <Button
-            android:id="@+id/registerBtn"
+            android:id="@+id/update"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/themainbutton"
-            android:text="ایجاد حساب کاربری"
+            android:text="بروزرسانی اطلاعات"
             android:layout_marginTop="14dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:textColor="#FFFFFF" />
 
         <com.BlackBerryJuice.utils.TextViewPlus
-            android:id="@+id/reg_cancel_link"
+            android:id="@+id/cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="انصراف"

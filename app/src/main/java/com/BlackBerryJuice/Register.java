@@ -158,15 +158,17 @@ public class Register extends Activity {
                                 tm.cancel();
                                 count=0;
                                 Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();}
-
                             if(res.equals("ut")){
                                 pd.cancel();
-                                Toast.makeText(getApplicationContext(), "نام کاربری انتخابی شما تکراری میباشد.لطفا یک نام کاربری دیگر انتخاب نمایید", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "شماره موبایل شما قبلا ثبت شده است، لطفا وارد شوید", Toast.LENGTH_LONG).show();
                                 res="";
                                 tm.cancel();}
-                            else if(res.equals("ok")){
+                            else if(res.toLowerCase().contains("ok")){
+                                Toast.makeText(Register.this, res ,Toast.LENGTH_SHORT).show();
                                 pd.cancel();
                                 Toast.makeText(getApplicationContext(), "ثبت نام با موفقیت انجام شد", Toast.LENGTH_LONG).show();
+                                String Code = res.replace("ok","");
+                                Toast.makeText(Register.this,"کداشتراک: " + Code,Toast.LENGTH_SHORT).show();
                                 res="";
                                 tm.cancel();
                                 finish();}
@@ -176,7 +178,6 @@ public class Register extends Activity {
                                 Toast.makeText(getApplicationContext(), "خطا در عملیات ثبت نام", Toast.LENGTH_LONG).show();
                                 res="";
                                 tm.cancel();}
-
                         }
                     });
 

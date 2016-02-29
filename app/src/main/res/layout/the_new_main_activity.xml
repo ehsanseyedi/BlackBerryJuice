@@ -77,7 +77,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView2"
+                    android:id="@+id/profile"
                     android:src="@drawable/userr"
                     android:padding="10dp"
                     android:layout_alignParentTop="true"
@@ -90,8 +90,8 @@
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
-                    android:layout_toLeftOf="@+id/imageView2"
-                    android:layout_toStartOf="@+id/imageView2"
+                    android:layout_toLeftOf="@+id/profile"
+                    android:layout_toStartOf="@+id/profile"
                     android:gravity="center">
 
                     <com.BlackBerryJuice.MarqueeView
@@ -401,9 +401,10 @@
         <ImageView
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:id="@+id/imageView8"
+            android:id="@+id/profile2"
             android:src="@drawable/userw"
-            android:padding="15dp" />
+            android:padding="15dp"
+            android:visibility="gone" />
 
     </LinearLayout>
 </RelativeLayout>

@@ -81,6 +81,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	ImageView g1;
 	ImageView g2;
 	ImageView g3;
+	Intent profile;
 	SliderLayout mDemoSlider;
 	TextView scrollingtext;
 	int widthofscreen;
@@ -243,6 +244,24 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 				// optionally set background color using Palette
 				intent.putExtra("palette_color_type", PaletteColorType.VIBRANT);
 				startActivity(intent);
+			}
+		});
+
+		profile = new Intent(ActivityMainMenu.this, Profile.class);
+		ImageView profile_textscroller = (ImageView) findViewById(R.id.profile);
+		ImageView profiles = (ImageView) findViewById(R.id.profile2);
+		profile_textscroller.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(profile);
+				finish();
+			}
+		});
+		profiles.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(profile);
+				finish();
 			}
 		});
 	}
