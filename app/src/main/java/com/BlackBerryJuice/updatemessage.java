@@ -15,13 +15,12 @@ import java.net.URLEncoder;
  */
 public class updatemessage extends AsyncTask{
 
-    private String Message="";
     private String Code="";
     private String Link="";
 
-    public updatemessage(String link,String message, String code, String status){
+    public updatemessage(String link,String code, String status){
         Code=code;
-        Message=message;
+
         Link=link;
     }
 
@@ -29,8 +28,7 @@ public class updatemessage extends AsyncTask{
     protected String doInBackground(Object... arg0) {
 
         try{
-            String data=URLEncoder.encode("message","UTF8")+"="+URLEncoder.encode(Message,"UTF8");
-            data+="&"+URLEncoder.encode("address","UTF8")+"="+URLEncoder.encode(Code,"UTF8");
+            String data=URLEncoder.encode("code","UTF8")+"="+URLEncoder.encode(Code,"UTF8");
 
 
             URL mylink=new URL(Link);
