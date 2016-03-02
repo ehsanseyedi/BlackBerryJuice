@@ -70,13 +70,9 @@ public class updateuserserver extends AsyncTask{
             }
 
             EditProfile.res=sb.toString();
-
-
-
+            Profile.res_in_profile = sb.toString();
 
         }catch(Exception e){
-
-
 
         }
 

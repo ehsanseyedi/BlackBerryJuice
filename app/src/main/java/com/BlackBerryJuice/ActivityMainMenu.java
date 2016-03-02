@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.text.method.ScrollingMovementMethod;
@@ -87,6 +88,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	SliderLayout mDemoSlider;
 	TextView scrollingtext;
 	int widthofscreen;
+	public static String mes_inmain="";
 //	HorizontalScrollView sv;
 //	int scroll_pos;
 	public static Handler hHandler;
@@ -103,18 +105,38 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		}
 		setContentView(R.layout.the_new_main_activity);
 
-		//Display display = getWindowManager().getDefaultDisplay();
-		//Point size2 = new Point();
-		//display.getSize(size2);
-		//widthofscreen = size2.x;
-		//Toast.makeText(this,"px:" + widthofscreen,Toast.LENGTH_SHORT).show();
 
 		mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
 
 		scrollingtext = (TextView) findViewById(R.id.scrollingtext);
+		String curmes = ActivitySplash.load_user_special_message(ActivityMainMenu.this);
+		Log.e("saeed_curmes","cur: " + curmes);
+		if(curmes.equals("")){
+			scrollingtext.setText("کاربر مهمان عزیز، به تمشک سیاه خوش آمدید، برای استفاده از امکانات برنامه باید ثبت نام نمایید");
+		}
+		if(curmes.equals("")){
+			new updatemessage(Constant.Update_Message,EditProfile.load_code(ActivityMainMenu.this),"","get").execute();
+			new CountDownTimer(5000,1000) {
+				@Override
+				public void onFinish() {
 
-		scrollingtext.setText(ActivitySplash.load_user_special_message(ActivityMainMenu.this));
+				}
+
+				@Override
+				public void onTick(long millisUntilFinished) {
+					if (!mes_inmain.equals("")){
+						ActivitySplash.save_user_special_message(mes_inmain, ActivityMainMenu.this);
+						scrollingtext.setText(mes_inmain);
+						Log.e("saeed_timer", "loaded");
+						cancel();
+					}
+					Log.e("saeed_timer","tick");
+				}
+			}.start();
+		}
+
+
 
 		RelativeLayout order = (RelativeLayout) findViewById(R.id.Order_Cat_Button);
 		order.setOnClickListener(new View.OnClickListener() {

@@ -40,7 +40,7 @@ public class ActivitySplash extends Activity {
 		F5=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile.ttf");
 		F6=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light_Persian_Digits.ttf");
         
-        new CountDownTimer(5000,1000) {
+        new CountDownTimer(10000,1000) {
         	
 			@Override
 			public void onFinish() {
@@ -78,6 +78,6 @@ public class ActivitySplash extends Activity {
 
 	public static String load_user_special_message(Context c) {
 		SharedPreferences sp = c.getSharedPreferences("usermes", Activity.MODE_PRIVATE);
-		return sp.getString("message", "کاربر مهمان عزیز، به تمشک سیاه خوش آمدید، برای استفاده از امکانات برنامه باید ثبت نام نمایید");
+		return sp.getString("message", "");
 	}
 }

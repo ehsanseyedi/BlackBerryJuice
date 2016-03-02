@@ -128,7 +128,8 @@ public class Register extends Activity implements
                 String estring = "این قسمت را باید تکمیل کنید";
                 SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
                 ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
-                name1.setError(ssbuilder);}
+                name1.setError(ssbuilder);
+            }
 
             if(mobile1.getText().toString().trim().length()==0)
             {
@@ -181,7 +182,6 @@ public class Register extends Activity implements
                 SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
                 ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
                 phone1.setError(ssbuilder);}
-
         }
         else{
 
@@ -217,7 +217,6 @@ public class Register extends Activity implements
                                 newcode++;
                                 EditProfile.save_last_userinfo_cm(String.valueOf(newcode), mobile1.getText().toString(), Register.this);
                                 EditProfile.save_last_userinfo(name1.getText().toString(), bithday1.getText().toString(), address1.getText().toString(), phone1.getText().toString(), instagram1.getText().toString(), Register.this);
-                                //Log.e("saeed_edittext_test" , mobile1.getText().toString() + " " + bithday1.getText().toString() + " " +name1.getText().toString()  + " " +  phone1.getText().toString()+ " "+ instagram1.getText().toString() );
                                 set_user_registered(true,Register.this);
                                 res = "";
                                 tm.cancel();
@@ -232,11 +231,9 @@ public class Register extends Activity implements
                             }
                         }
                     });
-
                 }
 
             }, 1, 1000);
-
         }
     }
 

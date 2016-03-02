@@ -57,6 +57,7 @@ public class updatemessage extends AsyncTask{
             }
 
             ActivitySplash.mes=sb.toString();
+            ActivityMainMenu.mes_inmain=sb.toString();
 
 
 

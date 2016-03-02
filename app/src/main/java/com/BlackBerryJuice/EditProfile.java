@@ -62,7 +62,7 @@ public class EditProfile extends Activity{
         final ProgressDialog pd=new ProgressDialog(EditProfile.this);
         pd.setMessage("لطفا صبر کنید"+"\n"+"در حال دریافت اطلاعات از سرور");
         pd.show();
-
+        pd.setCancelable(false);
         pd.setOnCancelListener(new ProgressDialog.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface arg0) {

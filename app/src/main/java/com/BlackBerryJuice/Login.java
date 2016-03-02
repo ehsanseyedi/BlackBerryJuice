@@ -51,8 +51,6 @@ public class Login extends Activity {
         passtext =(EditText) findViewById(R.id.phone);
         //Bundle b = getIntent().getExtras();
 
-
-
         login =(Button) findViewById(R.id.loginBtn);
         login.setTypeface(ActivitySplash.F2);
         register =(TextView) findViewById(R.id.reg_now_link);
@@ -64,13 +62,10 @@ public class Login extends Activity {
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
-
                 login1(usertext.getText().toString(), passtext.getText().toString());
-
             }
 
         });
-
 
         register.setOnClickListener(new View.OnClickListener() {
 
@@ -82,7 +77,6 @@ public class Login extends Activity {
         });
 
     }
-
 
     @SuppressWarnings("unchecked")
     private void login1(final String code, final String mobile){
@@ -125,7 +119,6 @@ public class Login extends Activity {
                         public void run() {
 
                             count++;
-
                             if (count == 25) {
 
                                 pd.cancel();
@@ -146,7 +139,7 @@ public class Login extends Activity {
                                 set_user_logedin(true,Login.this);
                                 EditProfile.save_last_userinfo_cm(code, mobile, Login.this);
                                 Intent ed = new Intent(Login.this, Profile.class);
-                                ed.putExtra("email", s);
+                                ed.putExtra("fromlogin", true);
                                 res = "";
                                 tm.cancel();
                                 f();
@@ -164,7 +157,6 @@ public class Login extends Activity {
                                 res = "";
                                 tm.cancel();
                             }
-
                         }
 
                     });
