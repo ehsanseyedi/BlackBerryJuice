@@ -30,8 +30,8 @@ public class Profile extends Activity {
         Edit_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(Profile.this, EditProfile.class));
-                //finish();
+                startActivity(new Intent(Profile.this, EditProfile.class));
+                finish();
             }
         });
 

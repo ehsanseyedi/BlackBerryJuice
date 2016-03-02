@@ -27,7 +27,7 @@ public class EditProfile extends Activity{
     //private TextView tname,tfamily,toldpass,tnewpass,temail,tstatus;
     private TextView email;
     @SuppressWarnings("unused")
-    private Button update,exit;
+    private TextView update,exit;
     public static String res="";
     private String pass="";
     private int count=0;
@@ -44,6 +44,9 @@ public class EditProfile extends Activity{
             window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
         }
         setContentView(R.layout.activity_edit_user_profile);
+
+        update = (TextView) findViewById(R.id.update);
+        exit = (TextView) findViewById(R.id.cancel);
 
         tarif();
 
@@ -167,8 +170,8 @@ public class EditProfile extends Activity{
 
         //status=(TextView) findViewById(R.id.edit_status_e);
 
-        update=(Button) findViewById(R.id.update);
-        exit=(Button) findViewById(R.id.cancel);
+//        update=(Button) findViewById(R.id.update);
+//        exit=(Button) findViewById(R.id.cancel);
 
     }
 
@@ -218,7 +221,7 @@ public class EditProfile extends Activity{
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(EditProfile.this,Profile.class));
+        startActivity(new Intent(EditProfile.this, Profile.class));
         finish();
     }
 
@@ -277,6 +280,9 @@ public class EditProfile extends Activity{
         SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
         return sp.getString("insta", "");
     }
+
+
+
 
 }
 
