@@ -254,7 +254,7 @@ public class Register extends Activity implements
     }
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         String date = dayOfMonth+ " " + ActivityReservation.MonthName(monthOfYear + 1) + " " + year ;
-        DATE_GOES_TO_SERVER= year + "-" + (monthOfYear+1) + "-" + dayOfMonth;
+        DATE_GOES_TO_SERVER= year + "/" + (monthOfYear+1) + "/" + dayOfMonth;
         birthday_picked=true;
         bithday1.setText(date);
     }
