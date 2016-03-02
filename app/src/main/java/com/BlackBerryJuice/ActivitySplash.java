@@ -31,7 +31,7 @@ public class ActivitySplash extends Activity {
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.splash);
 
-		new updatemessage(Constant.Update_Message,EditProfile.load_code(ActivitySplash.this),"","get").execute();
+		new updatemessage(Constant.Update_Message,SharedData.load_code(ActivitySplash.this),"","get",ActivitySplash.this).execute();
 
 		F1=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light.ttf");
 		F2=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Medium.ttf");
@@ -45,9 +45,10 @@ public class ActivitySplash extends Activity {
 			@Override
 			public void onFinish() {
 				if (!mes.equals("")){
-					save_user_special_message(mes,ActivitySplash.this);
+					SharedData.save_user_special_message(mes, ActivitySplash.this);
+					Log.e("saeed" , mes + " is saved");
 				}
-				Log.e("saeed","mes: " + mes);
+				//Log.e("saeed","mes: " + mes);
 				Intent intent = new Intent(getBaseContext(), ActivityMainMenu.class);
 				startActivity(intent);
 				finish();
@@ -62,22 +63,22 @@ public class ActivitySplash extends Activity {
     }
 
 
-	public static void save_user_special_message (String message,Context c) {
-		SharedPreferences sp = c.getSharedPreferences("usermes", Activity.MODE_PRIVATE);
-		SharedPreferences.Editor editor = sp.edit();
-		editor.putString("message", message);
-		editor.commit();
-	}
-
-	public static void delete_user_special_message (Context c) {
-		SharedPreferences sp = c.getSharedPreferences("usermes", Activity.MODE_PRIVATE);
-		SharedPreferences.Editor editor = sp.edit();
-		editor.clear();
-		editor.commit();
-	}
-
-	public static String load_user_special_message(Context c) {
-		SharedPreferences sp = c.getSharedPreferences("usermes", Activity.MODE_PRIVATE);
-		return sp.getString("message", "");
-	}
+//	public static void save_user_special_message (String message,Context c) {
+//		SharedPreferences sp = c.getSharedPreferences("usermes", Activity.MODE_PRIVATE);
+//		SharedPreferences.Editor editor = sp.edit();
+//		editor.putString("message", message);
+//		editor.commit();
+//	}
+//
+//	public static void delete_user_special_message (Context c) {
+//		SharedPreferences sp = c.getSharedPreferences("usermes", Activity.MODE_PRIVATE);
+//		SharedPreferences.Editor editor = sp.edit();
+//		editor.clear();
+//		editor.commit();
+//	}
+//
+//	public static String load_user_special_message(Context c) {
+//		SharedPreferences sp = c.getSharedPreferences("usermes", Activity.MODE_PRIVATE);
+//		return sp.getString("message", "");
+//	}
 }

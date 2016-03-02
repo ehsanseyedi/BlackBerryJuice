@@ -88,7 +88,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	SliderLayout mDemoSlider;
 	TextView scrollingtext;
 	int widthofscreen;
-	public static String mes_inmain="";
+	//public static String mes_inmain="";
 //	HorizontalScrollView sv;
 //	int scroll_pos;
 	public static Handler hHandler;
@@ -110,30 +110,30 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 
 
 		scrollingtext = (TextView) findViewById(R.id.scrollingtext);
-		String curmes = ActivitySplash.load_user_special_message(ActivityMainMenu.this);
-		Log.e("saeed_curmes","cur: " + curmes);
+		String curmes = SharedData.load_user_special_message(ActivityMainMenu.this);
+		//Log.e("saeed_curmes","cur: " + curmes);
 		if(curmes.equals("")){
 			scrollingtext.setText("کاربر مهمان عزیز، به تمشک سیاه خوش آمدید، برای استفاده از امکانات برنامه باید ثبت نام نمایید");
-		}
-		if(curmes.equals("")){
-			new updatemessage(Constant.Update_Message,EditProfile.load_code(ActivityMainMenu.this),"","get").execute();
-			new CountDownTimer(5000,1000) {
-				@Override
-				public void onFinish() {
-
-				}
-
-				@Override
-				public void onTick(long millisUntilFinished) {
-					if (!mes_inmain.equals("")){
-						ActivitySplash.save_user_special_message(mes_inmain, ActivityMainMenu.this);
-						scrollingtext.setText(mes_inmain);
-						Log.e("saeed_timer", "loaded");
-						cancel();
-					}
-					Log.e("saeed_timer","tick");
-				}
-			}.start();
+//			new updatemessage(Constant.Update_Message,EditProfile.load_code(ActivityMainMenu.this),"","get").execute();
+//			new CountDownTimer(5000,1000) {
+//				@Override
+//				public void onFinish() {
+//
+//				}
+//
+//				@Override
+//				public void onTick(long millisUntilFinished) {
+//					if (!mes_inmain.equals("")){
+//						ActivitySplash.save_user_special_message(mes_inmain, ActivityMainMenu.this);
+//						scrollingtext.setText(mes_inmain);
+//						Log.e("saeed_timer", "loaded");
+//						cancel();
+//					}
+//					Log.e("saeed_timer","tick");
+//				}
+//			}.start();
+		}else{
+			scrollingtext.setText(curmes);
 		}
 
 
@@ -245,7 +245,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		profile2.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if( Register.do_user_registered(ActivityMainMenu.this) || Login.do_user_logedin(ActivityMainMenu.this)) {
+				if( SharedData.do_user_registered(ActivityMainMenu.this) || SharedData.do_user_logedin(ActivityMainMenu.this)) {
 					startActivity(gotoprofile);
 				}else{
 					startActivity(gotologin);
@@ -256,32 +256,6 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	}
 	// show confirm dialog to ask user to delete previous order or not
 	void showAlertDialog() {
-//		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//		builder.setTitle(R.string.confirm);
-//		builder.setMessage(getString(R.string.db_exist_alert));
-//		builder.setCancelable(false);
-//		builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-//
-//			public void onClick(DialogInterface dialog, int which) {
-//				// TODO Auto-generated method stub
-//				// delete order data when yes button clicked
-//				dbhelper.deleteAllData();
-//				dbhelper.close();
-//
-//			}
-//		});
-//
-//		builder.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-//
-//			public void onClick(DialogInterface dialog, int which) {
-//				// TODO Auto-generated method stub
-//				// close dialog when no button clicked
-//				dbhelper.close();
-//				dialog.cancel();
-//			}
-//		});
-//		AlertDialog alert = builder.create();
-//		alert.show();
 		dbhelper.close();
 	}
 
@@ -339,7 +313,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 
 	@Override
 	public void onPageSelected(int position) {
-		Log.d("Slider", "Page Changed: " + position);
+		//Log.d("Slider", "Page Changed: " + position);
 	}
 
 	@Override
@@ -356,9 +330,6 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		overridePendingTransition(R.anim.open_main, R.anim.close_next);
 	}
 
-	/**
-	 * Diplaying fragment view for selected nav drawer list item
-	 */
 	private void displayView(int position) {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
@@ -445,8 +416,6 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 				p3.setVisibility(View.INVISIBLE);
 			}
 
-
-
 			//slider
 
 			HashMap<String, String> url_maps = new HashMap<String, String>();
@@ -517,7 +486,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 				str2 += line2;
 			}
 
-			Log.e("saeeeeeeed", str);
+			//Log.e("saeeeeeeed", str);
 			// parse json data and store into arraylist variables
 			JSONObject json = new JSONObject(str);
 			JSONArray pic = json.getJSONArray("picture");
@@ -525,22 +494,22 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			JSONObject json2 = new JSONObject(str2);
 			JSONArray pic2 = json2.getJSONArray("sliderdata");
 
-			Log.e("saeeeeeeed", pic.length()+"");
+			//Log.e("saeeeeeeed", pic.length()+"");
 			for (int i = 0; i < pic.length(); i++) {
 				JSONObject object = pic.getJSONObject(i);
 				JSONObject gallery = object.getJSONObject("Gallery");
 				images.add(Constant.GalleryImageURL + gallery.getString("file"));
-				Log.d("imagess", images.get(i));
+				//Log.d("imagess", images.get(i));
 			}
 
-			Log.e("saeeeeeeed_slider", pic2.length()+"");
+			//Log.e("saeeeeeeed_slider", pic2.length()+"");
 			for (int i = 0; i < pic2.length(); i++) {
 				JSONObject object2 = pic2.getJSONObject(i);
 				JSONObject slider = object2.getJSONObject("Slider");
 				sliderimages.add(Constant.SliderImageURL + slider.getString("file"));
 				slidertitles.add(slider.getString("text"));
 				sliderlinks.add(slider.getString("link"));
-				Log.d("slider", sliderimages.get(i));
+				//Log.d("slider", sliderimages.get(i));
 			}
 
 		} catch (MalformedURLException e) {

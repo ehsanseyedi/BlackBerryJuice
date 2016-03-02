@@ -1,7 +1,9 @@
 package com.BlackBerryJuice;
 
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -19,12 +21,14 @@ public class updatemessage extends AsyncTask{
     private String Status="";
     private String Messagee="";
     private String Link="";
+    Context c;
 
-    public updatemessage(String link,String code,String message, String status){
+    public updatemessage(String link,String code,String message, String status , Context context){
         Code=code;
         Link=link;
         Messagee = message;
         Status = status;
+        c= context;
     }
 
     @Override
@@ -34,7 +38,6 @@ public class updatemessage extends AsyncTask{
             String data=URLEncoder.encode("code","UTF8")+"="+URLEncoder.encode(Code,"UTF8");
             data+="&"+URLEncoder.encode("message","UTF8")+"="+URLEncoder.encode(Messagee,"UTF8");
             data+="&"+URLEncoder.encode("status","UTF8")+"="+URLEncoder.encode(Status,"UTF8");
-
 
             URL mylink=new URL(Link);
             URLConnection connect=mylink.openConnection();
@@ -57,10 +60,8 @@ public class updatemessage extends AsyncTask{
             }
 
             ActivitySplash.mes=sb.toString();
-            ActivityMainMenu.mes_inmain=sb.toString();
-
-
-
+            Log.e("saeed_ums",sb.toString());
+            SharedData.save_user_special_message(sb.toString(), c);
 
         }catch(Exception e){
 

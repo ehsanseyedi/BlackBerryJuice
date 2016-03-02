@@ -22,7 +22,7 @@ package com.BlackBerryJuice;
 
 public class EditProfile extends Activity{
 
-
+    String code;
     EditText name,mobile,birthday,address,phone,instagram;
     @SuppressWarnings("unused")
     //private TextView tname,tfamily,toldpass,tnewpass,temail,tstatus;
@@ -51,12 +51,10 @@ public class EditProfile extends Activity{
 
         tarif();
 
-        //Bundle extera=getIntent().getExtras();
-        final String s = load_code(EditProfile.this);
+        code = SharedData.load_code(EditProfile.this);
+        Log.e("code in shared",code);
 
-        //email.setText(s);
-
-        new updateuserserver(Constant.Update_ProfileURL,"","","","","","",s,"get").execute();
+        new updateuserserver(Constant.Update_ProfileURL,"","","","","","",code,"get",EditProfile.this).execute();
 
         final Timer tm=new Timer();
         final ProgressDialog pd=new ProgressDialog(EditProfile.this);
@@ -69,7 +67,7 @@ public class EditProfile extends Activity{
 
                 tm.cancel();
                 pd.cancel();
-                new updateuserserver(Constant.Update_ProfileURL,"","","","","","",s,"get").cancel(true);
+                new updateuserserver(Constant.Update_ProfileURL,"","","","","","",code,"get",EditProfile.this).cancel(true);
 
             }
         });
@@ -86,7 +84,7 @@ public class EditProfile extends Activity{
                             pd.cancel();
                             tm.cancel();
                             count=0;
-                            new updateuserserver(Constant.Update_ProfileURL,"","","","","","",s,"get").cancel(true);
+                            new updateuserserver(Constant.Update_ProfileURL,"","","","","","",code,"get",EditProfile.this).cancel(true);
                             Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
                             finish();
 
@@ -116,7 +114,7 @@ public class EditProfile extends Activity{
             @Override
             public void onClick(View arg0) {
 
-                new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),address.getText().toString(),birthday.getText().toString(),instagram.getText().toString(),mobile.getText().toString(),phone.getText().toString(),s,"put").
+                new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),address.getText().toString(),birthday.getText().toString(),instagram.getText().toString(),mobile.getText().toString(),phone.getText().toString(),code,"put",EditProfile.this).
                 execute();
 
                 final ProgressDialog pd=new ProgressDialog(EditProfile.this);
@@ -224,62 +222,6 @@ public class EditProfile extends Activity{
     public void onBackPressed() {
         startActivity(new Intent(EditProfile.this, Profile.class));
         finish();
-    }
-
-
-    public static void save_last_userinfo (String name,String birthday,String address , String phone , String insta,Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString("name", name);
-        editor.putString("birthday", birthday);
-        editor.putString("address", address);
-        editor.putString("phone", phone);
-        editor.putString("insta", insta);
-        editor.commit();
-    }
-
-    public static void save_last_userinfo_cm (String code,String mobile,Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString("code", code);
-        editor.putString("mobile", mobile);
-        editor.commit();
-    }
-
-    public static void delete_all_userinfo (Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.clear();
-        editor.commit();
-    }
-
-    public static String load_code(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("code", "");
-    }
-    public static String load_name(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("name", "");
-    }
-    public static String load_mobile(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("mobile", "");
-    }
-    public static String load_birthday(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("birthday", "");
-    }
-    public static String load_address(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("address", "");
-    }
-    public static String load_phone(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("phone", "");
-    }
-    public static String load_insta(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("insta", "");
     }
 
 
