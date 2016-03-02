@@ -20,12 +20,10 @@ package com.BlackBerryJuice;
         import android.widget.EditText;
         import android.widget.TextView;
         import android.widget.Toast;
-
         import com.BlackBerryJuice.util.ShamsiCalleder;
         import com.BlackBerryJuice.utils.TextViewPlus;
         import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
         import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
-
         import org.w3c.dom.Text;
 
 public class EditProfile extends Activity implements
@@ -34,6 +32,7 @@ public class EditProfile extends Activity implements
 
     EditText name,mobile,address,phone,instagram;
     TextViewPlus birthday;
+    
     @SuppressWarnings("unused")
     //private TextView tname,tfamily,toldpass,tnewpass,temail,tstatus;
     private TextView email;
@@ -67,9 +66,10 @@ public class EditProfile extends Activity implements
         instagram.setTypeface(font);
         
 
+        tarif();
 
-        //Bundle extera=getIntent().getExtras();
-        final String s = load_code(EditProfile.this);
+        code = SharedData.load_code(EditProfile.this);
+        Log.e("code in shared",code);
 
         //email.setText(s);
 
@@ -79,42 +79,42 @@ public class EditProfile extends Activity implements
         final ProgressDialog pd=new ProgressDialog(EditProfile.this);
         pd.setMessage("لطفا صبر کنید"+"\n"+"در حال دریافت اطلاعات از سرور");
         pd.show();
-
+        pd.setCancelable(false);
         pd.setOnCancelListener(new ProgressDialog.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface arg0) {
 
                 tm.cancel();
                 pd.cancel();
-                new updateuserserver(Constant.Update_ProfileURL, "", "", "", "", "", "", s, "get").cancel(true);
+                new updateuserserver(Constant.Update_ProfileURL,"","","","","","",code,"get",EditProfile.this).cancel(true);
 
             }
         });
 
 
-        tm.scheduleAtFixedRate(new TimerTask() {
+        tm.scheduleAtFixedRate(new TimerTask(){
             public void run() {
-                runOnUiThread(new Runnable() {
+                runOnUiThread(new Runnable(){
                     public void run() {
 
                         count++;
-                        if (count == 30) {
+                        if(count==30){
 
                             pd.cancel();
                             tm.cancel();
-                            count = 0;
-                            new updateuserserver(Constant.Update_ProfileURL, "", "", "", "", "", "", s, "get").cancel(true);
+                            count=0;
+                            new updateuserserver(Constant.Update_ProfileURL,"","","","","","",code,"get",EditProfile.this).cancel(true);
                             Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
                             finish();
 
                         }
 
-                        if (!res.equals("")) {
+                        if(!res.equals("")){
 
                             pd.cancel();
                             po(res);
                             Log.e("saeed", res);
-                            res = "";
+                            res="";
                             tm.cancel();
 
                         }
@@ -185,6 +185,7 @@ public class EditProfile extends Activity implements
         phone    =(EditText) findViewById(R.id.phone);
         instagram    =(EditText) findViewById(R.id.instagram);
         birthday    =(TextViewPlus)findViewById(R.id.bithday);
+
 
 
 //        tname=(TextView) findViewById(R.id.edit_name_t);

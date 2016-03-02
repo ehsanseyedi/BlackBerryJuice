@@ -54,8 +54,6 @@ public class Login extends Activity {
         passtext.setTypeface(ActivitySplash.F6);
         //Bundle b = getIntent().getExtras();
 
-
-
         login =(Button) findViewById(R.id.loginBtn);
         login.setTypeface(ActivitySplash.F2);
         register =(TextView) findViewById(R.id.reg_now_link);
@@ -67,13 +65,10 @@ public class Login extends Activity {
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
-
                 login1(usertext.getText().toString(), passtext.getText().toString());
-
             }
 
         });
-
 
         register.setOnClickListener(new View.OnClickListener() {
 
@@ -85,7 +80,6 @@ public class Login extends Activity {
         });
 
     }
-
 
     @SuppressWarnings("unchecked")
     private void login1(final String code, final String mobile){
@@ -128,7 +122,6 @@ public class Login extends Activity {
                         public void run() {
 
                             count++;
-
                             if (count == 25) {
 
                                 pd.cancel();
@@ -143,13 +136,15 @@ public class Login extends Activity {
 
                                 sp = getApplicationContext().getSharedPreferences("userP", 0);
                                 Editor edit = sp.edit();
-                                edit.putString("email", code);
+                                //edit.putString("email", code);
                                 edit.commit();
-                                final String s = sp.getString("email", "");
-                                set_user_logedin(true,Login.this);
-                                EditProfile.save_last_userinfo_cm(code, mobile, Login.this);
+                                //final String s = sp.getString("email", "");
+                                SharedData.set_user_logedin(true, Login.this);
+                                SharedData.save_last_userinfo_cm(code, mobile, Login.this);
+                                new updatemessage(Constant.Update_Message,code,"","get",Login.this).execute();
+                                new updateuserserver(Constant.Update_ProfileURL,"","","","","","",code,"get",Login.this).execute();
                                 Intent ed = new Intent(Login.this, Profile.class);
-                                ed.putExtra("email", s);
+                                ed.putExtra("fromlogin", true);
                                 res = "";
                                 tm.cancel();
                                 f();
@@ -167,7 +162,6 @@ public class Login extends Activity {
                                 res = "";
                                 tm.cancel();
                             }
-
                         }
 
                     });
@@ -180,17 +174,17 @@ public class Login extends Activity {
 
     }
 
-    public static void set_user_logedin(Boolean dolog,Context c) {
-        SharedPreferences sp = c.getSharedPreferences("user_logedin", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putBoolean("log", dolog);
-        editor.commit();
-    }
-
-    public static Boolean do_user_logedin(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("user_logedin", Activity.MODE_PRIVATE);
-        return sp.getBoolean("log", false);
-    }
+//    public static void set_user_logedin(Boolean dolog,Context c) {
+//        SharedPreferences sp = c.getSharedPreferences("user_logedin", Activity.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sp.edit();
+//        editor.putBoolean("log", dolog);
+//        editor.commit();
+//    }
+//
+//    public static Boolean do_user_logedin(Context c) {
+//        SharedPreferences sp = c.getSharedPreferences("user_logedin", Activity.MODE_PRIVATE);
+//        return sp.getBoolean("log", false);
+//    }
 
     private void f(){
         this.finish();

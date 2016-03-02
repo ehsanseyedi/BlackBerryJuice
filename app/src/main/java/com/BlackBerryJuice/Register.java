@@ -129,7 +129,8 @@ public class Register extends Activity implements
                 String estring = "این قسمت را باید تکمیل کنید";
                 SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
                 ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
-                name1.setError(ssbuilder);}
+                name1.setError(ssbuilder);
+            }
 
             if(mobile1.getText().toString().trim().length()==0)
             {
@@ -182,7 +183,6 @@ public class Register extends Activity implements
                 SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
                 ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
                 phone1.setError(ssbuilder);}
-
         }
         else{
 
@@ -216,10 +216,10 @@ public class Register extends Activity implements
                                 String Code = res.replace("ok", "");
                                 int newcode = Integer.valueOf(Code);
                                 newcode++;
-                                EditProfile.save_last_userinfo_cm(String.valueOf(newcode), mobile1.getText().toString(), Register.this);
-                                EditProfile.save_last_userinfo(name1.getText().toString(), DATE_GOES_TO_SERVER, address1.getText().toString(), phone1.getText().toString(), instagram1.getText().toString(), Register.this);
-                                //Log.e("saeed_edittext_test" , mobile1.getText().toString() + " " + bithday1.getText().toString() + " " +name1.getText().toString()  + " " +  phone1.getText().toString()+ " "+ instagram1.getText().toString() );
-                                set_user_registered(true, Register.this);
+                                SharedData.save_last_userinfo_cm(String.valueOf(newcode), mobile1.getText().toString(), Register.this);
+                                SharedData.save_last_userinfo(name1.getText().toString(), DATE_GOES_TO_SERVER, address1.getText().toString(), phone1.getText().toString(), instagram1.getText().toString(), Register.this);
+                                new updatemessage(Constant.Update_Message,String.valueOf(newcode),"","get",Register.this).execute();
+                                SharedData.set_user_registered(true, Register.this);
                                 res = "";
                                 tm.cancel();
                                 startActivity(new Intent(Register.this, Profile.class));
@@ -263,16 +263,16 @@ public class Register extends Activity implements
         bithday1.setText(date);
     }
 
-    public static void set_user_registered(Boolean doreg,Context c) {
-        SharedPreferences sp = c.getSharedPreferences("user_registered", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putBoolean("reg", doreg);
-        editor.commit();
-    }
-
-    public static Boolean do_user_registered(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("user_registered", Activity.MODE_PRIVATE);
-        return sp.getBoolean("reg", false);
-    }
+//    public static void set_user_registered(Boolean doreg,Context c) {
+//        SharedPreferences sp = c.getSharedPreferences("user_registered", Activity.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sp.edit();
+//        editor.putBoolean("reg", doreg);
+//        editor.commit();
+//    }
+//
+//    public static Boolean do_user_registered(Context c) {
+//        SharedPreferences sp = c.getSharedPreferences("user_registered", Activity.MODE_PRIVATE);
+//        return sp.getBoolean("reg", false);
+//    }
 
 }

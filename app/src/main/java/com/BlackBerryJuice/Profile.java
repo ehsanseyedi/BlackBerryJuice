@@ -39,11 +39,15 @@ public class Profile extends Activity {
         Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login.set_user_logedin(false, Profile.this);
-                Register.set_user_registered(false, Profile.this);
-                Log.e("saeed_before_delete", EditProfile.load_address(Profile.this) + " " + EditProfile.load_code(Profile.this));
-                EditProfile.delete_all_userinfo(Profile.this);
-                Log.e("saeed_after_delete", EditProfile.load_address(Profile.this) + " " + EditProfile.load_code(Profile.this));
+
+
+                SharedData.set_user_logedin(false, Profile.this);
+                SharedData.set_user_registered(false, Profile.this);
+                SharedData.delete_all_userinfo(Profile.this);
+                SharedData.delete_user_special_message(Profile.this);
+
+
+
                 startActivity(new Intent(Profile.this, ActivityMainMenu.class));
                 finish();
             }
@@ -52,7 +56,7 @@ public class Profile extends Activity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(Profile.this,ActivityMainMenu.class));
+        startActivity(new Intent(Profile.this, ActivityMainMenu.class));
         finish();
     }
 }
