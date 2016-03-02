@@ -40,7 +40,7 @@ public class ActivitySplash extends Activity {
 		F5=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile.ttf");
 		F6=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light_Persian_Digits.ttf");
         
-        new CountDownTimer(10000,1000) {
+        new CountDownTimer(5000,1000) {
         	
 			@Override
 			public void onFinish() {
@@ -66,6 +66,13 @@ public class ActivitySplash extends Activity {
 		SharedPreferences sp = c.getSharedPreferences("usermes", Activity.MODE_PRIVATE);
 		SharedPreferences.Editor editor = sp.edit();
 		editor.putString("message", message);
+		editor.commit();
+	}
+
+	public static void delete_user_special_message (Context c) {
+		SharedPreferences sp = c.getSharedPreferences("usermes", Activity.MODE_PRIVATE);
+		SharedPreferences.Editor editor = sp.edit();
+		editor.clear();
 		editor.commit();
 	}
 

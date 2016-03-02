@@ -41,9 +41,14 @@ public class Profile extends Activity {
             public void onClick(View v) {
                 Login.set_user_logedin(false, Profile.this);
                 Register.set_user_registered(false, Profile.this);
+
                 Log.e("saeed_before_delete", EditProfile.load_address(Profile.this) + " " + EditProfile.load_code(Profile.this));
+
                 EditProfile.delete_all_userinfo(Profile.this);
+                ActivitySplash.delete_user_special_message(Profile.this);
+
                 Log.e("saeed_after_delete", EditProfile.load_address(Profile.this) + " " + EditProfile.load_code(Profile.this));
+
                 startActivity(new Intent(Profile.this, ActivityMainMenu.class));
                 finish();
             }

@@ -1,6 +1,5 @@
 package com.BlackBerryJuice;
 
-
         import java.io.BufferedReader;
         import java.io.InputStreamReader;
         import java.io.OutputStreamWriter;
@@ -49,7 +48,6 @@ public class updateuserserver extends AsyncTask{
             data+="&"+URLEncoder.encode("phone","UTF8")+"="+URLEncoder.encode(Phone,"UTF8");
             data+="&"+URLEncoder.encode("code","UTF8")+"="+URLEncoder.encode(Code,"UTF8");
             data+="&"+URLEncoder.encode("status","UTF8")+"="+URLEncoder.encode(Status,"UTF8");
-
 
             URL mylink=new URL(Link);
             URLConnection connect=mylink.openConnection();
