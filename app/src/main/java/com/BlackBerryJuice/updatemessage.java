@@ -20,7 +20,6 @@ public class updatemessage extends AsyncTask{
 
     public updatemessage(String link,String code, String status){
         Code=code;
-
         Link=link;
     }
 
