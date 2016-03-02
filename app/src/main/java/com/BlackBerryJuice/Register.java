@@ -68,13 +68,14 @@ public class Register extends Activity implements
         Typeface font = Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light_Persian_Digits.ttf");
 
         register=(Button)findViewById(R.id.registerBtn);
+        register.setTypeface(ActivitySplash.F2);
         exit=(TextView)findViewById(R.id.reg_cancel_link);
 
 
         name1=(EditText) findViewById(R.id.name);
         name1.requestFocus();
         mobile1 =(EditText) findViewById(R.id.mobile);
-        mobile1.setNextFocusDownId(R.id.birthday);
+        mobile1.setNextFocusDownId(R.id.address);
         bithday1=(TextViewPlus) findViewById(R.id.bithday);
         address1=(EditText) findViewById(R.id.address);
         phone1=(EditText) findViewById(R.id.phone);
@@ -216,9 +217,9 @@ public class Register extends Activity implements
                                 int newcode = Integer.valueOf(Code);
                                 newcode++;
                                 EditProfile.save_last_userinfo_cm(String.valueOf(newcode), mobile1.getText().toString(), Register.this);
-                                EditProfile.save_last_userinfo(name1.getText().toString(), bithday1.getText().toString(), address1.getText().toString(), phone1.getText().toString(), instagram1.getText().toString(), Register.this);
+                                EditProfile.save_last_userinfo(name1.getText().toString(), DATE_GOES_TO_SERVER, address1.getText().toString(), phone1.getText().toString(), instagram1.getText().toString(), Register.this);
                                 //Log.e("saeed_edittext_test" , mobile1.getText().toString() + " " + bithday1.getText().toString() + " " +name1.getText().toString()  + " " +  phone1.getText().toString()+ " "+ instagram1.getText().toString() );
-                                set_user_registered(true,Register.this);
+                                set_user_registered(true, Register.this);
                                 res = "";
                                 tm.cancel();
                                 startActivity(new Intent(Register.this, Profile.class));
@@ -257,7 +258,7 @@ public class Register extends Activity implements
     }
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         String date = dayOfMonth+ " " + ActivityReservation.MonthName(monthOfYear + 1) + " " + year ;
-        DATE_GOES_TO_SERVER= year + "-" + (monthOfYear+1) + "-" + dayOfMonth;
+        DATE_GOES_TO_SERVER= dayOfMonth+ " " + ActivityReservation.MonthName(monthOfYear + 1) + " " + year ;
         birthday_picked=true;
         bithday1.setText(date);
     }

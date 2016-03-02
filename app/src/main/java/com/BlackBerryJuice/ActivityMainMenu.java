@@ -3,8 +3,12 @@ package com.BlackBerryJuice;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.database.SQLException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -61,6 +65,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class ActivityMainMenu extends Activity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 	static DBHelper dbhelper;
@@ -81,6 +86,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	ImageView g1;
 	ImageView g2;
 	ImageView g3;
+	ImageView insta_link , telegram_link;
 	Intent gotoprofile;
 	Intent gotologin;
 	Intent profile;
@@ -143,6 +149,46 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 
 				startActivity(new Intent(ActivityMainMenu.this, ActivityAbout.class));
 				overridePendingTransition (R.anim.slide_up, R.anim.slide_up_2);
+			}
+		});
+
+		insta_link = (ImageView)findViewById(R.id.insta_link);
+		insta_link.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Uri uri = Uri.parse("http://instagram.com/_u/Blackberry.juice");
+				Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+
+				likeIng.setPackage("com.instagram.android");
+
+				try {
+					startActivity(likeIng);
+					overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
+				} catch (ActivityNotFoundException e) {
+					startActivity(new Intent(Intent.ACTION_VIEW,
+							Uri.parse("http://instagram.com/Blackberry.juice")));
+					overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
+				}
+			}
+		});
+
+		telegram_link = (ImageView)findViewById(R.id.telegram_link);
+		telegram_link.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Uri uri = Uri.parse("http://telegram.me/blackberryjuice");
+				Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+
+				likeIng.setPackage("com.telegram");
+
+				try {
+					startActivity(likeIng);
+					overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
+				} catch (ActivityNotFoundException e) {
+					startActivity(new Intent(Intent.ACTION_VIEW,
+							Uri.parse("http://telegram.me/blackberryjuice")));
+					overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
+				}
 			}
 		});
 
@@ -558,6 +604,20 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		protected void onPostExecute(Bitmap result) {
 			bmImage.setImageBitmap(result);
 			PPBB.setVisibility(View.GONE);
+		}
+	}
+
+	public static boolean isAppAvailable(Context context, String appName)
+	{
+		PackageManager pm = context.getPackageManager();
+		try
+		{
+			pm.getPackageInfo(appName, PackageManager.GET_ACTIVITIES);
+			return true;
+		}
+		catch (PackageManager.NameNotFoundException e)
+		{
+			return false;
 		}
 	}
 

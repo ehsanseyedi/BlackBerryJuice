@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:foo="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:gravity="center">
+    android:orientation="horizontal">
 
     <ScrollView
         android:layout_width="match_parent"
+        android:isScrollContainer="false"
         android:layout_height="wrap_content">
 
 
@@ -28,7 +28,8 @@
             android:layout_gravity="center"
             android:textColor="#2A2A2A"
             android:layout_marginBottom="10dp"
-            foo:customFont="fonts/IRANSansMobile_Medium.ttf"/>
+            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+            android:layout_marginTop="10dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -105,22 +106,20 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
-            <EditText
-                android:id="@+id/birthday"
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:id="@+id/bithday"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="تاریخ تولد"
-                android:inputType="text"
                 android:background="#00000000"
+                android:textSize="@dimen/medfont"
+                foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
                 android:gravity="center"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/EditText_Color_Text"
-                android:textColorHint="@color/EditText_Color_Hint"
-                android:imeOptions="flagNoFullscreen"
-                android:nestedScrollingEnabled="false">
-            </EditText>
+                android:text="تاریخ تولد">
+            </com.BlackBerryJuice.utils.TextViewPlus>
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"

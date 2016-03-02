@@ -55,6 +55,7 @@
     <color name="Main_Layout_Shop_2">#529852</color>
     <!-- Main Layout Colors-->
     <color name="Backg_color2">#DEDEDE</color>
+    <color name="Backg_color2_selected">#a0a0a0</color>
     <color name="Backg_color3">#d2dedede</color>
     <color name="EditText_Color_Text">#9A9A9A</color>
     <color name="EditText_Color_Hint">#A5A5A5</color>

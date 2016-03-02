@@ -2,6 +2,7 @@ package com.BlackBerryJuice;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -42,14 +43,16 @@ public class ActivityReservation extends Activity implements
 	private Button Req_Btn; //timeButton, dateButton;
 	int end_of_month;
 	PersianCalendar now2 , now;
-    PersianCalendar[] now_Araay;
+	PersianCalendar[] now_Araay;
 	DatePickerDialog dpd;
-    public static boolean is_today_selected = false , is_date_picked = false;
+	public static boolean is_today_selected = false , is_date_picked = false;
 	EditText desc;
 	FrameLayout table_2 , table_5;
 	ImageView table_2_check,table_5_check;
 	RelativeLayout Time_Pick , Date_Pick;
 	TimePickerDialog tpd;
+	LinearLayout birthday_oc , anniversary_oc , together_oc , one_hour ,one_hour_plus;
+    public String selected_oc , selected_time;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +104,55 @@ public class ActivityReservation extends Activity implements
 		desc = (EditText)findViewById(R.id.desc);
 		desc.setTypeface(ActivitySplash.F6);
 
+		birthday_oc = (LinearLayout)findViewById(R.id.birthday_oc);
+		anniversary_oc  = (LinearLayout)findViewById(R.id.annivarsary_oc);
+		together_oc = (LinearLayout)findViewById(R.id.together_oc);
+		one_hour = (LinearLayout)findViewById(R.id.one_hour);
+        one_hour_plus = (LinearLayout)findViewById(R.id.one_hour_plus);
+
+		birthday_oc.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				selected_oc = "birthday_oc";
+				birthday_oc.setBackgroundResource(R.drawable.backg_2_selected);
+				anniversary_oc.setBackgroundResource(R.drawable.backg_2);
+				together_oc.setBackgroundResource(R.drawable.backg_2);
+			}
+		});
+		anniversary_oc.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				selected_oc = "anniversary_oc";
+				birthday_oc.setBackgroundResource(R.drawable.backg_2);
+				anniversary_oc.setBackgroundResource(R.drawable.backg_2_selected);
+				together_oc.setBackgroundResource(R.drawable.backg_2);
+			}
+		});
+		together_oc.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				selected_oc = "together_oc";
+				birthday_oc.setBackgroundResource(R.drawable.backg_2);
+				anniversary_oc.setBackgroundResource(R.drawable.backg_2);
+				together_oc.setBackgroundResource(R.drawable.backg_2_selected);
+			}
+		});
+        one_hour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selected_time = "one_hour";
+                one_hour.setBackgroundResource(R.drawable.backg_2_selected);
+                one_hour_plus.setBackgroundResource(R.drawable.backg_2);
+            }
+        });
+        one_hour_plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selected_time = "one_hour_plus";
+                one_hour.setBackgroundResource(R.drawable.backg_2);
+                one_hour_plus.setBackgroundResource(R.drawable.backg_2_selected);
+            }
+        });
 
 
 //		timeButton = (Button)findViewById(R.id.time_button);
@@ -119,15 +171,15 @@ public class ActivityReservation extends Activity implements
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.Time_Pick : {
-                if(is_date_picked)
-    				get_madafaka_time();
-                else
-                {
-                    ErrorToast toast = new ErrorToast(ActivityReservation.this);
-                    toast .setText("لطفاً ابتدا تاریخ را انتخاب کنید");
-                    toast.setDuration(Toast.LENGTH_LONG);
-                    toast .show();
-                }
+				if(is_date_picked)
+					get_madafaka_time();
+				else
+				{
+					ErrorToast toast = new ErrorToast(ActivityReservation.this);
+					toast .setText("لطفاً ابتدا تاریخ را انتخاب کنید");
+					toast.setDuration(Toast.LENGTH_LONG);
+					toast .show();
+				}
 				break;
 			}
 			case R.id.Date_Pick : {
@@ -140,24 +192,24 @@ public class ActivityReservation extends Activity implements
 
 	@Override
 	public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
-        String hourString = hourOfDay < 10 ? "0" + hourOfDay : "" + hourOfDay;
-        String minuteString = minute < 10 ? "0" + minute : "" + minute;
-        String time = hourString + ":" + minuteString;
-        Log.e("HOUR_OF_DAY", now.get(PersianCalendar.HOUR_OF_DAY) + "  " + hourOfDay);
-        if (hourOfDay < 2 || hourOfDay >= 9) {
-            if(now.get(PersianCalendar.HOUR_OF_DAY)+4 < hourOfDay && is_today_selected)
-                timeTextView.setText(time);
-            else if(!is_today_selected)
-                timeTextView.setText(time);
-            else
-            {
-                ErrorToast toast = new ErrorToast(ActivityReservation.this);
-                toast .setText("لطفاً برای امروز، برای ساعات بعد رزرو بفرمایید.");
-                toast.setDuration(Toast.LENGTH_LONG);
-                toast .show();
-                get_madafaka_time();
-            }
-        }
+		String hourString = hourOfDay < 10 ? "0" + hourOfDay : "" + hourOfDay;
+		String minuteString = minute < 10 ? "0" + minute : "" + minute;
+		String time = hourString + ":" + minuteString;
+		Log.e("HOUR_OF_DAY", now.get(PersianCalendar.HOUR_OF_DAY) + "  " + hourOfDay);
+		if (hourOfDay < 2 || hourOfDay >= 9) {
+			if(now.get(PersianCalendar.HOUR_OF_DAY)+4 < hourOfDay && is_today_selected)
+				timeTextView.setText(time);
+			else if(!is_today_selected)
+				timeTextView.setText(time);
+			else
+			{
+				ErrorToast toast = new ErrorToast(ActivityReservation.this);
+				toast .setText("لطفاً برای امروز، برای ساعات بعد رزرو بفرمایید.");
+				toast.setDuration(Toast.LENGTH_LONG);
+				toast .show();
+				get_madafaka_time();
+			}
+		}
 		else
 		{
 			//ErrorToast.makeToast(ActivityReservation.this, "لطفاً در بازه زمانی فعالیت فروشگاه زمان انتخاب کنید (9 صبح تا 2 بامداد)", Toast.LENGTH_LONG).show();
@@ -171,27 +223,27 @@ public class ActivityReservation extends Activity implements
 
 	@Override
 	public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        Log.e("MONTH", monthOfYear+"  "+now2.getPersianMonth() + "  "+ now.getPersianMonth());
+		Log.e("MONTH", monthOfYear+"  "+now2.getPersianMonth() + "  "+ now.getPersianMonth());
 		if(year==now.getPersianYear() && monthOfYear==now.getPersianMonth() && dayOfMonth > now.getPersianDay() )
 		{
 			String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
 			dateTextView.setText(date);
-            is_date_picked=true;
+			is_date_picked=true;
 		}
-        else if(year==now.getPersianYear() && monthOfYear==now.getPersianMonth() && dayOfMonth == now.getPersianDay() )
-        {
-            String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
-            dateTextView.setText(date);
-            is_today_selected=true;
-            is_date_picked=true;
-            Log.e("TODAY_SELECTED" , is_today_selected+"");
-        }
+		else if(year==now.getPersianYear() && monthOfYear==now.getPersianMonth() && dayOfMonth == now.getPersianDay() )
+		{
+			String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
+			dateTextView.setText(date);
+			is_today_selected=true;
+			is_date_picked=true;
+			Log.e("TODAY_SELECTED" , is_today_selected+"");
+		}
 		else if(year == now2.getPersianYear() && monthOfYear==now2.getPersianMonth()-1  && dayOfMonth <= now.getPersianDay())
 		{
 			String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
 			//String date = year + "/" + (monthOfYear + 1) + "/" + dayOfMonth;
 			dateTextView.setText(date);
-            is_date_picked=true;
+			is_date_picked=true;
 		}
 		else
 		{

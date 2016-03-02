@@ -8,6 +8,7 @@ package com.BlackBerryJuice;
         import android.content.DialogInterface;
         import android.content.Intent;
         import android.content.SharedPreferences;
+        import android.graphics.Typeface;
         import android.os.Build;
         import android.os.Bundle;
         import android.util.Log;
@@ -20,15 +21,25 @@ package com.BlackBerryJuice;
         import android.widget.TextView;
         import android.widget.Toast;
 
-public class EditProfile extends Activity{
+        import com.BlackBerryJuice.util.ShamsiCalleder;
+        import com.BlackBerryJuice.utils.TextViewPlus;
+        import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
+        import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
+
+        import org.w3c.dom.Text;
+
+public class EditProfile extends Activity implements
+        DatePickerDialog.OnDateSetListener {
 
 
-    EditText name,mobile,birthday,address,phone,instagram;
+    EditText name,mobile,address,phone,instagram;
+    TextViewPlus birthday;
     @SuppressWarnings("unused")
     //private TextView tname,tfamily,toldpass,tnewpass,temail,tstatus;
     private TextView email;
     @SuppressWarnings("unused")
     private TextView update,exit;
+    public static String DATE_GOES_TO_SERVER;
     public static String res="";
     private String pass="";
     private int count=0;
@@ -45,11 +56,17 @@ public class EditProfile extends Activity{
             window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
         }
         setContentView(R.layout.activity_edit_user_profile);
-
+        tarif();
         update = (TextView) findViewById(R.id.update);
         exit = (TextView) findViewById(R.id.cancel);
+        Typeface font = Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light_Persian_Digits.ttf");
+        name.setTypeface(font);
+        mobile.setTypeface(font);
+        address.setTypeface(font);
+        phone.setTypeface(font);
+        instagram.setTypeface(font);
+        
 
-        tarif();
 
         //Bundle extera=getIntent().getExtras();
         final String s = load_code(EditProfile.this);
@@ -69,35 +86,35 @@ public class EditProfile extends Activity{
 
                 tm.cancel();
                 pd.cancel();
-                new updateuserserver(Constant.Update_ProfileURL,"","","","","","",s,"get").cancel(true);
+                new updateuserserver(Constant.Update_ProfileURL, "", "", "", "", "", "", s, "get").cancel(true);
 
             }
         });
 
 
-        tm.scheduleAtFixedRate(new TimerTask(){
+        tm.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                runOnUiThread(new Runnable(){
+                runOnUiThread(new Runnable() {
                     public void run() {
 
                         count++;
-                        if(count==30){
+                        if (count == 30) {
 
                             pd.cancel();
                             tm.cancel();
-                            count=0;
-                            new updateuserserver(Constant.Update_ProfileURL,"","","","","","",s,"get").cancel(true);
+                            count = 0;
+                            new updateuserserver(Constant.Update_ProfileURL, "", "", "", "", "", "", s, "get").cancel(true);
                             Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
                             finish();
 
                         }
 
-                        if(!res.equals("")){
+                        if (!res.equals("")) {
 
                             pd.cancel();
                             po(res);
                             Log.e("saeed", res);
-                            res="";
+                            res = "";
                             tm.cancel();
 
                         }
@@ -110,13 +127,20 @@ public class EditProfile extends Activity{
         }, 1, 1000);
 
 
+        birthday.setOnClickListener(new OnClickListener() {
+
+            public void onClick(View arg0) {
+                get_madafaka_date();
+            }
+        });
+        update.setTypeface(ActivitySplash.F2);
         update.setOnClickListener(new OnClickListener() {
 
             @SuppressWarnings("unchecked")
             @Override
             public void onClick(View arg0) {
 
-                new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),address.getText().toString(),birthday.getText().toString(),instagram.getText().toString(),mobile.getText().toString(),phone.getText().toString(),s,"put").
+                new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),address.getText().toString(),DATE_GOES_TO_SERVER,instagram.getText().toString(),mobile.getText().toString(),phone.getText().toString(),s,"put").
                 execute();
 
                 final ProgressDialog pd=new ProgressDialog(EditProfile.this);
@@ -157,11 +181,10 @@ public class EditProfile extends Activity{
 
         name    =(EditText) findViewById(R.id.name);
         mobile    =(EditText) findViewById(R.id.mobile);
-        birthday    =(EditText) findViewById(R.id.birthday);
         address    =(EditText) findViewById(R.id.address);
         phone    =(EditText) findViewById(R.id.phone);
         instagram    =(EditText) findViewById(R.id.instagram);
-
+        birthday    =(TextViewPlus)findViewById(R.id.bithday);
 
 
 //        tname=(TextView) findViewById(R.id.edit_name_t);
@@ -282,6 +305,26 @@ public class EditProfile extends Activity{
         return sp.getString("insta", "");
     }
 
+    DatePickerDialog dpd;
+    PersianCalendar now;
+    private static final String DATEPICKER = "DatePickerDialog";
+    public void get_madafaka_date()
+    {
+        now = new PersianCalendar();
+        dpd = DatePickerDialog.newInstance(
+                EditProfile.this,
+                now.getPersianYear()-13,
+                now.getPersianMonth(),
+                now.getPersianDay()
+        );
+        dpd.setYearRange(1300, Integer.parseInt(ShamsiCalleder.getYear())-12);
+        dpd.show(getFragmentManager(), DATEPICKER);
+    }
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        String date = dayOfMonth+ " " + ActivityReservation.MonthName(monthOfYear + 1) + " " + year ;
+        DATE_GOES_TO_SERVER= dayOfMonth+ " " + ActivityReservation.MonthName(monthOfYear + 1) + " " + year ;
+        birthday.setText(date);
+    }
 
 
 

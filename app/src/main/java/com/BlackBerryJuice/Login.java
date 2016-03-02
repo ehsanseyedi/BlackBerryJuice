@@ -49,6 +49,9 @@ public class Login extends Activity {
         setContentView(R.layout.activity_login);
         usertext =(EditText) findViewById(R.id.username);
         passtext =(EditText) findViewById(R.id.phone);
+
+        usertext.setTypeface(ActivitySplash.F6);
+        passtext.setTypeface(ActivitySplash.F6);
         //Bundle b = getIntent().getExtras();
 
 

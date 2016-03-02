@@ -2,11 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:foo="http://schemas.android.com/apk/res-auto"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/Theme.AppCompat.NoActionBar"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".ActivityMainMenu">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -380,14 +382,14 @@
         <ImageView
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:id="@+id/imageView5"
+            android:id="@+id/telegram_link"
             android:src="@drawable/telegram"
             android:padding="15dp" />
 
         <ImageView
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:id="@+id/imageView4"
+            android:id="@+id/insta_link"
             android:src="@drawable/insta"
             android:padding="15dp" />
 

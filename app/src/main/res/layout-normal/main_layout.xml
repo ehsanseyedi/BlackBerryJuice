@@ -311,21 +311,21 @@
         <ImageView
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:id="@+id/imageView6"
+            android:id="@+id/web_link"
             android:src="@drawable/site"
             android:padding="15dp" />
 
         <ImageView
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:id="@+id/imageView5"
+            android:id="@+id/telegram_link"
             android:src="@drawable/telegram"
             android:padding="15dp" />
 
         <ImageView
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:id="@+id/imageView4"
+            android:id="@+id/insta_link"
             android:src="@drawable/insta"
             android:padding="15dp" />
 

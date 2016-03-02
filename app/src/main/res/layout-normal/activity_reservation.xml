@@ -171,6 +171,148 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:gravity="center"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="5dp">
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_weight=".8"
+                    android:layout_height="50dp"
+                    android:weightSum="90">
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30"
+                        android:gravity="center"
+                        android:weightSum="1"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/backg_2"
+                        android:id="@+id/together_oc">
+                        <com.BlackBerryJuice.utils.TextViewPlus
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="دورهمی"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_gravity="center"
+                            android:textColor="#000000"
+                            foo:customFont="fonts/IRANSansMobile_Light.ttf"
+                            android:paddingTop="2dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30"
+                        android:gravity="center"
+                        android:weightSum="1"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/backg_2"
+                        android:id="@+id/annivarsary_oc">
+                        <com.BlackBerryJuice.utils.TextViewPlus
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="سالگرد"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_gravity="center"
+                            android:textColor="#000000"
+                            foo:customFont="fonts/IRANSansMobile_Light.ttf"
+                            android:paddingTop="3dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30"
+                        android:gravity="center"
+                        android:weightSum="1"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/backg_2"
+                        android:id="@+id/birthday_oc">
+                        <com.BlackBerryJuice.utils.TextViewPlus
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="تولد"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_gravity="center"
+                            android:textColor="#000000"
+                            foo:customFont="fonts/IRANSansMobile_Light.ttf"
+                            android:paddingTop="3dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:gravity="center"
+                android:layout_marginBottom="10dp">
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_weight=".8"
+                    android:layout_height="50dp"
+                    android:weightSum="90">
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="45"
+                        android:gravity="center"
+                        android:weightSum="1"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/backg_2"
+                        android:id="@+id/one_hour_plus">
+                        <com.BlackBerryJuice.utils.TextViewPlus
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1+ ساعت"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_gravity="center"
+                            android:textColor="#000000"
+                            foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                            android:paddingTop="3dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="45"
+                        android:gravity="center"
+                        android:weightSum="1"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/backg_2"
+                        android:id="@+id/one_hour">
+                        <com.BlackBerryJuice.utils.TextViewPlus
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1 ساعت"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_gravity="center"
+                            android:textColor="#000000"
+                            foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                            android:paddingTop="3dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="150dp"

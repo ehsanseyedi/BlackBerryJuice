@@ -1,30 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:foo="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
-    android:background="@color/footer">
-
+    android:background="@color/footer"
+    tools:context=".ActivityAbout">
+    <requestFocus/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbarStyle="outsideInset"
         android:fadeScrollbars="false"
         android:scrollbars="vertical"
-        android:scrollbarSize="2dp">
-
+        android:scrollbarSize="2dp"
+        android:id="@+id/scc">
+        <requestFocus/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:orientation="vertical">
+            <requestFocus/>
             <ImageView
                 android:layout_width="115dp"
                 android:layout_height="115dp"
                 android:src="@drawable/blackberry_logo"
                 android:layout_marginTop="25dp" />
-
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="بنا به گزارشات ثبت شده BlackBerry یک مرکز تخصصی نوشیدنی های گرم و سرد با رِسیپی های سحرآمیز و اعتیاد آور میباشد"
+                foo:customFont="fonts/IRANSansMobile_Light.ttf"
+                android:textSize="@dimen/medfont"
+                android:textColor="#FFF"
+                android:paddingTop="5dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="7dp" />
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -133,7 +148,8 @@
                 android:background="@drawable/backg_2"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginTop="7dp">
+                android:layout_marginTop="7dp"
+                android:id="@+id/req_focus">
                 <EditText
                     android:id="@+id/desc"
                     android:layout_width="match_parent"
