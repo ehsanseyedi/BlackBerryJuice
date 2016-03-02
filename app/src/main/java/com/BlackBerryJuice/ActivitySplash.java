@@ -31,7 +31,7 @@ public class ActivitySplash extends Activity {
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.splash);
 
-		new updatemessage(Constant.Update_Message,"101","","get").execute();
+		new updatemessage(Constant.Update_Message,EditProfile.load_code(ActivitySplash.this),"","get").execute();
 
 		F1=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light.ttf");
 		F2=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Medium.ttf");
