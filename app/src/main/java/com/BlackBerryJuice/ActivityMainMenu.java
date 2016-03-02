@@ -113,40 +113,8 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 
 
 		scrollingtext = (TextView) findViewById(R.id.scrollingtext);
-		//scrollingtext.setMovementMethod(new ScrollingMovementMethod());
 
-//		Animation animationToRight = new TranslateAnimation(-600,600, 0, 0);
-//		animationToRight.setDuration(17000);
-//		animationToRight.setRepeatMode(Animation.RESTART);
-//		animationToRight.setRepeatCount(Animation.INFINITE);
-
-//		Rect bounds = new Rect();
-//		Paint textPaint = scrollingtext.getPaint();
-//		String text = scrollingtext.getText().toString();
-//		textPaint.getTextBounds(text, 0, text.length(), bounds);
-//		int width = bounds.width();
-//		LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) scrollingtext.getLayoutParams();
-//		lp.width = width + 100;
-//		int startX = 400;
-		//int widthoftext = scrollingtext.getWidth();
-
-//		final float densityMultiplier = this.getResources().getDisplayMetrics().density;
-//		final float scaledPx = 20 * densityMultiplier;
-//		Paint paint = new Paint();
-//		paint.setTextSize(scaledPx);
-//		final int widthoftext = (int) paint.measureText(scrollingtext.getText().toString());
-//		scrollingtext.getLayoutParams().width = widthoftext + 200;
-//		int offset = (widthoftext + 200) - widthofscreen;
-//		Toast.makeText(this,widthoftext+"",Toast.LENGTH_SHORT).show();
-//		TranslateAnimation ta = new TranslateAnimation(-widthofscreen, offset, 0, 0);
-//		ta.setDuration(15000);
-//		ta.setRepeatCount(-1);
-//		scrollingtext.setAnimation(ta);
-
-
-
-		//scrollingtext.setAnimation(animationToRight);
-		//TranslateAnimation n = new TranslateAnimation()
+		scrollingtext.setText(ActivitySplash.load_user_special_message(ActivityMainMenu.this));
 
 		RelativeLayout order = (RelativeLayout) findViewById(R.id.Order_Cat_Button);
 		order.setOnClickListener(new View.OnClickListener() {

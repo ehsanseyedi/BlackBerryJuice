@@ -10,6 +10,7 @@ package com.BlackBerryJuice;
         import android.content.SharedPreferences;
         import android.os.Build;
         import android.os.Bundle;
+        import android.util.Log;
         import android.view.View;
         import android.view.View.OnClickListener;
         import android.view.Window;
@@ -95,6 +96,7 @@ public class EditProfile extends Activity{
 
                             pd.cancel();
                             po(res);
+                            Log.e("saeed", res);
                             res="";
                             tm.cancel();
 
@@ -120,7 +122,6 @@ public class EditProfile extends Activity{
                 final ProgressDialog pd=new ProgressDialog(EditProfile.this);
                 pd.setMessage("لطفا صبر کنید"+"در حال ارسال اطلاعات به سرور");
                 pd.show();
-
 
                 final Timer tm=new Timer();
                 tm.scheduleAtFixedRate(new TimerTask(){
@@ -169,9 +170,7 @@ public class EditProfile extends Activity{
 //        tnewpass=(TextView) findViewById(R.id.edit_newpass_t);
 //        temail=(TextView) findViewById(R.id.edit_email_t);
 //        tstatus=(TextView) findViewById(R.id.edit_status_t);
-
-        //status=(TextView) findViewById(R.id.edit_status_e);
-
+//        status=(TextView) findViewById(R.id.edit_status_e);
 //        update=(Button) findViewById(R.id.update);
 //        exit=(Button) findViewById(R.id.cancel);
 

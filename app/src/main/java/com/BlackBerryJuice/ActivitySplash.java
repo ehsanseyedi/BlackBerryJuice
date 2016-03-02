@@ -1,17 +1,21 @@
 package com.BlackBerryJuice;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
 public class ActivitySplash extends Activity {
 
 	public static Typeface F1,F2,F3,F4,F5,F6;
+	public static String mes="";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,8 @@ public class ActivitySplash extends Activity {
 
         setContentView(R.layout.splash);
 
+		new updatemessage(Constant.Update_Message,"",EditProfile.load_code(ActivitySplash.this),"get").execute();
+
 		F1=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light.ttf");
 		F2=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Medium.ttf");
 		F3=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Bold.ttf");
@@ -39,12 +45,13 @@ public class ActivitySplash extends Activity {
         	
 			@Override
 			public void onFinish() {
+				if (!mes.equals("")){
+					save_user_special_message(mes,ActivitySplash.this);
+				}
+				Log.e("saeed","mes: " + mes);
 				Intent intent = new Intent(getBaseContext(), ActivityMainMenu.class);
-				
 				startActivity(intent);
-
 				finish();
-				
 			}
 
 			@Override
@@ -54,4 +61,17 @@ public class ActivitySplash extends Activity {
 		}.start();
         
     }
+
+
+	public static void save_user_special_message (String message,Context c) {
+		SharedPreferences sp = c.getSharedPreferences("usermes", Activity.MODE_PRIVATE);
+		SharedPreferences.Editor editor = sp.edit();
+		editor.putString("message", message);
+		editor.commit();
+	}
+
+	public static String load_user_special_message(Context c) {
+		SharedPreferences sp = c.getSharedPreferences("usermes", Activity.MODE_PRIVATE);
+		return sp.getString("message", "کاربر مهمان عزیز، به تمشک سیاه خوش آمدید، برای استفاده از امکانات برنامه باید ثبت نام نمایید");
+	}
 }

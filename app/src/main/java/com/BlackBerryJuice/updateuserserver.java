@@ -37,10 +37,8 @@ public class updateuserserver extends AsyncTask{
         Code=code;
     }
 
-
     @Override
     protected String doInBackground(Object... arg0) {
-
 
         try{
             String data=URLEncoder.encode("name","UTF8")+"="+URLEncoder.encode(Name,"UTF8");

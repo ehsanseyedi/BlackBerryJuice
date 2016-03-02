@@ -13,6 +13,7 @@ public class Constant {
 	// API URL configuration
 	static String AdminPageURL = "http://unix-team.ir/FlatlabRTL/";
 	static String Update_ProfileURL = AdminPageURL + "api/update.php";
+	static String Update_Message = AdminPageURL + "api/update-message.php";
 	static String SliderImageURL = AdminPageURL + "upload/slider/";
 	static String GalleryImageURL = AdminPageURL + "upload/gallery/";
 	static String CategoryAPI = AdminPageURL + "api/get-all-category-data.php";
