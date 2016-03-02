@@ -11,20 +11,19 @@ import java.io.OutputStream;
 public class Constant {
 	
 	// API URL configuration
-	static String AdminPageURL = "http://unix-team.ir/Ecommerce/";
-	static String AdminPageURL2 = "http://unix-team.ir/FlatlabRTL/";
-	static String Update_ProfileURL = AdminPageURL2 + "api/update.php";
-	static String SliderImageURL = AdminPageURL2 + "upload/slider/";
+	static String AdminPageURL = "http://unix-team.ir/FlatlabRTL/";
+	static String Update_ProfileURL = AdminPageURL + "api/update.php";
+	static String SliderImageURL = AdminPageURL + "upload/slider/";
 	static String GalleryImageURL = AdminPageURL + "upload/gallery/";
 	static String CategoryAPI = AdminPageURL + "api/get-all-category-data.php";
 	static String GalleryAPI = AdminPageURL + "api/get-all-image-gallery.php";
-	static String SliderAPI = AdminPageURL2 + "api/get-all-image-slider.php";
+	static String SliderAPI = AdminPageURL + "api/get-all-image-slider.php";
 	static String MenuAPI = AdminPageURL + "api/get-menu-data-by-category-id.php";
 	static String TaxCurrencyAPI = AdminPageURL + "api/get-tax-and-currency.php";
 	static String MenuDetailAPI = AdminPageURL + "api/get-menu-detail.php";
 	static String SendDataAPI = AdminPageURL + "api/add-reservation.php";
-	static String Login = AdminPageURL2 + "api/login.php";
-	static String Register = AdminPageURL2 + "api/register.php";
+	static String Login = AdminPageURL + "api/login.php";
+	static String Register = AdminPageURL + "api/register.php";
 
 	// change this access similar with accesskey in admin panel for security reason
 	static String AccessKey = "12345";
