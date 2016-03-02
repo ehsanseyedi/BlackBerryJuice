@@ -44,11 +44,11 @@ public class updateuserserver extends AsyncTask{
 
         try{
             String data=URLEncoder.encode("name","UTF8")+"="+URLEncoder.encode(Name,"UTF8");
-            data+="&"+URLEncoder.encode("mobile","UTF8")+"="+URLEncoder.encode(Mobile,"UTF8");
-            data+="&"+URLEncoder.encode("birthday","UTF8")+"="+URLEncoder.encode(Birthday,"UTF8");
             data+="&"+URLEncoder.encode("address","UTF8")+"="+URLEncoder.encode(Address,"UTF8");
-            data+="&"+URLEncoder.encode("phone","UTF8")+"="+URLEncoder.encode(Phone,"UTF8");
+            data+="&"+URLEncoder.encode("birthday","UTF8")+"="+URLEncoder.encode(Birthday,"UTF8");
             data+="&"+URLEncoder.encode("instagram","UTF8")+"="+URLEncoder.encode(Instagram,"UTF8");
+            data+="&"+URLEncoder.encode("mobile","UTF8")+"="+URLEncoder.encode(Mobile,"UTF8");
+            data+="&"+URLEncoder.encode("phone","UTF8")+"="+URLEncoder.encode(Phone,"UTF8");
             data+="&"+URLEncoder.encode("code","UTF8")+"="+URLEncoder.encode(Code,"UTF8");
             data+="&"+URLEncoder.encode("status","UTF8")+"="+URLEncoder.encode(Status,"UTF8");
 

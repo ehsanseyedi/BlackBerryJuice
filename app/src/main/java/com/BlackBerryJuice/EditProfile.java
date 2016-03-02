@@ -50,10 +50,10 @@ public class EditProfile extends Activity{
 
         tarif();
 
-        Bundle extera=getIntent().getExtras();
-        final String s=extera.getString("email");
+        //Bundle extera=getIntent().getExtras();
+        final String s = load_code(EditProfile.this);
 
-        email.setText(s);
+        //email.setText(s);
 
         new updateuserserver(Constant.Update_ProfileURL,"","","","","","",s,"get").execute();
 
@@ -161,6 +161,7 @@ public class EditProfile extends Activity{
         instagram    =(EditText) findViewById(R.id.instagram);
 
 
+
 //        tname=(TextView) findViewById(R.id.edit_name_t);
 //        tfamily=(TextView) findViewById(R.id.edit_family_t);
 //        toldpass=(TextView) findViewById(R.id.edit_oldpass_t);
@@ -191,7 +192,7 @@ public class EditProfile extends Activity{
                 }
                 if(c==1){
 
-                    mobile.setText(t);
+                    address.setText(t);
                 }
                 if(c==2){
 
@@ -199,15 +200,15 @@ public class EditProfile extends Activity{
                 }
                 if(c==3){
 
-                    address.setText(t);
+                    instagram.setText(t);
                 }
                 if(c==4){
 
-                    phone.setText(t);
+                    mobile.setText(t);
                 }
                 if(c==5){
 
-                    instagram.setText(t);
+                    phone.setText(t);
                 }
                 if(c==6){
 
