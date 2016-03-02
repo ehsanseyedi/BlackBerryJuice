@@ -114,7 +114,8 @@ public class EditProfile extends Activity{
             @Override
             public void onClick(View arg0) {
 
-                new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),mobile.getText().toString(),birthday.getText().toString(),address.getText().toString(),phone.getText().toString(),instagram.getText().toString(),s,"put").execute();
+                new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),address.getText().toString(),birthday.getText().toString(),instagram.getText().toString(),mobile.getText().toString(),phone.getText().toString(),s,"put").
+                execute();
 
                 final ProgressDialog pd=new ProgressDialog(EditProfile.this);
                 pd.setMessage("لطفا صبر کنید"+"در حال ارسال اطلاعات به سرور");

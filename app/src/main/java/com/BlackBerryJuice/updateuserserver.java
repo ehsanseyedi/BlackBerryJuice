@@ -24,7 +24,7 @@ public class updateuserserver extends AsyncTask{
     private String Status="";
     private String Code="";
 
-    public updateuserserver(String link,String name,String mobile,String birthday,String address,String phone, String instagram,String code,String status){
+    public updateuserserver(String link,String name,String address,String birthday,String instagram,String mobile, String phone,String code,String status){
 
         Link=link;
         Name=name;
