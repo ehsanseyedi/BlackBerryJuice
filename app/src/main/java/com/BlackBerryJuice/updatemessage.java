@@ -32,7 +32,8 @@ public class updatemessage extends AsyncTask{
 
         try{
             String data=URLEncoder.encode("code","UTF8")+"="+URLEncoder.encode(Code,"UTF8");
-            data+=URLEncoder.encode("message","UTF8")+"="+URLEncoder.encode(Messagee,"UTF8");
+            data+="&"+URLEncoder.encode("message","UTF8")+"="+URLEncoder.encode(Messagee,"UTF8");
+            data+="&"+URLEncoder.encode("status","UTF8")+"="+URLEncoder.encode(Status,"UTF8");
 
 
             URL mylink=new URL(Link);
