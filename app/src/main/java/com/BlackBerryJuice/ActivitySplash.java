@@ -29,10 +29,9 @@ public class ActivitySplash extends Activity {
 		}
 
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-
         setContentView(R.layout.splash);
 
-		new updatemessage(Constant.Update_Message,EditProfile.load_code(ActivitySplash.this),"get").execute();
+		new updatemessage(Constant.Update_Message,"101","","get").execute();
 
 		F1=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light.ttf");
 		F2=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Medium.ttf");
@@ -41,7 +40,7 @@ public class ActivitySplash extends Activity {
 		F5=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile.ttf");
 		F6=Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light_Persian_Digits.ttf");
         
-        new CountDownTimer(5000,1000) {
+        new CountDownTimer(30000,1000) {
         	
 			@Override
 			public void onFinish() {
