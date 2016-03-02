@@ -52,7 +52,7 @@ public class EditProfile extends Activity{
 
         email.setText(s);
 
-        //new updateuserserver(Constant.Update_ProfileURL,"","","",s,"get").execute();
+        new updateuserserver(Constant.Update_ProfileURL,"","","","","","",s,"get").execute();
 
         final Timer tm=new Timer();
         final ProgressDialog pd=new ProgressDialog(EditProfile.this);
@@ -65,7 +65,7 @@ public class EditProfile extends Activity{
 
                 tm.cancel();
                 pd.cancel();
-                //new updateuserserver(Constant.Update_ProfileURL,"","","",s,"get").cancel(true);
+                new updateuserserver(Constant.Update_ProfileURL,"","","","","","",s,"get").cancel(true);
 
             }
         });
@@ -82,7 +82,7 @@ public class EditProfile extends Activity{
                             pd.cancel();
                             tm.cancel();
                             count=0;
-                            //new updateuserserver(Constant.Update_ProfileURL,"","","",s,"get").cancel(true);
+                            new updateuserserver(Constant.Update_ProfileURL,"","","","","","",s,"get").cancel(true);
                             Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
                             finish();
 
@@ -111,7 +111,7 @@ public class EditProfile extends Activity{
             @Override
             public void onClick(View arg0) {
 
-                //new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),mobile.getText().toString(),birthday.getText().toString(),address.getText().toString(),phone.getText().toString(),instagram.getText().toString(),"put").execute();
+                new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),mobile.getText().toString(),birthday.getText().toString(),address.getText().toString(),phone.getText().toString(),instagram.getText().toString(),s,"put").execute();
 
                 final ProgressDialog pd=new ProgressDialog(EditProfile.this);
                 pd.setMessage("لطفا صبر کنید"+"در حال ارسال اطلاعات به سرور");

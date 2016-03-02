@@ -49,7 +49,6 @@ public class updateuserserver extends AsyncTask{
             data+="&"+URLEncoder.encode("address","UTF8")+"="+URLEncoder.encode(Address,"UTF8");
             data+="&"+URLEncoder.encode("phone","UTF8")+"="+URLEncoder.encode(Phone,"UTF8");
             data+="&"+URLEncoder.encode("instagram","UTF8")+"="+URLEncoder.encode(Instagram,"UTF8");
-            data+="&"+URLEncoder.encode("instagram","UTF8")+"="+URLEncoder.encode(Instagram,"UTF8");
             data+="&"+URLEncoder.encode("code","UTF8")+"="+URLEncoder.encode(Code,"UTF8");
             data+="&"+URLEncoder.encode("status","UTF8")+"="+URLEncoder.encode(Status,"UTF8");
 
