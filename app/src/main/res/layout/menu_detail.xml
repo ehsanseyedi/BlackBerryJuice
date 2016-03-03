@@ -223,7 +223,8 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="15dp"
                 android:paddingRight="18dp"
-                android:paddingLeft="18dp">
+                android:paddingLeft="18dp"
+                android:id="@+id/desclayout">
 
                 <com.BlackBerryJuice.utils.TextViewPlus
                     android:layout_width="match_parent"

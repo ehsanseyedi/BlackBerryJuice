@@ -64,6 +64,7 @@ public class registerserver extends AsyncTask{
             }
 
             Register.res=sb.toString();
+            Register2.res=sb.toString();
 
 
         }catch(Exception e){

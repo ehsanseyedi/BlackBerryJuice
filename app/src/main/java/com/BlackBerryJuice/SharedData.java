@@ -4,17 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by Saeed on 3/2/2016.
- */
 public class SharedData {
-
-
-
-
-
-
-
 
     public static void save_last_userinfo (String name,String birthday,String address , String phone , String insta,Context c) {
         SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);

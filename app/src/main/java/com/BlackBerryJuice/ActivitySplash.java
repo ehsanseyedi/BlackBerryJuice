@@ -62,7 +62,6 @@ public class ActivitySplash extends Activity {
         
     }
 
-
 //	public static void save_user_special_message (String message,Context c) {
 //		SharedPreferences sp = c.getSharedPreferences("usermes", Activity.MODE_PRIVATE);
 //		SharedPreferences.Editor editor = sp.edit();

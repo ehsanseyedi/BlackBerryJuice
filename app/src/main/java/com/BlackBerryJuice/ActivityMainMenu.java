@@ -91,9 +91,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	SliderLayout mDemoSlider;
 	TextView scrollingtext;
 	int widthofscreen;
-	//public static String mes_inmain="";
-//	HorizontalScrollView sv;
-//	int scroll_pos;
+
 	public static Handler hHandler;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

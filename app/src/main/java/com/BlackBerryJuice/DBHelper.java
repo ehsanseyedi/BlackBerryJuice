@@ -213,6 +213,7 @@ public class DBHelper extends SQLiteOpenHelper {
 			e.printStackTrace();
 		}
 	}
+
  	
  	public void deleteData(long id){
 		// ask the database manager to delete the row of given id
