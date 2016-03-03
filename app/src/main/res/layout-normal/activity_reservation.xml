@@ -184,6 +184,7 @@
                     android:layout_weight=".8"
                     android:layout_height="50dp"
                     android:weightSum="90">
+
                     <LinearLayout
                         android:layout_width="0dip"
                         android:layout_height="match_parent"
@@ -195,16 +196,16 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginLeft="15dp"
                         android:background="@drawable/backg_2"
-                        android:id="@+id/together_oc">
+                        android:id="@+id/birthday_oc">
                         <com.BlackBerryJuice.utils.TextViewPlus
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="دورهمی"
+                            android:text="تولد"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:layout_gravity="center"
                             android:textColor="#000000"
                             foo:customFont="fonts/IRANSansMobile_Light.ttf"
-                            android:paddingTop="2dp" />
+                            android:paddingTop="3dp" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="0dip"
@@ -238,17 +239,17 @@
                         android:layout_marginBottom="7dp"
                         android:layout_marginRight="15dp"
                         android:layout_marginLeft="15dp"
-                        android:background="@drawable/backg_2"
-                        android:id="@+id/birthday_oc">
+                        android:background="@drawable/backg_2_selected"
+                        android:id="@+id/together_oc">
                         <com.BlackBerryJuice.utils.TextViewPlus
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="تولد"
+                            android:text="دورهمی"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:layout_gravity="center"
                             android:textColor="#000000"
                             foo:customFont="fonts/IRANSansMobile_Light.ttf"
-                            android:paddingTop="3dp" />
+                            android:paddingTop="2dp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -298,7 +299,7 @@
                         android:layout_marginBottom="7dp"
                         android:layout_marginRight="15dp"
                         android:layout_marginLeft="15dp"
-                        android:background="@drawable/backg_2"
+                        android:background="@drawable/backg_2_selected"
                         android:id="@+id/one_hour">
                         <com.BlackBerryJuice.utils.TextViewPlus
                             android:layout_width="wrap_content"
@@ -310,6 +311,35 @@
                             foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
                             android:paddingTop="3dp" />
                     </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:gravity="center"
+                android:layout_marginBottom="10dp">
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_weight="0.8">
+                    <com.BlackBerryJuice.utils.TextViewPlus
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/smallfont"
+                        android:text="پیش سفارش"
+                        android:layout_gravity="center"
+                        android:textColor="#2A2A2A"
+                        foo:customFont="fonts/IRANSansMobile_Light.ttf"
+                        android:layout_marginRight="3dp" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/check_2"
+                        android:layout_marginBottom="2dp"
+                        android:id="@+id/pre_order_check" />
 
                 </LinearLayout>
             </LinearLayout>

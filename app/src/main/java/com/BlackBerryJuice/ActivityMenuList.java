@@ -72,6 +72,7 @@ public class ActivityMenuList extends Activity {
 	long Category_ID;
 	String Category_name;
 	String Keyword;
+	static DBHelper dbhelper;
 	
 	DecimalFormat formatData = new DecimalFormat("#.##");
 	
@@ -87,6 +88,7 @@ public class ActivityMenuList extends Activity {
 			window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
 		}
         setContentView(R.layout.menu_list);
+		dbhelper = new DBHelper(this);
 
         prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
         listMenu = (ListView) findViewById(R.id.listMenu);

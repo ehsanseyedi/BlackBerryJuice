@@ -83,10 +83,11 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	int IOConnect = 0;
 	ImageView g1;
 	ImageView g2;
-	ImageView g3;
+	ImageView g3 ,site ;
 	ImageView insta_link , telegram_link;
 	Intent gotoprofile;
 	Intent gotologin;
+	Intent profile;
 	SliderLayout mDemoSlider;
 	TextView scrollingtext;
 	int widthofscreen;
@@ -114,11 +115,33 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		//Log.e("saeed_curmes","cur: " + curmes);
 		if(curmes.equals("")){
 			scrollingtext.setText("کاربر مهمان عزیز، به تمشک سیاه خوش آمدید، برای استفاده از امکانات برنامه باید ثبت نام نمایید");
+//			new updatemessage(Constant.Update_Message,EditProfile.load_code(ActivityMainMenu.this),"","get").execute();
+//			new CountDownTimer(5000,1000) {
+//				@Override
+//				public void onFinish() {
+//
+//				}
+//
+//				@Override
+//				public void onTick(long millisUntilFinished) {
+//					if (!mes_inmain.equals("")){
+//						ActivitySplash.save_user_special_message(mes_inmain, ActivityMainMenu.this);
+//						scrollingtext.setText(mes_inmain);
+//						Log.e("saeed_timer", "loaded");
+//						cancel();
+//					}
+//					Log.e("saeed_timer","tick");
+//				}
+//			}.start();
 		}else{
-			String temp = "<font color='#E3E3E3'>ب</font>";
+			String temp = "<font color='#E3E3E3'>ا</font>";
+
+
 			//scrollingtext.setText(Html.fromHtml(temp)+curmes,TextView.BufferType.SPANNABLE);
 			scrollingtext.setText(Html.fromHtml(temp + curmes));
 		}
+
+
 
 		RelativeLayout order = (RelativeLayout) findViewById(R.id.Order_Cat_Button);
 		order.setOnClickListener(new View.OnClickListener() {
@@ -189,6 +212,22 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			}
 		});
 
+		site = (ImageView)findViewById(R.id.site);
+		site.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Uri uri = Uri.parse("http://blackberryjuice.ir");
+				Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+				try {
+					startActivity(likeIng);
+					overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
+				} catch (ActivityNotFoundException e) {
+					startActivity(new Intent(Intent.ACTION_VIEW,
+							Uri.parse("http://blackberryjuice.ir")));
+					overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
+				}
+			}
+		});
 		// get menu id that sent from previous page
 		Intent iGet = getIntent();
 		Menu_ID = iGet.getLongExtra("menu_id", 0);
