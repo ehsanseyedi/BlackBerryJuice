@@ -96,6 +96,12 @@
             android:name=".Register"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".Login2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Register2"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".Review"
             android:screenOrientation="portrait" />
         <activity

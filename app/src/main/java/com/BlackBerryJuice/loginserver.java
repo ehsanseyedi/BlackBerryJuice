@@ -61,6 +61,7 @@ public class loginserver extends AsyncTask{
             }
 
             Login.res=sb.toString();
+            Login2.res=sb.toString();
 
 
 

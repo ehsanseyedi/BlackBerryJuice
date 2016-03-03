@@ -47,7 +47,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class ActivityCart extends Activity {
-	
+
 	// declare view objects
 //	ImageButton imgNavBack;
 	ListView listOrder;
@@ -69,7 +69,7 @@ public class ActivityCart extends Activity {
 	static ArrayList<String> Menu_name = new ArrayList<String>();
 	static ArrayList<Integer> Quantity = new ArrayList<Integer>();
 	static ArrayList<Double> Sub_total_price = new ArrayList<Double>();
-	
+
 	double Total_price;
 	final int CLEAR_ALL_ORDER = 0;
 	final int CLEAR_ONE_ORDER = 1;
@@ -82,7 +82,7 @@ public class ActivityCart extends Activity {
 	// create price format
 	DecimalFormat formatData = new DecimalFormat("#.##");
 
-	
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +97,7 @@ public class ActivityCart extends Activity {
 		}
 
         setContentView(R.layout.your_order);
-        
+
         // connect view objects with xml id
 //        imgNavBack = (ImageButton) findViewById(R.id.imgNavBack);
         Checkout = (RelativeLayout) findViewById(R.id.Checkout);
@@ -108,13 +108,13 @@ public class ActivityCart extends Activity {
         txtAlert = (TextView) findViewById(R.id.txtAlert);
         btnClear = (RelativeLayout) findViewById(R.id.btnClear);
         lytOrder = (RelativeLayout) findViewById(R.id.lytOrder);
-        
+
         // tax and currency API url
         TaxCurrencyAPI = Constant.TaxCurrencyAPI+"?accesskey="+Constant.AccessKey;
-    	
+
         mola = new AdapterCart(this);
         dbhelper = new DBHelper(this);
-        
+
         // open database
         try{
 			dbhelper.openDataBase();
@@ -127,14 +127,14 @@ public class ActivityCart extends Activity {
 
         // event listener to handle clear button when clicked
 		btnClear.setOnClickListener(new OnClickListener() {
-			
+
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				// show confirmation dialog
 				showClearDialog(CLEAR_ALL_ORDER, 1111);
 			}
 		});
-		
+
         // event listener to handle list when clicked
 		listOrder.setOnItemClickListener(new OnItemClickListener() {
 
@@ -144,7 +144,7 @@ public class ActivityCart extends Activity {
 				showClearDialog(CLEAR_ONE_ORDER, Menu_ID.get(position));
 			}
 		});
-        
+
         // event listener to handle back button when clicked
 //        imgNavBack.setOnClickListener(new OnClickListener() {
 //			
@@ -159,18 +159,18 @@ public class ActivityCart extends Activity {
 
 		Checkout.setEnabled(false);
         Checkout.setOnClickListener(new OnClickListener() {
-			
+
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				// close database and back to previous page
 				dbhelper.close();
-				Intent iReservation = new Intent(ActivityCart.this, Login.class); //////
+				Intent iReservation = new Intent(ActivityCart.this, Paaay.class); //////
 				iReservation.putExtra("price",Total_price);
 				startActivity(iReservation);
 				overridePendingTransition(R.anim.open_next, R.anim.close_next);
 			}
 		});
-      
+
     }
 
     // method to create dialog
@@ -189,7 +189,7 @@ public class ActivityCart extends Activity {
 		}
 		builder.setCancelable(false);
 		builder.setPositiveButton("بله", new DialogInterface.OnClickListener() {
-			
+
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
 				switch(FLAG){
@@ -208,12 +208,12 @@ public class ActivityCart extends Activity {
 					new getDataTask().execute();
 					break;
 				}
-				
+
 			}
 		});
-		
+
 		builder.setNegativeButton("خیر", new DialogInterface.OnClickListener() {
-			
+
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
 				// close dialog
@@ -222,12 +222,12 @@ public class ActivityCart extends Activity {
 		});
 		AlertDialog alert = builder.create();
 		alert.show();
-	
+
     }
-    
+
     // asynctask class to handle parsing json in background
     public class getTaxCurrency extends AsyncTask<Void, Void, Void> {
-    	
+
     	// show progressbar first
 		getTaxCurrency(){
 	 		if(!prgLoading.isShown()){
@@ -235,7 +235,7 @@ public class ActivityCart extends Activity {
 				txtAlert.setVisibility(View.GONE);
 	 		}
 	 	}
-		
+
 		@Override
 		protected Void doInBackground(Void... arg0) {
 			// TODO Auto-generated method stub
@@ -243,7 +243,7 @@ public class ActivityCart extends Activity {
 			parseJSONDataTax();
 			return null;
 		}
-    	
+
 		@Override
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
@@ -258,13 +258,13 @@ public class ActivityCart extends Activity {
 				txtAlert.setText(R.string.alert);
 			}
 			Checkout.setEnabled(true);
-			
+
 		}
     }
 
     // method to parse json data from server
 	public void parseJSONDataTax(){
-		
+
 		try {
 	        // request data from tax and currency API
 	        HttpClient client = new DefaultHttpClient();
@@ -273,30 +273,30 @@ public class ActivityCart extends Activity {
 	        HttpUriRequest request = new HttpGet(TaxCurrencyAPI);
 			HttpResponse response = client.execute(request);
 			InputStream atomInputStream = response.getEntity().getContent();
-	
+
 			BufferedReader in = new BufferedReader(new InputStreamReader(atomInputStream));
-		        
+
 	        String line;
 	        String str = "";
 	        while ((line = in.readLine()) != null){
 	        	str += line;
 	        }
-    
+
 	        // parse json data and store into tax and currency variables
 			JSONObject json = new JSONObject(str);
 			JSONArray data = json.getJSONArray("data"); // this is the "items: [ ] part
-			
+
 			JSONObject object_tax = data.getJSONObject(0);
 			JSONObject tax = object_tax.getJSONObject("tax_n_currency");
-			    
+
 			Tax = Double.parseDouble(tax.getString("Value"));
-			
+
 			JSONObject object_currency = data.getJSONObject(1);
 			JSONObject currency = object_currency.getJSONObject("tax_n_currency");
-			
+
 			Currency = currency.getString("Value");
-			    
-			
+
+
 		} catch (MalformedURLException e) {
 		    // TODO Auto-generated catch block
 		    e.printStackTrace();
@@ -307,9 +307,9 @@ public class ActivityCart extends Activity {
 		} catch (JSONException e) {
 		    // TODO Auto-generated catch block
 		    e.printStackTrace();
-		}	
+		}
 	}
-    
+
 	// clear arraylist variables before used
     void clearData(){
     	Menu_ID.clear();
@@ -317,10 +317,10 @@ public class ActivityCart extends Activity {
     	Quantity.clear();
     	Sub_total_price.clear();
     }
-    
+
     // asynctask class to handle parsing json in background
     public class getDataTask extends AsyncTask<Void, Void, Void> {
-    	
+
     	// show progressbar first
     	getDataTask(){
     		if(!prgLoading.isShown()){
@@ -329,7 +329,7 @@ public class ActivityCart extends Activity {
     			txtAlert.setVisibility(View.GONE);
     		}
     	}
-    	
+
     	@Override
 		protected Void doInBackground(Void... arg0) {
 			// TODO Auto-generated method stub
@@ -337,7 +337,7 @@ public class ActivityCart extends Activity {
     		getDataFromDatabase();
 			return null;
 		}
-    	
+
 		@Override
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
@@ -356,18 +356,18 @@ public class ActivityCart extends Activity {
 			}
 		}
     }
-    
+
     // method to get data from server
     public void getDataFromDatabase(){
-    	
+
     	Total_price = 0;
     	clearData();
     	data = dbhelper.getAllData();
-    	
+
     	// store data to arraylist variables
     	for(int i=0;i<data.size();i++){
     		ArrayList<Object> row = data.get(i);
-    		
+
     		Menu_ID.add(Integer.parseInt(row.get(0).toString()));
 			Log.d("saeed_test_menuID", row.get(0).toString());
 			Menu_name.add(row.get(1).toString());
@@ -377,12 +377,12 @@ public class ActivityCart extends Activity {
     		Sub_total_price.add(Double.parseDouble(formatData.format(Double.parseDouble(row.get(3).toString()))));
     		Total_price += Sub_total_price.get(i);
     	}
-    	
+
     	// count total order
     	Total_price -= (Total_price * (Tax/100));
     	Total_price = Double.parseDouble(formatData.format(Total_price));
     }
-    
+
     // when back button pressed close database and back to previous page
     @Override
     public void onBackPressed() {
@@ -392,8 +392,8 @@ public class ActivityCart extends Activity {
     	finish();
     	overridePendingTransition(R.anim.open_main, R.anim.close_next);
     }
-    
-	 
+
+
     @Override
 	public void onConfigurationChanged(final Configuration newConfig)
 	{
@@ -401,5 +401,5 @@ public class ActivityCart extends Activity {
 	    super.onConfigurationChanged(newConfig);
 	}
 
-    
+
 }

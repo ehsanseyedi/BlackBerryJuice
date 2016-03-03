@@ -59,7 +59,8 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class ActivityMenuDetail extends Activity {
-	
+	Intent gotocard;
+	Intent gotologin;
 	ImageView imgPreview;
 	TextView txtText, txtSubText , txtSubText2;
 	TextViewPlus txtDescription;
@@ -145,9 +146,15 @@ public class ActivityMenuDetail extends Activity {
 			
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent iMyOrder = new Intent(ActivityMenuDetail.this, ActivityCart.class);
-				startActivity(iMyOrder);
-				overridePendingTransition(R.anim.open_next, R.anim.close_next);
+				gotocard = new Intent(ActivityMenuDetail.this, ActivityCart.class);
+				gotologin = new Intent(ActivityMenuDetail.this, Login2.class);
+				if( SharedData.do_user_registered(ActivityMenuDetail.this) || SharedData.do_user_logedin(ActivityMenuDetail.this)) {
+					startActivity(gotocard);
+				}else{
+					startActivity(gotologin);
+				}
+				finish();
+				overridePendingTransition (R.anim.open_next, R.anim.close_next);
 			}
 		});
 
@@ -183,8 +190,14 @@ public class ActivityMenuDetail extends Activity {
 		switch (item.getItemId()) {
 		case R.id.cart:
 			// refresh action
-			Intent iMyOrder = new Intent(ActivityMenuDetail.this, ActivityCart.class);
-			startActivity(iMyOrder);
+			gotocard = new Intent(ActivityMenuDetail.this, ActivityCart.class);
+			gotologin = new Intent(ActivityMenuDetail.this, Login2.class);
+			if( SharedData.do_user_registered(ActivityMenuDetail.this) || SharedData.do_user_logedin(ActivityMenuDetail.this)) {
+				startActivity(gotocard);
+			}else{
+				startActivity(gotologin);
+			}
+			finish();
 			overridePendingTransition (R.anim.open_next, R.anim.close_next);
 			return true;
 			

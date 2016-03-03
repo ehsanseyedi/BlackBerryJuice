@@ -87,13 +87,10 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	ImageView insta_link , telegram_link;
 	Intent gotoprofile;
 	Intent gotologin;
-	Intent profile;
 	SliderLayout mDemoSlider;
 	TextView scrollingtext;
 	int widthofscreen;
-	//public static String mes_inmain="";
-//	HorizontalScrollView sv;
-//	int scroll_pos;
+
 	public static Handler hHandler;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -117,32 +114,11 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		//Log.e("saeed_curmes","cur: " + curmes);
 		if(curmes.equals("")){
 			scrollingtext.setText("کاربر مهمان عزیز، به تمشک سیاه خوش آمدید، برای استفاده از امکانات برنامه باید ثبت نام نمایید");
-//			new updatemessage(Constant.Update_Message,EditProfile.load_code(ActivityMainMenu.this),"","get").execute();
-//			new CountDownTimer(5000,1000) {
-//				@Override
-//				public void onFinish() {
-//
-//				}
-//
-//				@Override
-//				public void onTick(long millisUntilFinished) {
-//					if (!mes_inmain.equals("")){
-//						ActivitySplash.save_user_special_message(mes_inmain, ActivityMainMenu.this);
-//						scrollingtext.setText(mes_inmain);
-//						Log.e("saeed_timer", "loaded");
-//						cancel();
-//					}
-//					Log.e("saeed_timer","tick");
-//				}
-//			}.start();
 		}else{
 			String temp = "<font color='#E3E3E3'>ب</font>";
-
 			//scrollingtext.setText(Html.fromHtml(temp)+curmes,TextView.BufferType.SPANNABLE);
 			scrollingtext.setText(Html.fromHtml(temp + curmes));
 		}
-
-
 
 		RelativeLayout order = (RelativeLayout) findViewById(R.id.Order_Cat_Button);
 		order.setOnClickListener(new View.OnClickListener() {

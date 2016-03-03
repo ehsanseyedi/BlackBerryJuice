@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:foo="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    tools:context=".Login">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="5dp"
+        tools:ignore="UselessParent">
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="برای مشاهده سبد خرید و پرداخت باید وارد شوبد"
+            android:layout_gravity="center"
+            android:textColor="#2A2A2A"
+            android:layout_marginBottom="15dp"
+            foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+            android:textSize="@dimen/smallfont" />
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="ورود به حساب کاربری"
+            android:layout_gravity="center"
+            android:textColor="#2A2A2A"
+            android:layout_marginBottom="10dp"
+            foo:customFont="fonts/IRANSansMobile_Medium.ttf"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/backg_2"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="شماره اشتراک"
+                android:inputType="number"
+                android:background="#00000000"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/EditText_Color_Text"
+                android:textColorHint="@color/EditText_Color_Hint">
+            </EditText>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/profile_1"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:adjustViewBounds="true"
+                android:padding="12dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/backg_2"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="شماره موبایل"
+                android:background="#00000000"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/EditText_Color_Text"
+                android:textColorHint="@color/EditText_Color_Hint"
+                android:inputType="phone"
+                android:phoneNumber="true"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/phone_1"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:adjustViewBounds="true"
+                android:padding="12dp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/themainbutton"
+            android:text="ورود"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textColor="#FFFFFF" />
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:id="@+id/reg_now_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="عضویت"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/backg_2"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -62,5 +62,4 @@ class AdapterCart extends BaseAdapter {
 			TextView txtMenuName, txtQuantity, txtPrice;
 		}
 		
-		
 	}
