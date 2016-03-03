@@ -47,7 +47,6 @@ public class Profile extends Activity {
                 SharedData.delete_user_special_message(Profile.this);
 
 
-
                 startActivity(new Intent(Profile.this, ActivityMainMenu.class));
                 finish();
             }
