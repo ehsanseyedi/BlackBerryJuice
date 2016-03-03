@@ -337,7 +337,7 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/check_1"
+                        android:src="@drawable/check_2"
                         android:layout_marginBottom="2dp"
                         android:id="@+id/pre_order_check" />
 

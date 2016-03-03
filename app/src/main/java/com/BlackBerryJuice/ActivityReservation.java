@@ -2,6 +2,7 @@ package com.BlackBerryJuice;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.SQLException;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -72,7 +73,8 @@ public class ActivityReservation extends Activity implements
 	public static boolean is_today_selected = false , is_date_picked = false;
 	EditText desc;
 	FrameLayout table_2 , table_5;
-	ImageView table_2_check,table_5_check;
+	ImageView table_2_check,table_5_check , pre_order_check;
+	boolean pre_order = true;
 	RelativeLayout Time_Pick , Date_Pick;
 	TimePickerDialog tpd;
 	LinearLayout birthday_oc , anniversary_oc , together_oc , one_hour ,one_hour_plus;
@@ -120,6 +122,23 @@ public class ActivityReservation extends Activity implements
 	private void initializeViews() {
 		timeTextView = (TextView)findViewById(R.id.Time_Text);
 		dateTextView = (TextView)findViewById(R.id.Date_Text);
+		pre_order_check = (ImageView)findViewById(R.id.pre_order_check);
+		pre_order_check.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(pre_order == true)
+				{
+					pre_order = false;
+					pre_order_check.setImageResource(R.drawable.check_1);
+				}
+				else
+				{
+					pre_order = true;
+					pre_order_check.setImageResource(R.drawable.check_2);
+				}
+
+			}
+		});
 		Req_Btn = (Button)findViewById(R.id.RequestBtn);
 		Req_Btn.setTypeface(ActivitySplash.F2);
 		Req_Btn.setOnClickListener(new View.OnClickListener() {
@@ -155,6 +174,17 @@ public class ActivityReservation extends Activity implements
 					dbhelper.addData(Menu_ID.get(index_of-1), Menu_name.get(index_of-1), 1, (Menu_price.get(index_of-1)));
 				}
 				Toast.makeText(ActivityReservation.this,"سفارش با موفقیت به سبد خرید افزوده شد",Toast.LENGTH_SHORT).show();
+
+				if(pre_order == true)
+				{
+					startActivity(new Intent(ActivityReservation.this, ActivityCategoryList.class));
+					overridePendingTransition (R.anim.slide_up, R.anim.slide_up_2);
+				}
+				else
+				{
+					startActivity(new Intent(ActivityReservation.this, ActivityCart.class));
+					overridePendingTransition (R.anim.slide_up, R.anim.slide_up_2);
+				}
 			}
 		});
 
