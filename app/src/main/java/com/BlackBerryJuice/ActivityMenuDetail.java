@@ -70,6 +70,7 @@ public class ActivityMenuDetail extends Activity {
 	TextView txtAlert;
 	LinearLayout adder;
 	LinearLayout buylayout;
+	LinearLayout desc;
 	// declare dbhelper object
 	static DBHelper dbhelper;
 	TextView counter;
@@ -108,6 +109,7 @@ public class ActivityMenuDetail extends Activity {
 		counter = (TextView) findViewById(R.id.counter);
 		adder = (LinearLayout) findViewById(R.id.adder);
 		buylayout = (LinearLayout) findViewById(R.id.buylayout);
+		desc = (LinearLayout) findViewById(R.id.desclayout);
         imgPreview = (ImageView) findViewById(R.id.imgPreview);
         txtText = (TextView) findViewById(R.id.txtText);
         txtSubText = (TextView) findViewById(R.id.txtSubText);
@@ -172,7 +174,6 @@ public class ActivityMenuDetail extends Activity {
 				}
 			}
 		});
-        
     }
     
     @Override
@@ -336,6 +337,12 @@ public class ActivityMenuDetail extends Activity {
 					buylayout.setVisibility(View.GONE);
 				}else{
 					buylayout.setVisibility(View.VISIBLE);
+				}
+
+				if (Menu_description.equals(" ")){
+					desc.setVisibility(View.GONE);
+				}else{
+					desc.setVisibility(View.VISIBLE);
 				}
 
 			}else{

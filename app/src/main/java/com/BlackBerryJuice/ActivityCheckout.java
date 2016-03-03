@@ -414,8 +414,7 @@ public class ActivityCheckout extends FragmentActivity {
 		 protected void onPreExecute() {
 		  // TODO Auto-generated method stub
 			 dialog= ProgressDialog.show(ActivityCheckout.this, "",
-					 getString(R.string.sending_alert), true);
-		  	
+			 getString(R.string.sending_alert), true);
 		 }
 
 		 @Override

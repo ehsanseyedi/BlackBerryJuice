@@ -145,17 +145,6 @@ public class ActivityCart extends Activity {
 			}
 		});
 
-        // event listener to handle back button when clicked
-//        imgNavBack.setOnClickListener(new OnClickListener() {
-//			
-//			public void onClick(View arg0) {
-//				// TODO Auto-generated method stub
-//				// close database and back to previous page
-//				dbhelper.close();
-//				finish();
-//				overridePendingTransition(R.anim.open_main, R.anim.close_next);
-//			}
-//		});
 
 		Checkout.setEnabled(false);
         Checkout.setOnClickListener(new OnClickListener() {
@@ -164,7 +153,8 @@ public class ActivityCart extends Activity {
 				// TODO Auto-generated method stub
 				// close database and back to previous page
 				dbhelper.close();
-				Intent iReservation = new Intent(ActivityCart.this, Paaay.class); //////
+				//Intent iReservation = new Intent(ActivityCart.this, Paaay.class); //////
+				Intent iReservation = new Intent(ActivityCart.this, ActivityCheckout.class); //////
 				iReservation.putExtra("price",Total_price);
 				startActivity(iReservation);
 				overridePendingTransition(R.anim.open_next, R.anim.close_next);
