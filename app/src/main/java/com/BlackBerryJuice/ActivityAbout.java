@@ -165,7 +165,7 @@ public class ActivityAbout extends Activity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(ActivityAbout.this, ActivityMainMenu.class));
+
         overridePendingTransition(R.anim.slide_down, R.anim.slide_down_2);
         finish();
 

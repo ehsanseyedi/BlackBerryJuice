@@ -50,7 +50,8 @@
             android:layout_alignTop="@+id/view2"
             android:layout_toLeftOf="@+id/view2"
             android:layout_toStartOf="@+id/view2"
-            android:id="@+id/prof_num" />
+            android:id="@+id/prof_num"
+            android:layout_marginBottom="2dp" />
         <com.BlackBerryJuice.utils.TextViewPlus
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

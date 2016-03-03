@@ -1,6 +1,6 @@
 <resources>
     <!-- App text configuration -->
-    <string name="app_name">تمشک سیاه</string>
+    <string name="app_name">BlackBerry</string>
 
     <string name="yes">بله</string>
     <string name="no">خیر</string>
