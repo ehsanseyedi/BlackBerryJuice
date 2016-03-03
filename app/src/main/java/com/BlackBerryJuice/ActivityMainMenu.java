@@ -136,6 +136,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		}else{
 			String temp = "<font color='#E3E3E3'>ا</font>";
 
+
 			//scrollingtext.setText(Html.fromHtml(temp)+curmes,TextView.BufferType.SPANNABLE);
 			scrollingtext.setText(Html.fromHtml(temp + curmes));
 		}
