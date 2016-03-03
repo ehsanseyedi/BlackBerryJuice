@@ -20,7 +20,6 @@ public class registerserver extends AsyncTask{
     private String mobile="";
     private String phone="";
 
-
     public registerserver(String link,String namez,String mobilez,String bithdayz,String addressz,String phonez,String instagramz){
 
         Link=link;
@@ -33,10 +32,8 @@ public class registerserver extends AsyncTask{
     }
 
 
-
     @Override
     protected String doInBackground(Object... arg0) {
-
 
         try{
 
@@ -55,7 +52,6 @@ public class registerserver extends AsyncTask{
             wr.write(data);
             wr.flush();
 
-
             BufferedReader reader=new BufferedReader(new InputStreamReader(connect.getInputStream()));
             StringBuilder sb=new StringBuilder();
 
@@ -70,14 +66,10 @@ public class registerserver extends AsyncTask{
             Register.res=sb.toString();
 
 
-
-
         }catch(Exception e){
 
 
-
         }
-
 
 
         return "";

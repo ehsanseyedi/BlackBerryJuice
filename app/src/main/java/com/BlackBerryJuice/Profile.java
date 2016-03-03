@@ -1,6 +1,8 @@
 package com.BlackBerryJuice;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,9 +12,16 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Profile extends Activity {
-
+    private int count=0;
+    TextView profname;
+    TextView profnum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +34,17 @@ public class Profile extends Activity {
             window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
         }
         setContentView(R.layout.profile_layout);
+
+        profname = (TextView) findViewById(R.id.prof_name);
+        profnum = (TextView) findViewById(R.id.prof_num);
+
+        if(!SharedData.load_name(Profile.this).equals("") && !SharedData.load_code(Profile.this).equals("")){
+            profname.setText(SharedData.load_name(Profile.this));
+            profnum.setText(SharedData.load_code(Profile.this));
+        }else{
+            String code = SharedData.load_code(Profile.this);
+            countforget(code);
+        }
 
         RelativeLayout Edit_Button = (RelativeLayout) findViewById(R.id.Edit_Button);
         Edit_Button.setOnClickListener(new View.OnClickListener() {
@@ -39,13 +59,10 @@ public class Profile extends Activity {
         Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 SharedData.set_user_logedin(false, Profile.this);
                 SharedData.set_user_registered(false, Profile.this);
                 SharedData.delete_all_userinfo(Profile.this);
                 SharedData.delete_user_special_message(Profile.this);
-
 
                 startActivity(new Intent(Profile.this, ActivityMainMenu.class));
                 finish();
@@ -58,4 +75,57 @@ public class Profile extends Activity {
         startActivity(new Intent(Profile.this, ActivityMainMenu.class));
         finish();
     }
+
+        public void countforget (String code){
+            final String codeee = code;
+            new updateuserserver(Constant.Update_ProfileURL,"","","","","","",codeee,"get",Profile.this).execute();
+        final Timer tm=new Timer();
+        final ProgressDialog pd=new ProgressDialog(Profile.this);
+        pd.setMessage("لطفا صبر کنید"+"\n"+"در حال دریافت اطلاعات از سرور");
+        pd.show();
+        pd.setCancelable(false);
+        pd.setOnCancelListener(new ProgressDialog.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface arg0) {
+
+                tm.cancel();
+                pd.cancel();
+                new updateuserserver(Constant.Update_ProfileURL, "", "", "", "", "", "", codeee, "get", Profile.this).cancel(true);
+
+            }
+        });
+
+        tm.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    public void run() {
+
+                        count++;
+                        if (count == 30) {
+                            pd.cancel();
+                            tm.cancel();
+                            count = 0;
+                            new updateuserserver(Constant.Update_ProfileURL, "", "", "", "", "", "", codeee, "get", Profile.this).cancel(true);
+                            Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
+                            finish();
+                        }
+
+                        if (!EditProfile.res.equals("")) {
+                            pd.cancel();
+                            Log.e("saeed", "taken from profile done: " + EditProfile.res);
+                            EditProfile.res = "";
+                            profname.setText(SharedData.load_name(Profile.this));
+                            profnum.setText(SharedData.load_code(Profile.this));
+                            tm.cancel();
+
+                        }
+
+                    }
+                });
+
+            }
+
+        }, 1, 1000);
+    }
+
 }
