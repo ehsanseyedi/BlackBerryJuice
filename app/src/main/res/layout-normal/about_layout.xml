@@ -33,13 +33,14 @@
                 android:layout_height="wrap_content"
                 android:text="بنا به گزارشات ثبت شده BlackBerry یک مرکز تخصصی نوشیدنی های گرم و سرد با رِسیپی های سحرآمیز و اعتیاد آور میباشد"
                 foo:customFont="fonts/IRANSansMobile_Light.ttf"
-                android:textSize="@dimen/medfont"
+                android:textSize="@dimen/smallfont"
                 android:textColor="#FFF"
                 android:paddingTop="5dp"
                 android:layout_gravity="right"
-                android:layout_marginRight="7dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="7dp"
-                android:layout_marginLeft="7dp" />
+                android:layout_marginLeft="10dp"
+                android:gravity="center" />
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -53,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:text="آبمیوه تمشک سیاه"
                     foo:customFont="fonts/IRANSansMobile_Medium.ttf"
-                    android:textSize="@dimen/medfont"
+                    android:textSize="@dimen/smallfont"
                     android:textColor="#FFF"
                     android:paddingTop="5dp" />
 
@@ -78,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:text="051-38939070\n051-38939373\n051-38939395"
                     foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
-                    android:textSize="@dimen/medfont"
+                    android:textSize="@dimen/smallfont"
                     android:textColor="#FFF"
                     android:paddingTop="5dp"
                     android:autoLink="phone" />
@@ -104,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:text="مشهد، نبش دانشجو 16"
                     foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
-                    android:textSize="@dimen/medfont"
+                    android:textSize="@dimen/smallfont"
                     android:textColor="#FFF"
                     android:paddingTop="5dp" />
 
@@ -132,78 +133,163 @@
             </RelativeLayout>
 
             <com.BlackBerryJuice.utils.TextViewPlus
+                android:id="@+id/vis_"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ارسال نظر/انتقاد/پیشنهاد:"
+                android:text="ارسال نظر، انتقاد، پیشنهاد"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_gravity="center"
+                android:textColor="#000000"
                 foo:customFont="fonts/IRANSansMobile_Medium.ttf"
-                android:textSize="@dimen/medfont"
-                android:textColor="#FFF"
-                android:paddingTop="5dp"
-                android:layout_gravity="right"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="7dp" />
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/backg_2"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="7dp"
-                android:id="@+id/req_focus">
-                <EditText
-                    android:id="@+id/desc"
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:background="#00000000"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentRight="true"
-                    android:textSize="@dimen/smallfont"
-                    android:textColor="@color/transparent_black_seventy"
-                    android:textColorHint="@color/EditText_Color_Hint"
-                    android:gravity="top|right"
-                    android:padding="10dp"
-                    android:scrollbarStyle="outsideInset"
-                    android:fadeScrollbars="false"
-                    android:scrollbars="vertical"
-                    android:scrollbarSize="2dp">
-                </EditText>
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp" />
 
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="150dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/main_layout_reservation"
-                android:id="@+id/Send_Button"
-                android:paddingRight="7dp"
-                android:paddingLeft="7dp"
-                android:layout_toRightOf="@+id/linearLayout3"
-                android:layout_toEndOf="@+id/linearLayout3"
-                android:layout_marginTop="7dp"
-                android:layout_gravity="left"
-                android:layout_marginLeft="15dp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/main_layout_shop_1"
-                    android:padding="7dp"
-                    android:visibility="invisible" />
+                android:orientation="vertical"
+                android:id="@+id/vis_1"
+                android:visibility="gone">
+
                 <com.BlackBerryJuice.utils.TextViewPlus
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ارسال"
+                    android:text="ارسال نظر، انتقاد، پیشنهاد:"
                     foo:customFont="fonts/IRANSansMobile_Medium.ttf"
-                    android:textSize="@dimen/medfont"
-                    android:textColor="@color/white"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/smallfont"
+                    android:textColor="#FFF"
                     android:paddingTop="5dp"
-                    android:gravity="center" />
-            </RelativeLayout>
+                    android:layout_gravity="right"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="7dp" />
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@drawable/backg_2"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="7dp"
+                    android:id="@+id/req_focus">
+                    <EditText
+                        android:id="@+id/desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:background="#00000000"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
+                        android:textSize="@dimen/smallfont"
+                        android:textColor="@color/transparent_black_seventy"
+                        android:textColorHint="@color/EditText_Color_Hint"
+                        android:gravity="top|right"
+                        android:padding="10dp"
+                        android:scrollbarStyle="outsideInset"
+                        android:fadeScrollbars="false"
+                        android:scrollbars="vertical"
+                        android:scrollbarSize="2dp">
+                    </EditText>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_height="wrap_content"
+                    android:weightSum="100"
+                    android:gravity="center"
+                    android:id="@+id/relativeLayout"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:padding="7dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/main_layout_reservation"
+                        android:id="@+id/Send_Button"
+                        android:paddingRight="7dp"
+                        android:paddingLeft="7dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_weight="48"
+                        android:layout_toLeftOf="@+id/linearLayout3"
+                        android:layout_toStartOf="@+id/linearLayout3">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/main_layout_shop_1"
+                            android:padding="7dp"
+                            android:visibility="invisible" />
+                        <com.BlackBerryJuice.utils.TextViewPlus
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ارسال"
+                            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                            android:textSize="@dimen/medfont"
+                            android:textColor="@color/white"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:paddingTop="5dp"
+                            android:gravity="center" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="7dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/linearLayout3" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/backg_2"
+                        android:id="@+id/cancel"
+                        android:paddingRight="7dp"
+                        android:paddingLeft="7dp"
+                        android:layout_weight="48"
+                        android:layout_toRightOf="@+id/linearLayout3"
+                        android:layout_toEndOf="@+id/linearLayout3">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/main_layout_shop_1"
+                            android:padding="7dp"
+                            android:visibility="invisible" />
+
+                        <com.BlackBerryJuice.utils.TextViewPlus
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="انصراف"
+                            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                            android:textSize="@dimen/medfont"
+                            android:textColor="#000000"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:paddingTop="5dp"
+                            android:gravity="center" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -231,7 +317,7 @@
                     android:layout_height="wrap_content"
                     android:text="ارسال عکس"
                     foo:customFont="fonts/IRANSansMobile_Medium.ttf"
-                    android:textSize="@dimen/medfont"
+                    android:textSize="@dimen/smallfont"
                     android:textColor="@color/white"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
