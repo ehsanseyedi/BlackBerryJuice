@@ -55,6 +55,14 @@ public class Profile extends Activity {
             }
         });
 
+        RelativeLayout Cart_Button = (RelativeLayout) findViewById(R.id.Cart_Button);
+        Cart_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Profile.this, ActivityCart.class));
+                finish();
+            }
+        });
         RelativeLayout Exit = (RelativeLayout) findViewById(R.id.Exit_Button);
         Exit.setOnClickListener(new View.OnClickListener() {
             @Override

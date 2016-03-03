@@ -2,11 +2,15 @@ package com.BlackBerryJuice;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.database.SQLException;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -26,7 +30,28 @@ import com.mohamadamin.persianmaterialdatetimepicker.time.RadialPickerLayout;
 import com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog;
 import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.HttpConnectionParams;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Locale;
 import java.util.TimeZone;
 
 public class ActivityReservation extends Activity implements
@@ -36,7 +61,7 @@ public class ActivityReservation extends Activity implements
 
 	private static final String TIMEPICKER = "TimePickerDialog",
 			DATEPICKER = "DatePickerDialog";
-
+	static DBHelper dbhelper;
 	private CheckBox mode24Hours, modeDarkTime, modeDarkDate;
 	private TextView timeTextView, dateTextView;
 	private Button Req_Btn; //timeButton, dateButton;
@@ -51,7 +76,15 @@ public class ActivityReservation extends Activity implements
 	RelativeLayout Time_Pick , Date_Pick;
 	TimePickerDialog tpd;
 	LinearLayout birthday_oc , anniversary_oc , together_oc , one_hour ,one_hour_plus;
-	public String selected_oc , selected_time;
+	public String selected_oc="together_oc" , selected_time="one_hour" , table_sel = "2";
+	int index_of;
+	static ArrayList<Long> Menu_ID = new ArrayList<Long>();
+	static ArrayList<String> Menu_name = new ArrayList<String>();
+	static ArrayList<Double> Menu_price = new ArrayList<Double>();
+
+	String MenuDetailAPI;
+	int IOConnect = 0;
+	DecimalFormat formatData = new DecimalFormat("#.##");
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +94,12 @@ public class ActivityReservation extends Activity implements
 		initializeViews();
 		handleClicks();
 		Calendar c = Calendar.getInstance();
+		dbhelper = new DBHelper(this);
+		try{
+			dbhelper.openDataBase();
+		}catch(SQLException sqle){
+			throw sqle;
+		}
 		int day = c.get(Calendar.DATE);
 		int mounth = c.get(Calendar.MONTH)+1;
 		int year = c.get(Calendar.YEAR);
@@ -70,6 +109,11 @@ public class ActivityReservation extends Activity implements
 		Log.d("EHSAN", ShamsiCalleder.getCurrentShamsidate());
 
 
+		MenuDetailAPI = Constant.MenuAPI+"?accesskey="+Constant.AccessKey+"&category_id=0";
+
+		// call asynctask class to request data from server
+		new getDataTask().execute();
+
 
 	}
 
@@ -78,6 +122,43 @@ public class ActivityReservation extends Activity implements
 		dateTextView = (TextView)findViewById(R.id.Date_Text);
 		Req_Btn = (Button)findViewById(R.id.RequestBtn);
 		Req_Btn.setTypeface(ActivitySplash.F2);
+		Req_Btn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				index_of=0;
+
+				if(table_sel.equals("2"))
+					index_of = 0;
+				else if(table_sel.equals("5"))
+					index_of = 6;
+
+				if(selected_oc.equals("together_oc"))
+					index_of=index_of+1;
+				else if(selected_oc.equals("anniversary_oc"))
+					index_of=index_of+2;
+				else if(selected_oc.equals("birthday_oc"))
+					index_of=index_of+3;
+
+				if(selected_time.equals("one_hour_plus"))
+					index_of=index_of+3;
+
+				Log.e("#####" , index_of+"");
+				Log.e("table_sel" , table_sel+"");
+				Log.e("selected_oc" , selected_oc+"");
+				Log.e("selected_time" , selected_time+"");
+				Log.e("name" , Menu_name.get(index_of-1)+"");
+
+				if(dbhelper.isDataExist(Menu_ID.get(index_of-1))){
+					dbhelper.updateData(Menu_ID.get(index_of-1), 1, Menu_price.get(index_of-1));
+				}else{
+					dbhelper.addData(Menu_ID.get(index_of-1), Menu_name.get(index_of-1), 1, (Menu_price.get(index_of-1)));
+				}
+				Toast.makeText(ActivityReservation.this,"سفارش با موفقیت به سبد خرید افزوده شد",Toast.LENGTH_SHORT).show();
+			}
+		});
+
+
 		table_2 = (FrameLayout)findViewById(R.id.table_2);
 		table_5 = (FrameLayout)findViewById(R.id.table_5);
 		table_2_check = (ImageView)findViewById(R.id.table_2_check);
@@ -85,6 +166,7 @@ public class ActivityReservation extends Activity implements
 		table_2.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				table_sel="2";
 				table_2_check.setVisibility(View.VISIBLE);
 				table_5_check.setVisibility(View.INVISIBLE);
 			}
@@ -92,6 +174,7 @@ public class ActivityReservation extends Activity implements
 		table_5.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				table_sel="5";
 				table_2_check.setVisibility(View.INVISIBLE);
 				table_5_check.setVisibility(View.VISIBLE);
 			}
@@ -336,4 +419,98 @@ public class ActivityReservation extends Activity implements
 		return i+"";
 	}
 
-}
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		dbhelper.close();
+		finish();
+		overridePendingTransition(R.anim.open_main, R.anim.close_next);
+	}
+
+	public class getDataTask extends AsyncTask<Void, Void, Void> {
+
+		// show progressbar first
+		getDataTask(){}
+
+		@Override
+		protected Void doInBackground(Void... arg0) {
+			// TODO Auto-generated method stub
+			// parse json data from server in background
+			parseJSONData();
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			// TODO Auto-generated method stub
+			Collections.reverse(Menu_ID);
+			Collections.reverse(Menu_name);
+			Collections.reverse(Menu_price);
+		}
+	}
+
+		public void parseJSONData(){
+
+			clearData();
+
+			try {
+				// request data from menu API
+				HttpClient client = new DefaultHttpClient();
+				HttpConnectionParams.setConnectionTimeout(client.getParams(), 15000);
+				HttpConnectionParams.setSoTimeout(client.getParams(), 15000);
+				HttpUriRequest request = new HttpGet(MenuDetailAPI);
+				HttpResponse response = client.execute(request);
+				InputStream atomInputStream = response.getEntity().getContent();
+
+				BufferedReader in = new BufferedReader(new InputStreamReader(atomInputStream));
+
+				String line;
+				String str = "";
+				while ((line = in.readLine()) != null){
+					str += line;
+				}
+
+				// parse json data and store into arraylist variables
+				JSONObject json = new JSONObject(str);
+				JSONArray data = json.getJSONArray("data"); // this is the "items: [ ] part
+
+				for (int i = 0; i < data.length(); i++) {
+					JSONObject object = data.getJSONObject(i);
+					JSONObject menu = object.getJSONObject("Menu");
+
+					//me
+					//JSONObject menusaeed = object.getJSONObject("Menu_detail");
+
+					Menu_ID.add(Long.parseLong(menu.getString("Menu_ID")));
+					Menu_name.add(menu.getString("Menu_name"));
+					Log.e("NAMEEEEEEEEEE" , Menu_name.get(i));
+					//int price = (int) menu.getDouble("Price");
+					//int toman = (int) price / 10;
+					//String sp = NumberFormat.getNumberInstance(Locale.US).format(price);
+					Menu_price.add(menu.getDouble("Price"));
+
+
+				}
+
+
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		void clearData(){
+			Menu_ID.clear();
+			Menu_name.clear();
+			Menu_price.clear();
+		}
+
+
+	}
