@@ -2,7 +2,6 @@ package com.BlackBerryJuice;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -52,7 +51,7 @@ public class ActivityReservation extends Activity implements
 	RelativeLayout Time_Pick , Date_Pick;
 	TimePickerDialog tpd;
 	LinearLayout birthday_oc , anniversary_oc , together_oc , one_hour ,one_hour_plus;
-    public String selected_oc , selected_time;
+	public String selected_oc , selected_time;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +107,7 @@ public class ActivityReservation extends Activity implements
 		anniversary_oc  = (LinearLayout)findViewById(R.id.annivarsary_oc);
 		together_oc = (LinearLayout)findViewById(R.id.together_oc);
 		one_hour = (LinearLayout)findViewById(R.id.one_hour);
-        one_hour_plus = (LinearLayout)findViewById(R.id.one_hour_plus);
+		one_hour_plus = (LinearLayout)findViewById(R.id.one_hour_plus);
 
 		birthday_oc.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -137,22 +136,22 @@ public class ActivityReservation extends Activity implements
 				together_oc.setBackgroundResource(R.drawable.backg_2_selected);
 			}
 		});
-        one_hour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selected_time = "one_hour";
-                one_hour.setBackgroundResource(R.drawable.backg_2_selected);
-                one_hour_plus.setBackgroundResource(R.drawable.backg_2);
-            }
-        });
-        one_hour_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selected_time = "one_hour_plus";
-                one_hour.setBackgroundResource(R.drawable.backg_2);
-                one_hour_plus.setBackgroundResource(R.drawable.backg_2_selected);
-            }
-        });
+		one_hour.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				selected_time = "one_hour";
+				one_hour.setBackgroundResource(R.drawable.backg_2_selected);
+				one_hour_plus.setBackgroundResource(R.drawable.backg_2);
+			}
+		});
+		one_hour_plus.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				selected_time = "one_hour_plus";
+				one_hour.setBackgroundResource(R.drawable.backg_2);
+				one_hour_plus.setBackgroundResource(R.drawable.backg_2_selected);
+			}
+		});
 
 
 //		timeButton = (Button)findViewById(R.id.time_button);

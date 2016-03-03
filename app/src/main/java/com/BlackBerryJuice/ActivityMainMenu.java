@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.database.SQLException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -66,7 +63,6 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class ActivityMainMenu extends Activity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 	static DBHelper dbhelper;
@@ -173,7 +169,6 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 				overridePendingTransition (R.anim.slide_up, R.anim.slide_up_2);
 			}
 		});
-
 		insta_link = (ImageView)findViewById(R.id.insta_link);
 		insta_link.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -595,20 +590,6 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		protected void onPostExecute(Bitmap result) {
 			bmImage.setImageBitmap(result);
 			PPBB.setVisibility(View.GONE);
-		}
-	}
-
-	public static boolean isAppAvailable(Context context, String appName)
-	{
-		PackageManager pm = context.getPackageManager();
-		try
-		{
-			pm.getPackageInfo(appName, PackageManager.GET_ACTIVITIES);
-			return true;
-		}
-		catch (PackageManager.NameNotFoundException e)
-		{
-			return false;
 		}
 	}
 
