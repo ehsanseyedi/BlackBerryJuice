@@ -68,12 +68,19 @@ public class Paaay extends Activity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(Paaay.this,Review.class);
+        i.putExtra("price" , totalprice);
+        startActivity(i);
+        finish();
+    }
 
     class js{
 
 
         public void show(String content){
-
 
             //Toast.makeText(Paaay.this , content , Toast.LENGTH_SHORT).show();
 
@@ -102,7 +109,6 @@ public class Paaay extends Activity {
         }
 
     }//TEST3
-
 
 }
 

@@ -155,9 +155,10 @@ public class ActivityCart extends Activity {
 				dbhelper.close();
 				//Intent iReservation = new Intent(ActivityCart.this, Paaay.class); //////
 				Intent iReservation = new Intent(ActivityCart.this, Review.class); //////
-				iReservation.putExtra("price",Total_price);
+				iReservation.putExtra("price", Total_price);
 				startActivity(iReservation);
 				overridePendingTransition(R.anim.open_next, R.anim.close_next);
+				finish();
 			}
 		});
     }

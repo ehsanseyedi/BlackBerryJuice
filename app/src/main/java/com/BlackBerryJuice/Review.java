@@ -38,7 +38,7 @@ public class Review extends Activity {
         }
 
         final Intent gotobank = new Intent(Review.this,Paaay.class);
-        gotobank.putExtra("price",totalprice);
+        gotobank.putExtra("price", totalprice);
 
         Button paay = (Button) findViewById(R.id.paay);
         paay.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +50,14 @@ public class Review extends Activity {
         });
 
 
+
+
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(Review.this,ActivityCart.class));
+        finish();
+    }
 }
