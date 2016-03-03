@@ -5,6 +5,7 @@ import java.util.TimerTask;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -32,7 +33,7 @@ import com.BlackBerryJuice.utils.TextViewPlus;
  */
 public class ActivityAbout extends Activity {
     EditText desc;
-    private RelativeLayout Send_Button , cancel_button;
+    private RelativeLayout Send_Button , cancel_button , Pic_Send_Button;
 
     private String name="";
     public static String res="";
@@ -49,6 +50,28 @@ public class ActivityAbout extends Activity {
         desc = (EditText)findViewById(R.id.desc);
         Send_Button=(RelativeLayout) findViewById(R.id.Send_Button);
         cancel_button=(RelativeLayout) findViewById(R.id.cancel);
+        Pic_Send_Button=(RelativeLayout) findViewById(R.id.Pic_Send_Button);
+
+        Pic_Send_Button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Uri uri = Uri.parse("http://telegram.me/sadeghsb73");
+                Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+
+                likeIng.setPackage("com.telegram");
+
+                try {
+                    startActivity(likeIng);
+                    overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://telegram.me/blackberryjuice")));
+                    overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
+                }
+
+            }
+        });
         desc.setTypeface(ActivitySplash.F6);
         vis_ = (TextViewPlus)findViewById(R.id.vis_);
         vis_1 = (LinearLayout)findViewById(R.id.vis_1);
