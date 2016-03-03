@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -135,7 +136,10 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 //				}
 //			}.start();
 		}else{
-			scrollingtext.setText(curmes);
+			String temp = "<font color='#E3E3E3'>ب</font>";
+
+			//scrollingtext.setText(Html.fromHtml(temp)+curmes,TextView.BufferType.SPANNABLE);
+			scrollingtext.setText(Html.fromHtml(temp + curmes));
 		}
 
 
