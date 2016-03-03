@@ -83,7 +83,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	int IOConnect = 0;
 	ImageView g1;
 	ImageView g2;
-	ImageView g3;
+	ImageView g3 ,site ;
 	ImageView insta_link , telegram_link;
 	Intent gotoprofile;
 	Intent gotologin;
@@ -212,6 +212,22 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			}
 		});
 
+		site = (ImageView)findViewById(R.id.site);
+		site.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Uri uri = Uri.parse("http://blackberryjuice.ir");
+				Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+				try {
+					startActivity(likeIng);
+					overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
+				} catch (ActivityNotFoundException e) {
+					startActivity(new Intent(Intent.ACTION_VIEW,
+							Uri.parse("http://blackberryjuice.ir")));
+					overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
+				}
+			}
+		});
 		// get menu id that sent from previous page
 		Intent iGet = getIntent();
 		Menu_ID = iGet.getLongExtra("menu_id", 0);
