@@ -178,12 +178,14 @@ public class ActivityReservation extends Activity implements
 				if(pre_order == true)
 				{
 					startActivity(new Intent(ActivityReservation.this, ActivityCategoryList.class));
-					overridePendingTransition (R.anim.slide_up, R.anim.slide_up_2);
+					overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
+					finish();
 				}
 				else
 				{
 					startActivity(new Intent(ActivityReservation.this, ActivityCart.class));
 					overridePendingTransition (R.anim.slide_up, R.anim.slide_up_2);
+					finish();
 				}
 			}
 		});
