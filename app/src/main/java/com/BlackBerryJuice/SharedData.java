@@ -25,6 +25,20 @@ public class SharedData {
         editor.commit();
     }
 
+    public static void save_address2 (String address,Context c) {
+        SharedPreferences sp = c.getSharedPreferences("userinfo2", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("address2", address);
+        editor.commit();
+    }
+
+    public static void delete_address2 (Context c) {
+        SharedPreferences sp = c.getSharedPreferences("userinfo2", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear();
+        editor.commit();
+    }
+
     public static void delete_all_userinfo (Context c) {
         SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
@@ -52,6 +66,10 @@ public class SharedData {
         SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
         return sp.getString("address", "");
     }
+    public static String load_address2(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("userinfo2", Activity.MODE_PRIVATE);
+        return sp.getString("address2", "");
+    }
     public static String load_phone(Context c) {
         SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
         return sp.getString("phone", "");
@@ -60,14 +78,6 @@ public class SharedData {
         SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
         return sp.getString("insta", "");
     }
-
-
-
-
-
-
-
-
 
 
 

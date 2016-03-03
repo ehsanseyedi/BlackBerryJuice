@@ -93,16 +93,13 @@ public class Paaay extends Activity {
             }else if(t[0].equals("er")){
 
                 Toast.makeText(Paaay.this, "تراکنش ناموفق بود", Toast.LENGTH_LONG).show();
-                Intent go = new Intent(Paaay.this,User_Buy_Records.class);
+                Intent go = new Intent(Paaay.this,User_Buy_Record_Fake.class);
                 go.putExtra("rahgir","null");
                 go.putExtra("price",0);
                 startActivity(go);
                 finish();
             }
         }
-
-
-
 
     }//TEST3
 

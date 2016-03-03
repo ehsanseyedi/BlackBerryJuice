@@ -13,9 +13,6 @@ import android.view.WindowManager;
 
 public class ActivityConfirmMessage extends Activity {
 	
-	// declare view objects
-//	ImageButton imgNavBack;
-	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {

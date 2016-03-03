@@ -110,6 +110,9 @@
         <activity
             android:name=".Profile"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".User_Buy_Record_Fake"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

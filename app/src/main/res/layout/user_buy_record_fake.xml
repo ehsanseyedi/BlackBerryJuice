@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:foo="http://schemas.android.com/apk/res-auto"
+    tools:context="com.BlackBerryJuice.Review"
+    android:weightSum="100">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:gravity="top|center"
+        android:layout_weight="50"
+        android:paddingTop="20dp">
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="استاتوس خرید"
+            android:id="@+id/status"
+            android:textSize="@dimen/medfont"
+            android:layout_marginTop="10dp" />
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            foo:customFont="fonts/IRANSansMobile_Light.ttf"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="کدرهگیری"
+            android:id="@+id/nowaddress"
+            android:textSize="@dimen/smallfont"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp" />
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            foo:customFont="fonts/IRANSansMobile_Medium_Persian_Digits.ttf"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="16465363"
+            android:id="@+id/rahgir"
+            android:textSize="@dimen/verylargefont"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/price" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="top|center"
+        android:layout_weight="50">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|center">
+
+            <Button
+                android:id="@+id/paay"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/themainbutton"
+                android:text="بازگشت"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
