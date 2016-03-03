@@ -1,30 +1,31 @@
 package com.BlackBerryJuice;
 
-        import java.util.Timer;
-        import java.util.TimerTask;
-        import android.app.Activity;
-        import android.app.ProgressDialog;
-        import android.content.Context;
-        import android.content.DialogInterface;
-        import android.content.Intent;
-        import android.content.SharedPreferences;
-        import android.graphics.Typeface;
-        import android.os.Build;
-        import android.os.Bundle;
-        import android.util.Log;
-        import android.view.View;
-        import android.view.View.OnClickListener;
-        import android.view.Window;
-        import android.view.WindowManager;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.TextView;
-        import android.widget.Toast;
-        import com.BlackBerryJuice.util.ShamsiCalleder;
-        import com.BlackBerryJuice.utils.TextViewPlus;
-        import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
-        import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
-        import org.w3c.dom.Text;
+import java.util.Timer;
+import java.util.TimerTask;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.os.Build;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.BlackBerryJuice.util.ShamsiCalleder;
+import com.BlackBerryJuice.utils.TextViewPlus;
+import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
+import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
+
+import org.w3c.dom.Text;
 
 public class EditProfile extends Activity implements
         DatePickerDialog.OnDateSetListener {
@@ -32,14 +33,14 @@ public class EditProfile extends Activity implements
 
     EditText name,mobile,address,phone,instagram;
     TextViewPlus birthday;
-    
+    String code;
     @SuppressWarnings("unused")
     //private TextView tname,tfamily,toldpass,tnewpass,temail,tstatus;
     private TextView email;
     @SuppressWarnings("unused")
     private TextView update,exit;
-    public static String DATE_GOES_TO_SERVER;
     public static String res="";
+    public static String DATE_GOES_TO_SERVER;
     private String pass="";
     private int count=0;
 
@@ -55,25 +56,22 @@ public class EditProfile extends Activity implements
             window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
         }
         setContentView(R.layout.activity_edit_user_profile);
-        tarif();
+
         update = (TextView) findViewById(R.id.update);
         exit = (TextView) findViewById(R.id.cancel);
-        Typeface font = Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light_Persian_Digits.ttf");
+
+        tarif();
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/IRANSansMobile_Light_Persian_Digits.ttf");
         name.setTypeface(font);
         mobile.setTypeface(font);
         address.setTypeface(font);
         phone.setTypeface(font);
         instagram.setTypeface(font);
-        
-
-        tarif();
 
         code = SharedData.load_code(EditProfile.this);
         Log.e("code in shared",code);
 
-        //email.setText(s);
-
-        new updateuserserver(Constant.Update_ProfileURL,"","","","","","",s,"get").execute();
+        new updateuserserver(Constant.Update_ProfileURL,"","","","","","",code,"get",EditProfile.this).execute();
 
         final Timer tm=new Timer();
         final ProgressDialog pd=new ProgressDialog(EditProfile.this);
@@ -86,35 +84,35 @@ public class EditProfile extends Activity implements
 
                 tm.cancel();
                 pd.cancel();
-                new updateuserserver(Constant.Update_ProfileURL,"","","","","","",code,"get",EditProfile.this).cancel(true);
+                new updateuserserver(Constant.Update_ProfileURL, "", "", "", "", "", "", code, "get", EditProfile.this).cancel(true);
 
             }
         });
 
 
-        tm.scheduleAtFixedRate(new TimerTask(){
+        tm.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                runOnUiThread(new Runnable(){
+                runOnUiThread(new Runnable() {
                     public void run() {
 
                         count++;
-                        if(count==30){
+                        if (count == 30) {
 
                             pd.cancel();
                             tm.cancel();
-                            count=0;
-                            new updateuserserver(Constant.Update_ProfileURL,"","","","","","",code,"get",EditProfile.this).cancel(true);
+                            count = 0;
+                            new updateuserserver(Constant.Update_ProfileURL, "", "", "", "", "", "", code, "get", EditProfile.this).cancel(true);
                             Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
                             finish();
 
                         }
 
-                        if(!res.equals("")){
+                        if (!res.equals("")) {
 
                             pd.cancel();
                             po(res);
                             Log.e("saeed", res);
-                            res="";
+                            res = "";
                             tm.cancel();
 
                         }
@@ -125,7 +123,6 @@ public class EditProfile extends Activity implements
             }
 
         }, 1, 1000);
-
 
         birthday.setOnClickListener(new OnClickListener() {
 
@@ -140,8 +137,8 @@ public class EditProfile extends Activity implements
             @Override
             public void onClick(View arg0) {
 
-                new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),address.getText().toString(),DATE_GOES_TO_SERVER,instagram.getText().toString(),mobile.getText().toString(),phone.getText().toString(),s,"put").
-                execute();
+                new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),address.getText().toString(),DATE_GOES_TO_SERVER,instagram.getText().toString(),mobile.getText().toString(),phone.getText().toString(),code,"put",EditProfile.this).
+                        execute();
 
                 final ProgressDialog pd=new ProgressDialog(EditProfile.this);
                 pd.setMessage("لطفا صبر کنید"+"در حال ارسال اطلاعات به سرور");
@@ -248,62 +245,6 @@ public class EditProfile extends Activity implements
     public void onBackPressed() {
         startActivity(new Intent(EditProfile.this, Profile.class));
         finish();
-    }
-
-
-    public static void save_last_userinfo (String name,String birthday,String address , String phone , String insta,Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString("name", name);
-        editor.putString("birthday", birthday);
-        editor.putString("address", address);
-        editor.putString("phone", phone);
-        editor.putString("insta", insta);
-        editor.commit();
-    }
-
-    public static void save_last_userinfo_cm (String code,String mobile,Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString("code", code);
-        editor.putString("mobile", mobile);
-        editor.commit();
-    }
-
-    public static void delete_all_userinfo (Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.clear();
-        editor.commit();
-    }
-
-    public static String load_code(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("code", "");
-    }
-    public static String load_name(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("name", "");
-    }
-    public static String load_mobile(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("mobile", "");
-    }
-    public static String load_birthday(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("birthday", "");
-    }
-    public static String load_address(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("address", "");
-    }
-    public static String load_phone(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("phone", "");
-    }
-    public static String load_insta(Context c) {
-        SharedPreferences sp = c.getSharedPreferences("userinfo", Activity.MODE_PRIVATE);
-        return sp.getString("insta", "");
     }
 
     DatePickerDialog dpd;

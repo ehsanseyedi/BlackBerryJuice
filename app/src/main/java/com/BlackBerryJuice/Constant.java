@@ -11,7 +11,7 @@ import java.io.OutputStream;
 public class Constant {
 	
 	// API URL configuration
-	static String AdminPageURL = "http://unix-team.ir/FlatlabRTL/";
+	static String AdminPageURL = "http://blackberryjuice.ir/app/";
 	static String Update_ProfileURL = AdminPageURL + "api/update.php";
 	static String Update_Message = AdminPageURL + "api/update-message.php";
 	static String Message_Send = AdminPageURL + "api/recieve-message.php";

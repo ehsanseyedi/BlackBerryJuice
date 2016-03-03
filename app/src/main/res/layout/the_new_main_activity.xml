@@ -118,8 +118,9 @@
                             android:id="@+id/scrollingtext"
                             android:singleLine="true"
                             android:focusable="false"
+                            android:textDirection="rtl"
+                            android:gravity="right"
                             android:focusableInTouchMode="false"
-                            android:gravity="center"
                             android:paddingRight="25dp"
                             android:paddingLeft="25dp" />
                     </com.BlackBerryJuice.MarqueeView>
