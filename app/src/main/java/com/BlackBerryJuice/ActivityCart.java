@@ -54,7 +54,7 @@ public class ActivityCart extends Activity {
 	ListView listOrder;
 	ProgressBar prgLoading;
 	LinearLayout empty_;
-	TextView txtTotalLabel, txtTotal, txtAlert;
+	TextView txtTotalLabel, txtTotal;
 	RelativeLayout btnClear, Checkout;
 	RelativeLayout lytOrder;
 	// declate dbhelper and adapter objects
@@ -107,7 +107,6 @@ public class ActivityCart extends Activity {
         listOrder = (ListView) findViewById(R.id.listOrder);
         txtTotalLabel = (TextView) findViewById(R.id.txtTotalLabel);
         txtTotal = (TextView) findViewById(R.id.txtTotal);
-        txtAlert = (TextView) findViewById(R.id.txtAlert);
         empty_= (LinearLayout) findViewById(R.id.empty_);
         btnClear = (RelativeLayout) findViewById(R.id.btnClear);
         lytOrder = (RelativeLayout) findViewById(R.id.lytOrder);

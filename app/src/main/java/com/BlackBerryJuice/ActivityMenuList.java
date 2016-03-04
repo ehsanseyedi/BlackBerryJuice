@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -51,7 +52,7 @@ public class ActivityMenuList extends Activity {
 	//TextView txtTitle;
 	EditText edtKeyword;
 	ImageButton btnSearch;
-	TextView txtAlert;
+	LinearLayout empty_;
 	
 	static double Tax;
 	static String Currency;
@@ -95,7 +96,7 @@ public class ActivityMenuList extends Activity {
         edtKeyword = (EditText) findViewById(R.id.edtKeyword);
 		edtKeyword.setTypeface(ActivitySplash.F1);
 				btnSearch = (ImageButton) findViewById(R.id.btnSearch);
-        txtAlert = (TextView) findViewById(R.id.txtAlert);
+		empty_= (LinearLayout) findViewById(R.id.empty_);
         
         // menu API url
         MenuAPI = Constant.MenuAPI+"?accesskey="+Constant.AccessKey+"&category_id=";
@@ -198,7 +199,7 @@ public class ActivityMenuList extends Activity {
     	getTaxCurrency(){
     		if(!prgLoading.isShown()){
     			prgLoading.setVisibility(View.VISIBLE);
-				txtAlert.setVisibility(View.GONE);
+				empty_.setVisibility(View.GONE);
     		}
     	}
     	
@@ -220,7 +221,7 @@ public class ActivityMenuList extends Activity {
 			if((Currency != null) && IOConnect == 0){
 				new getDataTask().execute();
 			}else{
-				txtAlert.setVisibility(View.VISIBLE);
+				empty_.setVisibility(View.VISIBLE);
 			}
 		}
     }
@@ -291,7 +292,7 @@ public class ActivityMenuList extends Activity {
     	getDataTask(){
     		if(!prgLoading.isShown()){
     			prgLoading.setVisibility(View.VISIBLE);
-				txtAlert.setVisibility(View.GONE);
+				empty_.setVisibility(View.GONE);
     		}
     	}
     	
@@ -315,7 +316,7 @@ public class ActivityMenuList extends Activity {
 				listMenu.setVisibility(View.VISIBLE);
 				listMenu.setAdapter(mla);
 			}else{
-				txtAlert.setVisibility(View.VISIBLE);
+				empty_.setVisibility(View.VISIBLE);
 			}
 			
 		}
