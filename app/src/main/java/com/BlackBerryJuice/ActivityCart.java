@@ -22,6 +22,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -72,7 +73,7 @@ public class ActivityCart extends Activity {
 	public static ArrayList<String> Menu_name = new ArrayList<String>();
 	public static ArrayList<Integer> Quantity = new ArrayList<Integer>();
 	public static ArrayList<Double> Sub_total_price = new ArrayList<Double>();
-
+	LinearLayout empty_;
 	public static double Total_price;
 	final int CLEAR_ALL_ORDER = 0;
 	final int CLEAR_ONE_ORDER = 1;
@@ -100,6 +101,7 @@ public class ActivityCart extends Activity {
 		}
 
         setContentView(R.layout.your_order);
+		empty_ = (LinearLayout)findViewById(R.id.empty_);
 		fa=this;
 		c = ActivityCart.this;
         // connect view objects with xml id

@@ -172,6 +172,8 @@ public class ActivityReservation extends Activity implements
 					Log.e("selected_time", selected_time + "");
 					Log.e("name", Menu_name.get(index_of - 1) + "");
 
+					clearReservation();
+
 					if (dbhelper.isDataExist(Menu_ID.get(index_of - 1))) {
 						dbhelper.updateData(Menu_ID.get(index_of - 1), 1, Menu_price.get(index_of - 1));
 					} else {
@@ -349,7 +351,7 @@ public class ActivityReservation extends Activity implements
 
 	@Override
 	public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-		Log.e("MONTH", monthOfYear+"  "+now2.getPersianMonth() + "  "+ now.getPersianMonth());
+		Log.e("MONTH", monthOfYear + "  " + now2.getPersianMonth() + "  " + now.getPersianMonth());
 		if(year==now.getPersianYear() && monthOfYear==now.getPersianMonth() && dayOfMonth > now.getPersianDay() )
 		{
 			String date = dayOfMonth+ " " + MonthName(monthOfYear + 1) + " " + year ;
@@ -556,5 +558,15 @@ public class ActivityReservation extends Activity implements
 		Menu_price.clear();
 	}
 
+	void clearReservation()
+	{
+		for(int i=0 ; i<12 ; i++)
+		{
+			if(dbhelper.isDataExist(Menu_ID.get(i)))
+			{
+				dbhelper.deleteData(Menu_ID.get(i));
+			}
+		}
+	}
 
 }
