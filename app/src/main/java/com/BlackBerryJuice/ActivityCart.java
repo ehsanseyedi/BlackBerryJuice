@@ -21,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -52,6 +53,7 @@ public class ActivityCart extends Activity {
 //	ImageButton imgNavBack;
 	ListView listOrder;
 	ProgressBar prgLoading;
+	LinearLayout empty_;
 	TextView txtTotalLabel, txtTotal, txtAlert;
 	RelativeLayout btnClear, Checkout;
 	RelativeLayout lytOrder;
@@ -106,6 +108,7 @@ public class ActivityCart extends Activity {
         txtTotalLabel = (TextView) findViewById(R.id.txtTotalLabel);
         txtTotal = (TextView) findViewById(R.id.txtTotal);
         txtAlert = (TextView) findViewById(R.id.txtAlert);
+        empty_= (LinearLayout) findViewById(R.id.empty_);
         btnClear = (RelativeLayout) findViewById(R.id.btnClear);
         lytOrder = (RelativeLayout) findViewById(R.id.lytOrder);
 
@@ -222,7 +225,7 @@ public class ActivityCart extends Activity {
 		getTaxCurrency(){
 	 		if(!prgLoading.isShown()){
 	 			prgLoading.setVisibility(View.VISIBLE);
-				txtAlert.setVisibility(View.GONE);
+				empty_.setVisibility(View.GONE);
 	 		}
 	 	}
 
@@ -244,8 +247,7 @@ public class ActivityCart extends Activity {
 			if(IOConnect == 0){
 				new getDataTask().execute();
 			}else{
-				txtAlert.setVisibility(View.VISIBLE);
-				txtAlert.setText(R.string.alert);
+				empty_.setVisibility(View.VISIBLE);
 			}
 			Checkout.setEnabled(true);
 
@@ -316,7 +318,7 @@ public class ActivityCart extends Activity {
     		if(!prgLoading.isShown()){
     			prgLoading.setVisibility(View.VISIBLE);
     			lytOrder.setVisibility(View.GONE);
-    			txtAlert.setVisibility(View.GONE);
+    			empty_.setVisibility(View.GONE);
     		}
     	}
 
@@ -342,7 +344,7 @@ public class ActivityCart extends Activity {
 				lytOrder.setVisibility(View.VISIBLE);
 				listOrder.setAdapter(mola);
 			}else{
-				txtAlert.setVisibility(View.VISIBLE);
+				empty_.setVisibility(View.VISIBLE);
 			}
 		}
     }

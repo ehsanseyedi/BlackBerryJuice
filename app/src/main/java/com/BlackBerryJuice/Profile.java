@@ -60,7 +60,6 @@ public class Profile extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Profile.this, ActivityCart.class));
-                finish();
             }
         });
         RelativeLayout Exit = (RelativeLayout) findViewById(R.id.Exit_Button);

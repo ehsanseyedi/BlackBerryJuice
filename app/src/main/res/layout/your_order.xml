@@ -215,12 +215,30 @@
 			android:indeterminateTintMode="src_in"
 		    android:layout_width="wrap_content"
 		    android:layout_centerInParent="true" />
-		<TextView 
-		        android:id="@+id/txtAlert"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/no_order"
-		        android:textSize="14sp"
-		    	android:layout_centerInParent="true" 
-		    	android:visibility="gone"/>
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:gravity="center_horizontal"
+		android:layout_centerInParent="true"
+		android:id="@+id/empty_"
+		android:visibility="gone">
+
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/cart_2"
+			android:layout_marginBottom="7dp" />
+
+	<com.BlackBerryJuice.utils.TextViewPlus
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/no_order"
+		foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+		android:textSize="14sp"
+		android:id="@+id/txtAlert"
+		android:gravity="center"
+		android:paddingRight="25dp"
+		android:paddingLeft="25dp" />
+	</LinearLayout>
 </RelativeLayout>
