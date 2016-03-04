@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:foo="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/lytOrder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/lytTotal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@color/header">
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:id="@+id/txtTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="5dp" />
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:id="@+id/txtTotalLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="5dp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/tameshk_gray"
+            android:id="@+id/txtDetail"
+            android:layout_below="@+id/lytTotal"
+            android:padding="5dp">
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:id="@+id/txtMenuName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="150dp"
+                foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textStyle="bold"
+                android:text="نام کالا"
+                android:textSize="16sp"
+                android:layout_toRightOf="@+id/txtQuantity2"
+                android:layout_toEndOf="@+id/txtQuantity2"
+                android:layout_marginLeft="15dp"
+                android:textColor="#FFF" />
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:id="@+id/txtQuantity2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/txtPrice2"
+                android:textSize="16sp"
+                android:textColor="#FFF"
+                android:text="تعداد"
+                android:gravity="left" />
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:id="@+id/txtPrice2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                android:layout_alignParentLeft="true"
+                android:textSize="16sp"
+                android:textColor="#FFF"
+                android:text="قیمت"
+                android:gravity="center" />
+
+        </RelativeLayout>
+        <!--<TextView -->
+        <!--android:id="@+id/txtDetail"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!-- -->
+        <!--android:text="@string/detail"-->
+        <!--android:gravity="right"-->
+        <!--android:textColor="@color/text"-->
+        <!--android:textSize="14sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:padding="5dp"-->
+        <!--android:layout_below="@+id/lytTotal"/>-->
+        <ListView
+            android:id="@+id/listOrder"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="true"
+            android:fastScrollEnabled="true"
+            android:divider="@null"
+            android:layout_below="@+id/txtDetail"
+            android:layout_above="@+id/relativeLayout"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="#eee" />
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+            android:gravity="center"
+            android:id="@+id/relativeLayout"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:padding="7dp"
+            android:background="#eee">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backg_2"
+                android:id="@+id/btnClear"
+                android:paddingRight="7dp"
+                android:paddingLeft="7dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_weight="48"
+                android:layout_toLeftOf="@+id/linearLayout3"
+                android:layout_toStartOf="@+id/linearLayout3">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/main_layout_shop_1"
+                    android:padding="7dp"
+                    android:visibility="invisible" />
+
+                <com.BlackBerryJuice.utils.TextViewPlus
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="پاک کردن لیست"
+                    foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                    android:textSize="@dimen/medfont"
+                    android:textColor="#000000"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="5dp"
+                    android:gravity="center" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="7dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/linearLayout3" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_layout_reservation"
+                android:id="@+id/Checkout"
+                android:paddingRight="7dp"
+                android:paddingLeft="7dp"
+                android:layout_weight="48"
+                android:layout_toRightOf="@+id/linearLayout3"
+                android:layout_toEndOf="@+id/linearLayout3">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/main_layout_shop_1"
+                    android:padding="7dp"
+                    android:visibility="invisible" />
+                <com.BlackBerryJuice.utils.TextViewPlus
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ادامه"
+                    foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                    android:textSize="@dimen/medfont"
+                    android:textColor="@color/white"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="5dp"
+                    android:gravity="center" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="#d5000000">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/b_card"
+            android:layout_margin="12dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="15dp">
+
+            <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+                android:paddingTop="10dp"
+            android:paddingBottom="15dp"
+                android:layout_gravity="center"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp">
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:background="@drawable/b_card"-->
+            <!--android:padding="10dp">-->
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:id="@+id/txtPrice"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                android:textSize="18sp"
+                android:gravity="left"
+                android:text="250,000 تومان"
+                android:textColor="@color/price"
+                android:paddingTop="5dp"
+                android:layout_below="@+id/linearLayout"
+                android:layout_alignLeft="@+id/linearLayout"
+                android:layout_alignStart="@+id/linearLayout" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:id="@+id/linearLayout">
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="left|center">
+
+                    <Button
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:id="@+id/minez"
+                        android:background="@drawable/minez"
+                        android:layout_marginBottom="2dp" />
+
+                    <com.BlackBerryJuice.utils.TextViewPlus
+                        android:id="@+id/txtQuantity"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                        android:layout_toRightOf="@+id/txtPrice"
+                        android:textSize="17sp"
+                        android:text="5"
+                        android:gravity="center" />
+
+                    <Button
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:id="@+id/plus"
+                        android:background="@drawable/plus"
+                        android:layout_marginBottom="2dp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:id="@+id/txtMenuName"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:maxWidth="170dp"
+                foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+                android:layout_alignParentRight="true"
+                android:textStyle="bold"
+                android:textSize="@dimen/medfont"
+                android:layout_marginLeft="15dp"
+                android:text="سان شاین"
+                android:layout_alignParentTop="true"
+                android:layout_alignBottom="@+id/txtPrice" />
+            <!--</RelativeLayout>-->
+
+        </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="70dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:background="@drawable/backg_2"
+                    android:id="@+id/countcancel"
+                    android:layout_marginRight="10dp">
+
+                    <com.BlackBerryJuice.utils.TextViewPlus
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="انصراف"
+                        foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                        android:id="@+id/tv2"
+                        android:textColor="#000"
+                        android:textSize="@dimen/smallfont" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:background="@drawable/themainbutton"
+                    android:id="@+id/countdone">
+
+                    <com.BlackBerryJuice.utils.TextViewPlus
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ثبت"
+                        foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                        android:id="@+id/tv"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/smallfont" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>

@@ -18,6 +18,7 @@ import android.os.Vibrator;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -72,7 +73,7 @@ public class ActivityMenuDetail extends Activity {
 	LinearLayout buylayout;
 	LinearLayout desc;
 	// declare dbhelper object
-	static DBHelper dbhelper;
+	DBHelper dbhelper;
 	TextView counter;
 	// declare ImageLoader object
 	ImageLoader imageLoader;
@@ -138,6 +139,7 @@ public class ActivityMenuDetail extends Activity {
         Intent iGet = getIntent();
         Menu_ID = iGet.getLongExtra("menu_id", 0);
         // Menu detail API url
+		Log.e("menu id in detail",Menu_ID+"");
         MenuDetailAPI = Constant.MenuDetailAPI+"?accesskey="+Constant.AccessKey+"&menu_id="+Menu_ID;
         
         // call asynctask class to request data from server
@@ -182,36 +184,7 @@ public class ActivityMenuDetail extends Activity {
 		getMenuInflater().inflate(R.menu.menu_detail, menu);
 		return true;
 	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		switch (item.getItemId()) {
-		case R.id.cart:
-			// refresh action
-			gotocard = new Intent(ActivityMenuDetail.this, ActivityCart.class);
-			gotologin = new Intent(ActivityMenuDetail.this, Login2.class);
-			if( SharedData.do_user_registered(ActivityMenuDetail.this) || SharedData.do_user_logedin(ActivityMenuDetail.this)) {
-				startActivity(gotocard);
-			}else{
-				startActivity(gotologin);
-			}
-			finish();
-			overridePendingTransition (R.anim.open_next, R.anim.close_next);
-			return true;
-			
-		case android.R.id.home:
-            // app icon in action bar clicked; go home
-        	this.finish();
-        	overridePendingTransition(R.anim.open_main, R.anim.close_next);
-			return true;
-			
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-	}
+
     
     // method to show number of order form
     void inputDialog(){
