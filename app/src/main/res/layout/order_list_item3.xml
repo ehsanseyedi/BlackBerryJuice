@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	xmlns:foo="http://schemas.android.com/apk/res-auto"
+	android:layout_height="wrap_content"
+	android:padding="7dp">
+	<com.BlackBerryJuice.utils.TextViewPlus
+		android:id="@+id/txtMenuName"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:maxWidth="150dp"
+		foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+		android:layout_centerVertical="true"
+		android:layout_alignParentRight="true"
+		android:textStyle="bold"
+		android:textSize="16sp"
+		android:layout_toRightOf="@+id/txtQuantity"
+		android:layout_toEndOf="@+id/txtQuantity"
+		android:layout_marginLeft="15dp" />
+
+	<com.BlackBerryJuice.utils.TextViewPlus
+	    android:id="@+id/txtQuantity"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerVertical="true"
+		foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+		android:layout_toRightOf="@+id/txtPrice"
+	    android:textSize="16sp"
+		android:layout_marginLeft="30dp" />
+
+	<com.BlackBerryJuice.utils.TextViewPlus
+	    android:id="@+id/txtPrice"
+		android:layout_width="100dp"
+		android:layout_height="wrap_content"
+		android:textColor="@color/price"
+		android:layout_centerVertical="true"
+		foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+		android:layout_alignParentLeft="true"
+		android:textSize="16sp"
+		android:gravity="right"/>  
+</RelativeLayout>

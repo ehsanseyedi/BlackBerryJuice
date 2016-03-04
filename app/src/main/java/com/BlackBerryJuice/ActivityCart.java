@@ -3,6 +3,7 @@ package com.BlackBerryJuice;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -21,7 +22,6 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -51,28 +51,29 @@ public class ActivityCart extends Activity {
 
 	// declare view objects
 //	ImageButton imgNavBack;
-	ListView listOrder;
-	ProgressBar prgLoading;
-	LinearLayout empty_;
-	TextView txtTotalLabel, txtTotal;
-	RelativeLayout btnClear, Checkout;
-	RelativeLayout lytOrder;
+	public ListView listOrder;
+	public ProgressBar prgLoading;
+	public TextView txtTotalLabel, txtTotal, txtAlert;
+	public RelativeLayout btnClear, Checkout;
+	public RelativeLayout lytOrder;
 	// declate dbhelper and adapter objects
 	DBHelper dbhelper;
-	AdapterCart mola;
+	public AdapterCart mola;
+	public static Activity fa;
 
 	// declare static variables to store tax and currency data
-	static double Tax;
-	static String Currency;
+	double Tax;
+	public static String Currency;
+	Context c;
 
 	// declare arraylist variable to store data
-	ArrayList<ArrayList<Object>> data;
-	static ArrayList<Integer> Menu_ID = new ArrayList<Integer>();
-	static ArrayList<String> Menu_name = new ArrayList<String>();
-	static ArrayList<Integer> Quantity = new ArrayList<Integer>();
-	static ArrayList<Double> Sub_total_price = new ArrayList<Double>();
+	public ArrayList<ArrayList<Object>> data;
+	public static ArrayList<Integer> Menu_ID = new ArrayList<Integer>();
+	public static ArrayList<String> Menu_name = new ArrayList<String>();
+	public static ArrayList<Integer> Quantity = new ArrayList<Integer>();
+	public static ArrayList<Double> Sub_total_price = new ArrayList<Double>();
 
-	double Total_price;
+	public static double Total_price;
 	final int CLEAR_ALL_ORDER = 0;
 	final int CLEAR_ONE_ORDER = 1;
 	int FLAG;
@@ -82,7 +83,7 @@ public class ActivityCart extends Activity {
 
 
 	// create price format
-	DecimalFormat formatData = new DecimalFormat("#.##");
+	static DecimalFormat formatData = new DecimalFormat("#.##");
 
 
     @Override
@@ -99,7 +100,8 @@ public class ActivityCart extends Activity {
 		}
 
         setContentView(R.layout.your_order);
-
+		fa=this;
+		c = ActivityCart.this;
         // connect view objects with xml id
 //        imgNavBack = (ImageButton) findViewById(R.id.imgNavBack);
         Checkout = (RelativeLayout) findViewById(R.id.Checkout);
@@ -107,9 +109,10 @@ public class ActivityCart extends Activity {
         listOrder = (ListView) findViewById(R.id.listOrder);
         txtTotalLabel = (TextView) findViewById(R.id.txtTotalLabel);
         txtTotal = (TextView) findViewById(R.id.txtTotal);
-        empty_= (LinearLayout) findViewById(R.id.empty_);
+        txtAlert = (TextView) findViewById(R.id.txtAlert);
         btnClear = (RelativeLayout) findViewById(R.id.btnClear);
         lytOrder = (RelativeLayout) findViewById(R.id.lytOrder);
+
 
         // tax and currency API url
         TaxCurrencyAPI = Constant.TaxCurrencyAPI+"?accesskey="+Constant.AccessKey;
@@ -127,6 +130,7 @@ public class ActivityCart extends Activity {
         // call asynctask class to request tax and currency data from server
         new getTaxCurrency().execute();
 
+
         // event listener to handle clear button when clicked
 		btnClear.setOnClickListener(new OnClickListener() {
 
@@ -143,7 +147,13 @@ public class ActivityCart extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
 				// show confirmation dialog
-				showClearDialog(CLEAR_ONE_ORDER, Menu_ID.get(position));
+				//showClearDialog(CLEAR_ONE_ORDER, Menu_ID.get(position));
+				Intent i = new Intent(ActivityCart.this,CardDialog.class);
+				i.putExtra("id", Menu_ID.get(position));
+				i.putExtra("pos", position);
+				startActivity(i);
+				overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+				//finish();
 			}
 		});
 
@@ -184,21 +194,22 @@ public class ActivityCart extends Activity {
 
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
-				switch(FLAG){
-				case 0:
-					// clear all menu in order table
-					dbhelper.deleteAllData();
-	    			listOrder.invalidateViews();
-	    			clearData();
-					new getDataTask().execute();
-					break;
-				case 1:
-					// clear selected menu in order table
-					dbhelper.deleteData(ID);
-	    			listOrder.invalidateViews();
-	    			clearData();
-					new getDataTask().execute();
-					break;
+				switch (FLAG) {
+					case 0:
+						// clear all menu in order table
+						dbhelper.deleteAllData();
+						listOrder.invalidateViews();
+						clearData();
+						new getDataTask().execute();
+						break;
+					case 1:
+						// clear selected menu in order table
+//						dbhelper.deleteData(ID);
+//						listOrder.invalidateViews();
+//						clearData();
+//						new getDataTask().execute();
+//						break;
+
 				}
 
 			}
@@ -214,7 +225,6 @@ public class ActivityCart extends Activity {
 		});
 		AlertDialog alert = builder.create();
 		alert.show();
-
     }
 
     // asynctask class to handle parsing json in background
@@ -224,7 +234,7 @@ public class ActivityCart extends Activity {
 		getTaxCurrency(){
 	 		if(!prgLoading.isShown()){
 	 			prgLoading.setVisibility(View.VISIBLE);
-				empty_.setVisibility(View.GONE);
+				txtAlert.setVisibility(View.GONE);
 	 		}
 	 	}
 
@@ -246,10 +256,10 @@ public class ActivityCart extends Activity {
 			if(IOConnect == 0){
 				new getDataTask().execute();
 			}else{
-				empty_.setVisibility(View.VISIBLE);
+				txtAlert.setVisibility(View.VISIBLE);
+				txtAlert.setText(R.string.alert);
 			}
 			Checkout.setEnabled(true);
-
 		}
     }
 
@@ -302,7 +312,7 @@ public class ActivityCart extends Activity {
 	}
 
 	// clear arraylist variables before used
-    void clearData(){
+    public void clearData(){
     	Menu_ID.clear();
     	Menu_name.clear();
     	Quantity.clear();
@@ -317,7 +327,7 @@ public class ActivityCart extends Activity {
     		if(!prgLoading.isShown()){
     			prgLoading.setVisibility(View.VISIBLE);
     			lytOrder.setVisibility(View.GONE);
-    			empty_.setVisibility(View.GONE);
+    			txtAlert.setVisibility(View.GONE);
     		}
     	}
 
@@ -334,7 +344,7 @@ public class ActivityCart extends Activity {
 			// TODO Auto-generated method stub
 			// show data
 			txtTotal.setText(NumberFormat.getNumberInstance(Locale.US).format((int)Total_price)+" "+Currency);
-			txtTotalLabel.setText(getString(R.string.total_order));
+			txtTotalLabel.setText(c.getString(R.string.total_order));
 			//txtTotalLabel.setText(getString(R.string.total_order)+" (Tax "+Tax+"%)");
 			prgLoading.setVisibility(View.GONE);
 			// if data available show data on list
@@ -343,7 +353,7 @@ public class ActivityCart extends Activity {
 				lytOrder.setVisibility(View.VISIBLE);
 				listOrder.setAdapter(mola);
 			}else{
-				empty_.setVisibility(View.VISIBLE);
+				txtAlert.setVisibility(View.VISIBLE);
 			}
 		}
     }
@@ -360,11 +370,8 @@ public class ActivityCart extends Activity {
     		ArrayList<Object> row = data.get(i);
 
     		Menu_ID.add(Integer.parseInt(row.get(0).toString()));
-			Log.d("saeed_test_menuID", row.get(0).toString());
 			Menu_name.add(row.get(1).toString());
-			Log.d("saeed_test_menu_name", row.get(1).toString());
     		Quantity.add(Integer.parseInt(row.get(2).toString()));
-			Log.d("saeed_test_quantity", row.get(2).toString());
     		Sub_total_price.add(Double.parseDouble(formatData.format(Double.parseDouble(row.get(3).toString()))));
     		Total_price += Sub_total_price.get(i);
     	}
@@ -381,7 +388,7 @@ public class ActivityCart extends Activity {
     	super.onBackPressed();
     	dbhelper.close();
     	finish();
-    	overridePendingTransition(R.anim.open_main, R.anim.close_next);
+		overridePendingTransition(R.anim.open_main, R.anim.close_next);
     }
 
 
