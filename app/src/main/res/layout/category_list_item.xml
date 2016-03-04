@@ -14,6 +14,17 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/txtText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="آبمیوه"
+            android:textSize="25sp"
+            android:visibility="visible" />
+
         <ImageView
             android:id="@+id/imgThumb"
             android:layout_width="150dp"
@@ -27,15 +38,6 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true" />
-
-        <TextView
-            android:id="@+id/txtText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="5dp"
-            android:textSize="14sp"
-            android:visibility="gone" />
 
     </RelativeLayout>
 
