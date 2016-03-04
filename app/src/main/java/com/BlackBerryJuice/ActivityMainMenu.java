@@ -310,7 +310,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 				}else{
 					startActivity(gotologin);
 				}
-				finish();
+//				finish();
 			}
 		});
 	}

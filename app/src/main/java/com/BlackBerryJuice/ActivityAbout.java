@@ -66,7 +66,7 @@ public class ActivityAbout extends Activity {
                     overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
                 } catch (ActivityNotFoundException e) {
                     startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("http://telegram.me/blackberryjuice")));
+                            Uri.parse("http://telegram.me/sadeghsb73")));
                     overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
                 }
 

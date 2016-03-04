@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +43,8 @@ public class ActivityCategoryList extends Activity {
 	
 	GridView listCategory;
 	ProgressBar prgLoading;
-	TextView txtAlert;
+	LinearLayout empty_;
+	
 
 	// declare adapter object to create custom category list
 	AdapterCategoryList cla;
@@ -75,7 +77,7 @@ public class ActivityCategoryList extends Activity {
         
         prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
         listCategory = (GridView) findViewById(R.id.listCategory);
-        txtAlert = (TextView) findViewById(R.id.txtAlert);
+        empty_ = (LinearLayout) findViewById(R.id.empty_);
         
         cla = new AdapterCategoryList(ActivityCategoryList.this);
 
@@ -154,7 +156,7 @@ public class ActivityCategoryList extends Activity {
     	getDataTask(){
     		if(!prgLoading.isShown()){
     			prgLoading.setVisibility(View.VISIBLE);
-				txtAlert.setVisibility(View.GONE);
+				empty_.setVisibility(View.GONE);
     		}
     	}
     	
@@ -178,7 +180,7 @@ public class ActivityCategoryList extends Activity {
 				listCategory.setVisibility(View.VISIBLE);
 				listCategory.setAdapter(cla);
 			}else{
-				txtAlert.setVisibility(View.VISIBLE);
+				empty_.setVisibility(View.VISIBLE);
 			}
 		}
     }
