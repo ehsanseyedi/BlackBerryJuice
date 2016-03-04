@@ -104,6 +104,8 @@ public class CardDialog extends Activity {
                     i++;
                 }
                 counter.setText(i + "");
+                int sub = (Single_price.get(POS)*i);
+                sub_price.setText(sub + "");
             }
         });
 
@@ -117,6 +119,8 @@ public class CardDialog extends Activity {
                     vib.vibrate(300);
                 }
                 counter.setText(i + "");
+                int sub = (Single_price.get(POS)*i);
+                sub_price.setText(sub + "");
             }
         });
 
@@ -128,13 +132,21 @@ public class CardDialog extends Activity {
                 quantity = Integer.parseInt(counter.getText().toString());
                 dbhelper.updateData(ID, quantity, (Single_price.get(POS) * quantity));
                 Toast.makeText(CardDialog.this, "سفارش بروز شد", Toast.LENGTH_SHORT).show();
+                ActivityCart.fa.finish();
+                Intent d = new Intent(CardDialog.this,ActivityCart.class);
+                dbhelper.close();
+                startActivity(d);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
             }
         });
 
         undone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                dbhelper.close();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
             }
         });
 
@@ -179,11 +191,11 @@ public class CardDialog extends Activity {
             sub_price.setText(NumberFormat.getNumberInstance(Locale.US).format(Sub_total_price.get(POS))+"");
 
 
-            Log.e("menu_ids:", Menu_ID.toString());
-            Log.e("menu_names:",Menu_name.toString());
-            Log.e("menu_quantitys:",Quantity.toString());
-            Log.e("menu_sub_total_prices:",Sub_total_price.toString());
-            Log.e("menu_single_prices:",Single_price.toString());
+//            Log.e("menu_ids:", Menu_ID.toString());
+//            Log.e("menu_names:",Menu_name.toString());
+//            Log.e("menu_quantitys:",Quantity.toString());
+//            Log.e("menu_sub_total_prices:",Sub_total_price.toString());
+//            Log.e("menu_single_prices:",Single_price.toString());
 
         }
     }
