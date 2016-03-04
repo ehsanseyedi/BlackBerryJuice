@@ -203,6 +203,12 @@ public class ActivityCart extends Activity {
 						new getDataTask().execute();
 						break;
 					case 1:
+						// clear selected menu in order table
+//						dbhelper.deleteData(ID);
+//						listOrder.invalidateViews();
+//						clearData();
+//						new getDataTask().execute();
+//						break;
 
 				}
 
@@ -226,11 +232,11 @@ public class ActivityCart extends Activity {
 
     	// show progressbar first
 		getTaxCurrency(){
-	 		if(!prgLoading.isShown()){
-	 			prgLoading.setVisibility(View.VISIBLE);
-				txtAlert.setVisibility(View.GONE);
-	 		}
-	 	}
+			if(!prgLoading.isShown()){
+				prgLoading.setVisibility(View.VISIBLE);
+				empty_.setVisibility(View.GONE);
+			}
+		}
 
 		@Override
 		protected Void doInBackground(Void... arg0) {
@@ -250,8 +256,7 @@ public class ActivityCart extends Activity {
 			if(IOConnect == 0){
 				new getDataTask().execute();
 			}else{
-				txtAlert.setVisibility(View.VISIBLE);
-				txtAlert.setText(R.string.alert);
+				empty_.setVisibility(View.VISIBLE);
 			}
 			Checkout.setEnabled(true);
 		}
@@ -316,14 +321,14 @@ public class ActivityCart extends Activity {
     // asynctask class to handle parsing json in background
     public class getDataTask extends AsyncTask<Void, Void, Void> {
 
-    	// show progressbar first
-    	getDataTask(){
-    		if(!prgLoading.isShown()){
-    			prgLoading.setVisibility(View.VISIBLE);
-    			lytOrder.setVisibility(View.GONE);
-    			txtAlert.setVisibility(View.GONE);
-    		}
-    	}
+		// show progressbar first
+		getDataTask(){
+			if(!prgLoading.isShown()){
+				prgLoading.setVisibility(View.VISIBLE);
+				lytOrder.setVisibility(View.GONE);
+				empty_.setVisibility(View.GONE);
+			}
+		}
 
     	@Override
 		protected Void doInBackground(Void... arg0) {
@@ -347,7 +352,7 @@ public class ActivityCart extends Activity {
 				lytOrder.setVisibility(View.VISIBLE);
 				listOrder.setAdapter(mola);
 			}else{
-				txtAlert.setVisibility(View.VISIBLE);
+				empty_.setVisibility(View.VISIBLE);
 			}
 		}
     }

@@ -5,58 +5,58 @@
 	android:layout_height="fill_parent"
 	android:background="#e7e7e7"
 	tools:context=".ActivityMenuList">
-    
-	    <LinearLayout
-	        android:id="@+id/lytSearch"
-	        android:layout_width="fill_parent"
-	        android:layout_height="45dp"
-	        android:background="#a8a8a8"
-	        android:gravity="center_vertical"
-	        android:visibility="visible" >
 
-			<ImageButton
-                android:id="@+id/btnSearch"
-                android:layout_width="200dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="3"
-                android:background="@drawable/tameshkback"
-                android:src="@drawable/ic_search"
-				android:paddingRight="5dp"
-				android:paddingLeft="5dp" />
+	<LinearLayout
+		android:id="@+id/lytSearch"
+		android:layout_width="fill_parent"
+		android:layout_height="45dp"
+		android:background="#a8a8a8"
+		android:gravity="center_vertical"
+		android:visibility="visible" >
 
-			<EditText
-	            android:id="@+id/edtKeyword"
-	            android:layout_width="fill_parent"
-	            android:layout_height="fill_parent"
-				android:layout_weight="1"
-	            android:background="@drawable/tameshkback"
-	            android:hint="جستجو"
-				android:textColor="@color/white"
-	            android:textSize="@dimen/smallfont"
-	            android:inputType="text"
-	            android:singleLine="true"
-				android:gravity="center|right"
-				android:paddingRight="15dp"
-				android:textColorHint="@color/white" />
+		<ImageButton
+			android:id="@+id/btnSearch"
+			android:layout_width="200dp"
+			android:layout_height="fill_parent"
+			android:layout_weight="3"
+			android:background="@drawable/tameshkback"
+			android:src="@drawable/ic_search"
+			android:paddingRight="5dp"
+			android:paddingLeft="5dp" />
 
-		</LinearLayout>
+		<EditText
+			android:id="@+id/edtKeyword"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:background="@drawable/tameshkback"
+			android:hint="جستجو"
+			android:textColor="@color/white"
+			android:textSize="@dimen/smallfont"
+			android:inputType="text"
+			android:singleLine="true"
+			android:gravity="center|right"
+			android:paddingRight="15dp"
+			android:textColorHint="@color/white" />
 
-        <ListView
-            android:visibility="gone"
-            android:id="@+id/listMenu"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/lytSearch"
-            android:divider="@null"
-            android:padding="5dp" />
+	</LinearLayout>
 
-	    <ProgressBar
-	        android:id="@+id/prgLoading"
-			android:indeterminateTint="@color/tameshk"
-			android:indeterminateTintMode="src_in"
-		    android:layout_height="wrap_content" 
-		    android:layout_width="wrap_content"
-		    android:layout_centerInParent="true" />
+	<ListView
+		android:visibility="gone"
+		android:id="@+id/listMenu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/lytSearch"
+		android:divider="@null"
+		android:padding="5dp" />
+
+	<ProgressBar
+		android:id="@+id/prgLoading"
+		android:indeterminateTint="@color/tameshk"
+		android:indeterminateTintMode="src_in"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:layout_centerInParent="true" />
 	<LinearLayout
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
