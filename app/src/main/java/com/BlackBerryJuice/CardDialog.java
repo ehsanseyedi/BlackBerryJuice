@@ -105,7 +105,7 @@ public class CardDialog extends Activity {
                 }
                 counter.setText(i + "");
                 int sub = (Single_price.get(POS)*i);
-                sub_price.setText(sub + "");
+                sub_price.setText(sub + " تومان");
             }
         });
 
@@ -120,7 +120,7 @@ public class CardDialog extends Activity {
                 }
                 counter.setText(i + "");
                 int sub = (Single_price.get(POS)*i);
-                sub_price.setText(sub + "");
+                sub_price.setText(sub + " تومان");
             }
         });
 
@@ -144,7 +144,12 @@ public class CardDialog extends Activity {
         undone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent d = new Intent(CardDialog.this,ActivityCart.class);
+                ActivityCart.fa.finish();
+                dbhelper.deleteData(ID);
+                clearData();
                 dbhelper.close();
+                startActivity(d);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
             }
@@ -188,7 +193,7 @@ public class CardDialog extends Activity {
 
             counter.setText(Quantity.get(POS)+"");
             name.setText(Menu_name.get(POS));
-            sub_price.setText(NumberFormat.getNumberInstance(Locale.US).format(Sub_total_price.get(POS))+"");
+            sub_price.setText(NumberFormat.getNumberInstance(Locale.US).format(Sub_total_price.get(POS))+" تومان");
 
 
 //            Log.e("menu_ids:", Menu_ID.toString());

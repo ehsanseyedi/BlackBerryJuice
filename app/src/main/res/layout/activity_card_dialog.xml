@@ -258,7 +258,8 @@
                 android:paddingTop="5dp"
                 android:layout_below="@+id/linearLayout"
                 android:layout_alignLeft="@+id/linearLayout"
-                android:layout_alignStart="@+id/linearLayout" />
+                android:layout_alignStart="@+id/linearLayout"
+                android:layout_marginLeft="20dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -330,7 +331,7 @@
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="70dp"
+                    android:layout_width="120dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
@@ -341,16 +342,16 @@
                     <com.BlackBerryJuice.utils.TextViewPlus
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="انصراف"
-                        foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                        android:text="حذف این مورد"
+                        foo:customFont="fonts/IRANSansMobile_Light.ttf"
                         android:id="@+id/tv2"
                         android:textColor="#000"
-                        android:textSize="@dimen/smallfont" />
+                        android:textSize="@dimen/verysmallfont" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="110dp"
+                    android:layout_width="90dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"

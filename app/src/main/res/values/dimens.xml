@@ -1,6 +1,7 @@
 <resources>
 
 
+    <dimen name="verysmallfont">12dp</dimen>
     <dimen name="smallfont">14dp</dimen>
     <dimen name="medfont">16dp</dimen>
     <dimen name="largefont">18dp</dimen>
