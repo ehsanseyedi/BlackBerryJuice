@@ -70,7 +70,7 @@ public class ActivityReservation extends Activity implements
 	PersianCalendar now2 , now;
 	PersianCalendar[] now_Araay;
 	DatePickerDialog dpd;
-	public static boolean is_today_selected = false , is_date_picked = false;
+	public static boolean is_today_selected = false , is_date_picked = false , is_time_picked = false;
 	EditText desc;
 	FrameLayout table_2 , table_5;
 	ImageView table_2_check,table_5_check , pre_order_check;
@@ -145,47 +145,53 @@ public class ActivityReservation extends Activity implements
 			@Override
 			public void onClick(View v) {
 
-				index_of=0;
+				if(is_date_picked && is_time_picked)
 
-				if(table_sel.equals("2"))
-					index_of = 0;
-				else if(table_sel.equals("5"))
-					index_of = 6;
-
-				if(selected_oc.equals("together_oc"))
-					index_of=index_of+1;
-				else if(selected_oc.equals("anniversary_oc"))
-					index_of=index_of+2;
-				else if(selected_oc.equals("birthday_oc"))
-					index_of=index_of+3;
-
-				if(selected_time.equals("one_hour_plus"))
-					index_of=index_of+3;
-
-				Log.e("#####" , index_of+"");
-				Log.e("table_sel" , table_sel+"");
-				Log.e("selected_oc" , selected_oc+"");
-				Log.e("selected_time" , selected_time+"");
-				Log.e("name" , Menu_name.get(index_of-1)+"");
-
-				if(dbhelper.isDataExist(Menu_ID.get(index_of-1))){
-					dbhelper.updateData(Menu_ID.get(index_of-1), 1, Menu_price.get(index_of-1));
-				}else{
-					dbhelper.addData(Menu_ID.get(index_of-1), Menu_name.get(index_of-1), 1, (Menu_price.get(index_of-1)));
-				}
-				Toast.makeText(ActivityReservation.this,"سفارش با موفقیت به سبد خرید افزوده شد",Toast.LENGTH_SHORT).show();
-
-				if(pre_order == true)
 				{
-					startActivity(new Intent(ActivityReservation.this, ActivityCategoryList.class));
-					overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
-					finish();
+					index_of = 0;
+
+
+					if (table_sel.equals("2"))
+						index_of = 0;
+					else if (table_sel.equals("5"))
+						index_of = 6;
+
+					if (selected_oc.equals("together_oc"))
+						index_of = index_of + 1;
+					else if (selected_oc.equals("anniversary_oc"))
+						index_of = index_of + 2;
+					else if (selected_oc.equals("birthday_oc"))
+						index_of = index_of + 3;
+
+					if (selected_time.equals("one_hour_plus"))
+						index_of = index_of + 3;
+
+					Log.e("#####", index_of + "");
+					Log.e("table_sel", table_sel + "");
+					Log.e("selected_oc", selected_oc + "");
+					Log.e("selected_time", selected_time + "");
+					Log.e("name", Menu_name.get(index_of - 1) + "");
+
+					if (dbhelper.isDataExist(Menu_ID.get(index_of - 1))) {
+						dbhelper.updateData(Menu_ID.get(index_of - 1), 1, Menu_price.get(index_of - 1));
+					} else {
+						dbhelper.addData(Menu_ID.get(index_of - 1), Menu_name.get(index_of - 1), 1, (Menu_price.get(index_of - 1)));
+					}
+					Toast.makeText(ActivityReservation.this, "سفارش با موفقیت به سبد خرید افزوده شد", Toast.LENGTH_SHORT).show();
+
+					if (pre_order == true) {
+						startActivity(new Intent(ActivityReservation.this, ActivityCategoryList.class));
+						overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
+						finish();
+					} else {
+						startActivity(new Intent(ActivityReservation.this, ActivityCart.class));
+						overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
+						finish();
+					}
 				}
 				else
 				{
-					startActivity(new Intent(ActivityReservation.this, ActivityCart.class));
-					overridePendingTransition (R.anim.slide_up, R.anim.slide_up_2);
-					finish();
+					Toast.makeText(ActivityReservation.this, "لطفاً تاریخ و ساعت رزرو را مشخص کنید", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
@@ -312,9 +318,15 @@ public class ActivityReservation extends Activity implements
 		Log.e("HOUR_OF_DAY", now.get(PersianCalendar.HOUR_OF_DAY) + "  " + hourOfDay);
 		if (hourOfDay < 2 || hourOfDay >= 9) {
 			if(now.get(PersianCalendar.HOUR_OF_DAY)+4 < hourOfDay && is_today_selected)
+			{
 				timeTextView.setText(time);
+				is_time_picked=true;
+			}
 			else if(!is_today_selected)
+			{
 				timeTextView.setText(time);
+				is_time_picked=true;
+			}
 			else
 			{
 				ErrorToast toast = new ErrorToast(ActivityReservation.this);
@@ -482,67 +494,67 @@ public class ActivityReservation extends Activity implements
 		}
 	}
 
-		public void parseJSONData(){
+	public void parseJSONData(){
 
-			clearData();
+		clearData();
 
-			try {
-				// request data from menu API
-				HttpClient client = new DefaultHttpClient();
-				HttpConnectionParams.setConnectionTimeout(client.getParams(), 15000);
-				HttpConnectionParams.setSoTimeout(client.getParams(), 15000);
-				HttpUriRequest request = new HttpGet(MenuDetailAPI);
-				HttpResponse response = client.execute(request);
-				InputStream atomInputStream = response.getEntity().getContent();
+		try {
+			// request data from menu API
+			HttpClient client = new DefaultHttpClient();
+			HttpConnectionParams.setConnectionTimeout(client.getParams(), 15000);
+			HttpConnectionParams.setSoTimeout(client.getParams(), 15000);
+			HttpUriRequest request = new HttpGet(MenuDetailAPI);
+			HttpResponse response = client.execute(request);
+			InputStream atomInputStream = response.getEntity().getContent();
 
-				BufferedReader in = new BufferedReader(new InputStreamReader(atomInputStream));
+			BufferedReader in = new BufferedReader(new InputStreamReader(atomInputStream));
 
-				String line;
-				String str = "";
-				while ((line = in.readLine()) != null){
-					str += line;
-				}
-
-				// parse json data and store into arraylist variables
-				JSONObject json = new JSONObject(str);
-				JSONArray data = json.getJSONArray("data"); // this is the "items: [ ] part
-
-				for (int i = 0; i < data.length(); i++) {
-					JSONObject object = data.getJSONObject(i);
-					JSONObject menu = object.getJSONObject("Menu");
-
-					//me
-					//JSONObject menusaeed = object.getJSONObject("Menu_detail");
-
-					Menu_ID.add(Long.parseLong(menu.getString("Menu_ID")));
-					Menu_name.add(menu.getString("Menu_name"));
-					Log.e("NAMEEEEEEEEEE" , Menu_name.get(i));
-					//int price = (int) menu.getDouble("Price");
-					//int toman = (int) price / 10;
-					//String sp = NumberFormat.getNumberInstance(Locale.US).format(price);
-					Menu_price.add(menu.getDouble("Price"));
-
-
-				}
-
-
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			String line;
+			String str = "";
+			while ((line = in.readLine()) != null){
+				str += line;
 			}
+
+			// parse json data and store into arraylist variables
+			JSONObject json = new JSONObject(str);
+			JSONArray data = json.getJSONArray("data"); // this is the "items: [ ] part
+
+			for (int i = 0; i < data.length(); i++) {
+				JSONObject object = data.getJSONObject(i);
+				JSONObject menu = object.getJSONObject("Menu");
+
+				//me
+				//JSONObject menusaeed = object.getJSONObject("Menu_detail");
+
+				Menu_ID.add(Long.parseLong(menu.getString("Menu_ID")));
+				Menu_name.add(menu.getString("Menu_name"));
+				Log.e("NAMEEEEEEEEEE" , Menu_name.get(i));
+				//int price = (int) menu.getDouble("Price");
+				//int toman = (int) price / 10;
+				//String sp = NumberFormat.getNumberInstance(Locale.US).format(price);
+				Menu_price.add(menu.getDouble("Price"));
+
+
+			}
+
+
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-		void clearData(){
-			Menu_ID.clear();
-			Menu_name.clear();
-			Menu_price.clear();
-		}
-
-
 	}
+
+	void clearData(){
+		Menu_ID.clear();
+		Menu_name.clear();
+		Menu_price.clear();
+	}
+
+
+}
