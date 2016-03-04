@@ -313,7 +313,7 @@ public class ActivityMenuDetail extends Activity {
 				}
 
 				if (Menu_description.equals(" ")){
-					desc.setVisibility(View.GONE);
+					desc.setVisibility(View.INVISIBLE);
 				}else{
 					desc.setVisibility(View.VISIBLE);
 				}

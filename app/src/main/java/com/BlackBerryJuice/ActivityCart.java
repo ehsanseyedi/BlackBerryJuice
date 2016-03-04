@@ -203,12 +203,6 @@ public class ActivityCart extends Activity {
 						new getDataTask().execute();
 						break;
 					case 1:
-						// clear selected menu in order table
-//						dbhelper.deleteData(ID);
-//						listOrder.invalidateViews();
-//						clearData();
-//						new getDataTask().execute();
-//						break;
 
 				}
 
