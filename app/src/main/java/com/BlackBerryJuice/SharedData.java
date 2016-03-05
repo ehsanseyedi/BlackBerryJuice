@@ -105,7 +105,45 @@ public class SharedData {
         SharedPreferences sp = c.getSharedPreferences("reservarion_sp", Activity.MODE_PRIVATE);
         return sp.getString("reservarion_desc", "");
     }
+//--------------------------------------------------------------------------------------------------
+    public static void save_user_product_desc (String time,Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_product_desc_sp", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("user_product_desc ", time);
+        editor.commit();
+    }
 
+    public static void delete_user_product_desc(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_product_desc_sp", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear();
+        editor.commit();
+    }
+
+    public static String load_user_product_desc(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_product_desc_sp", Activity.MODE_PRIVATE);
+        return sp.getString("user_product_desc", "");
+    }
+//--------------------------------------------------------------------------------------------------
+    public static void save_user_order_time (String time,Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_order_time_sp", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("user_order_time", time);
+        editor.commit();
+    }
+
+    public static void delete_user_order_time (Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_order_time_sp", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear();
+        editor.commit();
+    }
+
+    public static String load_user_order_time (Context c) {
+        SharedPreferences sp = c.getSharedPreferences("user_order_time_sp", Activity.MODE_PRIVATE);
+        return sp.getString("user_order_time", "");
+    }
+//--------------------------------------------------------------------------------------------------
     public static void save_user_special_message (String message,Context c) {
         SharedPreferences sp = c.getSharedPreferences("usermes", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();

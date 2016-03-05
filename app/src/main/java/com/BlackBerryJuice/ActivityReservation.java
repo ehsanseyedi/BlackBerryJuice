@@ -68,7 +68,6 @@ public class ActivityReservation extends Activity implements
 	private Button Req_Btn; //timeButton, dateButton;
 	int end_of_month;
 	PersianCalendar now2 , now;
-	PersianCalendar[] now_Araay;
 	DatePickerDialog dpd;
 	public static boolean is_today_selected = false , is_date_picked = false , is_time_picked = false;
 	EditText desc;

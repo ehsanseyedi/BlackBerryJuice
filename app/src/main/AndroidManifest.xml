@@ -103,7 +103,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Review"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".EditProfile"
             android:screenOrientation="portrait" />
