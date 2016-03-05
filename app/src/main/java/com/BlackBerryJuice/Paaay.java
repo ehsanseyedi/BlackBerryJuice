@@ -7,6 +7,7 @@ import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.SslErrorHandler;
@@ -86,12 +87,14 @@ public class Paaay extends Activity {
 
             String c=Html.fromHtml(content).toString();
 
+            Log.e("paaay",c);
+
             String[] t=c.split("-");
 
             if(t[0].equals("ok")){
 
                 Toast.makeText(Paaay.this, "تراکنش با موفقیت انجام شد", Toast.LENGTH_LONG).show();
-                Intent go = new Intent(Paaay.this,User_Buy_Records.class);
+                Intent go = new Intent(Paaay.this,User_Buy_Record_Fake.class);
                 go.putExtra("rahgir",t[1]);
                 go.putExtra("price",inttotalprice);
                 startActivity(go);
