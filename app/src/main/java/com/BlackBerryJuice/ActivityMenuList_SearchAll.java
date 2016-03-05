@@ -1,11 +1,14 @@
 package com.BlackBerryJuice;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -55,7 +59,7 @@ public class ActivityMenuList_SearchAll extends Activity {
 	static String Currency;
 	static String Menu_serve;
 
-	AdapterMenuList mla;
+	AdapterMenuListSearch mlsa;
 
 	// create arraylist variables to store data from server
 	static ArrayList<Long> Menu_ID = new ArrayList<Long>();
@@ -67,8 +71,8 @@ public class ActivityMenuList_SearchAll extends Activity {
 	String MenuAPI;
 	String TaxCurrencyAPI;
 	int IOConnect = 0;
-	long Category_ID;
-	String Category_name;
+//	long Category_ID;
+//	String Category_name;
 	String Keyword;
 	static DBHelper dbhelper;
 
@@ -104,12 +108,12 @@ public class ActivityMenuList_SearchAll extends Activity {
 //		Intent iGet = getIntent();
 //		Category_ID = iGet.getLongExtra("category_id",0);
 //		Category_name = iGet.getStringExtra("category_name");
-//		//MenuAPI += Category_ID;
+//		MenuAPI += Category_ID;
 
 		// set category name to textview
 //        txtTitle.setText(Category_name);
 
-		mla = new AdapterMenuList(ActivityMenuList_SearchAll.this);
+		mlsa = new AdapterMenuListSearch(ActivityMenuList_SearchAll.this);
 
 		// call asynctask class to request tax and currency data from server
 		new getTaxCurrency().execute();
@@ -311,7 +315,7 @@ public class ActivityMenuList_SearchAll extends Activity {
 			// otherwise, show alert text
 			if(Menu_ID.size() > 0){
 				listMenu.setVisibility(View.VISIBLE);
-				listMenu.setAdapter(mla);
+				listMenu.setAdapter(mlsa);
 			}else{
 				empty_.setVisibility(View.VISIBLE);
 			}
@@ -340,18 +344,14 @@ public class ActivityMenuList_SearchAll extends Activity {
 			while ((line = in.readLine()) != null){
 				str += line;
 			}
-
+			Log.e("data from server",str);
 			// parse json data and store into arraylist variables
 			JSONObject json = new JSONObject(str);
 			JSONArray data = json.getJSONArray("data"); // this is the "items: [ ] part
 
-			for (int i = 0; i < data.length(); i++) {
+			for (int i = 0; i < data.length()-12; i++) {
 				JSONObject object = data.getJSONObject(i);
 				JSONObject menu = object.getJSONObject("Menu");
-
-				//me
-				//JSONObject menusaeed = object.getJSONObject("Menu_detail");
-
 				Menu_ID.add(Long.parseLong(menu.getString("Menu_ID")));
 				Menu_exist.add(menu.getString("Serve_for"));
 				Menu_name.add(menu.getString("Menu_name"));
@@ -361,8 +361,9 @@ public class ActivityMenuList_SearchAll extends Activity {
 				Menu_price.add(sp);
 				Menu_image.add(menu.getString("Menu_image"));
 
-			}
 
+			}
+			Log.e("nameeeeeeeeeeeeeeeeeeee", Menu_name.toString());
 
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -380,7 +381,7 @@ public class ActivityMenuList_SearchAll extends Activity {
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
-		//mla.imageLoader.clearCache();
+		//mlsa.imageLoader.clearCache();
 		listMenu.setAdapter(null);
 		super.onDestroy();
 	}
@@ -397,8 +398,8 @@ public class ActivityMenuList_SearchAll extends Activity {
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
 		super.onBackPressed();
-		startActivity(new Intent(ActivityMenuList_SearchAll.this,ActivityCategoryList.class));
-		overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+		startActivity(new Intent(ActivityMenuList_SearchAll.this, ActivityCategoryList.class));
+		overridePendingTransition(R.anim.open_main, R.anim.close_next);
 		finish();
 	}
 
