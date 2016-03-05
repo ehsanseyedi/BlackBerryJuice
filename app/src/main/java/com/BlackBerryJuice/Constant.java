@@ -14,6 +14,7 @@ public class Constant {
 	static String AdminPageURL = "http://blackberryjuice.ir/app/";
 	static String Update_ProfileURL = AdminPageURL + "api/update.php";
 	static String Update_Message = AdminPageURL + "api/update-message.php";
+	static String PayURL = AdminPageURL + "pay/pay.php?price=";
 	static String Message_Send = AdminPageURL + "api/recieve-message.php";
 	static String SliderImageURL = AdminPageURL + "upload/slider/";
 	static String GalleryImageURL = AdminPageURL + "upload/gallery/";
