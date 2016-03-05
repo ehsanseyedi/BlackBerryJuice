@@ -109,7 +109,7 @@ public class SharedData {
     public static void save_user_product_desc (String time,Context c) {
         SharedPreferences sp = c.getSharedPreferences("user_product_desc_sp", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString("user_product_desc ", time);
+        editor.putString("user_product_desc", time);
         editor.commit();
     }
 
@@ -180,9 +180,6 @@ public class SharedData {
         SharedPreferences sp = c.getSharedPreferences("user_logedin", Activity.MODE_PRIVATE);
         return sp.getBoolean("log", false);
     }
-
-
-
 
 
 

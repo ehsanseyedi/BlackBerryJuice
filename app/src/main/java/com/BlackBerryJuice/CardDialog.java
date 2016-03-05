@@ -144,6 +144,9 @@ public class CardDialog extends Activity {
         undone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(ID >=0 && ID<12){
+                    SharedData.delete_user_reservarion_info(CardDialog.this);
+                }
                 Intent d = new Intent(CardDialog.this,ActivityCart.class);
                 ActivityCart.fa.finish();
                 dbhelper.deleteData(ID);

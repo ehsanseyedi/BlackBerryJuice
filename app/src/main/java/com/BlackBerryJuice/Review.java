@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -40,7 +41,7 @@ public class Review extends Activity implements
     EditText desc;
     RelativeLayout Time_Pick , Date_Pick;
     TimePickerDialog tpd;
-
+    EditText newAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,12 +89,9 @@ public class Review extends Activity implements
 
         TextView address = (TextView) findViewById(R.id.nowaddress);
         address.setText(SharedData.load_address(Review.this));
-        EditText newAd = (EditText) findViewById(R.id.newaddress);
+        newAd= (EditText) findViewById(R.id.newaddress);
         newAd.setTypeface(ActivitySplash.F6);
 
-        if(!newAd.getText().toString().equals("")){
-           SharedData.save_address2(newAd.getText().toString(),Review.this);
-        }
 
 
         final Intent gotobank = new Intent(Review.this,Paaay.class);
@@ -105,21 +103,44 @@ public class Review extends Activity implements
             public void onClick(View v) {
                 if(is_date_picked && is_time_picked)
                 {
+                    String addressnew = newAd.getText().toString();
+
+                    if(!TextUtils.isEmpty(addressnew)) {
+                        Log.e("review","new address saved");
+                        SharedData.save_address2(newAd.getText().toString(), Review.this);
+                    }else{
+                        SharedData.delete_address2(Review.this);
+                        Log.e("review","will use default address");
+                    }
+
                     String timee = "ارسال در تاریخ "
                             +dateTextView.getText()
                             +" و ساعت "
                             +timeTextView.getText();
                     SharedData.save_user_order_time(timee,Review.this);
                     String desss = ""+desc.getText();
+                    Log.e("review",desss);
                     SharedData.save_user_product_desc(desss, Review.this);
                     startActivity(gotobank);
                     finish();
                 }
                 else
                 {
+
+                    String addressnew = newAd.getText().toString();
+
+                    if(!TextUtils.isEmpty(addressnew)) {
+                        Log.e("review","new address saved");
+                        SharedData.save_address2(newAd.getText().toString(), Review.this);
+                    }else{
+                        SharedData.delete_address2(Review.this);
+                        Log.e("review","will use default address");
+                    }
+
                     String timee ="در اسرع وقت";
                     SharedData.save_user_order_time(timee,Review.this);
                     String desss = ""+desc.getText();
+                    Log.e("review",desss);
                     SharedData.save_user_product_desc(desss, Review.this);
                     startActivity(gotobank);
                     finish();
