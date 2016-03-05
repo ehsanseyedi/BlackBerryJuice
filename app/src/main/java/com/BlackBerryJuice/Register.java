@@ -223,6 +223,7 @@ public class Register extends Activity implements
                                 res = "";
                                 tm.cancel();
                                 startActivity(new Intent(Register.this, Profile.class));
+                                overridePendingTransition(R.anim.open_next, R.anim.close_next);
                                 finish();
                             } else if (res.equals("no")) {
 

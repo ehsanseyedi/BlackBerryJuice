@@ -50,6 +50,7 @@ public class Profile extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Profile.this, EditProfile.class));
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
                 finish();
             }
         });
@@ -59,6 +60,7 @@ public class Profile extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Profile.this, ActivityCart.class));
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
                 //finish();
             }
         });
@@ -72,6 +74,7 @@ public class Profile extends Activity {
                 SharedData.delete_user_special_message(Profile.this);
 
                 startActivity(new Intent(Profile.this, ActivityMainMenu.class));
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
                 finish();
             }
         });
@@ -79,8 +82,9 @@ public class Profile extends Activity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(Profile.this, ActivityMainMenu.class));
         finish();
+        overridePendingTransition(R.anim.open_main, R.anim.close_next);
+
     }
 
         public void countforget (String code){

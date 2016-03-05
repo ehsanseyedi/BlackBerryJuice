@@ -51,6 +51,7 @@ public class ActivitySplash extends Activity {
 				//Log.e("saeed","mes: " + mes);
 				Intent intent = new Intent(getBaseContext(), ActivityMainMenu.class);
 				startActivity(intent);
+
 				finish();
 			}
 

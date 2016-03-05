@@ -104,6 +104,7 @@ public class User_Buy_Record_Fake extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(User_Buy_Record_Fake.this, ActivityMainMenu.class));
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
                 finish();
             }
         });

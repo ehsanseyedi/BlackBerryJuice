@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BlackBerryJuice.iml" filepath="$PROJECT_DIR$/BlackBerryJuice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MaterialDialog-master/MaterialDialog-master.iml" filepath="$PROJECT_DIR$/MaterialDialog-master/MaterialDialog-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />

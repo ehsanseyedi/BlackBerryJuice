@@ -211,6 +211,7 @@ public class Register2 extends Activity implements
                                 res = "";
                                 tm.cancel();
                                 startActivity(new Intent(Register2.this, ActivityCart.class));
+                                overridePendingTransition(R.anim.open_next, R.anim.close_next);
                                 finish();
                             } else if (res.equals("no")) {
 

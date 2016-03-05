@@ -7,33 +7,46 @@
     android:background="@color/footer"
     tools:context=".ActivityAbout"
     android:gravity="center">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:orientation="vertical">
             <requestFocus/>
             <ImageView
                 android:layout_width="180dp"
                 android:layout_height="180dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
                 android:src="@drawable/cube_logo_2"
-                android:layout_marginTop="25dp" />
+                android:layout_marginTop="25dp"
+                android:id="@+id/imageView7" />
 
             <com.BlackBerryJuice.utils.TextViewPlus
                 android:id="@+id/vis_"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="سایت توسعه دهنده"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="@dimen/verysmallfont"
                 android:layout_gravity="center"
                 android:textColor="#000000"
                 foo:customFont="fonts/IRANSansMobile_Medium.ttf"
-                android:layout_marginTop="10dp"
-                android:paddingTop="7dp"
-                android:paddingBottom="7dp"
-                android:paddingRight="15dp"
-                android:paddingLeft="15dp"
-                android:background="@drawable/backg_2" />
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/backg_2"
+                android:layout_below="@+id/imageView7"
+                android:layout_centerHorizontal="true" />
 
-        </LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/backgg"
+                android:adjustViewBounds="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:alpha="0.4" />
+
+        </RelativeLayout>
 </LinearLayout>
