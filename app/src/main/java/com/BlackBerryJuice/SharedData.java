@@ -81,9 +81,30 @@ public class SharedData {
 
 
 
+    public static void save_user_reservarion_info (String time,String desc,Context c) {
+        SharedPreferences sp = c.getSharedPreferences("reservarion_sp", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("reservarion_time", time);
+        editor.putString("reservarion_desc", desc);
+        editor.commit();
+    }
 
+    public static void delete_user_reservarion_info (Context c) {
+        SharedPreferences sp = c.getSharedPreferences("reservarion_sp", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear();
+        editor.commit();
+    }
 
+    public static String load_reservarion_time(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("reservarion_sp", Activity.MODE_PRIVATE);
+        return sp.getString("reservarion_time", "");
+    }
 
+    public static String load_reservarion_desc(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("reservarion_sp", Activity.MODE_PRIVATE);
+        return sp.getString("reservarion_desc", "");
+    }
 
 
     public static void save_user_special_message (String message,Context c) {

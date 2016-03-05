@@ -179,8 +179,14 @@ public class ActivityReservation extends Activity implements
 					} else {
 						dbhelper.addData(Menu_ID.get(index_of - 1), Menu_name.get(index_of - 1), 1, (Menu_price.get(index_of - 1)));
 					}
-					Toast.makeText(ActivityReservation.this, "سفارش با موفقیت به سبد خرید افزوده شد", Toast.LENGTH_SHORT).show();
+					Toast.makeText(ActivityReservation.this, "رزرو شما با موفقیت به سبد خرید افزوده شد", Toast.LENGTH_SHORT).show();
+					String timee = "رزرو در تاریخ "
+							+dateTextView.getText()
+							+" و ساعت "
+							+timeTextView.getText();
+					String desss = ""+desc.getText();
 
+					SharedData.save_user_reservarion_info(timee,desss, ActivityReservation.this);
 					if (pre_order == true) {
 						startActivity(new Intent(ActivityReservation.this, ActivityCategoryList.class));
 						overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
