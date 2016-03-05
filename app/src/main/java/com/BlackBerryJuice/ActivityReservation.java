@@ -3,6 +3,7 @@ package com.BlackBerryJuice;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.RestrictionEntry;
 import android.database.SQLException;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -184,6 +185,9 @@ public class ActivityReservation extends Activity implements
 							+" و ساعت "
 							+timeTextView.getText();
 					String desss = ""+desc.getText();
+					SharedData.RES_B(true, ActivityReservation.this);
+					String ttt = NumberFormat.getNumberInstance(Locale.US).format((double) Menu_price.get(index_of - 1)) + " تومان";
+					SharedData.RES_N_P(timee,ttt , ActivityReservation.this);
 
 					SharedData.save_user_reservarion_info(timee,desss, ActivityReservation.this);
 					if (pre_order == true) {

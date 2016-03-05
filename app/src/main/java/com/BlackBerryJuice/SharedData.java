@@ -194,6 +194,24 @@ public class SharedData {
         return sp.getBoolean("RES_B", false);
     }
 
+    public static void RES_N_P (String name,String price,Context c) {
+        SharedPreferences sp = c.getSharedPreferences("RES_N_P", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("RES_N", name);
+        editor.putString("RES_P", price);
+        editor.commit();
+    }
+    public static String get_RES_N(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("RES_N_P", Activity.MODE_PRIVATE);
+        return sp.getString("RES_N", "");
+    }
+
+    public static String get_RES_P(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("RES_N_P", Activity.MODE_PRIVATE);
+        return sp.getString("RES_P", "");
+    }
+
+
 
 
 

@@ -178,7 +178,9 @@ public class User_Buy_Record_Fake extends Activity {
         SharedData.delete_user_reservarion_info(User_Buy_Record_Fake.this);
         SharedData.delete_user_order_time(User_Buy_Record_Fake.this);
         SharedData.delete_user_product_desc(User_Buy_Record_Fake.this);
+        SharedData.RES_N_P("", "", User_Buy_Record_Fake.this);
         SharedData.RES_B(false,User_Buy_Record_Fake.this);
+
 
 
     }

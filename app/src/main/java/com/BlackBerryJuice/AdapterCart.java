@@ -65,6 +65,7 @@ class AdapterCart extends BaseAdapter {
 			double t = ActivityCart.Sub_total_price.get(position);
 			ActivityCart.RES_PRICE_F = NumberFormat.getNumberInstance(Locale.US).format((int) t) + " " + ActivityCart.Currency ;
 			ActivityCart.RES_B = true;
+			SharedData.RES_N_P(ActivityCart.RES_NAME_F,ActivityCart.RES_PRICE_F,c);
 			SharedData.RES_B(true,c);
 			holder.main_1.setVisibility(View.GONE);
 			Log.e(" ", "" + ActivityCart.RES_B);

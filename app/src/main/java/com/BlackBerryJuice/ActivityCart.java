@@ -187,8 +187,8 @@ public class ActivityCart extends Activity {
 		if(SharedData.get_RES_B(ActivityCart.this))
 		{
 			reservation_rel.setVisibility(View.VISIBLE);
-			reserv_name.setText(RES_NAME_F);
-			reserv_price.setText(RES_PRICE_F);
+			reserv_name.setText(SharedData.get_RES_N(ActivityCart.this));
+			reserv_price.setText(SharedData.get_RES_P(ActivityCart.this));
 		}
 	}
 
