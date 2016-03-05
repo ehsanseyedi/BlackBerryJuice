@@ -172,6 +172,15 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 				overridePendingTransition (R.anim.slide_up, R.anim.slide_up_2);
 			}
 		});
+		ImageView cuu = (ImageView) findViewById(R.id.Cube_button);
+		cuu.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+				startActivity(new Intent(ActivityMainMenu.this, ActivityDev.class));
+				overridePendingTransition (R.anim.slide_up, R.anim.slide_up_2);
+			}
+		});
 		insta_link = (ImageView)findViewById(R.id.insta_link);
 		insta_link.setOnClickListener(new View.OnClickListener() {
 			@Override

@@ -404,6 +404,13 @@
         <ImageView
             android:layout_width="55dp"
             android:layout_height="55dp"
+            android:id="@+id/Cube_button"
+            android:src="@drawable/cube_logo"
+            android:padding="15dp" />
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:id="@+id/profile2"
             android:src="@drawable/userw"
             android:padding="15dp"
