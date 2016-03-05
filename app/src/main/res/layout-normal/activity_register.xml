@@ -56,7 +56,7 @@
                     android:nestedScrollingEnabled="false"
                     android:textColor="@color/EditText_Color_Text"
                     android:textColorHint="@color/EditText_Color_Hint"
-                    android:text="xxxx">
+                    >
                 </EditText>
                 <ImageView
                     android:layout_width="50dp"

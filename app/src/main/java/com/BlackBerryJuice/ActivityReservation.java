@@ -165,11 +165,11 @@ public class ActivityReservation extends Activity implements
 					if (selected_time.equals("one_hour_plus"))
 						index_of = index_of + 3;
 
-					Log.e("#####", index_of + "");
-					Log.e("table_sel", table_sel + "");
-					Log.e("selected_oc", selected_oc + "");
-					Log.e("selected_time", selected_time + "");
-					Log.e("name", Menu_name.get(index_of - 1) + "");
+//					Log.e("#####", index_of + "");
+//					Log.e("table_sel", table_sel + "");
+//					Log.e("selected_oc", selected_oc + "");
+//					Log.e("selected_time", selected_time + "");
+//					Log.e("name", Menu_name.get(index_of - 1) + "");
 
 					clearReservation();
 

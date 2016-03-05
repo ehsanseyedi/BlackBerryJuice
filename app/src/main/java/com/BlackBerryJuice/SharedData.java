@@ -182,6 +182,17 @@ public class SharedData {
     }
 
 
+    public static void RES_B(Boolean dolog,Context c) {
+        SharedPreferences sp = c.getSharedPreferences("RES_B", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("RES_B", dolog);
+        editor.commit();
+    }
+
+    public static Boolean get_RES_B(Context c) {
+        SharedPreferences sp = c.getSharedPreferences("RES_B", Activity.MODE_PRIVATE);
+        return sp.getBoolean("RES_B", false);
+    }
 
 
 

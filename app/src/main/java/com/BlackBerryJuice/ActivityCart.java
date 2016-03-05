@@ -1,27 +1,20 @@
 package com.BlackBerryJuice;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.SQLException;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -54,11 +47,13 @@ public class ActivityCart extends Activity {
 
 	// declare view objects
 //	ImageButton imgNavBack;
+	public static String RES_NAME_F ,RES_PRICE_F;
+	public static Boolean RES_B= false;
 	public ListView listOrder;
 	public ProgressBar prgLoading;
-	public TextView txtTotalLabel, txtTotal, txtAlert;
+	public TextView txtTotalLabel, txtTotal, txtAlert , reserv_name ,reserv_price ;
 	public RelativeLayout btnClear, Checkout;
-	public RelativeLayout lytOrder;
+	public RelativeLayout lytOrder , reservation_rel;
 	// declate dbhelper and adapter objects
 	DBHelper dbhelper;
 	public AdapterCart mola;
@@ -115,8 +110,12 @@ public class ActivityCart extends Activity {
 		txtTotalLabel = (TextView) findViewById(R.id.txtTotalLabel);
 		txtTotal = (TextView) findViewById(R.id.txtTotal);
 		txtAlert = (TextView) findViewById(R.id.txtAlert);
+		reserv_name = (TextView) findViewById(R.id.ReservationName);
+		reserv_price = (TextView) findViewById(R.id.ReservationPrice);
 		btnClear = (RelativeLayout) findViewById(R.id.btnClear);
 		lytOrder = (RelativeLayout) findViewById(R.id.lytOrder);
+		reservation_rel = (RelativeLayout) findViewById(R.id.reservation_rl);
+
 
 
 		// tax and currency API url
@@ -153,7 +152,7 @@ public class ActivityCart extends Activity {
 									long arg3) {
 				// show confirmation dialog
 				//showClearDialog(CLEAR_ONE_ORDER, Menu_ID.get(position));
-				Intent i = new Intent(ActivityCart.this,CardDialog.class);
+				Intent i = new Intent(ActivityCart.this, CardDialog.class);
 				i.putExtra("id", Menu_ID.get(position));
 				i.putExtra("pos", position);
 				startActivity(i);
@@ -174,7 +173,7 @@ public class ActivityCart extends Activity {
 
 
 				Intent inttt;
-				if(SharedData.load_reservarion_time(ActivityCart.this) == "")
+				if (SharedData.load_reservarion_time(ActivityCart.this) == "")
 					inttt = new Intent(ActivityCart.this, Review.class);
 				else
 					inttt = new Intent(ActivityCart.this, Paaay.class);
@@ -184,6 +183,13 @@ public class ActivityCart extends Activity {
 				finish();
 			}
 		});
+		Log.e("DDDD",RES_B + " " + RES_NAME_F + " "+ RES_PRICE_F);
+		if(SharedData.get_RES_B(ActivityCart.this))
+		{
+			reservation_rel.setVisibility(View.VISIBLE);
+			reserv_name.setText(RES_NAME_F);
+			reserv_price.setText(RES_PRICE_F);
+		}
 	}
 
 	// method to create dialog
@@ -370,6 +376,7 @@ public class ActivityCart extends Activity {
 		data = dbhelper.getAllData();
 
 		// store data to arraylist variables
+
 		for(int i=0;i<data.size();i++){
 			ArrayList<Object> row = data.get(i);
 
@@ -383,6 +390,8 @@ public class ActivityCart extends Activity {
 		// count total order
 		Total_price -= (Total_price * (Tax/100));
 		Total_price = Double.parseDouble(formatData.format(Total_price));
+
+
 	}
 
 	// when back button pressed close database and back to previous page
