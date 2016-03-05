@@ -7,8 +7,10 @@ import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.JavascriptInterface;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -46,13 +48,14 @@ public class Paaay extends Activity {
 
         w.getSettings().setDomStorageEnabled(true);
 
-        w.addJavascriptInterface(new js(), "content");
+        w.addJavascriptInterface(new js(), "cc");
 
         w.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                w.loadUrl("javascript:window.content.show(document.getElementsByTagName('html')[0].innerHTML);");
+                //super.onPageFinished(view, url);
+                //w.loadUrl("javascript:window.cc.show(document.getElementsByTagName('html')[0].innerHTML);");
+                w.loadUrl("javascript:window.cc.show('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
             }
 
             @Override
@@ -62,7 +65,7 @@ public class Paaay extends Activity {
             }
         });
 
-        w.loadUrl("http://unix-team.ir/FlatlabRTL/pay/pay.php?price=" +inttotalprice +"0");
+        w.loadUrl(Constant.PayURL +inttotalprice +"0");
 
 
     }
@@ -79,19 +82,20 @@ public class Paaay extends Activity {
 
     class js{
 
-
+        @JavascriptInterface
+        @SuppressWarnings("unused")
         public void show(String content){
 
-            //Toast.makeText(Paaay.this , content , Toast.LENGTH_SHORT).show();
-
             String c=Html.fromHtml(content).toString();
+
+            Log.e("content in js" , c);
 
             String[] t=c.split("-");
 
             if(t[0].equals("ok")){
 
                 Toast.makeText(Paaay.this, "تراکنش با موفقیت انجام شد", Toast.LENGTH_LONG).show();
-                Intent go = new Intent(Paaay.this,User_Buy_Records.class);
+                Intent go = new Intent(Paaay.this,User_Buy_Record_Fake.class);
                 go.putExtra("rahgir",t[1]);
                 go.putExtra("price",inttotalprice);
                 startActivity(go);
@@ -109,6 +113,14 @@ public class Paaay extends Activity {
         }
 
     }//TEST3
+
+
+
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+    }
 
 }
 
