@@ -66,41 +66,28 @@ public class User_Buy_Record_Fake extends Activity {
     Button btnSend;
     static Button btnDate;
     static Button btnTime;
-    EditText edtName, edtName2, edtPhone, edtOrderList, edtComment, edtAlamat, edtEmail, edtKota, edtProvinsi;
+    //EditText edtName, edtName2, edtPhone, edtOrderList, edtComment, edtAlamat, edtEmail, edtKota, edtProvinsi;
     ScrollView sclDetail;
     ProgressBar prgLoading;
     TextView txtAlert;
-    Spinner spinner;
 
     // declare dbhelper object
     static DBHelper dbhelper;
     ArrayList<ArrayList<Object>> data;
 
     // declare string variables to store data
-    String Name, Name2, Date, Time, Phone, Date_n_Time, Alamat, Email, Kota, Provinsi;
+    String Name, Name2, Phone, Date_n_Time, Alamat, Email, Kota, Provinsi;
     String OrderList = "";
     String Comment = "";
-
-    // declare static int variables to store date and time
-    private static int mYear;
-    private static int mMonth;
-    private static int mDay;
-    private static int mHour;
-    private static int mMinute;
 
     // declare static variables to store tax and currency data
     static double Tax;
     static String Currency;
 
-    static final String TIME_DIALOG_ID = "timePicker";
-    static final String DATE_DIALOG_ID = "datePicker";
-
     // create price format
     DecimalFormat formatData = new DecimalFormat("#.##");
 
     String Result;
-    String TaxCurrencyAPI;
-    int IOConnect = 0;
     private Double totalprice;
 
 
@@ -163,21 +150,21 @@ public class User_Buy_Record_Fake extends Activity {
 
         new getDataTask().execute();
 
-        edtName = (EditText) findViewById(R.id.edtName);
-        edtName2 = (EditText) findViewById(R.id.edtName2);
-        edtEmail = (EditText) findViewById(R.id.edtEmail);
-        //btnDate = (Button) findViewById(R.id.btnDate);
-        //btnTime = (Button) findViewById(R.id.btnTime);
-        edtPhone = (EditText) findViewById(R.id.edtPhone);
-        edtOrderList = (EditText) findViewById(R.id.edtOrderList);
-        edtComment = (EditText) findViewById(R.id.edtComment);
+        //edtName = (EditText) findViewById(R.id.edtName);
+//        edtName2 = (EditText) findViewById(R.id.edtName2);
+//        edtEmail = (EditText) findViewById(R.id.edtEmail);
+//        //btnDate = (Button) findViewById(R.id.btnDate);
+//        //btnTime = (Button) findViewById(R.id.btnTime);
+//        edtPhone = (EditText) findViewById(R.id.edtPhone);
+//        edtOrderList = (EditText) findViewById(R.id.edtOrderList);
+//        edtComment = (EditText) findViewById(R.id.edtComment);
         btnSend = (Button) findViewById(R.id.btnSend);
         sclDetail = (ScrollView) findViewById(R.id.sclDetail);
         prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
         txtAlert = (TextView) findViewById(R.id.txtAlert);
-        edtAlamat = (EditText) findViewById(R.id.edtAlamat);
-        edtKota = (EditText) findViewById(R.id.edtKota);
-        edtProvinsi = (EditText) findViewById(R.id.edtProvinsi);
+//        edtAlamat = (EditText) findViewById(R.id.edtAlamat);
+//        edtKota = (EditText) findViewById(R.id.edtKota);
+//        edtProvinsi = (EditText) findViewById(R.id.edtProvinsi);
 
 
         dbhelper = new DBHelper(this);
@@ -284,18 +271,19 @@ public class User_Buy_Record_Fake extends Activity {
             dialog.dismiss();
             resultAlert(Result);
 
-
         }
     }
 
     // method to show toast message
     public void resultAlert(String HasilProses){
+        Log.e("result",HasilProses);
         if(HasilProses.trim().equalsIgnoreCase("OK")){
+
             Toast.makeText(User_Buy_Record_Fake.this, R.string.ok_alert, Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(User_Buy_Record_Fake.this, ActivityConfirmMessage.class);
-            startActivity(i);
-            overridePendingTransition (R.anim.open_next, R.anim.close_next);
-            finish();
+            //Intent i = new Intent(User_Buy_Record_Fake.this, ActivityConfirmMessage.class);
+            //startActivity(i);
+            //overridePendingTransition (R.anim.open_next, R.anim.close_next);
+            //finish();
         }else if(HasilProses.trim().equalsIgnoreCase("Failed")){
             Toast.makeText(User_Buy_Record_Fake.this, R.string.failed_alert, Toast.LENGTH_SHORT).show();
         }else{
@@ -379,7 +367,7 @@ public class User_Buy_Record_Fake extends Activity {
         OrderList += "\nمبلغ پرداختی: "+(int)Order_price+" "+Currency;
 //    			+"\nTax: "+Tax+"%: "+tax+" "+Currency+
 //    			"\nTotal: "+Total_price+" "+Currency;`
-        edtOrderList.setText(OrderList);
+        //edtOrderList.setText(OrderList);
     }
 
     // when back button pressed close database and back to previous page
