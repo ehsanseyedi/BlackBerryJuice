@@ -31,6 +31,7 @@ public class Login2 extends Activity {
     public static String res="";
     private int count=0;
     private SharedPreferences sp;
+    long Menu_ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,8 @@ public class Login2 extends Activity {
         }
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);// keyboard hidden
         setContentView(R.layout.activity_login2);
+        Intent iGet = getIntent();
+        Menu_ID = iGet.getLongExtra("menu_id", 0);
         usertext =(EditText) findViewById(R.id.username);
         passtext =(EditText) findViewById(R.id.phone);
 
@@ -176,7 +179,9 @@ public class Login2 extends Activity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(Login2.this, ActivityMenuDetail.class));
+        Intent i = new Intent(Login2.this, ActivityMenuDetail.class);
+        i.putExtra("menu_id",Menu_ID );
+        startActivity(i);
         overridePendingTransition(R.anim.open_main, R.anim.close_next);
         finish();
     }
