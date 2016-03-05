@@ -84,6 +84,9 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
+            android:name=".ActivityDev"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".Paaay"
             android:screenOrientation="portrait" />
         <activity

@@ -188,9 +188,9 @@ public class ActivityAbout extends Activity {
 
     @Override
     public void onBackPressed() {
-
-        overridePendingTransition(R.anim.slide_down, R.anim.slide_down_2);
         finish();
+        overridePendingTransition(R.anim.slide_down, R.anim.slide_down_2);
+
 
     }
 }

@@ -34,7 +34,7 @@
                 <com.BlackBerryJuice.utils.TextViewPlus
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    foo:customFont="fonts/IRANSansMobile_Light.ttf"
+                    foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="زمانی برای ارسال سفارش خود انتخاب کنید"
                     android:id="@+id/nowaddress"
