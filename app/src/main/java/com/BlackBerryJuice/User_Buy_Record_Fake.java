@@ -149,10 +149,10 @@ public class User_Buy_Record_Fake extends Activity {
 
 
         Name = SharedData.load_name(User_Buy_Record_Fake.this);
-        if(!SharedData.load_address2(User_Buy_Record_Fake.this).equals("")){
-            Alamat =  SharedData.load_address2(User_Buy_Record_Fake.this);
-        }else{
+        if(SharedData.load_address2(User_Buy_Record_Fake.this).equals("")){
             Alamat =  SharedData.load_address(User_Buy_Record_Fake.this);
+        }else{
+            Alamat =  SharedData.load_address2(User_Buy_Record_Fake.this);
         }
         if(!SharedData.load_reservarion_time(User_Buy_Record_Fake.this).equals("")){
             Kota =  SharedData.load_reservarion_desc(User_Buy_Record_Fake.this);
@@ -172,6 +172,13 @@ public class User_Buy_Record_Fake extends Activity {
 
         new sendData().execute();
 
+
+        SharedData.delete_address2(User_Buy_Record_Fake.this);
+        SharedData.delete_user_reservarion_info(User_Buy_Record_Fake.this);
+        SharedData.delete_user_order_time(User_Buy_Record_Fake.this);
+        SharedData.delete_user_product_desc(User_Buy_Record_Fake.this);
+
+
     }
     @Override
     public void onBackPressed() {
@@ -186,7 +193,6 @@ public class User_Buy_Record_Fake extends Activity {
 
     // asynctask class to get data from database in background
     public class getDataTask extends AsyncTask<Void, Void, Void> {
-
 
         @Override
         protected Void doInBackground(Void... arg0) {
