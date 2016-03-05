@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -96,6 +97,17 @@ public class ActivityMenuList_SearchAll extends Activity {
 		listMenu = (ListView) findViewById(R.id.listMenu);
 		edtKeyword = (EditText) findViewById(R.id.edtKeyword);
 		edtKeyword.setTypeface(ActivitySplash.F1);
+		edtKeyword.setOnKeyListener(new View.OnKeyListener() {
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				// If the event is a key-down event on the "enter" button
+				if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+						(keyCode == KeyEvent.KEYCODE_ENTER)) {
+					perform_search();
+					return true;
+				}
+				return false;
+			}
+		});
 		btnSearch = (ImageButton) findViewById(R.id.btnSearch);
 		empty_= (LinearLayout) findViewById(R.id.empty_);
 
@@ -108,7 +120,7 @@ public class ActivityMenuList_SearchAll extends Activity {
 //		Intent iGet = getIntent();
 //		Category_ID = iGet.getLongExtra("category_id",0);
 //		Category_name = iGet.getStringExtra("category_name");
-//		MenuAPI += Category_ID;
+		//MenuAPI += Category_ID;
 
 		// set category name to textview
 //        txtTitle.setText(Category_name);
@@ -122,19 +134,7 @@ public class ActivityMenuList_SearchAll extends Activity {
 		btnSearch.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				// get keyword and send it to server
-				try {
-					Keyword = URLEncoder.encode(edtKeyword.getText().toString(), "utf-8");
-				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				MenuAPI += "&keyword="+Keyword;
-				IOConnect = 0;
-				listMenu.invalidateViews();
-				clearData();
-				new getDataTask().execute();
+				perform_search();
 			}
 		});
 
@@ -401,6 +401,22 @@ public class ActivityMenuList_SearchAll extends Activity {
 		startActivity(new Intent(ActivityMenuList_SearchAll.this, ActivityCategoryList.class));
 		overridePendingTransition(R.anim.open_main, R.anim.close_next);
 		finish();
+	}
+
+	public void perform_search() {
+		// TODO Auto-generated method stub
+		// get keyword and send it to server
+		try {
+			Keyword = URLEncoder.encode(edtKeyword.getText().toString(), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		MenuAPI += "&keyword="+Keyword;
+		IOConnect = 0;
+		listMenu.invalidateViews();
+		clearData();
+		new getDataTask().execute();
 	}
 
 
