@@ -81,7 +81,7 @@ public class ActivityCheckout extends FragmentActivity {
 	private static int mDay;
 	private static int mHour;
 	private static int mMinute;
-	
+
 	// declare static variables to store tax and currency data
 	static double Tax;
 	static String Currency;
@@ -132,7 +132,7 @@ public class ActivityCheckout extends FragmentActivity {
 	     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	     // Apply the adapter to the spinner
 	     spinner.setAdapter(adapter);
-	     
+
 	     spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			 @Override
@@ -167,7 +167,7 @@ public class ActivityCheckout extends FragmentActivity {
 
         // tax and currency API url
 		TaxCurrencyAPI = Constant.TaxCurrencyAPI+"?accesskey="+Constant.AccessKey;
-        
+
         dbhelper = new DBHelper(this);
         // open database
 		try{
@@ -177,8 +177,8 @@ public class ActivityCheckout extends FragmentActivity {
 		}
 		
 		// call asynctask class to request tax and currency data from server
-        new getTaxCurrency().execute();        
-        
+        new getTaxCurrency().execute();
+
         // event listener to handle date button when pressed
         btnDate.setOnClickListener(new OnClickListener() {
 			
@@ -271,7 +271,7 @@ public class ActivityCheckout extends FragmentActivity {
     		.append(mDay).append(" "));
 		}
     }
-    
+
     // method to create time picker dialog
     public static class TimePickerFragment extends DialogFragment
     implements TimePickerDialog.OnTimeSetListener {
@@ -282,28 +282,28 @@ public class ActivityCheckout extends FragmentActivity {
 			final Calendar c = Calendar.getInstance();
 	        int hour = c.get(Calendar.HOUR_OF_DAY);
 	        int minute = c.get(Calendar.MINUTE);
-			
+
 			// Create a new instance of DatePickerDialog and return it
 			return new TimePickerDialog(getActivity(), this, hour, minute,
 	                DateFormat.is24HourFormat(getActivity()));
 		}
-		
+
 		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 			// get selected time
 			mHour = hourOfDay;
 			mMinute = minute;
-			
+
 			// show selected time to time button
 			btnTime.setText(new StringBuilder()
             .append(pad(mHour)).append(":")
             .append(pad(mMinute)).append(":")
-            .append("00")); 	
+            .append("00"));
 		}
     }
 
     // asynctask class to handle parsing json in background
     public class getTaxCurrency extends AsyncTask<Void, Void, Void> {
-    	
+
     	// show progressbar first
     	getTaxCurrency(){
 	 		if(!prgLoading.isShown()){
@@ -311,7 +311,7 @@ public class ActivityCheckout extends FragmentActivity {
 				txtAlert.setVisibility(View.GONE);
 	 		}
 	 	}
-    	
+
 		@Override
 		protected Void doInBackground(Void... arg0) {
 			// TODO Auto-generated method stub
@@ -319,7 +319,7 @@ public class ActivityCheckout extends FragmentActivity {
 			parseJSONDataTax();
 			return null;
 		}
-    	
+
 		@Override
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
@@ -334,10 +334,10 @@ public class ActivityCheckout extends FragmentActivity {
 			}
 		}
     }
-    
+
     // method to parse json data from server
 	public void parseJSONDataTax(){
-	
+
 		try {
 			// request data from tax and currency API
 	        HttpClient client = new DefaultHttpClient();
@@ -346,31 +346,31 @@ public class ActivityCheckout extends FragmentActivity {
 	        HttpUriRequest request = new HttpGet(TaxCurrencyAPI);
 			HttpResponse response = client.execute(request);
 			InputStream atomInputStream = response.getEntity().getContent();
-	
-			
+
+
 			BufferedReader in = new BufferedReader(new InputStreamReader(atomInputStream));
-		        
+
 	        String line;
 	        String str = "";
 	        while ((line = in.readLine()) != null){
 	        	str += line;
 	        }
-	    
+
 	        // parse json data and store into tax and currency variables
 			JSONObject json = new JSONObject(str);
 			JSONArray data = json.getJSONArray("data"); // this is the "items: [ ] part
-				
-				
+
+
 			JSONObject object_tax = data.getJSONObject(0);
 			JSONObject tax = object_tax.getJSONObject("tax_n_currency");
-			    
+
 			Tax = Double.parseDouble(tax.getString("Value"));
-				   
+
 			JSONObject object_currency = data.getJSONObject(1);
 			JSONObject currency = object_currency.getJSONObject("tax_n_currency");
-				    
+
 			Currency = currency.getString("Value");
-					
+
 		} catch (MalformedURLException e) {
 		    // TODO Auto-generated catch block
 		    e.printStackTrace();
@@ -381,9 +381,9 @@ public class ActivityCheckout extends FragmentActivity {
 		} catch (JSONException e) {
 		    // TODO Auto-generated catch block
 		    e.printStackTrace();
-		}	
+		}
 	}
-	
+
 	// asynctask class to get data from database in background
     public class getDataTask extends AsyncTask<Void, Void, Void> {
     	
