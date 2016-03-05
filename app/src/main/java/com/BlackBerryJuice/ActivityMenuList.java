@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -95,6 +96,18 @@ public class ActivityMenuList extends Activity {
 		listMenu = (ListView) findViewById(R.id.listMenu);
 		edtKeyword = (EditText) findViewById(R.id.edtKeyword);
 		edtKeyword.setTypeface(ActivitySplash.F1);
+		edtKeyword.setOnKeyListener(new View.OnKeyListener() {
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				// If the event is a key-down event on the "enter" button
+				if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+						(keyCode == KeyEvent.KEYCODE_ENTER)) {
+					perform_search();
+					return true;
+				}
+				return false;
+			}
+		});
+
 		btnSearch = (ImageButton) findViewById(R.id.btnSearch);
 		empty_= (LinearLayout) findViewById(R.id.empty_);
 
@@ -119,21 +132,10 @@ public class ActivityMenuList extends Activity {
 
 		// event listener to handle search button when clicked
 		btnSearch.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				// get keyword and send it to server
-				try {
-					Keyword = URLEncoder.encode(edtKeyword.getText().toString(), "utf-8");
-				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				MenuAPI += "&keyword="+Keyword;
-				IOConnect = 0;
-				listMenu.invalidateViews();
-				clearData();
-				new getDataTask().execute();
+			@Override
+			public void onClick(View view)
+			{
+				perform_search();
 			}
 		});
 
@@ -405,5 +407,20 @@ public class ActivityMenuList extends Activity {
 		overridePendingTransition(R.anim.open_main, R.anim.close_next);
 	}
 
+	public void perform_search() {
+		// TODO Auto-generated method stub
+		// get keyword and send it to server
+		try {
+			Keyword = URLEncoder.encode(edtKeyword.getText().toString(), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		MenuAPI += "&keyword="+Keyword;
+		IOConnect = 0;
+		listMenu.invalidateViews();
+		clearData();
+		new getDataTask().execute();
+	}
 
 }

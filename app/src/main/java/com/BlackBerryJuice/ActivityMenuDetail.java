@@ -152,6 +152,7 @@ public class ActivityMenuDetail extends Activity {
 				// TODO Auto-generated method stub
 				gotocard = new Intent(ActivityMenuDetail.this, ActivityCart.class);
 				gotologin = new Intent(ActivityMenuDetail.this, Login2.class);
+				gotologin.putExtra("menu_id",Menu_ID );
 				if( SharedData.do_user_registered(ActivityMenuDetail.this) || SharedData.do_user_logedin(ActivityMenuDetail.this)) {
 					startActivity(gotocard);
 				}else{
