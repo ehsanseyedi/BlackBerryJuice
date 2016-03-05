@@ -74,8 +74,14 @@ public class Paaay extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(Paaay.this,Review.class);
-        i.putExtra("price" , totalprice);
+        Intent i;
+        if(SharedData.load_reservarion_time(Paaay.this).equals("")) {
+            i = new Intent(Paaay.this, Review.class);
+            i.putExtra("price", totalprice);
+        }
+        else
+            i= new Intent(Paaay.this,ActivityCart.class);
+
         startActivity(i);
         finish();
     }

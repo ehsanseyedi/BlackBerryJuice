@@ -117,6 +117,10 @@ public class Review extends Activity implements
                 }
                 else
                 {
+                    String timee ="در اسرع وقت";
+                    SharedData.save_user_order_time(timee,Review.this);
+                    String desss = ""+desc.getText();
+                    SharedData.save_user_product_desc(desss, Review.this);
                     startActivity(gotobank);
                     finish();
                 }
