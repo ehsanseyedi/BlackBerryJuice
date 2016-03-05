@@ -12,7 +12,7 @@ import android.widget.TextView;
  * Created by Saeed on 3/3/2016.
  */
 public class User_Buy_Record_Fake extends Activity {
-
+    public static String trans="0";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +24,7 @@ public class User_Buy_Record_Fake extends Activity {
             window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
         }
         setContentView(R.layout.user_buy_record_fake);
+
 
         TextView status = (TextView) findViewById(R.id.status);
         TextView rahgirt = (TextView) findViewById(R.id.rahgir);

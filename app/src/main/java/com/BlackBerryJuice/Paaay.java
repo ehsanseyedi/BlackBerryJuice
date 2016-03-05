@@ -10,6 +10,7 @@ import android.text.Html;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.JavascriptInterface;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -47,13 +48,14 @@ public class Paaay extends Activity {
 
         w.getSettings().setDomStorageEnabled(true);
 
-        w.addJavascriptInterface(new js(), "content");
+        w.addJavascriptInterface(new js(), "cc");
 
         w.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                w.loadUrl("javascript:window.content.show(document.getElementsByTagName('html')[0].innerHTML);");
+                //super.onPageFinished(view, url);
+                //w.loadUrl("javascript:window.cc.show(document.getElementsByTagName('html')[0].innerHTML);");
+                w.loadUrl("javascript:window.cc.show('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
             }
 
             @Override
@@ -80,14 +82,13 @@ public class Paaay extends Activity {
 
     class js{
 
-
+        @JavascriptInterface
+        @SuppressWarnings("unused")
         public void show(String content){
-
-            //Toast.makeText(Paaay.this , content , Toast.LENGTH_SHORT).show();
 
             String c=Html.fromHtml(content).toString();
 
-            Log.e("paaay",c);
+            Log.e("content in js" , c);
 
             String[] t=c.split("-");
 
@@ -112,6 +113,14 @@ public class Paaay extends Activity {
         }
 
     }//TEST3
+
+
+
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+    }
 
 }
 
