@@ -16,7 +16,7 @@
         android:scrollbarSize="2dp"
         android:divider="@null"
         android:numColumns="2"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_below="@+id/gotosearch"
         android:padding="5dp" />
 

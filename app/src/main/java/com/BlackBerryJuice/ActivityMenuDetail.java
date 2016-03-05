@@ -302,7 +302,7 @@ public class ActivityMenuDetail extends Activity {
 				int price = (int) Menu_price;
 				//int toman = (int) price / 10;
 				String sp = NumberFormat.getNumberInstance(Locale.US).format(price);
-				txtSubText.setText("قیمت : " + sp + " " + ActivityMenuList.Currency);
+				txtSubText.setText("قیمت : " + sp + " تومان");
 				txtSubText2.setText("وضعیت : " + Menu_serve);
 
 				txtDescription.setText(Menu_description);
