@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -26,6 +28,16 @@ public class User_Buy_Record_Fake extends Activity {
         setContentView(R.layout.user_buy_record_fake);
 
 
+        Button back_1 = (Button)findViewById(R.id.back_1);
+        back_1.setTypeface(ActivitySplash.F2);
+        back_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(User_Buy_Record_Fake.this, ActivityMainMenu.class));
+                finish();
+            }
+        });
+
         TextView status = (TextView) findViewById(R.id.status);
         TextView rahgirt = (TextView) findViewById(R.id.rahgir);
 
@@ -42,5 +54,11 @@ public class User_Buy_Record_Fake extends Activity {
         }
 
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(User_Buy_Record_Fake.this, ActivityMainMenu.class));
+        finish();
     }
 }
