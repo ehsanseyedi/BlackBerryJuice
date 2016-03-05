@@ -21,6 +21,7 @@ public class Constant {
 	static String CategoryAPI = AdminPageURL + "api/get-all-category-data.php";
 	static String GalleryAPI = AdminPageURL + "api/get-all-image-gallery.php";
 	static String SliderAPI = AdminPageURL + "api/get-all-image-slider.php";
+	static String SearchAllMenu = AdminPageURL + "api/get-menu-data-search-all.php";
 	static String MenuAPI = AdminPageURL + "api/get-menu-data-by-category-id.php";
 	static String TaxCurrencyAPI = AdminPageURL + "api/get-tax-and-currency.php";
 	static String MenuDetailAPI = AdminPageURL + "api/get-menu-detail.php";
