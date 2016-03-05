@@ -63,13 +63,8 @@ import java.util.List;
 public class User_Buy_Record_Fake extends Activity {
     public static String trans="0";
 
-    Button btnSend;
-    static Button btnDate;
-    static Button btnTime;
+    //Button btnSend;
     //EditText edtName, edtName2, edtPhone, edtOrderList, edtComment, edtAlamat, edtEmail, edtKota, edtProvinsi;
-    ScrollView sclDetail;
-    ProgressBar prgLoading;
-    TextView txtAlert;
 
     // declare dbhelper object
     static DBHelper dbhelper;
@@ -127,44 +122,13 @@ public class User_Buy_Record_Fake extends Activity {
             status.setText( "پرداخت موفقیت آمیز");
             rahgirt.setText(rahgir);
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        ////sapration
 
-        new getDataTask().execute();
 
-        //edtName = (EditText) findViewById(R.id.edtName);
-//        edtName2 = (EditText) findViewById(R.id.edtName2);
-//        edtEmail = (EditText) findViewById(R.id.edtEmail);
-//        //btnDate = (Button) findViewById(R.id.btnDate);
-//        //btnTime = (Button) findViewById(R.id.btnTime);
-//        edtPhone = (EditText) findViewById(R.id.edtPhone);
-//        edtOrderList = (EditText) findViewById(R.id.edtOrderList);
-//        edtComment = (EditText) findViewById(R.id.edtComment);
-        btnSend = (Button) findViewById(R.id.btnSend);
-        sclDetail = (ScrollView) findViewById(R.id.sclDetail);
-        prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
-        txtAlert = (TextView) findViewById(R.id.txtAlert);
-//        edtAlamat = (EditText) findViewById(R.id.edtAlamat);
-//        edtKota = (EditText) findViewById(R.id.edtKota);
-//        edtProvinsi = (EditText) findViewById(R.id.edtProvinsi);
+
+
+
+
+
 
 
         dbhelper = new DBHelper(this);
@@ -175,41 +139,38 @@ public class User_Buy_Record_Fake extends Activity {
             throw sqle;
         }
 
+
         Bundle b = getIntent().getExtras();
         totalprice = b.getDouble("price");
-
-        // event listener to handle send button when pressed
-        btnSend.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View arg0) {
-
-                // get data from all forms and send to server
-                Name = SharedData.load_name(User_Buy_Record_Fake.this);
-                if(!SharedData.load_address2(User_Buy_Record_Fake.this).equals("")){
-                    Alamat = SharedData.load_address2(User_Buy_Record_Fake.this);
-                }else{
-                    Alamat = SharedData.load_address(User_Buy_Record_Fake.this);
-                }
-                Kota = SharedData.load_reservarion_desc(User_Buy_Record_Fake.this);
-                Provinsi = SharedData.load_phone(User_Buy_Record_Fake.this);
-                Email = "cube";
-                Name2 = "cube";
-                Phone = SharedData.load_phone(User_Buy_Record_Fake.this);
-                Comment = "";
-                Date_n_Time = SharedData.load_reservarion_time(User_Buy_Record_Fake.this);
-//                if(Name.equalsIgnoreCase("") || Name2.equalsIgnoreCase("") || Email.equalsIgnoreCase("") || Alamat.equalsIgnoreCase("") || Kota.equalsIgnoreCase("") || Provinsi.equalsIgnoreCase("") ||
-//                        Date.equalsIgnoreCase(getString(R.string.date)) ||
-//                        Time.equalsIgnoreCase(getString(R.string.time)) ||
-//                        Phone.equalsIgnoreCase("")){
-//                    Toast.makeText(User_Buy_Record_Fake.this, R.string.form_alert, Toast.LENGTH_SHORT).show();
-//                }else if((data.size() == 0)){
-//                    Toast.makeText(User_Buy_Record_Fake.this, R.string.order_alert, Toast.LENGTH_SHORT).show();
-//                }else{
-                    new sendData().execute();
-//                }
-            }
-        });
         
+        ////sapration
+
+        new getDataTask().execute();
+
+
+        Name = SharedData.load_name(User_Buy_Record_Fake.this);
+        if(!SharedData.load_address2(User_Buy_Record_Fake.this).equals("")){
+            Alamat =  SharedData.load_address2(User_Buy_Record_Fake.this);
+        }else{
+            Alamat =  SharedData.load_address(User_Buy_Record_Fake.this);
+        }
+        if(!SharedData.load_reservarion_time(User_Buy_Record_Fake.this).equals("")){
+            Kota =  SharedData.load_reservarion_desc(User_Buy_Record_Fake.this);
+        }else{
+            Kota = "";
+        }
+        Provinsi =  SharedData.load_phone(User_Buy_Record_Fake.this);
+        Email = "cube";
+        Name2 = SharedData.load_code(User_Buy_Record_Fake.this);
+        Phone =  SharedData.load_mobile(User_Buy_Record_Fake.this);
+        Comment = SharedData.load_user_product_desc(User_Buy_Record_Fake.this);
+        if(!SharedData.load_reservarion_time(User_Buy_Record_Fake.this).equals("")){
+            Date_n_Time =  SharedData.load_reservarion_time(User_Buy_Record_Fake.this);
+        }else{
+            Date_n_Time =  SharedData.load_user_order_time(User_Buy_Record_Fake.this);
+        }
+
+        new sendData().execute();
 
     }
     @Override
@@ -238,8 +199,8 @@ public class User_Buy_Record_Fake extends Activity {
         protected void onPostExecute(Void result) {
             // TODO Auto-generated method stub
             // hide progressbar and show reservation form
-            prgLoading.setVisibility(View.GONE);
-            sclDetail.setVisibility(View.VISIBLE);
+//            prgLoading.setVisibility(View.GONE);
+//            sclDetail.setVisibility(View.VISIBLE);
 
         }
     }
@@ -280,10 +241,7 @@ public class User_Buy_Record_Fake extends Activity {
         if(HasilProses.trim().equalsIgnoreCase("OK")){
 
             Toast.makeText(User_Buy_Record_Fake.this, R.string.ok_alert, Toast.LENGTH_SHORT).show();
-            //Intent i = new Intent(User_Buy_Record_Fake.this, ActivityConfirmMessage.class);
-            //startActivity(i);
-            //overridePendingTransition (R.anim.open_next, R.anim.close_next);
-            //finish();
+
         }else if(HasilProses.trim().equalsIgnoreCase("Failed")){
             Toast.makeText(User_Buy_Record_Fake.this, R.string.failed_alert, Toast.LENGTH_SHORT).show();
         }else{
@@ -364,10 +322,11 @@ public class User_Buy_Record_Fake extends Activity {
 
         tax = Double.parseDouble(formatData.format(Order_price * (Tax / 100)));
         Total_price = Double.parseDouble(formatData.format(Order_price - tax));
-        OrderList += "\nمبلغ پرداختی: "+(int)Order_price+" "+Currency;
+        OrderList += "\nمبلغ پرداختی: "+(int)Order_price+" "+" تومان";
 //    			+"\nTax: "+Tax+"%: "+tax+" "+Currency+
 //    			"\nTotal: "+Total_price+" "+Currency;`
         //edtOrderList.setText(OrderList);
+        Log.e("get data from database", OrderList);
     }
 
     // when back button pressed close database and back to previous page
