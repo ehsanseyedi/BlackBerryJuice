@@ -75,6 +75,8 @@ public class Login extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Login.this, Register.class));
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
+
 
             }
         });
@@ -149,6 +151,7 @@ public class Login extends Activity {
                                 tm.cancel();
                                 f();
                                 startActivity(ed);
+                                overridePendingTransition(R.anim.open_next, R.anim.close_next);
                             } else if (res.equals("wrong password")) {
 
                                 pd.cancel();
@@ -192,7 +195,8 @@ public class Login extends Activity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(Login.this,ActivityMainMenu.class));
+        startActivity(new Intent(Login.this, ActivityMainMenu.class));
+        overridePendingTransition(R.anim.open_main, R.anim.close_next);
         finish();
     }
 }

@@ -65,6 +65,8 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 
 import java.util.HashMap;
 
+import me.drakeet.materialdialog.MaterialDialog;
+
 public class ActivityMainMenu extends Activity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 	static DBHelper dbhelper;
 	AdapterMainMenu mma;
@@ -91,6 +93,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 	SliderLayout mDemoSlider;
 	TextView scrollingtext;
 	int widthofscreen;
+	MaterialDialog md;
 
 	public static Handler hHandler;
 	public void onCreate(Bundle savedInstanceState) {
@@ -305,6 +308,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 				// optionally set background color using Palette
 				intent.putExtra("palette_color_type", PaletteColorType.VIBRANT);
 				startActivity(intent);
+				overridePendingTransition(R.anim.open_next, R.anim.close_next);
 			}
 		});
 
@@ -319,6 +323,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 				}else{
 					startActivity(gotologin);
 				}
+				overridePendingTransition(R.anim.open_next, R.anim.close_next);
 //				finish();
 			}
 		});
@@ -375,6 +380,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			i.setData(Uri.parse(url));
 			startActivity(i);
 		}
+		overridePendingTransition(R.anim.open_next, R.anim.close_next);
 	}
 
 	@Override
@@ -395,8 +401,23 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		// TODO Auto-generated method stub
 		dbhelper.deleteAllData();
 		dbhelper.close();
-		finish();
-		overridePendingTransition(R.anim.open_main, R.anim.close_next);
+		md=new MaterialDialog(ActivityMainMenu.this)
+				.setMessage("آیا قصد خروج از برنامه را دارید؟")
+				.setPositiveButton("بله", new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						md.dismiss();
+						finish();
+						overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+					}
+				})
+				.setNegativeButton("خیر", new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						md.dismiss();
+					}
+				});
+		md.show();
 	}
 
 	private void displayView(int position) {

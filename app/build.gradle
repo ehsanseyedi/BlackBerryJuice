@@ -36,4 +36,5 @@ dependencies {
     compile project(':library')
     compile 'com.mohamadamin:persianmaterialdatetimepicker:1.2.1'
     compile files('libs/persianmaterialdatetimepicker-1.2.1-sources.jar')
+    compile project(':MaterialDialog-master')
 }

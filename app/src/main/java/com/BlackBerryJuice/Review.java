@@ -122,6 +122,7 @@ public class Review extends Activity implements
                     Log.e("review",desss);
                     SharedData.save_user_product_desc(desss, Review.this);
                     startActivity(gotobank);
+                    overridePendingTransition(R.anim.open_next, R.anim.close_next);
                     finish();
                 }
                 else
@@ -143,6 +144,7 @@ public class Review extends Activity implements
                     Log.e("review",desss);
                     SharedData.save_user_product_desc(desss, Review.this);
                     startActivity(gotobank);
+                    overridePendingTransition(R.anim.open_next, R.anim.close_next);
                     finish();
                 }
             }
@@ -153,7 +155,8 @@ public class Review extends Activity implements
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(Review.this,ActivityCart.class));
+        startActivity(new Intent(Review.this, ActivityCart.class));
+        overridePendingTransition(R.anim.open_main, R.anim.close_next);
         finish();
     }
 

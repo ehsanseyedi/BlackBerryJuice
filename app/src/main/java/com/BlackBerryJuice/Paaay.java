@@ -83,6 +83,7 @@ public class Paaay extends Activity {
             i= new Intent(Paaay.this,ActivityCart.class);
 
         startActivity(i);
+        overridePendingTransition(R.anim.open_main, R.anim.close_next);
         finish();
     }
 
@@ -105,6 +106,7 @@ public class Paaay extends Activity {
                 go.putExtra("rahgir",t[1]);
                 go.putExtra("price",inttotalprice);
                 startActivity(go);
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
                 finish();
 
             }else if(t[0].equals("er")){
@@ -114,6 +116,7 @@ public class Paaay extends Activity {
                 go.putExtra("rahgir","null");
                 go.putExtra("price",0);
                 startActivity(go);
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
                 finish();
             }
         }

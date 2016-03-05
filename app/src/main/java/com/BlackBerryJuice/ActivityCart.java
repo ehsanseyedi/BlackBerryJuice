@@ -48,6 +48,8 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import me.drakeet.materialdialog.MaterialDialog;
+
 public class ActivityCart extends Activity {
 
 	// declare view objects
@@ -66,6 +68,7 @@ public class ActivityCart extends Activity {
 	double Tax;
 	public static String Currency;
 	Context c;
+	MaterialDialog md;
 
 	// declare arraylist variable to store data
 	public ArrayList<ArrayList<Object>> data;
@@ -87,9 +90,9 @@ public class ActivityCart extends Activity {
 	static DecimalFormat formatData = new DecimalFormat("#.##");
 
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -100,40 +103,40 @@ public class ActivityCart extends Activity {
 			window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
 		}
 
-        setContentView(R.layout.your_order);
+		setContentView(R.layout.your_order);
 		empty_ = (LinearLayout)findViewById(R.id.empty_);
 		fa=this;
 		c = ActivityCart.this;
-        // connect view objects with xml id
+		// connect view objects with xml id
 //        imgNavBack = (ImageButton) findViewById(R.id.imgNavBack);
-        Checkout = (RelativeLayout) findViewById(R.id.Checkout);
-        prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
-        listOrder = (ListView) findViewById(R.id.listOrder);
-        txtTotalLabel = (TextView) findViewById(R.id.txtTotalLabel);
-        txtTotal = (TextView) findViewById(R.id.txtTotal);
-        txtAlert = (TextView) findViewById(R.id.txtAlert);
-        btnClear = (RelativeLayout) findViewById(R.id.btnClear);
-        lytOrder = (RelativeLayout) findViewById(R.id.lytOrder);
+		Checkout = (RelativeLayout) findViewById(R.id.Checkout);
+		prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
+		listOrder = (ListView) findViewById(R.id.listOrder);
+		txtTotalLabel = (TextView) findViewById(R.id.txtTotalLabel);
+		txtTotal = (TextView) findViewById(R.id.txtTotal);
+		txtAlert = (TextView) findViewById(R.id.txtAlert);
+		btnClear = (RelativeLayout) findViewById(R.id.btnClear);
+		lytOrder = (RelativeLayout) findViewById(R.id.lytOrder);
 
 
-        // tax and currency API url
-        TaxCurrencyAPI = Constant.TaxCurrencyAPI+"?accesskey="+Constant.AccessKey;
+		// tax and currency API url
+		TaxCurrencyAPI = Constant.TaxCurrencyAPI+"?accesskey="+Constant.AccessKey;
 
-        mola = new AdapterCart(this);
-        dbhelper = new DBHelper(this);
+		mola = new AdapterCart(this);
+		dbhelper = new DBHelper(this);
 
-        // open database
-        try{
+		// open database
+		try{
 			dbhelper.openDataBase();
 		}catch(SQLException sqle){
 			throw sqle;
 		}
 
-        // call asynctask class to request tax and currency data from server
-        new getTaxCurrency().execute();
+		// call asynctask class to request tax and currency data from server
+		new getTaxCurrency().execute();
 
 
-        // event listener to handle clear button when clicked
+		// event listener to handle clear button when clicked
 		btnClear.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View arg0) {
@@ -143,11 +146,11 @@ public class ActivityCart extends Activity {
 			}
 		});
 
-        // event listener to handle list when clicked
+		// event listener to handle list when clicked
 		listOrder.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-					long arg3) {
+									long arg3) {
 				// show confirmation dialog
 				//showClearDialog(CLEAR_ONE_ORDER, Menu_ID.get(position));
 				Intent i = new Intent(ActivityCart.this,CardDialog.class);
@@ -161,7 +164,7 @@ public class ActivityCart extends Activity {
 
 
 		Checkout.setEnabled(false);
-        Checkout.setOnClickListener(new OnClickListener() {
+		Checkout.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
@@ -181,27 +184,26 @@ public class ActivityCart extends Activity {
 				finish();
 			}
 		});
-    }
+	}
 
-    // method to create dialog
-    void showClearDialog(int flag, int id){
-    	FLAG = flag;
-    	ID = id;
-		AlertDialog.Builder builder = 	new AlertDialog.Builder(this);
-		builder.setTitle(R.string.confirm);
+	// method to create dialog
+	void showClearDialog(int flag, int id){
+		FLAG = flag;
+		ID = id;
+		md=new MaterialDialog(ActivityCart.this);
 		switch(FLAG){
-		case 0:
-			builder.setMessage(getString(R.string.clear_all_order));
-			break;
-		case 1:
-			builder.setMessage(getString(R.string.clear_one_order));
-			break;
+			case 0:
+				md.setMessage(getString(R.string.clear_all_order));
+				break;
+			case 1:
+				md.setMessage(getString(R.string.clear_one_order));
+				break;
 		}
-		builder.setCancelable(false);
-		builder.setPositiveButton("بله", new DialogInterface.OnClickListener() {
+		md.setCanceledOnTouchOutside(false);
 
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
+		md.setPositiveButton("بله", new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
 				switch (FLAG) {
 					case 0:
 						// clear all menu in order table
@@ -217,28 +219,23 @@ public class ActivityCart extends Activity {
 //						clearData();
 //						new getDataTask().execute();
 //						break;
-
 				}
-
+				md.dismiss();
 			}
 		});
-
-		builder.setNegativeButton("خیر", new DialogInterface.OnClickListener() {
-
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				// close dialog
-				dialog.cancel();
+		md.setNegativeButton("خیر", new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				md.dismiss();
 			}
 		});
-		AlertDialog alert = builder.create();
-		alert.show();
-    }
+		md.show();
+	}
 
-    // asynctask class to handle parsing json in background
-    public class getTaxCurrency extends AsyncTask<Void, Void, Void> {
+	// asynctask class to handle parsing json in background
+	public class getTaxCurrency extends AsyncTask<Void, Void, Void> {
 
-    	// show progressbar first
+		// show progressbar first
 		getTaxCurrency(){
 			if(!prgLoading.isShown()){
 				prgLoading.setVisibility(View.VISIBLE);
@@ -268,29 +265,29 @@ public class ActivityCart extends Activity {
 			}
 			Checkout.setEnabled(true);
 		}
-    }
+	}
 
-    // method to parse json data from server
+	// method to parse json data from server
 	public void parseJSONDataTax(){
 
 		try {
-	        // request data from tax and currency API
-	        HttpClient client = new DefaultHttpClient();
-	        HttpConnectionParams.setConnectionTimeout(client.getParams(), 15000);
+			// request data from tax and currency API
+			HttpClient client = new DefaultHttpClient();
+			HttpConnectionParams.setConnectionTimeout(client.getParams(), 15000);
 			HttpConnectionParams.setSoTimeout(client.getParams(), 15000);
-	        HttpUriRequest request = new HttpGet(TaxCurrencyAPI);
+			HttpUriRequest request = new HttpGet(TaxCurrencyAPI);
 			HttpResponse response = client.execute(request);
 			InputStream atomInputStream = response.getEntity().getContent();
 
 			BufferedReader in = new BufferedReader(new InputStreamReader(atomInputStream));
 
-	        String line;
-	        String str = "";
-	        while ((line = in.readLine()) != null){
-	        	str += line;
-	        }
+			String line;
+			String str = "";
+			while ((line = in.readLine()) != null){
+				str += line;
+			}
 
-	        // parse json data and store into tax and currency variables
+			// parse json data and store into tax and currency variables
 			JSONObject json = new JSONObject(str);
 			JSONArray data = json.getJSONArray("data"); // this is the "items: [ ] part
 
@@ -306,28 +303,28 @@ public class ActivityCart extends Activity {
 
 
 		} catch (MalformedURLException e) {
-		    // TODO Auto-generated catch block
-		    e.printStackTrace();
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (IOException e) {
-		    // TODO Auto-generated catch block
+			// TODO Auto-generated catch block
 			IOConnect = 1;
-		    e.printStackTrace();
+			e.printStackTrace();
 		} catch (JSONException e) {
-		    // TODO Auto-generated catch block
-		    e.printStackTrace();
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
 	// clear arraylist variables before used
-    public void clearData(){
-    	Menu_ID.clear();
-    	Menu_name.clear();
-    	Quantity.clear();
-    	Sub_total_price.clear();
-    }
+	public void clearData(){
+		Menu_ID.clear();
+		Menu_name.clear();
+		Quantity.clear();
+		Sub_total_price.clear();
+	}
 
-    // asynctask class to handle parsing json in background
-    public class getDataTask extends AsyncTask<Void, Void, Void> {
+	// asynctask class to handle parsing json in background
+	public class getDataTask extends AsyncTask<Void, Void, Void> {
 
 		// show progressbar first
 		getDataTask(){
@@ -338,11 +335,11 @@ public class ActivityCart extends Activity {
 			}
 		}
 
-    	@Override
+		@Override
 		protected Void doInBackground(Void... arg0) {
 			// TODO Auto-generated method stub
-    		// get data from database
-    		getDataFromDatabase();
+			// get data from database
+			getDataFromDatabase();
 			return null;
 		}
 
@@ -363,47 +360,47 @@ public class ActivityCart extends Activity {
 				empty_.setVisibility(View.VISIBLE);
 			}
 		}
-    }
+	}
 
-    // method to get data from server
-    public void getDataFromDatabase(){
+	// method to get data from server
+	public void getDataFromDatabase(){
 
-    	Total_price = 0;
-    	clearData();
-    	data = dbhelper.getAllData();
+		Total_price = 0;
+		clearData();
+		data = dbhelper.getAllData();
 
-    	// store data to arraylist variables
-    	for(int i=0;i<data.size();i++){
-    		ArrayList<Object> row = data.get(i);
+		// store data to arraylist variables
+		for(int i=0;i<data.size();i++){
+			ArrayList<Object> row = data.get(i);
 
-    		Menu_ID.add(Integer.parseInt(row.get(0).toString()));
+			Menu_ID.add(Integer.parseInt(row.get(0).toString()));
 			Menu_name.add(row.get(1).toString());
-    		Quantity.add(Integer.parseInt(row.get(2).toString()));
-    		Sub_total_price.add(Double.parseDouble(formatData.format(Double.parseDouble(row.get(3).toString()))));
-    		Total_price += Sub_total_price.get(i);
-    	}
+			Quantity.add(Integer.parseInt(row.get(2).toString()));
+			Sub_total_price.add(Double.parseDouble(formatData.format(Double.parseDouble(row.get(3).toString()))));
+			Total_price += Sub_total_price.get(i);
+		}
 
-    	// count total order
-    	Total_price -= (Total_price * (Tax/100));
-    	Total_price = Double.parseDouble(formatData.format(Total_price));
-    }
+		// count total order
+		Total_price -= (Total_price * (Tax/100));
+		Total_price = Double.parseDouble(formatData.format(Total_price));
+	}
 
-    // when back button pressed close database and back to previous page
-    @Override
-    public void onBackPressed() {
-    	// TODO Auto-generated method stub
-    	super.onBackPressed();
-    	dbhelper.close();
-    	finish();
-		overridePendingTransition(R.anim.open_main, R.anim.close_next);
-    }
+	// when back button pressed close database and back to previous page
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		dbhelper.close();
+		finish();
+		overridePendingTransition(R.anim.open_next, R.anim.close_next);
+	}
 
 
-    @Override
+	@Override
 	public void onConfigurationChanged(final Configuration newConfig)
 	{
-	    // Ignore orientation change to keep activity from restarting
-	    super.onConfigurationChanged(newConfig);
+		// Ignore orientation change to keep activity from restarting
+		super.onConfigurationChanged(newConfig);
 	}
 
 
