@@ -46,9 +46,45 @@
 		<RelativeLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:id="@+id/reservation_rl"
+			android:background="@color/tameshk_dark"
+			android:padding="5dp"
+			android:layout_below="@+id/lytTotal"
+			android:visibility="gone">
+			<com.BlackBerryJuice.utils.TextViewPlus
+				android:id="@+id/ReservationName"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:maxWidth="150dp"
+				foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+				android:layout_centerVertical="true"
+				android:layout_alignParentRight="true"
+				android:textStyle="bold"
+				android:text="متن رزرو"
+				android:textSize="16sp"
+				android:layout_toRightOf="@+id/ReservationPrice"
+				android:layout_toEndOf="@+id/ReservationPrice"
+				android:layout_marginLeft="15dp"
+				android:textColor="#FFF" />
+
+			<com.BlackBerryJuice.utils.TextViewPlus
+				android:id="@+id/ReservationPrice"
+				android:layout_width="100dp"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+				android:layout_alignParentLeft="true"
+				android:textSize="16sp"
+				android:textColor="#FFF"
+				android:text="قیمت"
+				android:gravity="center" />
+		</RelativeLayout>
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
 			android:background="@color/tameshk_gray"
 			android:id="@+id/txtDetail"
-			android:layout_below="@+id/lytTotal"
+			android:layout_below="@+id/reservation_rl"
 			android:padding="5dp">
 			<com.BlackBerryJuice.utils.TextViewPlus
 				android:id="@+id/txtMenuName"
@@ -92,18 +128,6 @@
 				android:gravity="center" />
 
 		</RelativeLayout>
-		<!--<TextView -->
-		<!--android:id="@+id/txtDetail"-->
-		<!--android:layout_width="fill_parent"-->
-		<!--android:layout_height="wrap_content"-->
-		<!-- -->
-		<!--android:text="@string/detail"-->
-		<!--android:gravity="right"-->
-		<!--android:textColor="@color/text"-->
-		<!--android:textSize="14sp"-->
-		<!--android:textStyle="bold"-->
-		<!--android:padding="5dp"-->
-		<!--android:layout_below="@+id/lytTotal"/>-->
 		<ListView
 			android:id="@+id/listOrder"
 			android:layout_width="fill_parent"
