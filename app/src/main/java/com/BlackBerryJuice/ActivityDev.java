@@ -40,18 +40,6 @@ public class ActivityDev extends Activity {
         setContentView(R.layout.cube_layout);
 
 
-
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int screenwidth = size.x;
-
-        ImageView i = (ImageView) findViewById(R.id.bbbb);
-        i.requestLayout();
-        i.getLayoutParams().width = screenwidth;
-
-
-
         vis_ = (TextViewPlus)findViewById(R.id.vis_);
         vis_.setOnClickListener(new OnClickListener() {
             @Override
