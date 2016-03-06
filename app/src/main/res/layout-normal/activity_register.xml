@@ -161,8 +161,7 @@
                     android:imeOptions="flagNoFullscreen"
                     android:nestedScrollingEnabled="false"
                     android:textSize="@dimen/medfont"
-                    android:hint="ادرس"
-                    android:text="xxxxx" />
+                    android:hint="ادرس"/>
 
                 <ImageView
                     android:layout_width="50dp"
@@ -199,7 +198,6 @@
                     android:textColorHint="@color/EditText_Color_Hint"
                     android:imeOptions="flagNoFullscreen"
                     android:nestedScrollingEnabled="false"
-                    android:text="xxx"
                     android:inputType="phone"
                     android:phoneNumber="true"/>
 

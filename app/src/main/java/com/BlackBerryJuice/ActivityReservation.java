@@ -66,7 +66,7 @@ public class ActivityReservation extends Activity implements
 			DATEPICKER = "DatePickerDialog";
 	static DBHelper dbhelper;
 	private CheckBox mode24Hours, modeDarkTime, modeDarkDate;
-	private TextView timeTextView, dateTextView;
+	private TextView timeTextView, dateTextView , cancel_1;
 	private Button Req_Btn; //timeButton, dateButton;
 	int end_of_month;
 	PersianCalendar now2 , now;
@@ -123,6 +123,13 @@ public class ActivityReservation extends Activity implements
 	private void initializeViews() {
 		timeTextView = (TextView)findViewById(R.id.Time_Text);
 		dateTextView = (TextView)findViewById(R.id.Date_Text);
+		cancel_1 = (TextView)findViewById(R.id.cancel_1);
+		cancel_1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				onBackPressed();
+			}
+		});
 		pre_order_check = (ImageView)findViewById(R.id.pre_order_check);
 		pre_order_check.setOnClickListener(new View.OnClickListener() {
 			@Override

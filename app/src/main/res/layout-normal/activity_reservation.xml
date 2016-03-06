@@ -29,7 +29,8 @@
                 android:layout_gravity="center"
                 android:textColor="#2A2A2A"
                 android:layout_marginBottom="10dp"
-                foo:customFont="fonts/IRANSansMobile_Medium.ttf"/>
+                foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+                android:layout_marginTop="10dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -417,7 +418,7 @@
                 android:textColor="#FFFFFF" />
 
             <com.BlackBerryJuice.utils.TextViewPlus
-                android:id="@+id/reg_now_link"
+                android:id="@+id/cancel_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="انصراف"
@@ -430,7 +431,8 @@
                 android:paddingTop="7dp"
                 android:paddingBottom="7dp"
                 android:paddingRight="15dp"
-                android:paddingLeft="15dp" />
+                android:paddingLeft="15dp"
+                android:layout_marginBottom="10dp" />
 
 
         </LinearLayout>

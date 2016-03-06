@@ -96,6 +96,7 @@ public class Register2 extends Activity implements
 
             public void onClick(View arg0) {
                 finish();
+                overridePendingTransition(R.anim.open_main, R.anim.close_next);
             }
         });
     }
@@ -251,5 +252,8 @@ public class Register2 extends Activity implements
         birthday_picked=true;
         bithday1.setText(date);
     }
-
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.open_main, R.anim.close_next);
+    }
 }

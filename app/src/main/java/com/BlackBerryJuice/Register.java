@@ -108,6 +108,7 @@ public class Register extends Activity implements
 
             public void onClick(View arg0) {
                 finish();
+                overridePendingTransition(R.anim.open_main, R.anim.close_next);
             }
         });
     }
