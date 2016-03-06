@@ -32,6 +32,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.BlackBerryJuice.util.ErrorToast;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -250,10 +252,10 @@ public class User_Buy_Record_Fake extends Activity {
         Log.e("result",HasilProses);
         if(HasilProses.trim().equalsIgnoreCase("OK")){
 
-            Toast.makeText(User_Buy_Record_Fake.this, R.string.ok_alert, Toast.LENGTH_SHORT).show();
+            ErrorToast.makeToast(User_Buy_Record_Fake.this, ""+R.string.ok_alert, Toast.LENGTH_SHORT).show();
 
         }else if(HasilProses.trim().equalsIgnoreCase("Failed")){
-            Toast.makeText(User_Buy_Record_Fake.this, R.string.failed_alert, Toast.LENGTH_SHORT).show();
+            ErrorToast.makeToast(User_Buy_Record_Fake.this, ""+R.string.failed_alert, Toast.LENGTH_SHORT).show();
         }else{
             Log.d("HasilProses", HasilProses);
         }

@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.BlackBerryJuice.util.ErrorToast;
 import com.BlackBerryJuice.util.ShamsiCalleder;
 import com.BlackBerryJuice.utils.TextViewPlus;
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
@@ -192,16 +193,16 @@ public class Register2 extends Activity implements
                                 pd.cancel();
                                 tm.cancel();
                                 count = 0;
-                                Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
+                                ErrorToast.makeToast(Register2.this, "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
                             }
                             if (res.equals("ut")) {
                                 pd.cancel();
-                                Toast.makeText(getApplicationContext(), "شماره موبایل شما قبلا ثبت شده است، لطفا وارد شوید", Toast.LENGTH_LONG).show();
+                                ErrorToast.makeToast(Register2.this, "شماره موبایل شما قبلا ثبت شده است، لطفا وارد شوید", Toast.LENGTH_LONG).show();
                                 res = "";
                                 tm.cancel();
                             } else if (res.toLowerCase().contains("ok")) {
                                 pd.cancel();
-                                Toast.makeText(getApplicationContext(), "ثبت نام با موفقیت انجام شد", Toast.LENGTH_LONG).show();
+                                ErrorToast.makeToast(Register2.this, "ثبت نام با موفقیت انجام شد", Toast.LENGTH_LONG).show();
                                 String Code = res.replace("ok", "");
                                 int newcode = Integer.valueOf(Code);
                                 newcode++;
@@ -217,7 +218,7 @@ public class Register2 extends Activity implements
                             } else if (res.equals("no")) {
 
                                 pd.cancel();
-                                Toast.makeText(getApplicationContext(), "خطا در عملیات ثبت نام", Toast.LENGTH_LONG).show();
+                                ErrorToast.makeToast(Register2.this, "خطا در عملیات ثبت نام", Toast.LENGTH_LONG).show();
                                 res = "";
                                 tm.cancel();
                             }

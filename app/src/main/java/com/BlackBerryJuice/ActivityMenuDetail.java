@@ -38,6 +38,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.BlackBerryJuice.util.ErrorToast;
 import com.BlackBerryJuice.utils.TextViewPlus;
 
 import org.apache.http.HttpResponse;
@@ -251,7 +252,7 @@ public class ActivityMenuDetail extends Activity {
 				try {
 					adder.startAnimation(AnimationUtils.loadAnimation(ActivityMenuDetail.this, android.R.anim.fade_out));
 				} catch (Exception e) {}
-				Toast.makeText(ActivityMenuDetail.this,"سفارش با موفقیت به سبد خرید افزوده شد",Toast.LENGTH_SHORT).show();
+				ErrorToast.makeToast(ActivityMenuDetail.this, "سفارش با موفقیت به سبد خرید افزوده شد", Toast.LENGTH_SHORT).show();
 			}
 		});
 

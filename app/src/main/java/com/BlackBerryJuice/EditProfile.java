@@ -20,6 +20,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.BlackBerryJuice.util.ErrorToast;
 import com.BlackBerryJuice.util.ShamsiCalleder;
 import com.BlackBerryJuice.utils.TextViewPlus;
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
@@ -102,7 +104,7 @@ public class EditProfile extends Activity implements
                             tm.cancel();
                             count = 0;
                             new updateuserserver(Constant.Update_ProfileURL, "", "", "", "", "", "", code, "get", EditProfile.this).cancel(true);
-                            Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
+                            ErrorToast.makeToast(EditProfile.this, "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
                             finish();
 
                         }
@@ -155,12 +157,12 @@ public class EditProfile extends Activity implements
                                     pd.cancel();
                                     tm.cancel();
                                     count=0;
-                                    Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
+                                    ErrorToast.makeToast(EditProfile.this, "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
                                 }
 
                                 if(!res.equals("")){
                                     pd.cancel();
-                                    Toast.makeText(getApplicationContext(), "اطلاعات با موفقیت آپدیت شد", Toast.LENGTH_LONG).show();
+                                    ErrorToast.makeToast(EditProfile.this, "اطلاعات با موفقیت آپدیت شد", Toast.LENGTH_LONG).show();
                                     tm.cancel();
                                 }
                             }

@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:foo="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:minHeight="@dimen/min_lay_height"
-    android:minWidth="@dimen/min_lay_width"
-    xmlns:foo="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/backg_3">
+    android:minWidth="@dimen/min_lay_width">
 
-    <com.BlackBerryJuice.utils.TextViewPlus
-        android:id="@+id/txtMessage"
-        android:layout_width="wrap_content"
+    <RelativeLayout
         android:layout_height="wrap_content"
-        android:text="لطفاً در بازه زمانی فعالیت فروشگاه زمان انتخاب کنید (9 صبح تا 2 بامداد)"
-        android:layout_gravity="center"
-        foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
-        android:paddingLeft="@dimen/spacing_big"
-        android:paddingRight="16dp"
-        android:drawablePadding="@dimen/spacing_big"
-        android:gravity="center_vertical"
-        android:layout_centerVertical="true"
-        android:textColor="#000000"
-        android:textSize="@dimen/text_size_small"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginLeft="3dp" />
-</RelativeLayout>
+        android:layout_width="match_parent"
+        android:background="@drawable/backg_3"
+        android:layout_marginBottom="20dp">
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:id="@+id/txtMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="لطفاً در بازه زمانی فعالیت فروشگاه زمان انتخاب کنید (9 صبح تا 2 بامداد)"
+            android:layout_gravity="center"
+            foo:customFont="fonts/IRANSansMobile_Light_Persian_Digits.ttf"
+            android:paddingLeft="@dimen/spacing_big"
+            android:paddingRight="16dp"
+            android:drawablePadding="@dimen/spacing_big"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:textColor="#FFF"
+            android:textSize="@dimen/text_size_small"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp" />
+    </RelativeLayout>
+</LinearLayout>

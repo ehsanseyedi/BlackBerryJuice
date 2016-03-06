@@ -1,40 +1,26 @@
 package com.BlackBerryJuice;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.SQLException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
-import android.os.Message;
 import android.text.Html;
-import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,6 +44,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
+import com.BlackBerryJuice.util.ErrorToast;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
@@ -255,7 +242,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 
 		// checking internet connection
 		if (!Constant.isNetworkAvailable(ActivityMainMenu.this)) {
-			Toast.makeText(ActivityMainMenu.this, getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
+			ErrorToast.makeToast(ActivityMainMenu.this, getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
 		}
 
 		mma = new AdapterMainMenu(this);

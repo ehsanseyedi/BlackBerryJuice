@@ -30,6 +30,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.BlackBerryJuice.util.ErrorToast;
 import com.BlackBerryJuice.utils.TextViewPlus;
 
 public class ActivityAbout extends Activity {
@@ -117,7 +118,7 @@ public class ActivityAbout extends Activity {
                         desc.setError(ssbuilder);
                     }
                     else if (!SharedData.do_user_logedin(ActivityAbout.this) && !SharedData.do_user_registered(ActivityAbout.this)) {
-                        Toast.makeText(ActivityAbout.this,"لطفاً ابتدا وارد حساب کاربری خود شوید!",Toast.LENGTH_LONG).show();
+                        ErrorToast.makeToast(ActivityAbout.this, "لطفاً ابتدا وارد حساب کاربری خود شوید!", Toast.LENGTH_LONG).show();
                     }
 
 
@@ -155,7 +156,7 @@ public class ActivityAbout extends Activity {
                                         pd.cancel();
                                         tm.cancel();
                                         count = 0;
-                                        Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط" + "\n" + "لطفا بعدا دوباره امتحان کنید", Toast.LENGTH_LONG).show();
+                                        ErrorToast.makeToast(ActivityAbout.this, "خطا در برقراری ارتباط" + "\n" + "لطفا بعدا دوباره امتحان کنید", Toast.LENGTH_LONG).show();
 
 
                                     }
@@ -163,7 +164,7 @@ public class ActivityAbout extends Activity {
                                     if (res.equals("ok")) {
 
                                         pd.cancel();
-                                        Toast.makeText(getApplicationContext(), "پیام شما با موفقیت به مدیریت ارسال شد با تشکر", Toast.LENGTH_LONG).show();
+                                        ErrorToast.makeToast(ActivityAbout.this, "پیام شما با موفقیت به مدیریت ارسال شد با تشکر", Toast.LENGTH_LONG).show();
                                         res = "";
                                         finish();
                                         tm.cancel();
@@ -171,7 +172,7 @@ public class ActivityAbout extends Activity {
 
                                     } else if (res.equals("no")) {
                                         pd.cancel();
-                                        Toast.makeText(getApplicationContext(), "خطایی رخ داده است", Toast.LENGTH_LONG).show();
+                                        ErrorToast.makeToast(ActivityAbout.this, "خطایی رخ داده است", Toast.LENGTH_LONG).show();
                                         tm.cancel();
 
 

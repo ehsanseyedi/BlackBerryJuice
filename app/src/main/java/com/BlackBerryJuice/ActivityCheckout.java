@@ -30,6 +30,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.BlackBerryJuice.util.ErrorToast;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -439,13 +441,13 @@ public class ActivityCheckout extends FragmentActivity {
     // method to show toast message
     public void resultAlert(String HasilProses){
 		if(HasilProses.trim().equalsIgnoreCase("OK")){
-			Toast.makeText(ActivityCheckout.this, R.string.ok_alert, Toast.LENGTH_SHORT).show();
+			ErrorToast.makeToast(ActivityCheckout.this, ""+R.string.ok_alert, Toast.LENGTH_SHORT).show();
 			Intent i = new Intent(ActivityCheckout.this, ActivityConfirmMessage.class);
 			startActivity(i);
 			overridePendingTransition (R.anim.open_next, R.anim.close_next);
 			finish();
 		}else if(HasilProses.trim().equalsIgnoreCase("Failed")){
-			Toast.makeText(ActivityCheckout.this, R.string.failed_alert, Toast.LENGTH_SHORT).show();
+			ErrorToast.makeToast(ActivityCheckout.this,""+ R.string.failed_alert, Toast.LENGTH_SHORT).show();
 		}else{
 			Log.d("HasilProses", HasilProses);
 		}

@@ -16,6 +16,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.BlackBerryJuice.util.ErrorToast;
+
 public class Paaay extends Activity {
 
     Double totalprice;
@@ -101,7 +103,7 @@ public class Paaay extends Activity {
 
             if(t[0].equals("ok")){
 
-                Toast.makeText(Paaay.this, "تراکنش با موفقیت انجام شد", Toast.LENGTH_LONG).show();
+                ErrorToast.makeToast(Paaay.this, "تراکنش با موفقیت انجام شد", Toast.LENGTH_LONG).show();
                 Intent go = new Intent(Paaay.this,User_Buy_Record_Fake.class);
                 go.putExtra("rahgir",t[1]);
                 go.putExtra("price",inttotalprice);
@@ -111,7 +113,7 @@ public class Paaay extends Activity {
 
             }else if(t[0].equals("er")){
 
-                Toast.makeText(Paaay.this, "تراکنش ناموفق بود", Toast.LENGTH_LONG).show();
+                ErrorToast.makeToast(Paaay.this, "تراکنش ناموفق بود", Toast.LENGTH_LONG).show();
                 Intent go = new Intent(Paaay.this,User_Buy_Record_Fake.class);
                 go.putExtra("rahgir","null");
                 go.putExtra("price",0);
