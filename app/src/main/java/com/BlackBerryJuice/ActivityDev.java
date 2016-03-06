@@ -6,15 +6,19 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -34,6 +38,19 @@ public class ActivityDev extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.cube_layout);
+
+
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int screenwidth = size.x;
+
+        ImageView i = (ImageView) findViewById(R.id.bbbb);
+        i.requestLayout();
+        i.getLayoutParams().width = screenwidth;
+
+
 
         vis_ = (TextViewPlus)findViewById(R.id.vis_);
         vis_.setOnClickListener(new OnClickListener() {

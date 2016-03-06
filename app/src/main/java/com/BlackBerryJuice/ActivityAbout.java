@@ -74,15 +74,7 @@ public class ActivityAbout extends Activity {
             }
         });
 
-//        Display display = getWindowManager().getDefaultDisplay();
-//        Point size = new Point();
-//        display.getSize(size);
-//        int screenwidth = size.x;
-//
-//        ImageView i = (ImageView) findViewById(R.id.bbbb);
-//        i.requestLayout();
-//        i.setLayoutParams(
-//                new ViewGroup.LayoutParams(screenwidth,ViewGroup.LayoutParams.WRAP_CONTENT ) );
+
 
 
         desc.setTypeface(ActivitySplash.F6);
