@@ -1,1 +1,1 @@
-include 'app', ':library', 'MaterialDialog-master'
+include 'app', ':library', 'MaterialDialog-master', ':app'

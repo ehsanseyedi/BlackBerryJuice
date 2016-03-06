@@ -9,18 +9,22 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,9 +32,6 @@ import android.widget.Toast;
 
 import com.BlackBerryJuice.utils.TextViewPlus;
 
-/**
- * Created by EhCan on 2/27/2016.
- */
 public class ActivityAbout extends Activity {
     EditText desc;
     private RelativeLayout Send_Button , cancel_button , Pic_Send_Button;
@@ -72,6 +73,18 @@ public class ActivityAbout extends Activity {
 
             }
         });
+
+//        Display display = getWindowManager().getDefaultDisplay();
+//        Point size = new Point();
+//        display.getSize(size);
+//        int screenwidth = size.x;
+//
+//        ImageView i = (ImageView) findViewById(R.id.bbbb);
+//        i.requestLayout();
+//        i.setLayoutParams(
+//                new ViewGroup.LayoutParams(screenwidth,ViewGroup.LayoutParams.WRAP_CONTENT ) );
+
+
         desc.setTypeface(ActivitySplash.F6);
         vis_ = (TextViewPlus)findViewById(R.id.vis_);
         vis_1 = (LinearLayout)findViewById(R.id.vis_1);
