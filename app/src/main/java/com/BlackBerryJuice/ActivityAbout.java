@@ -56,7 +56,7 @@ public class ActivityAbout extends Activity {
             @Override
             public void onClick(View view) {
 
-                Uri uri = Uri.parse("http://telegram.me/sadeghsb73");
+                Uri uri = Uri.parse("http://telegram.me/blackberry_juice");
                 Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
 
                 likeIng.setPackage("com.telegram");
@@ -66,7 +66,7 @@ public class ActivityAbout extends Activity {
                     overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
                 } catch (ActivityNotFoundException e) {
                     startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("http://telegram.me/sadeghsb73")));
+                            Uri.parse("http://telegram.me/blackberry_juice")));
                     overridePendingTransition(R.anim.slide_up, R.anim.slide_up_2);
                 }
 

@@ -51,7 +51,7 @@ public class Profile extends Activity {
             public void onClick(View v) {
                 startActivity(new Intent(Profile.this, EditProfile.class));
                 overridePendingTransition(R.anim.open_next, R.anim.close_next);
-                finish();
+                //finish();
             }
         });
 

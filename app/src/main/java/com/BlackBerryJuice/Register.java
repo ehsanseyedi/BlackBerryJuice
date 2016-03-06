@@ -264,6 +264,11 @@ public class Register extends Activity implements
         bithday1.setText(date);
     }
 
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.open_main, R.anim.close_next);
+    }
+
 //    public static void set_user_registered(Boolean doreg,Context c) {
 //        SharedPreferences sp = c.getSharedPreferences("user_registered", Activity.MODE_PRIVATE);
 //        SharedPreferences.Editor editor = sp.edit();

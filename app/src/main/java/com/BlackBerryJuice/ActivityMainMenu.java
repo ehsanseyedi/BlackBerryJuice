@@ -324,7 +324,6 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 					startActivity(gotologin);
 				}
 				overridePendingTransition(R.anim.open_next, R.anim.close_next);
-//				finish();
 			}
 		});
 	}

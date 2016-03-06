@@ -243,9 +243,8 @@ public class EditProfile extends Activity implements
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(EditProfile.this, Profile.class));
-        overridePendingTransition(R.anim.open_main, R.anim.close_next);
         finish();
+        overridePendingTransition(R.anim.open_main, R.anim.close_next);
     }
 
     DatePickerDialog dpd;

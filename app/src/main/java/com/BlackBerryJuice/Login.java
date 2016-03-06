@@ -76,7 +76,7 @@ public class Login extends Activity {
             public void onClick(View v) {
                 startActivity(new Intent(Login.this, Register.class));
                 overridePendingTransition(R.anim.open_next, R.anim.close_next);
-
+                finish();
 
             }
         });
@@ -195,8 +195,7 @@ public class Login extends Activity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(Login.this, ActivityMainMenu.class));
-        overridePendingTransition(R.anim.open_main, R.anim.close_next);
         finish();
+        overridePendingTransition(R.anim.open_main, R.anim.close_next);
     }
 }

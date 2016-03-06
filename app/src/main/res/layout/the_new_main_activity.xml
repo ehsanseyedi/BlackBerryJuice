@@ -63,13 +63,13 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="12"
-            android:gravity="bottom|center">
+            android:layout_weight="9"
+            android:gravity="top|center">
 
             <RelativeLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/UserText"
                 android:layout_below="@+id/Slider"
@@ -139,7 +139,7 @@
             android:gravity="center"
             android:layout_above="@+id/Gallery"
             android:layout_below="@+id/UserText"
-            android:layout_weight="34">
+            android:layout_weight="37">
 
             <RelativeLayout
                 android:layout_width="match_parent"
