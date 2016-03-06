@@ -47,8 +47,6 @@ public class ActivityCart extends Activity {
 
 	// declare view objects
 //	ImageButton imgNavBack;
-	public static String RES_NAME_F ,RES_PRICE_F;
-	public static Boolean RES_B= false;
 	public ListView listOrder;
 	public ProgressBar prgLoading;
 	public TextView txtTotalLabel, txtTotal, txtAlert , reserv_name ,reserv_price ;
@@ -63,7 +61,7 @@ public class ActivityCart extends Activity {
 	double Tax;
 	public static String Currency;
 	Context c;
-	MaterialDialog md;
+	MaterialDialog md,md2;
 
 	// declare arraylist variable to store data
 	public ArrayList<ArrayList<Object>> data;
@@ -183,13 +181,40 @@ public class ActivityCart extends Activity {
 				finish();
 			}
 		});
-		Log.e("DDDD",RES_B + " " + RES_NAME_F + " "+ RES_PRICE_F);
 		if(SharedData.get_RES_B(ActivityCart.this))
 		{
 			reservation_rel.setVisibility(View.VISIBLE);
 			reserv_name.setText(SharedData.get_RES_N(ActivityCart.this));
 			reserv_price.setText(SharedData.get_RES_P(ActivityCart.this));
 		}
+		reservation_rel.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+				md2=new MaterialDialog(ActivityCart.this)
+						.setMessage("رزرو مورد نظر حذف شود؟")
+						.setPositiveButton("بله", new View.OnClickListener() {
+							@Override
+							public void onClick(View view) {
+								md2.dismiss();
+								ActivityReservation.clearReservation(ActivityCart.this);
+								reservation_rel.setVisibility(View.GONE);
+								reserv_name.setText("");
+								reserv_price.setText("");
+								startActivity(new Intent(ActivityCart.this, ActivityCart.class));
+								dbhelper.close();
+								overridePendingTransition(0, 0);
+								finish();
+							}
+						})
+						.setNegativeButton("خیر", new View.OnClickListener() {
+							@Override
+							public void onClick(View view) {
+								md.dismiss();
+							}
+						});
+				md2.show();
+			}
+		});
 	}
 
 	// method to create dialog
@@ -213,6 +238,10 @@ public class ActivityCart extends Activity {
 				switch (FLAG) {
 					case 0:
 						// clear all menu in order table
+						ActivityReservation.clearReservation(ActivityCart.this);
+						reservation_rel.setVisibility(View.GONE);
+						reserv_name.setText("");
+						reserv_price.setText("");
 						dbhelper.deleteAllData();
 						listOrder.invalidateViews();
 						clearData();

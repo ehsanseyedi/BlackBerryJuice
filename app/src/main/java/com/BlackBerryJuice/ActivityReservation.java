@@ -1,6 +1,7 @@
 package com.BlackBerryJuice;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.RestrictionEntry;
@@ -172,7 +173,7 @@ public class ActivityReservation extends Activity implements
 //					Log.e("selected_time", selected_time + "");
 //					Log.e("name", Menu_name.get(index_of - 1) + "");
 
-					clearReservation();
+					clearReservation(ActivityReservation.this);
 
 					if (dbhelper.isDataExist(Menu_ID.get(index_of - 1))) {
 						dbhelper.updateData(Menu_ID.get(index_of - 1), 1, Menu_price.get(index_of - 1));
@@ -567,7 +568,7 @@ public class ActivityReservation extends Activity implements
 		Menu_price.clear();
 	}
 
-	void clearReservation()
+	public static void clearReservation(Context c)
 	{
 		for(int i=0 ; i<12 ; i++)
 		{
@@ -576,6 +577,10 @@ public class ActivityReservation extends Activity implements
 				dbhelper.deleteData(Menu_ID.get(i));
 			}
 		}
+		;
+		SharedData.RES_N_P("", "", c);
+		SharedData.RES_B(false, c);
+		SharedData.delete_user_reservarion_info(c);
 	}
 
 }
