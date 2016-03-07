@@ -25,10 +25,6 @@ public class ActivityHome extends Fragment implements OnItemClickListener {
 		gridview = (GridView) v.findViewById(R.id.gridView1);
 		gridview.setOnItemClickListener(this);
 
-		data.add(new GridViewItem("product", getResources().getDrawable(R.drawable.ic_product)));
-		data.add(new GridViewItem("cart", getResources().getDrawable(R.drawable.ic_cart)));
-		data.add(new GridViewItem("checkout", getResources().getDrawable(R.drawable.ic_checkout)));
-
 		setDataAdapter();
 
 		return v;

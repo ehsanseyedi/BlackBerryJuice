@@ -131,10 +131,6 @@ public class MainActivity extends FragmentActivity {
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			fragment = new ActivityHome();
-			break;
-
-		case 1:
 			dbhelper.deleteAllData();
 			dbhelper.close();
 			MainActivity.this.finish();
