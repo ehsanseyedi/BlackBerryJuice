@@ -19,6 +19,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.BlackBerryJuice.util.ErrorToast;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -127,7 +129,7 @@ public class Login2 extends Activity {
                                 pd.cancel();
                                 tm.cancel();
                                 new loginserver(Constant.Login, code, "").cancel(true);
-                                Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط با سرور", Toast.LENGTH_LONG).show();
+                                ErrorToast.makeToast(Login2.this, "خطا در برقراری ارتباط با سرور", Toast.LENGTH_LONG).show();
                             }
 
                             if (res.equals("ok")) {
@@ -152,13 +154,13 @@ public class Login2 extends Activity {
                             } else if (res.equals("wrong password")) {
 
                                 pd.cancel();
-                                Toast.makeText(getApplicationContext(), "کد اشتراک یا شماره موبایل صحیح نیست", Toast.LENGTH_LONG).show();
+                                ErrorToast.makeToast(Login2.this, "کد اشتراک یا شماره موبایل صحیح نیست", Toast.LENGTH_LONG).show();
                                 res = "";
                                 tm.cancel();
                             } else if (res.equals("no user")) {
 
                                 pd.cancel();
-                                Toast.makeText(getApplicationContext(), "این کاربر وجود ندارد", Toast.LENGTH_LONG).show();
+                                ErrorToast.makeToast(Login2.this, "این کاربر وجود ندارد", Toast.LENGTH_LONG).show();
                                 res = "";
                                 tm.cancel();
                             }

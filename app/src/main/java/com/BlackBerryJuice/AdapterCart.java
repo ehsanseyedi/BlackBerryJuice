@@ -11,11 +11,10 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.DecimalFormat;
+
 import java.text.NumberFormat;
-import java.util.ArrayList;
+
 import java.util.Locale;
 
 // adapter class for custom order list

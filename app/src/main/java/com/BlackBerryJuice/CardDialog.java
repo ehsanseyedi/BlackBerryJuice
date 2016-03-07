@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.BlackBerryJuice.util.ErrorToast;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -131,7 +133,7 @@ public class CardDialog extends Activity {
                 int quantity = 0;
                 quantity = Integer.parseInt(counter.getText().toString());
                 dbhelper.updateData(ID, quantity, (Single_price.get(POS) * quantity));
-                Toast.makeText(CardDialog.this, "سفارش بروز شد", Toast.LENGTH_SHORT).show();
+                ErrorToast.makeToast(CardDialog.this, "سفارش بروز شد", Toast.LENGTH_SHORT).show();
                 ActivityCart.fa.finish();
                 Intent d = new Intent(CardDialog.this,ActivityCart.class);
                 dbhelper.close();

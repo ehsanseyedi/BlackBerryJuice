@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.BlackBerryJuice.util.ErrorToast;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -92,7 +94,7 @@ public class Profile extends Activity {
             new updateuserserver(Constant.Update_ProfileURL,"","","","","","",codeee,"get",Profile.this).execute();
         final Timer tm=new Timer();
         final ProgressDialog pd=new ProgressDialog(Profile.this);
-        pd.setMessage("لطفا صبر کنید"+"\n"+"در حال دریافت اطلاعات از سرور");
+        pd.setMessage("لطفا اندکی صبر کنید...");
         pd.show();
         pd.setCancelable(false);
         pd.setOnCancelListener(new ProgressDialog.OnCancelListener() {
@@ -117,7 +119,7 @@ public class Profile extends Activity {
                             tm.cancel();
                             count = 0;
                             new updateuserserver(Constant.Update_ProfileURL, "", "", "", "", "", "", codeee, "get", Profile.this).cancel(true);
-                            Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
+                            ErrorToast.makeToast(Profile.this, "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
                             finish();
                         }
 

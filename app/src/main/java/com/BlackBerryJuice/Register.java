@@ -204,16 +204,16 @@ public class Register extends Activity implements
                                 pd.cancel();
                                 tm.cancel();
                                 count = 0;
-                                Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
+                                ErrorToast.makeToast(Register.this, "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
                             }
                             if (res.equals("ut")) {
                                 pd.cancel();
-                                Toast.makeText(getApplicationContext(), "شماره موبایل شما قبلا ثبت شده است، لطفا وارد شوید", Toast.LENGTH_LONG).show();
+                                ErrorToast.makeToast(Register.this, "شماره موبایل شما قبلا ثبت شده است، لطفا وارد شوید", Toast.LENGTH_LONG).show();
                                 res = "";
                                 tm.cancel();
                             } else if (res.toLowerCase().contains("ok")) {
                                 pd.cancel();
-                                Toast.makeText(getApplicationContext(), "ثبت نام با موفقیت انجام شد", Toast.LENGTH_LONG).show();
+                                ErrorToast.makeToast(Register.this, "ثبت نام با موفقیت انجام شد", Toast.LENGTH_LONG).show();
                                 String Code = res.replace("ok", "");
                                 int newcode = Integer.valueOf(Code);
                                 newcode++;
@@ -229,7 +229,7 @@ public class Register extends Activity implements
                             } else if (res.equals("no")) {
 
                                 pd.cancel();
-                                Toast.makeText(getApplicationContext(), "خطا در عملیات ثبت نام", Toast.LENGTH_LONG).show();
+                                ErrorToast.makeToast(Register.this, "خطا در عملیات ثبت نام", Toast.LENGTH_LONG).show();
                                 res = "";
                                 tm.cancel();
                             }

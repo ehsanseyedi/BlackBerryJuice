@@ -23,6 +23,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.BlackBerryJuice.util.ErrorToast;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -49,7 +52,7 @@ public class MainActivity extends FragmentActivity {
 
 		// checking internet connection
 		if (!Constant.isNetworkAvailable(MainActivity.this)) {
-			Toast.makeText(MainActivity.this, getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
+			ErrorToast.makeToast(MainActivity.this, getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
 		}
 
 		mma = new AdapterMainMenu(this);
@@ -128,10 +131,6 @@ public class MainActivity extends FragmentActivity {
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			fragment = new ActivityHome();
-			break;
-
-		case 1:
 			dbhelper.deleteAllData();
 			dbhelper.close();
 			MainActivity.this.finish();

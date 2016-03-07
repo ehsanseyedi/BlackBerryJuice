@@ -19,8 +19,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -75,15 +73,6 @@ public class ActivityCategoryList extends Activity {
 //        bar.setHomeButtonEnabled(true);
 //        bar.setTitle("Category");\
 
-		LinearLayout gotosearch = (LinearLayout) findViewById(R.id.gotosearch);
-		gotosearch.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				startActivity(new Intent(ActivityCategoryList.this,ActivityMenuList_SearchAll.class));
-				overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-				finish();
-			}
-		});
 
 		prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
 		listCategory = (GridView) findViewById(R.id.listCategory);
@@ -127,12 +116,12 @@ public class ActivityCategoryList extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		switch (item.getItemId()) {
-			case R.id.cart:
-				// refresh action
-				Intent iMyOrder = new Intent(ActivityCategoryList.this, ActivityCart.class);
-				startActivity(iMyOrder);
-				overridePendingTransition (R.anim.open_next, R.anim.close_next);
-				return true;
+//			case R.id.cart:
+//				// refresh action
+//				Intent iMyOrder = new Intent(ActivityCategoryList.this, ActivityCart.class);
+//				startActivity(iMyOrder);
+//				overridePendingTransition (R.anim.open_next, R.anim.close_next);
+//				return true;
 
 			case R.id.refresh:
 				IOConnect = 0;

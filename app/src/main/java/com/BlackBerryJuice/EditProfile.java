@@ -20,6 +20,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.BlackBerryJuice.util.ErrorToast;
 import com.BlackBerryJuice.util.ShamsiCalleder;
 import com.BlackBerryJuice.utils.TextViewPlus;
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
@@ -75,7 +77,7 @@ public class EditProfile extends Activity implements
 
         final Timer tm=new Timer();
         final ProgressDialog pd=new ProgressDialog(EditProfile.this);
-        pd.setMessage("لطفا صبر کنید"+"\n"+"در حال دریافت اطلاعات از سرور");
+        pd.setMessage("لطفا اندکی صبر کنید...");
         pd.show();
         pd.setCancelable(false);
         pd.setOnCancelListener(new ProgressDialog.OnCancelListener() {
@@ -102,7 +104,7 @@ public class EditProfile extends Activity implements
                             tm.cancel();
                             count = 0;
                             new updateuserserver(Constant.Update_ProfileURL, "", "", "", "", "", "", code, "get", EditProfile.this).cancel(true);
-                            Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
+                            ErrorToast.makeToast(EditProfile.this, "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
                             finish();
 
                         }
@@ -141,7 +143,7 @@ public class EditProfile extends Activity implements
                         execute();
 
                 final ProgressDialog pd=new ProgressDialog(EditProfile.this);
-                pd.setMessage("لطفا صبر کنید"+"در حال ارسال اطلاعات به سرور");
+                pd.setMessage("لطفا اندکی صبر کنید...");
                 pd.show();
 
                 final Timer tm=new Timer();
@@ -155,12 +157,12 @@ public class EditProfile extends Activity implements
                                     pd.cancel();
                                     tm.cancel();
                                     count=0;
-                                    Toast.makeText(getApplicationContext(), "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
+                                    ErrorToast.makeToast(EditProfile.this, "خطا در برقراری ارتباط", Toast.LENGTH_LONG).show();
                                 }
 
                                 if(!res.equals("")){
                                     pd.cancel();
-                                    Toast.makeText(getApplicationContext(), "اطلاعات با موفقیت آپدیت شد", Toast.LENGTH_LONG).show();
+                                    ErrorToast.makeToast(EditProfile.this, "اطلاعات با موفقیت به روزرسانی گردید", Toast.LENGTH_LONG).show();
                                     tm.cancel();
                                 }
                             }
@@ -182,18 +184,6 @@ public class EditProfile extends Activity implements
         phone    =(EditText) findViewById(R.id.phone);
         instagram    =(EditText) findViewById(R.id.instagram);
         birthday    =(TextViewPlus)findViewById(R.id.bithday);
-
-
-
-//        tname=(TextView) findViewById(R.id.edit_name_t);
-//        tfamily=(TextView) findViewById(R.id.edit_family_t);
-//        toldpass=(TextView) findViewById(R.id.edit_oldpass_t);
-//        tnewpass=(TextView) findViewById(R.id.edit_newpass_t);
-//        temail=(TextView) findViewById(R.id.edit_email_t);
-//        tstatus=(TextView) findViewById(R.id.edit_status_t);
-//        status=(TextView) findViewById(R.id.edit_status_e);
-//        update=(Button) findViewById(R.id.update);
-//        exit=(Button) findViewById(R.id.cancel);
 
     }
 

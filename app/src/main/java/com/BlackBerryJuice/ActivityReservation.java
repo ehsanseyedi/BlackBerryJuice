@@ -187,7 +187,7 @@ public class ActivityReservation extends Activity implements
 					} else {
 						dbhelper.addData(Menu_ID.get(index_of - 1), Menu_name.get(index_of - 1), 1, (Menu_price.get(index_of - 1)));
 					}
-					Toast.makeText(ActivityReservation.this, "رزرو شما با موفقیت به سبد خرید افزوده شد", Toast.LENGTH_SHORT).show();
+					ErrorToast.makeToast(ActivityReservation.this, "رزرو شما با موفقیت به سبد خرید افزوده شد", Toast.LENGTH_SHORT).show();
 					String timee = "رزرو در تاریخ "
 							+dateTextView.getText()
 							+" و ساعت "
@@ -210,7 +210,7 @@ public class ActivityReservation extends Activity implements
 				}
 				else
 				{
-					Toast.makeText(ActivityReservation.this, "لطفاً تاریخ و ساعت رزرو را مشخص کنید", Toast.LENGTH_SHORT).show();
+					ErrorToast.makeToast(ActivityReservation.this, "لطفاً تاریخ و ساعت رزرو را مشخص کنید", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
