@@ -17,8 +17,8 @@
         android:divider="@null"
         android:numColumns="2"
         android:visibility="gone"
-        android:layout_below="@+id/gotosearch"
-        android:padding="5dp" />
+        android:padding="5dp"
+        android:layout_alignTop="@+id/empty_" />
 
     <ProgressBar
         android:id="@+id/prgLoading"
@@ -53,45 +53,6 @@
             android:gravity="center"
             android:paddingRight="25dp"
             android:paddingLeft="25dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/gotosearch"
-        android:layout_width="fill_parent"
-        android:layout_height="45dp"
-        android:background="#a8a8a8"
-        android:gravity="center_vertical"
-        android:visibility="visible"
-        android:layout_alignTop="@+id/empty_"
-        android:layout_centerHorizontal="true">
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="200dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="3"
-            android:background="@drawable/tameshkback"
-            android:src="@drawable/ic_search"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
-            android:clickable="false" />
-
-        <com.BlackBerryJuice.utils.TextViewPlus
-            android:id="@+id/editText"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:background="@drawable/tameshkback"
-            android:textColor="@color/white"
-            foo:customFont="fonts/IRANSansMobile_Medium_Persian_Digits.ttf"
-            android:textSize="@dimen/medfont"
-            android:inputType="text"
-            android:singleLine="true"
-            android:gravity="center|right"
-            android:paddingRight="15dp"
-            android:textColorHint="@color/white"
-            android:clickable="false"
-            android:text="دسته بندی" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -73,15 +73,6 @@ public class ActivityCategoryList extends Activity {
 //        bar.setHomeButtonEnabled(true);
 //        bar.setTitle("Category");\
 
-		LinearLayout gotosearch = (LinearLayout) findViewById(R.id.gotosearch);
-		gotosearch.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				startActivity(new Intent(ActivityCategoryList.this,ActivityMenuList_SearchAll.class));
-				overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-				finish();
-			}
-		});
 
 		prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
 		listCategory = (GridView) findViewById(R.id.listCategory);
