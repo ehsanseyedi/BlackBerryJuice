@@ -116,12 +116,12 @@ public class ActivityCategoryList extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		switch (item.getItemId()) {
-			case R.id.cart:
-				// refresh action
-				Intent iMyOrder = new Intent(ActivityCategoryList.this, ActivityCart.class);
-				startActivity(iMyOrder);
-				overridePendingTransition (R.anim.open_next, R.anim.close_next);
-				return true;
+//			case R.id.cart:
+//				// refresh action
+//				Intent iMyOrder = new Intent(ActivityCategoryList.this, ActivityCart.class);
+//				startActivity(iMyOrder);
+//				overridePendingTransition (R.anim.open_next, R.anim.close_next);
+//				return true;
 
 			case R.id.refresh:
 				IOConnect = 0;
