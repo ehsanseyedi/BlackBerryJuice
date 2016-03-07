@@ -18,7 +18,7 @@
         <com.BlackBerryJuice.utils.TextViewPlus
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="برای مشاهده سبد خرید و پرداخت باید وارد شوبد"
+            android:text="برای مشاهده سبد خرید و پرداخت باید وارد شوید"
             android:layout_gravity="center"
             android:textColor="#2A2A2A"
             android:layout_marginBottom="15dp"
