@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -56,6 +57,8 @@ import me.drakeet.materialdialog.MaterialDialog;
 
 public class ActivityMainMenu extends Activity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 	static DBHelper dbhelper;
+	RelativeLayout main_view;
+	LinearLayout empty_;
 	AdapterMainMenu mma;
 	Intent iGet = getIntent();
 	long Menu_ID;
@@ -95,7 +98,12 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
 		}
 		setContentView(R.layout.the_new_main_activity);
-
+		empty_ = (LinearLayout)findViewById(R.id.empty_);
+		main_view = (RelativeLayout)findViewById(R.id.main_view);
+		if (!Constant.isNetworkAvailable(ActivityMainMenu.this)) {
+			main_view.setVisibility(View.GONE);
+			empty_.setVisibility(View.VISIBLE);
+		}
 
 		mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
