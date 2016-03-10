@@ -5,6 +5,13 @@
     android:padding="10dp"
     android:background="@drawable/splash2">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/blackberry_logo2"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
     <ProgressBar
         android:id="@+id/progressBarSpinner"
         android:layout_height="60dp"

@@ -40,6 +40,7 @@ tools:context=".ActivityMainMenu">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/splash2"
     android:id="@+id/main_view">
 
     <LinearLayout
@@ -54,6 +55,7 @@ tools:context=".ActivityMainMenu">
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@drawable/slider_loading"
             android:id="@+id/Slider"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
