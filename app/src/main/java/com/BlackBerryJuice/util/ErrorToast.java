@@ -63,5 +63,6 @@ public class ErrorToast {
 
     public void setGravity(int gravity, int xOffset, int yOffset) {
         mToast.setGravity(gravity, xOffset, yOffset);
+
     }
 }

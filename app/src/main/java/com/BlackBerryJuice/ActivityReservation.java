@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,12 +79,15 @@ public class ActivityReservation extends Activity implements
 	boolean pre_order = true;
 	RelativeLayout Time_Pick , Date_Pick;
 	TimePickerDialog tpd;
-	LinearLayout birthday_oc , anniversary_oc , together_oc , one_hour ,one_hour_plus;
+	LinearLayout birthday_oc , anniversary_oc , together_oc , one_hour ,one_hour_plus , empty_;
 	public String selected_oc="together_oc" , selected_time="one_hour" , table_sel = "2";
 	int index_of;
 	static ArrayList<Long> Menu_ID = new ArrayList<Long>();
 	static ArrayList<String> Menu_name = new ArrayList<String>();
 	static ArrayList<Double> Menu_price = new ArrayList<Double>();
+
+	ScrollView sc;
+
 
 	String MenuDetailAPI;
 	int IOConnect = 0;
@@ -96,6 +100,10 @@ public class ActivityReservation extends Activity implements
 		setContentView(R.layout.activity_reservation);
 		initializeViews();
 		handleClicks();
+		if (!Constant.isNetworkAvailable(ActivityReservation.this)) {
+			sc.setVisibility(View.GONE);
+			empty_.setVisibility(View.VISIBLE);
+		}
 		Calendar c = Calendar.getInstance();
 		dbhelper = new DBHelper(this);
 		try{
@@ -121,6 +129,8 @@ public class ActivityReservation extends Activity implements
 	}
 
 	private void initializeViews() {
+		empty_ = (LinearLayout)findViewById(R.id.empty_);
+		sc = (ScrollView)findViewById(R.id.scroll_view);
 		timeTextView = (TextView)findViewById(R.id.Time_Text);
 		dateTextView = (TextView)findViewById(R.id.Date_Text);
 		cancel_1 = (TextView)findViewById(R.id.cancel_1);

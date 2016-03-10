@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:foo="http://schemas.android.com/apk/res-auto"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:foo="http://schemas.android.com/apk/res-auto"
+xmlns:custom="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+style="@style/Theme.AppCompat.NoActionBar"
+android:background="@color/white"
+tools:context=".ActivityMainMenu">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/home_blur"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:id="@+id/empty_"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/noconnection"
+            android:layout_marginBottom="7dp" />
+
+        <com.BlackBerryJuice.utils.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alert"
+            foo:customFont="fonts/IRANSansMobile_Medium.ttf"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:id="@+id/txtAlert"
+            android:gravity="center"
+            android:paddingRight="25dp"
+            android:paddingLeft="25dp" />
+    </LinearLayout>
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/Theme.AppCompat.NoActionBar"
-    android:background="@color/white"
-    tools:context=".ActivityMainMenu">
+    android:id="@+id/main_view">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -418,3 +450,4 @@
 
     </LinearLayout>
 </RelativeLayout>
+</LinearLayout>
