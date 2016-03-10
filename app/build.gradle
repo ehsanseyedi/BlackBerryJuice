@@ -35,6 +35,5 @@ dependencies {
     compile 'com.daimajia.androidanimations:library:1.0.3@aar'
     compile project(':library')
     compile 'com.mohamadamin:persianmaterialdatetimepicker:1.2.1'
-    compile files('libs/persianmaterialdatetimepicker-1.2.1-sources.jar')
     compile project(':MaterialDialog-master')
 }

@@ -348,5 +348,6 @@ public class User_Buy_Record_Fake extends Activity {
 
     // when back button pressed close database and back to previous page
 
-        
+
+
 }

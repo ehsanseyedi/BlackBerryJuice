@@ -61,6 +61,12 @@ public class EditProfile extends Activity implements
 
         update = (TextView) findViewById(R.id.update);
         exit = (TextView) findViewById(R.id.cancel);
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         tarif();
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/IRANSansMobile_Light_Persian_Digits.ttf");
@@ -129,7 +135,7 @@ public class EditProfile extends Activity implements
         birthday.setOnClickListener(new OnClickListener() {
 
             public void onClick(View arg0) {
-                get_madafaka_date();
+                //get_madafaka_date();
             }
         });
         update.setTypeface(ActivitySplash.F2);
