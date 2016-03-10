@@ -149,7 +149,7 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/main_layout_shop_1"
+                    android:src="@drawable/main_layout_shop_85"
                     android:padding="7dp"
                     android:visibility="invisible" />
 
@@ -191,7 +191,7 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/main_layout_shop_1"
+                    android:src="@drawable/main_layout_shop_85"
                     android:padding="7dp"
                     android:visibility="invisible" />
                 <com.BlackBerryJuice.utils.TextViewPlus
