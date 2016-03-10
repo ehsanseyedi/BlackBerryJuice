@@ -98,6 +98,7 @@ public class ActivityReservation extends Activity implements
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_reservation);
+		is_today_selected = false;
 		initializeViews();
 		handleClicks();
 		if (!Constant.isNetworkAvailable(ActivityReservation.this)) {
@@ -378,6 +379,7 @@ public class ActivityReservation extends Activity implements
 
 	@Override
 	public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+		is_today_selected = false;
 		Log.e("MONTH", monthOfYear + "  " + now2.getPersianMonth() + "  " + now.getPersianMonth());
 		if(year==now.getPersianYear() && monthOfYear==now.getPersianMonth() && dayOfMonth > now.getPersianDay() )
 		{
