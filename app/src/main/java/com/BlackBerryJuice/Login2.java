@@ -78,6 +78,7 @@ public class Login2 extends Activity {
             public void onClick(View v) {
                 startActivity(new Intent(Login2.this, Register2.class));
                 overridePendingTransition(R.anim.open_next, R.anim.close_next);
+                finish();
             }
         });
 
