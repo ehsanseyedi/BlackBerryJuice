@@ -99,6 +99,8 @@ public class ActivityReservation extends Activity implements
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_reservation);
 		is_today_selected = false;
+		is_date_picked = false;
+		is_time_picked = false;
 		initializeViews();
 		handleClicks();
 		if (!Constant.isNetworkAvailable(ActivityReservation.this)) {
