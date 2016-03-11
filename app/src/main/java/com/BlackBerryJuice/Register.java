@@ -92,7 +92,7 @@ public class Register extends Activity implements
             public void onClick(View arg0) {
 
                 register1(name1.getText().toString(), mobile1.getText().toString(), DATE_GOES_TO_SERVER,
-                        address1.getText().toString(), phone1.getText().toString(), instagram1.getText().toString());
+                        address1.getText().toString(), phone1.getText().toString(), instagram1.getText().toString().replace("@", ""));
 
             }
 

@@ -145,7 +145,7 @@ public class EditProfile extends Activity implements
             @Override
             public void onClick(View arg0) {
 
-                new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),address.getText().toString(),DATE_GOES_TO_SERVER,instagram.getText().toString(),mobile.getText().toString(),phone.getText().toString(),code,"put",EditProfile.this).
+                new updateuserserver(Constant.Update_ProfileURL,name.getText().toString(),address.getText().toString(),DATE_GOES_TO_SERVER,instagram.getText().toString().replace("@", ""),mobile.getText().toString(),phone.getText().toString(),code,"put",EditProfile.this).
                         execute();
 
                 final ProgressDialog pd=new ProgressDialog(EditProfile.this);
