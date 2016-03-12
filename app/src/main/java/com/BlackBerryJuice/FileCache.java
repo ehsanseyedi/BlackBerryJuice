@@ -11,7 +11,7 @@ public class FileCache {
     public FileCache(Context context){
         //Find the dir to save cached images
         if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
-            cacheDir=new File(android.os.Environment.getExternalStorageDirectory(),"Cache Ecommerce");
+            cacheDir=new File(android.os.Environment.getExternalStorageDirectory(),".Blackberry Juice");
         else
             cacheDir=context.getCacheDir();
         if(!cacheDir.exists())
