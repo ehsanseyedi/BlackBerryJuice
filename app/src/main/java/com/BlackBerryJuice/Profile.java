@@ -74,10 +74,9 @@ public class Profile extends Activity {
                 SharedData.set_user_registered(false, Profile.this);
                 SharedData.delete_all_userinfo(Profile.this);
                 SharedData.delete_user_special_message(Profile.this);
-
-                startActivity(new Intent(Profile.this, ActivityMainMenu.class));
-                overridePendingTransition(R.anim.open_next, R.anim.close_next);
                 finish();
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
+
             }
         });
     }
