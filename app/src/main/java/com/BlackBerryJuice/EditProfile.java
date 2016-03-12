@@ -214,6 +214,7 @@ public class EditProfile extends Activity implements
                 if(c==2){
 
                     birthday.setText(t);
+                    DATE_GOES_TO_SERVER = t;
                 }
                 if(c==3){
 
