@@ -87,7 +87,7 @@ public class User_Buy_Record_Fake extends Activity {
     String Result;
     private Double totalprice;
     String rahgir;
-
+    TextView or;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,14 +116,12 @@ public class User_Buy_Record_Fake extends Activity {
         TextView rahgirtext = (TextView) findViewById(R.id.rahgirtext);
         TextView rez = (TextView) findViewById(R.id.rez);
         TextView reztext = (TextView) findViewById(R.id.reztext);
-        TextView or = (TextView) findViewById(R.id.or);
+        or = (TextView) findViewById(R.id.or);
         TextView ortext = (TextView) findViewById(R.id.ortext);
 
         Intent intent = getIntent();
         rahgir = intent.getStringExtra("rahgir");
         String paid = intent.getStringExtra("price");
-
-
 
         dbhelper = new DBHelper(this);
         // open database
@@ -163,7 +161,7 @@ public class User_Buy_Record_Fake extends Activity {
                 reztext.setText("");
             }
             ortext.setText("لیست سفارش:");
-            or.setText(OrderList);
+            or.setText("");
         }
 
         Name = SharedData.load_name(User_Buy_Record_Fake.this);
@@ -191,7 +189,7 @@ public class User_Buy_Record_Fake extends Activity {
         if(!rahgir.equals("null")){
             new sendData().execute();
 
-            ActivityCart.delete_everything_in_the_cart();
+            ActivityCart.delete_everything_in_the_cart(User_Buy_Record_Fake.this);
             ActivityReservation.clearReservation(User_Buy_Record_Fake.this);
             SharedData.delete_address2(User_Buy_Record_Fake.this);
             SharedData.delete_user_reservarion_info(User_Buy_Record_Fake.this);
@@ -225,6 +223,7 @@ public class User_Buy_Record_Fake extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             // TODO Auto-generated method stub
+            or.setText(OrderList);
             // hide progressbar and show reservation form
 //            prgLoading.setVisibility(View.GONE);
 //            sclDetail.setVisibility(View.VISIBLE);
