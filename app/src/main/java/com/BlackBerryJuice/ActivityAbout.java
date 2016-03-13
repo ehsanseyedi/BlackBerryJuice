@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -121,11 +122,10 @@ public class ActivityAbout extends Activity {
                         ErrorToast.makeToast(ActivityAbout.this, "لطفاً ابتدا وارد حساب کاربری خود شوید!", Toast.LENGTH_LONG).show();
                     }
 
-
-
                 } else {
 
-                    new MessageSend(Constant.Message_Send, SharedData.load_name(ActivityAbout.this), desc.getText().toString(), "0").execute();
+                    String texttosend = android.os.Build.MANUFACTURER + "<br/>" + android.os.Build.MODEL + "<br/>" + "API: " + Build.VERSION.SDK_INT + "<br/><br/>" + desc.getText().toString();
+                    new MessageSend(Constant.Message_Send, SharedData.load_name(ActivityAbout.this), texttosend, "0").execute();
 
                     final Timer tm = new Timer();
                     final ProgressDialog pd = new ProgressDialog(ActivityAbout.this);

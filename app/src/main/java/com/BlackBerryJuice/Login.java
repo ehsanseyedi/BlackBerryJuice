@@ -78,7 +78,6 @@ public class Login extends Activity {
                 finish();
             }
         });
-
     }
 
     @SuppressWarnings("unchecked")
