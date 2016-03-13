@@ -6,7 +6,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.BlackBerryJuice.R;
 import com.BlackBerryJuice.adapters.FullScreenImageGalleryAdapter;
@@ -27,6 +29,7 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     // endregion
 
+    String from = "";
     // region Listeners
     private final ViewPager.OnPageChangeListener mViewPagerOnPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
@@ -72,6 +75,7 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
                 mImages = extras.getStringArrayList("images");
                 mPaletteColorType = (PaletteColorType) extras.get("palette_color_type");
                 mPosition = extras.getInt("position");
+                from = extras.getString("main");
             }
         }
 
@@ -127,4 +131,21 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
         mViewPager.removeOnPageChangeListener(mViewPagerOnPageChangeListener);
     }
     // endregion
+
+
+    @Override
+    public void onBackPressed() {
+        if(from.equals("nomain")){
+            super.onBackPressed();
+        }else{
+            Log.e("saeed","Back Pressed in FullScreenGallery  from: " + from);
+            ArrayList<String> images2 = new ArrayList<>();
+            images2.addAll(mImages);
+            Intent i = new Intent(FullScreenImageGalleryActivity.this,ImageGalleryActivity.class);
+            i.putStringArrayListExtra("images", images2);
+            startActivity(i);
+            finish();
+        }
+
+    }
 }

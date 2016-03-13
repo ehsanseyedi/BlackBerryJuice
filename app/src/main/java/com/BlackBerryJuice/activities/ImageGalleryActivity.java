@@ -86,13 +86,13 @@ public class ImageGalleryActivity extends Activity implements ImageGalleryAdapte
         Intent intent = new Intent(ImageGalleryActivity.this, FullScreenImageGalleryActivity.class);
         intent.putStringArrayListExtra("images", mImages);
         intent.putExtra("position", position);
+        intent.putExtra("main", "nomain");
         if (mPaletteColorType != null) {
             intent.putExtra("palette_color_type", mPaletteColorType);
         }
         startActivity(intent);
     }
     // endregion
-
     // region Helper Methods
     private void bindViews() {
         mRecyclerView = (RecyclerView) findViewById(R.id.rv);

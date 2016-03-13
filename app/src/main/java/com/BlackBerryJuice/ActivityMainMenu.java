@@ -25,6 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.BlackBerryJuice.activities.FullScreenImageGalleryActivity;
 import com.BlackBerryJuice.activities.ImageGalleryActivity;
 import com.BlackBerryJuice.enums.PaletteColorType;
 
@@ -223,6 +224,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 		g2 = (ImageView) findViewById(R.id.g2);
 		g3 = (ImageView) findViewById(R.id.g3);
 
+
 		DisplayMetrics dm = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
 
@@ -274,6 +276,7 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 
 		final Intent intent = new Intent(ActivityMainMenu.this, ImageGalleryActivity.class);
 		ImageView gal = (ImageView) findViewById(R.id.gogal);
+
 		gal.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -282,6 +285,40 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 				intent.putExtra("palette_color_type", PaletteColorType.VIBRANT);
 				startActivity(intent);
 				overridePendingTransition(R.anim.open_next, R.anim.close_next);
+			}
+		});
+
+
+		g1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ActivityMainMenu.this, FullScreenImageGalleryActivity.class);
+				intent.putStringArrayListExtra("images", images);
+				intent.putExtra("position", 0);
+				intent.putExtra("main", "main");
+				startActivity(intent);
+			}
+		});
+
+		g2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ActivityMainMenu.this, FullScreenImageGalleryActivity.class);
+				intent.putStringArrayListExtra("images", images);
+				intent.putExtra("position", 1);
+				intent.putExtra("main", "main");
+				startActivity(intent);
+			}
+		});
+
+		g3.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ActivityMainMenu.this, FullScreenImageGalleryActivity.class);
+				intent.putStringArrayListExtra("images", images);
+				intent.putExtra("position", 2);
+				intent.putExtra("main", "main");
+				startActivity(intent);
 			}
 		});
 
