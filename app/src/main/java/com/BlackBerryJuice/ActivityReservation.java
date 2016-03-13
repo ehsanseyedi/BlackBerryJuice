@@ -602,7 +602,7 @@ public class ActivityReservation extends Activity implements
 			SharedData.RES_B(false, c);
 			SharedData.delete_user_reservarion_info(c);
 		}catch (Exception e){
-			Toast.makeText(c,e.getMessage()+"",Toast.LENGTH_LONG).show();
+			//Toast.makeText(c,e.getMessage()+"",Toast.LENGTH_LONG).show();
 		}
 	}
 
