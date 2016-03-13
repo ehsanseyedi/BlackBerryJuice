@@ -4,7 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:animateLayoutChanges="true"
-    android:background="@color/gray" >
+    android:background="@color/gray"
+    tools:context=".ActivityMenuDetail">
 
     <ScrollView
         android:id="@+id/sclDetail"

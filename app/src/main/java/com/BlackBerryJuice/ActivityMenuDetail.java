@@ -306,7 +306,7 @@ public class ActivityMenuDetail extends Activity {
 					buylayout.setVisibility(View.VISIBLE);
 				}
 
-				if (Menu_description.equals(" ")){
+				if (Menu_description.equals(" ") || Menu_description.equals("")){
 					desc.setVisibility(View.INVISIBLE);
 				}else{
 					desc.setVisibility(View.VISIBLE);
