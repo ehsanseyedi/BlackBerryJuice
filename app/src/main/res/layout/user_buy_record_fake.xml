@@ -26,31 +26,41 @@
             android:textSize="@dimen/medfont"
             android:layout_marginTop="5dp" />
 
-        <com.BlackBerryJuice.utils.TextViewPlus
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            foo:customFont="fonts/IRANSansMobile_Light.ttf"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="کدرهگیری"
-            android:id="@+id/rahgirtext"
-            android:textSize="@dimen/smallfont"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp" />
-
-        <com.BlackBerryJuice.utils.TextViewPlus
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            foo:customFont="fonts/IRANSansMobile_Medium_Persian_Digits.ttf"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="16465363"
-            android:id="@+id/rahgir"
-            android:textSize="@dimen/verylargefont"
+            android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColor="@color/price" />
+            android:layout_marginTop="5dp">
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                foo:customFont="fonts/IRANSansMobile_Medium_Persian_Digits.ttf"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="16465363"
+                android:id="@+id/rahgir"
+                android:textSize="@dimen/verylargefont"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/price"
+                android:layout_marginTop="2dp" />
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                foo:customFont="fonts/IRANSansMobile_Light.ttf"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="کدرهگیری:"
+                android:id="@+id/rahgirtext"
+                android:textSize="@dimen/smallfont"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -72,6 +82,31 @@
                 android:layout_height="wrap_content"
                 foo:customFont="fonts/IRANSansMobile_Light.ttf"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="لیست سفارش:"
+                android:textSize="@dimen/smallfont"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/ortext" />
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                foo:customFont="fonts/IRANSansMobile_Medium_Persian_Digits.ttf"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="سفارشات"
+                android:textSize="@dimen/smallfont"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/or"
+                android:gravity="center" />
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                foo:customFont="fonts/IRANSansMobile_Light.ttf"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="زمان رزرو:"
                 android:textSize="@dimen/smallfont"
                 android:layout_marginBottom="5dp"
@@ -86,7 +121,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="27 اسفند 1394 ساعت 16:30"
                 android:textSize="@dimen/smallfont"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:gravity="center"

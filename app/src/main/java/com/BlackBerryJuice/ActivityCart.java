@@ -443,7 +443,6 @@ public class ActivityCart extends Activity {
 
 
 
-
 	public static void delete_everything_in_the_cart(){
 		try {
 			try {

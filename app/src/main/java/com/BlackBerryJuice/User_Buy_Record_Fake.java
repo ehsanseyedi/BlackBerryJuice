@@ -116,6 +116,8 @@ public class User_Buy_Record_Fake extends Activity {
         TextView rahgirtext = (TextView) findViewById(R.id.rahgirtext);
         TextView rez = (TextView) findViewById(R.id.rez);
         TextView reztext = (TextView) findViewById(R.id.reztext);
+        TextView or = (TextView) findViewById(R.id.or);
+        TextView ortext = (TextView) findViewById(R.id.ortext);
 
         Intent intent = getIntent();
         rahgir = intent.getStringExtra("rahgir");
@@ -145,6 +147,8 @@ public class User_Buy_Record_Fake extends Activity {
             rahgirtext.setText("");
             rez.setText("");
             reztext.setText("");
+            or.setText("");
+            ortext.setText("");
         }else{
             status.setText( "پرداخت موفقیت آمیز");
             rahgirtext.setText("کد رهگیری بانک");
@@ -158,6 +162,8 @@ public class User_Buy_Record_Fake extends Activity {
                 rez.setText("");
                 reztext.setText("");
             }
+            ortext.setText("لیست سفارش:");
+            or.setText(OrderList);
         }
 
         Name = SharedData.load_name(User_Buy_Record_Fake.this);
