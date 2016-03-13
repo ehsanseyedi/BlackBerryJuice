@@ -566,8 +566,6 @@ public class ActivityReservation extends Activity implements
 				//int toman = (int) price / 10;
 				//String sp = NumberFormat.getNumberInstance(Locale.US).format(price);
 				Menu_price.add(menu.getDouble("Price"));
-
-
 			}
 
 
@@ -591,17 +589,21 @@ public class ActivityReservation extends Activity implements
 
 	public static void clearReservation(Context c)
 	{
-		for(int i=0 ; i<12 ; i++)
-		{
-			if(dbhelper.isDataExist(Menu_ID.get(i)))
+		try{
+			for(int i=0 ; i<12 ; i++)
 			{
-				dbhelper.deleteData(Menu_ID.get(i));
+				if(dbhelper.isDataExist(Menu_ID.get(i)))
+				{
+					dbhelper.deleteData(Menu_ID.get(i));
+				}
 			}
+
+			SharedData.RES_N_P("", "", c);
+			SharedData.RES_B(false, c);
+			SharedData.delete_user_reservarion_info(c);
+		}catch (Exception e){
+			Toast.makeText(c,e.getMessage()+"",Toast.LENGTH_LONG).show();
 		}
-		;
-		SharedData.RES_N_P("", "", c);
-		SharedData.RES_B(false, c);
-		SharedData.delete_user_reservarion_info(c);
 	}
 
 }

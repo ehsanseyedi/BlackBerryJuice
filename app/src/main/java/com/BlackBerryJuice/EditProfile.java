@@ -32,7 +32,6 @@ import org.w3c.dom.Text;
 public class EditProfile extends Activity implements
         DatePickerDialog.OnDateSetListener {
 
-
     EditText name,mobile,address,phone,instagram;
     TextViewPlus birthday;
     String code;
@@ -264,8 +263,5 @@ public class EditProfile extends Activity implements
         DATE_GOES_TO_SERVER= dayOfMonth+ " " + ActivityReservation.MonthName(monthOfYear + 1) + " " + year ;
         birthday.setText(date);
     }
-
-
-
 }
 

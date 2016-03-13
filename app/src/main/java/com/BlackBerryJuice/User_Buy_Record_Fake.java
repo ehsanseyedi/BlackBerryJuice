@@ -113,6 +113,7 @@ public class User_Buy_Record_Fake extends Activity {
 
         TextView status = (TextView) findViewById(R.id.status);
         TextView rahgirt = (TextView) findViewById(R.id.rahgir);
+        TextView rahgirtext = (TextView) findViewById(R.id.rahgirtext);
 
         Intent intent = getIntent();
         rahgir = intent.getStringExtra("rahgir");
@@ -121,6 +122,7 @@ public class User_Buy_Record_Fake extends Activity {
         if(rahgir.equals("null")){
             status.setText("پرداخت ناموفق");
             rahgirt.setText("");
+            rahgirtext.setText("");
         }else{
             status.setText( "پرداخت موفقیت آمیز");
             rahgirt.setText(rahgir);
@@ -184,11 +186,6 @@ public class User_Buy_Record_Fake extends Activity {
             SharedData.RES_N_P("", "", User_Buy_Record_Fake.this);
             SharedData.RES_B(false, User_Buy_Record_Fake.this);
         }
-
-
-
-
-
 
     }
     @Override
