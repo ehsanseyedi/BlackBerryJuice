@@ -53,7 +53,7 @@ public class ActivityCart extends Activity {
 	public RelativeLayout btnClear, Checkout;
 	public RelativeLayout lytOrder , reservation_rel;
 	// declate dbhelper and adapter objects
-	DBHelper dbhelper;
+	public static DBHelper dbhelper;
 	public AdapterCart mola;
 	public static Activity fa;
 
@@ -439,6 +439,24 @@ public class ActivityCart extends Activity {
 	{
 		// Ignore orientation change to keep activity from restarting
 		super.onConfigurationChanged(newConfig);
+	}
+
+
+
+
+	public static void delete_everything_in_the_cart(){
+		try {
+			try {
+				dbhelper.openDataBase();
+			} catch (SQLException sqle) {
+				throw sqle;
+			}
+			dbhelper.deleteAllData();
+			dbhelper.close();
+
+		}catch (Exception e){
+			Log.e("cart_delete_method",e.getMessage());
+		}
 	}
 
 

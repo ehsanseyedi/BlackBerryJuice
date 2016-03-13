@@ -54,6 +54,7 @@ public class Review extends Activity implements
             window.setStatusBarColor(this.getResources().getColor(R.color.tameshk_dark));
         }
 
+
         setContentView(R.layout.activity_review);
         desc = (EditText)findViewById(R.id.desc);
         desc.setTypeface(ActivitySplash.F6);

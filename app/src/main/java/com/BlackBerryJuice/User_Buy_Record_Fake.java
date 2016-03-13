@@ -139,7 +139,6 @@ public class User_Buy_Record_Fake extends Activity {
 
         new getDataTask().execute();
 
-
         if(rahgir.equals("null")){
             status.setText("پرداخت ناموفق");
             rahgirt.setText("");
@@ -186,6 +185,7 @@ public class User_Buy_Record_Fake extends Activity {
         if(!rahgir.equals("null")){
             new sendData().execute();
 
+            ActivityCart.delete_everything_in_the_cart();
             ActivityReservation.clearReservation(User_Buy_Record_Fake.this);
             SharedData.delete_address2(User_Buy_Record_Fake.this);
             SharedData.delete_user_reservarion_info(User_Buy_Record_Fake.this);

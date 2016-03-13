@@ -36,7 +36,6 @@ public class Paaay extends Activity {
             window.setStatusBarColor(this.getResources().getColor(R.color.price));
         }
         setContentView(R.layout.activity_pay);
-
         Bundle b = getIntent().getExtras();
         totalprice = b.getDouble("price");
 
