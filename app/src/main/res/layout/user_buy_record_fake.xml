@@ -67,6 +67,42 @@
             android:layout_height="match_parent"
             android:gravity="bottom|center">
 
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                foo:customFont="fonts/IRANSansMobile_Light.ttf"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="زمان رزرو:"
+                android:textSize="@dimen/smallfont"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/reztext" />
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                foo:customFont="fonts/IRANSansMobile_Medium_Persian_Digits.ttf"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="27 اسفند 1394 ساعت 16:30"
+                android:textSize="@dimen/smallfont"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:id="@+id/rez" />
+
+            <com.BlackBerryJuice.utils.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                foo:customFont="fonts/IRANSansMobile_Light.ttf"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="لطفا در صورت نیاز از این صفحه اسکرین شات تهیه کنید"
+                android:textSize="@dimen/verysmallfont"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp" />
+
             <Button
                 android:id="@+id/back_1"
                 android:layout_width="fill_parent"

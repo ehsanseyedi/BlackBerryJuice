@@ -25,10 +25,12 @@ import java.util.Set;
 
 public class User_Buy_Records extends ListActivity {
     // declate dbhelper and adapter objects
+
     DBHelper dbhelper;
     static ArrayList<String> nameslist = new ArrayList<String>();
     static ArrayList<String> priceslist = new ArrayList<String>();
     static ArrayList<String> rahgirilist = new ArrayList<String>();
+
     public ListView lv;
     ArrayAdapter<String> adapter;
     ArrayList<ArrayList<Object>> data;

@@ -114,25 +114,12 @@ public class User_Buy_Record_Fake extends Activity {
         TextView status = (TextView) findViewById(R.id.status);
         TextView rahgirt = (TextView) findViewById(R.id.rahgir);
         TextView rahgirtext = (TextView) findViewById(R.id.rahgirtext);
+        TextView rez = (TextView) findViewById(R.id.rez);
+        TextView reztext = (TextView) findViewById(R.id.reztext);
 
         Intent intent = getIntent();
         rahgir = intent.getStringExtra("rahgir");
         String paid = intent.getStringExtra("price");
-
-        if(rahgir.equals("null")){
-            status.setText("پرداخت ناموفق");
-            rahgirt.setText("");
-            rahgirtext.setText("");
-        }else{
-            status.setText( "پرداخت موفقیت آمیز");
-            rahgirt.setText(rahgir);
-        }
-
-
-
-
-
-
 
 
 
@@ -152,6 +139,27 @@ public class User_Buy_Record_Fake extends Activity {
 
         new getDataTask().execute();
 
+
+        if(rahgir.equals("null")){
+            status.setText("پرداخت ناموفق");
+            rahgirt.setText("");
+            rahgirtext.setText("");
+            rez.setText("");
+            reztext.setText("");
+        }else{
+            status.setText( "پرداخت موفقیت آمیز");
+            rahgirtext.setText("کد رهگیری بانک");
+            rahgirt.setText(rahgir);
+            if(!SharedData.load_reservarion_time(User_Buy_Record_Fake.this).equals("")){
+                //user reserved
+                reztext.setText("زمان رزرو:");
+                rez.setText(SharedData.load_reservarion_time(User_Buy_Record_Fake.this));
+            }else{
+                //user NOT reserved
+                rez.setText("");
+                reztext.setText("");
+            }
+        }
 
         Name = SharedData.load_name(User_Buy_Record_Fake.this);
         if(SharedData.load_address2(User_Buy_Record_Fake.this).equals("")){
@@ -194,7 +202,6 @@ public class User_Buy_Record_Fake extends Activity {
         startActivity(new Intent(User_Buy_Record_Fake.this, ActivityMainMenu.class));
         dbhelper.close();
         overridePendingTransition(R.anim.open_main, R.anim.close_next);
-
         finish();
     }
 
