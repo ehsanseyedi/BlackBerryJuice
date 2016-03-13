@@ -15,15 +15,15 @@ import android.os.AsyncTask;
 public class loginserver extends AsyncTask{
 
     private String Link="";
-    private String code="";
+   // private String code="";
     private String mobile="";
 
 
 
-    public loginserver(String link,String email,String pass){
+    public loginserver(String link,String pass){
 
         Link=link;
-        code=email;
+        //code=email;
         mobile=pass;
     }
 
@@ -35,8 +35,7 @@ public class loginserver extends AsyncTask{
 
         try{
 
-            String data=URLEncoder.encode("code","UTF8")+"="+URLEncoder.encode(code,"UTF8");
-            data+="&"+URLEncoder.encode("mobile","UTF8")+"="+URLEncoder.encode(mobile,"UTF8");
+            String data=URLEncoder.encode("mobile","UTF8")+"="+URLEncoder.encode(mobile,"UTF8");
 
 
 

@@ -26,7 +26,7 @@ import java.util.TimerTask;
 
 public class Login2 extends Activity {
 
-    public EditText usertext,passtext;
+    public EditText passtext;
     private Button login;
     private TextView register;
 
@@ -50,10 +50,8 @@ public class Login2 extends Activity {
         setContentView(R.layout.activity_login2);
         Intent iGet = getIntent();
         Menu_ID = iGet.getLongExtra("menu_id", 0);
-        usertext =(EditText) findViewById(R.id.username);
         passtext =(EditText) findViewById(R.id.phone);
 
-        usertext.setTypeface(ActivitySplash.F6);
         passtext.setTypeface(ActivitySplash.F6);
         //Bundle b = getIntent().getExtras();
 
@@ -67,7 +65,7 @@ public class Login2 extends Activity {
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
-                login1(usertext.getText().toString(), passtext.getText().toString());
+                login1(passtext.getText().toString());
             }
 
         });
@@ -85,21 +83,14 @@ public class Login2 extends Activity {
     }
 
     @SuppressWarnings("unchecked")
-    private void login1(final String code, final String mobile){
+    private void login1(final String mobile){
 
-        if(((usertext.getText().toString().trim().length()==0)) || ((passtext.getText().toString().trim().length()==0))){
+        if( ((passtext.getText().toString().trim().length()==0))){
 
             int ecolor = Color.RED;
             ForegroundColorSpan fgcspan = new ForegroundColorSpan(ecolor);
 
-            if(usertext.getText().toString().trim().length()==0){
-                usertext.setFocusableInTouchMode(true);
-                usertext.requestFocus();
 
-                String estring = "این قسمت را باید تکمیل کنید";
-                SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
-                ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
-                usertext.setError(ssbuilder);}
 
             if(passtext.getText().toString().trim().length()==0){
                 passtext.setFocusableInTouchMode(true);
@@ -112,7 +103,7 @@ public class Login2 extends Activity {
         }
         else{
 
-            new loginserver(Constant.Login,code,mobile).execute();
+            new loginserver(Constant.Login,mobile).execute();
 
             final ProgressDialog pd=new ProgressDialog(Login2.this);
             pd.setMessage("لطفا کمی صبر کنید...");
@@ -129,11 +120,11 @@ public class Login2 extends Activity {
 
                                 pd.cancel();
                                 tm.cancel();
-                                new loginserver(Constant.Login, code, "").cancel(true);
+                                new loginserver(Constant.Login, "").cancel(true);
                                 ErrorToast.makeToast(Login2.this, "خطا در برقراری ارتباط با سرور", Toast.LENGTH_LONG).show();
                             }
 
-                            if (res.equals("ok")) {
+                            if (res.toLowerCase().contains("ok")) {
 
                                 pd.cancel();
 
@@ -141,11 +132,13 @@ public class Login2 extends Activity {
                                 Editor edit = sp.edit();
                                 //edit.putString("email", code);
                                 edit.commit();
+                                String Code = res.replace("ok", "");
+                                int newcode = Integer.valueOf(Code);
                                 //final String s = sp.getString("email", "");
                                 SharedData.set_user_logedin(true, Login2.this);
-                                SharedData.save_last_userinfo_cm(code, mobile, Login2.this);
-                                new updatemessage(Constant.Update_Message,code,"","get",Login2.this).execute();
-                                new updateuserserver(Constant.Update_ProfileURL,"","","","","","",code,"get",Login2.this).execute();
+                                SharedData.save_last_userinfo_cm(String.valueOf(newcode), mobile, Login2.this);
+                                new updatemessage(Constant.Update_Message,String.valueOf(newcode),"","get",Login2.this).execute();
+                                new updateuserserver(Constant.Update_ProfileURL,"","","","","","",String.valueOf(newcode),"get",Login2.this).execute();
                                 Intent ed = new Intent(Login2.this, ActivityCart.class);
                                 ed.putExtra("fromlogin", true);
                                 res = "";
@@ -155,7 +148,7 @@ public class Login2 extends Activity {
                             } else if (res.equals("wrong password")) {
 
                                 pd.cancel();
-                                ErrorToast.makeToast(Login2.this, "کد اشتراک یا شماره موبایل صحیح نیست", Toast.LENGTH_LONG).show();
+                                ErrorToast.makeToast(Login2.this, "شماره موبایل صحیح نیست", Toast.LENGTH_LONG).show();
                                 res = "";
                                 tm.cancel();
                             } else if (res.equals("no user")) {

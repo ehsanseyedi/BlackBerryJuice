@@ -29,38 +29,6 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/backg_2"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
-            <EditText
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="شماره اشتراک"
-                android:inputType="number"
-                android:background="#00000000"
-                android:gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/EditText_Color_Text"
-                android:textColorHint="@color/EditText_Color_Hint">
-            </EditText>
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/profile_1"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:adjustViewBounds="true"
-                android:padding="12dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/backg_2"
             android:layout_marginTop="7dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
