@@ -151,6 +151,18 @@
                 android:layout_marginLeft="20dp" />
 
             <Button
+                android:id="@+id/again"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/themainbutton"
+                android:text="تلاش مجدد"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="15dp" />
+
+            <Button
                 android:id="@+id/back_1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

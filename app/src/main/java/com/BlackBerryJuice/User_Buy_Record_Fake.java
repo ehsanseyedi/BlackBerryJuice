@@ -88,6 +88,8 @@ public class User_Buy_Record_Fake extends Activity {
     private Double totalprice;
     String rahgir;
     TextView or;
+    Button again;
+    Button back_1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,8 +102,10 @@ public class User_Buy_Record_Fake extends Activity {
         }
         setContentView(R.layout.user_buy_record_fake);
 
-        Button back_1 = (Button)findViewById(R.id.back_1);
+        back_1 = (Button)findViewById(R.id.back_1);
+
         back_1.setTypeface(ActivitySplash.F2);
+
         back_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,11 +121,28 @@ public class User_Buy_Record_Fake extends Activity {
         TextView rez = (TextView) findViewById(R.id.rez);
         TextView reztext = (TextView) findViewById(R.id.reztext);
         or = (TextView) findViewById(R.id.or);
+        again = (Button) findViewById(R.id.again);
+        again.setTypeface(ActivitySplash.F2);
         TextView ortext = (TextView) findViewById(R.id.ortext);
-
+        again.setVisibility(View.GONE);
+        back_1.setVisibility(View.VISIBLE);
         Intent intent = getIntent();
         rahgir = intent.getStringExtra("rahgir");
         String paid = intent.getStringExtra("price");
+
+
+        //rahgir = "1334235476";
+
+
+        again.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new sendData().execute();
+                again.setVisibility(View.GONE);
+                back_1.setVisibility(View.VISIBLE);
+            }
+        });
+
 
         dbhelper = new DBHelper(this);
         // open database
@@ -147,6 +168,8 @@ public class User_Buy_Record_Fake extends Activity {
             reztext.setText("");
             or.setText("");
             ortext.setText("");
+            again.setVisibility(View.GONE);
+            back_1.setVisibility(View.VISIBLE);
         }else{
             status.setText( "پرداخت موفقیت آمیز");
             rahgirtext.setText("کد رهگیری بانک");
@@ -187,8 +210,8 @@ public class User_Buy_Record_Fake extends Activity {
         }
 
         if(!rahgir.equals("null")){
-            new sendData().execute();
 
+            new sendData().execute();
             ActivityCart.delete_everything_in_the_cart(User_Buy_Record_Fake.this);
             ActivityReservation.clearReservation(User_Buy_Record_Fake.this);
             SharedData.delete_address2(User_Buy_Record_Fake.this);
@@ -261,15 +284,17 @@ public class User_Buy_Record_Fake extends Activity {
         }
     }
 
-    // method to show toast message
+    // method to show toast message "saeed" 3 ta kar kardam: ! + comment va { + comment
     public void resultAlert(String HasilProses){
         Log.e("result",HasilProses);
         if(HasilProses.trim().equalsIgnoreCase("OK")){
 
-            ErrorToast.makeToast(User_Buy_Record_Fake.this, ""+R.string.ok_alert, Toast.LENGTH_SHORT).show();
+            ErrorToast.makeToast(User_Buy_Record_Fake.this, "سفارش با موفقیت ثبت شد", Toast.LENGTH_SHORT).show();
 
         }else if(HasilProses.trim().equalsIgnoreCase("Failed")){
-            ErrorToast.makeToast(User_Buy_Record_Fake.this, ""+R.string.failed_alert, Toast.LENGTH_SHORT).show();
+            ErrorToast.makeToast(User_Buy_Record_Fake.this, "خرید انجام شده اما سفارش ثبت نشد!" + "\n" + "لطفا دوباره تلاش کنید", Toast.LENGTH_LONG).show();
+            again.setVisibility(View.VISIBLE);
+            back_1.setVisibility(View.GONE);
         }else{
             Log.d("HasilProses", HasilProses);
         }
