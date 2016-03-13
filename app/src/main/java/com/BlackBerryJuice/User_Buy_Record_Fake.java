@@ -252,7 +252,9 @@ public class User_Buy_Record_Fake extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             // TODO Auto-generated method stub
-            or.setText(OrderList);
+            if(!rahgir.equals("null")) {
+                or.setText(OrderList);
+            }
             // hide progressbar and show reservation form
 //            prgLoading.setVisibility(View.GONE);
 //            sclDetail.setVisibility(View.VISIBLE);
