@@ -445,7 +445,12 @@ public class ActivityCart extends Activity {
 
 	public static void delete_everything_in_the_cart(Context c){
 		try {
-			dbhelper = new DBHelper(c);
+			try{
+				dbhelper = new DBHelper(c);
+			}catch (Exception e){
+				Log.e("cart_delete_method","cant new DBhelper!!  " + e.getMessage());
+			}
+
 			try {
 				dbhelper.openDataBase();
 			} catch (SQLException sqle) {
