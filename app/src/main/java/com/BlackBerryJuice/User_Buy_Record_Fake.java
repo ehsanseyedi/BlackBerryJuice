@@ -225,11 +225,17 @@ public class User_Buy_Record_Fake extends Activity {
     }
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        startActivity(new Intent(User_Buy_Record_Fake.this, ActivityMainMenu.class));
-        dbhelper.close();
-        overridePendingTransition(R.anim.open_main, R.anim.close_next);
-        finish();
+
+        if(again.isShown()){
+            ErrorToast.makeToast(User_Buy_Record_Fake.this, "خرید انجام شده اما سفارش ثبت نشد!" + "\n" + "لطفا دوباره تلاش کنید", Toast.LENGTH_LONG).show();
+        }else{
+            super.onBackPressed();
+            startActivity(new Intent(User_Buy_Record_Fake.this, ActivityMainMenu.class));
+            dbhelper.close();
+            overridePendingTransition(R.anim.open_main, R.anim.close_next);
+            finish();
+        }
+
     }
 
 
@@ -287,16 +293,16 @@ public class User_Buy_Record_Fake extends Activity {
     // method to show toast message "saeed" 3 ta kar kardam: ! + comment va { + comment
     public void resultAlert(String HasilProses){
         Log.e("result",HasilProses);
-        if(HasilProses.trim().equalsIgnoreCase("OK")){
+        if(!HasilProses.trim().equalsIgnoreCase("OK")){
 
             ErrorToast.makeToast(User_Buy_Record_Fake.this, "سفارش با موفقیت ثبت شد", Toast.LENGTH_SHORT).show();
 
-        }else if(HasilProses.trim().equalsIgnoreCase("Failed")){
+        }else{// if(HasilProses.trim().equalsIgnoreCase("Failed")){
             ErrorToast.makeToast(User_Buy_Record_Fake.this, "خرید انجام شده اما سفارش ثبت نشد!" + "\n" + "لطفا دوباره تلاش کنید", Toast.LENGTH_LONG).show();
             again.setVisibility(View.VISIBLE);
             back_1.setVisibility(View.GONE);
-        }else{
-            Log.d("HasilProses", HasilProses);
+//        }else{
+//            Log.d("HasilProses", HasilProses);
         }
     }
 
@@ -381,6 +387,7 @@ public class User_Buy_Record_Fake extends Activity {
     }
 
     // when back button pressed close database and back to previous page
+
 
 
 
