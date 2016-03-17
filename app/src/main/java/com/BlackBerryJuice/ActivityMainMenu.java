@@ -372,22 +372,22 @@ public class ActivityMainMenu extends Activity implements BaseSliderView.OnSlide
 			String url = sliderlinks.get(0);
 			Intent i = new Intent(Intent.ACTION_VIEW);
 			i.setData(Uri.parse(url));
-			startActivity(i);
+			try{startActivity(i);} catch(Exception e){};
 		}else if(curennt_text.equals(text2)){
 			String url = sliderlinks.get(1);
 			Intent i = new Intent(Intent.ACTION_VIEW);
 			i.setData(Uri.parse(url));
-			startActivity(i);
+			try{startActivity(i);} catch(Exception e){};
 		}else if(curennt_text.equals(text3)) {
 			String url = sliderlinks.get(2);
 			Intent i = new Intent(Intent.ACTION_VIEW);
 			i.setData(Uri.parse(url));
-			startActivity(i);
+			try{startActivity(i);} catch(Exception e){};
 		}else if (curennt_text.equals(text4)){
 			String url = sliderlinks.get(3);
 			Intent i = new Intent(Intent.ACTION_VIEW);
 			i.setData(Uri.parse(url));
-			startActivity(i);
+			try{startActivity(i);} catch(Exception e){};
 		}
 		overridePendingTransition(R.anim.open_next, R.anim.close_next);
 	}
