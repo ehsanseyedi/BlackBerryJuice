@@ -209,7 +209,7 @@ public class ActivityCart extends Activity {
 						.setNegativeButton("خیر", new View.OnClickListener() {
 							@Override
 							public void onClick(View view) {
-								md.dismiss();
+								md2.dismiss();
 							}
 						});
 				md2.show();
